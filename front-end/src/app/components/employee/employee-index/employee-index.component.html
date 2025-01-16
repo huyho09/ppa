@@ -6,15 +6,15 @@
       <div class="card">
         <img [src]="'assets/data/Avatar.jpg'" alt="Avatar" class="card-img-top avatar-img" width="100%">
         <div class="card-body">
-          <h5 class="card-title">{{employee.name}}</h5>
+          <h5 class="card-title">{{employee.id}}</h5>
+          <p class="card-text"><strong>Firstname:</strong>{{employee.firstname}}</p>
+          <p class="card-text"><strong>Lastname:</strong>{{employee.lastname}}</p>
           <p class="card-text"><strong>Email:</strong>{{employee.email}}</p>
           <p class="card-text"><strong>Birthday:</strong>{{employee.birthday}}</p>
           <p class="card-text"><strong>Role:</strong>{{employee.role}}</p>
           <p class="card-text"><strong>Admin:</strong>{{employee.is_admin ? 'Yes' : 'No'}}</p>
-          <p class="card-text"><strong>Skills:</strong></p>
-          <ul>
-            <li *ngFor="let skill of employee.skills">{{skill}}</li>
-          </ul>
+          <p class="card-text"><strong>Role:</strong>{{employee.skills}}</p>
+
         </div>
       </div>
     </div>
