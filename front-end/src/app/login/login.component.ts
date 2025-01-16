@@ -21,7 +21,7 @@ export class LoginComponent {
     this.showError = ''
     if(this.username === 'admin@gmail.com' && this.password === 'Password@123')
     {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
     }
     else if (this.username === null || this.username === undefined || this.username.trim()==='')
     {
