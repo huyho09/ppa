@@ -16,12 +16,12 @@ export class LoginComponent {
   username: string ='';
   password: string ='';
   showError: string = '';
-  onSubmit(): void 
+  onSubmit(): void
   {
     this.showError = ''
     if(this.username === 'admin@gmail.com' && this.password === 'Password@123')
     {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard/employee']);
     }
     else if (this.username === null || this.username === undefined || this.username.trim()==='')
     {
