@@ -23,7 +23,6 @@ interface Employee {
 })
 export class EmployeeIndexComponent implements OnInit {
   employees: Employee[] = [];
-  editingEmployee: Employee | null=null;
 
   constructor(private employeeService: EmployeeServiceService) {}
 

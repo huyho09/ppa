@@ -2,28 +2,22 @@
     <div>
       <a class="menu-header" (click)="toggleSubmenu('employee')">Employees</a>
       <div class="submenu" [class.show]="activeMenu === 'employee'">
-        <a href="/dashboard/employee">Index</a>
-        <a href="/dashboard/employee/create">Create</a>
-        <a href="/dashboard/employee/update/:id">Update</a>
-        <a href="/dashboard/employee/delete/:id">Delete</a>
+        <a href="/dashboard/employee">My Team Members</a>
+        <a href="/dashboard/employee/create">Create Member</a>
       </div>
     </div>
     <div>
       <a class="menu-header" (click)="toggleSubmenu('project')">Projects</a>
       <div class="submenu" [class.show]="activeMenu === 'project'">
-        <a href="/dashboard/project">Index</a>
-        <a href="/dashboard/project/create">Create</a>
-        <a href="/dashboard/project/update/:id">Update</a>
-        <a href="/dashboard/project/delete/:id">Delete</a>
+        <a href="/dashboard/project">Our Projects</a>
+        <a href="/dashboard/project/create">Create Project</a>
       </div>
     </div>
     <div>
         <a class="menu-header" (click)="toggleSubmenu('customer')">Customer</a>
         <div class="submenu" [class.show]="activeMenu === 'customer'">
-          <a href="/dashboard/customer">Index</a>
-          <a href="/dashboard/customer/create">Create</a>
-          <a href="/dashboard/customer/update/:id">Update</a>
-          <a href="/dashboard/customer/delete/:id">Delete</a>
+          <a href="/dashboard/customer">Our Customer</a>
+          <a href="/dashboard/customer/create">Create Customer</a>
         </div>
       </div>
-  </div> 
+  </div>

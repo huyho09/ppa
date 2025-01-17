@@ -1,1 +1,31 @@
-<p>project-index works!</p>
+
+<div class = 'container'>
+  <table class = "table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Employees</th>
+        <th>Customer</th>
+        <th>Requirements</th>
+        <th>Skills</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td><a [routerLink]="['/dashboard/project/update', project.id]">{{ project.name }}</a></td>
+        <td>{{ project.department }}</td>
+        <td>{{ project.employees }}</td>
+        <td>{{ project.customer }}</td>
+        <td>{{ project.requirements }}</td>
+        <td>{{ project.skills }}</td>
+        <td>{{ project.startDate }}</td>
+        <td>{{ project.endDate }}</td>
+        <td>{{ project.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
