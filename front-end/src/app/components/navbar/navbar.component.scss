@@ -1,0 +1,63 @@
+.sidenav {
+  height: 100vh; // Full height
+  width: 250px; // Fixed width
+  position: fixed; // Stay in place
+  top: 0;
+  left: 0;
+  background-color: #111; // Dark background
+  overflow-x: hidden; // Disable horizontal scroll
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000; // Ensure the sidebar is above the content
+  
+  // Links inside the sidenav
+  a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #575757;
+      color: white;
+    }
+  }
+
+  // Submenu styling
+  .submenu {
+    display: none; // Hidden by default
+    flex-direction: column;
+    margin-left: 15px;
+
+    a {
+      font-size: 16px; // Smaller font size for submenu
+      padding-left: 30px; // Indent submenu links
+    }
+
+    &.show {
+      display: flex; // Show submenu when active
+    }
+  }
+
+  // Menu header styling
+  .menu-header {
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+}
+
+.content {
+  margin-left: 250px; // Push the content to the right of the sidebar
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  background-color: #f4f4f4; // Light background for the content area
+  min-height: 100vh; // Ensure content takes up full height
+}
+
