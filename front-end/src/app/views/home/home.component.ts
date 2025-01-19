@@ -8,7 +8,7 @@ import {
   ColComponent,
   GutterDirective,
   RowComponent,
-  TextColorDirective
+  TextColorDirective,
 } from '@coreui/angular';
 import { RouterLink } from '@angular/router';
 interface IUser {
