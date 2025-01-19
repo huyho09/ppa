@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgStyle } from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
 import { FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { CacheService } from '../../../services/cache.service';
 import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective } from '@coreui/angular';
 
 @Component({
@@ -13,15 +14,23 @@ import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, Tex
     imports: [ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective, NgStyle, CommonModule,FormsModule]
 })
 export class LoginComponent {
-  constructor(private router:Router){}
+  constructor(private router:Router, private authService: CacheService){}
   username: string ='';
   password: string ='';
   showError: string = '';
+  ngOnInit(): void { }
+  ngAfterViewInit(): void {
+    if (this.authService.getUserData('currentUserId')) {
+      this.router.navigate(['/home']);
+    }
+  }
   onSubmit(): void
   {
     this.showError = ''
     if(this.username === 'admin@gmail.com' && this.password === 'Password@123')
     {
+      // Save user identifier in storage
+      this.authService.saveUserData('currentUserId', 'admin@gmail.com');
       this.router.navigate(['/home']);
     }
     else if (this.username === null || this.username === undefined || this.username.trim()==='')

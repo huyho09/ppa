@@ -1,4 +1,6 @@
 import { DOCUMENT, NgStyle } from '@angular/common';
+import { Router } from '@angular/router';
+import { CacheService } from '../../services/cache.service';
 import { Component, DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -26,12 +28,13 @@ interface IUser {
 }
 
 @Component({
-    templateUrl: 'home.component.html',
-    styleUrls: ['home.component.scss'],
-    imports: [ TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ReactiveFormsModule, CardFooterComponent, GutterDirective, RouterLink ]
+  templateUrl: 'home.component.html',
+  styleUrls: ['home.component.scss'],
+  imports: [TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ReactiveFormsModule, CardFooterComponent, GutterDirective, RouterLink]
 })
 
 export class HomeComponent implements OnInit {
+  constructor(private router: Router, private authService: CacheService) { }
 
   readonly #destroyRef: DestroyRef = inject(DestroyRef);
   readonly #document: Document = inject(DOCUMENT);
@@ -71,13 +74,17 @@ export class HomeComponent implements OnInit {
     trafficRadio: new FormControl('Month')
   });
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+  ngAfterViewInit(): void {
     this.initCharts();
     this.updateChartOnColorModeChange();
+    if (!this.authService.getUserData('currentUserId')) {
+      this.router.navigate(['/login']);
+    }
   }
 
   initCharts(): void {
-    
+
   }
 
   setTrafficPeriod(value: string): void {

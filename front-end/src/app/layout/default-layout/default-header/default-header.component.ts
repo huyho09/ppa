@@ -1,6 +1,8 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CacheService } from '../../../services/cache.service';
+import { Router } from '@angular/router';
 
 import {
   AvatarComponent,
@@ -29,6 +31,14 @@ import { IconDirective } from '@coreui/icons-angular';
   imports: [ContainerComponent, HeaderTogglerDirective, SidebarToggleDirective, IconDirective, HeaderNavComponent, NavItemComponent, NavLinkDirective, RouterLink, RouterLinkActive, NgTemplateOutlet, BreadcrumbRouterComponent, DropdownComponent, DropdownToggleDirective, AvatarComponent, DropdownMenuDirective, DropdownHeaderDirective, DropdownItemDirective, DropdownDividerDirective]
 })
 export class DefaultHeaderComponent extends HeaderComponent {
+  
+  onLogout(): void {
+    // Clear user data from storage
+    this.authService.removeUserData('currentUserId');
+
+    // Navigate to the login page
+    this.router.navigate(['/login']);
+  }
 
   readonly #colorModeService = inject(ColorModeService);
   readonly colorMode = this.#colorModeService.colorMode;
@@ -44,7 +54,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
     return this.colorModes.find(mode => mode.name === currentMode)?.icon ?? 'cilSun';
   });
 
-  constructor() {
+  constructor(private router: Router, private authService: CacheService) {
     super();
   }
 
