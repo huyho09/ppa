@@ -3,7 +3,7 @@
       <div class="col-md-6 offset-md-3">
         <div class="card">
           <div class="card-body">
-            <form (ngSubmit)="addEmployee();downloadJSON()">
+            <form (ngSubmit)="addEmployee()">
               <div class="form-group">
                 <label for="name">First Name</label>
                 <input
@@ -85,7 +85,6 @@
                 />
               </div>
               <button type="submit" class="btn btn-primary mt-3">Save</button>
-              <div style="display: none;"> <button (click)="downloadJSON()">Download JSON </button></div>
             </form>
           </div>
         </div>

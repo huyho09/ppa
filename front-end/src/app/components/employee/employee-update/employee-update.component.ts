@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeServiceService } from '../service/employee-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 interface Employee {
   id: string;
   avatar: string;
@@ -35,7 +35,8 @@ export class EmployeeUpdateComponent implements OnInit {
   }
   constructor(
     private employeeService: EmployeeServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ){}
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -56,6 +57,7 @@ export class EmployeeUpdateComponent implements OnInit {
   { this.employeeService.updateEmployee(this.employee).subscribe(() =>
     {
       console.log("User edit successfully" + this.employee)
+      this.router.navigate(['/dashboard/employee'])
       });
   }
 }

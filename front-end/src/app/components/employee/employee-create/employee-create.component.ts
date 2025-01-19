@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeServiceService } from '../service/employee-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 interface Employee {
   id: string;
@@ -37,7 +37,10 @@ export class EmployeeCreateComponent {
     is_admin: false,
   };
 
-  constructor(private employeeService: EmployeeServiceService) {}
+  constructor(
+    private employeeService: EmployeeServiceService,
+    private router: Router,
+  ) {}
 
   addEmployee(): void {
     this.employeeService
@@ -54,19 +57,10 @@ export class EmployeeCreateComponent {
           skills: '',
           role: '',
           is_admin: false,
+        
         };
+        this.router.navigate(['/dashboard/employee'])
       });
   }
 
-  downloadJSON(): void {
-    const employees = this.employeeService.getEmployeesFromLocalStorage();
-    const json = JSON.stringify(employees, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'employees.json';
-    a.click();
-    window.URL.revokeObjectURL(url);
-  }
 }

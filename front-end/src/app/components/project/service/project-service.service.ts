@@ -26,9 +26,9 @@ export class ProjectServiceService {
   private projects : Project[] = []
 
   getProjects(): Observable<any[]> {
-    const employees = this.getProjectsFromLocalStorage();
-    console.log(employees)
-    return of(employees);
+    const projects = this.getProjectsFromLocalStorage();
+    console.log(projects)
+    return of(projects);
   }
 
   createProject(project:any): Observable<any> {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EmployeeServiceService } from '../service/employee-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 interface Employee {
   id: string;
   avatar: string;
@@ -32,19 +32,20 @@ export class EmployeeDeleteComponent {
   }
   constructor(
     private employeeService: EmployeeServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ){}
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if(id)
     {
       const deletedEmployee = this.employeeService.getEmployeeById(id)
+      this.router.navigate(['dashboard/employee'])
       if(deletedEmployee)
       {
         this.employee = deletedEmployee;
         this.employeeService.deleteEmployee(deletedEmployee.id).subscribe(() =>
           {
-            console.log("User delete successfully" + this.employee)
             });
       }
       else{

@@ -1,9 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ProjectServiceService } from '../service/project-service.service';
 import { EmployeeServiceService } from '../../employee/service/employee-service.service';
+import { CustomerServiceService } from '../../customer/service/customer-service.service';
+interface Customer {
+  id: string;
+  avatar: string;
+  firstname: string;
+  lastname: string;
+  gender: string;
+  email: string;
+}
 interface Employee{
   firstname: string,
   lastname: string,
@@ -31,7 +40,8 @@ interface Project {
 })
 export class ProjectCreateComponent implements OnInit{
   projects: Project[] = [];
-  employees: Employee[] = []
+  employees: Employee[] = [];
+  customers: Customer[] = [];
   newProject : Project = {
     id: '',
     name: '',
@@ -47,10 +57,19 @@ export class ProjectCreateComponent implements OnInit{
   }
   constructor(
     private projectService: ProjectServiceService,
-    private employeeService: EmployeeServiceService
+    private employeeService: EmployeeServiceService,
+    private CustomerService: CustomerServiceService,
+    private router: Router,
   ) {}
 
   addProject():void {
+    const startDate = new Date(this.newProject.startDate)
+    const endDate = new Date(this.newProject.endDate)
+    if(endDate <= startDate)
+    {
+      alert('End Date cannot happen before Start Date')
+      return;
+    }
     this.projectService.createProject(this.newProject).subscribe(
       (project) => {
         this.projects.push(project)
@@ -74,5 +93,6 @@ export class ProjectCreateComponent implements OnInit{
     this.employeeService.getEmployees().subscribe((data) => {
       this.employees = data;
     });
+    this.CustomerService.getCustomers().subscribe((customerData) => {this.customers = customerData})
     }
 }
