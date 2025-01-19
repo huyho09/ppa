@@ -1,0 +1,33 @@
+:host {
+  .legend {
+    small {
+      font-size: x-small;
+    }
+  }
+}
+.home-card-header {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding: 3rem;
+  width: 100%;
+  height: 400px;
+  background-image: url('../../../assets/images/angular.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #ffff !important;
+  .pretitle {
+    font-weight: lighter;
+  }
+}
+.home-card-body {
+  text-align: center;
+  .home-card-body-item,.card-body{
+    min-height: 10rem !important;
+  }
+}
+a{
+  text-decoration: none;
+  cursor:pointer;
+}

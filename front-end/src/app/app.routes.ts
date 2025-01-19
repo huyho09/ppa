@@ -12,9 +12,9 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./views/dashboard/dashboard.component').then(m => m.DashboardComponent),
+        loadComponent: () => import('./views/home/home.component').then(m => m.HomeComponent),
         data: {
-          title: $localize`Dashboard`
+          title: ``
         }
       },
       {
@@ -23,19 +23,19 @@ export const routes: Routes = [
       },
       {
         path: 'employee-profile',
-        loadChildren: () => import('./views/base/routes').then((m) => m.routes)
+        loadChildren: () => import('./views/employee-profile/routes').then((m) => m.routes)
       },
       {
         path: 'project',
-        loadChildren: () => import('./views/buttons/routes').then((m) => m.routes)
+        loadChildren: () => import('./views/project/routes').then((m) => m.routes)
       },
       {
         path: 'billing',
-        loadChildren: () => import('./views/forms/routes').then((m) => m.routes)
+        loadComponent: () => import('./views/billing/billing.component').then(m => m.BillingComponent),
       },
       {
         path: 'user-access',
-        loadChildren: () => import('./views/charts/routes').then((m) => m.routes)
+        loadComponent: () => import('./views/user-access/user-access.component').then(m => m.UserAccessComponent)
       }
     ]
   },

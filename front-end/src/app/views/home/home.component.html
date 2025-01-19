@@ -1,0 +1,42 @@
+<c-card class="my-4">
+  <c-card-body class="home-card-header">
+    <h5 class="pretitle"><i>SO SIMPLE, SO REFRESHING, SODA.</i></h5>
+    <h1 class="" id="traffic">Welcome to SODA web app!</h1>
+    <h5 class=""><strong>SO-VH Central Database</strong></h5>
+  </c-card-body>
+  <c-card-footer>
+    <c-row class="home-card-body">
+      <c-col [lg]="4" class="home-card-body-item">
+        <a routerLink="/employee-profile/employee-overview">
+          <c-card class="mb-1">
+            <c-card-body class="">
+              <i class="fas fa-user" style="font-size:50px;"></i>
+              <h5 cCardTitle class="mt-3">Employee Profile</h5>
+            </c-card-body>
+          </c-card>
+        </a>
+      </c-col>
+      <c-col [lg]="4" class="home-card-body-item">
+        <a routerLink="/project/client-overview">
+          <c-card class="mb-1">
+            <c-card-body>
+              <i class="fas fa-file-text" style="font-size:50px;"></i>
+              <h5 cCardTitle class="mt-3">Project</h5>
+            </c-card-body>
+          </c-card>
+        </a>
+      </c-col>
+      <c-col [lg]="4" class="home-card-body-item">
+        <a routerLink="billing" >
+          <c-card class="mb-1">
+            <c-card-body class="">
+              <i class="fas fa-bold" style="font-size:50px;"></i>
+              <h5 cCardTitle class="mt-3">Billing</h5>
+            </c-card-body>
+          </c-card>
+        </a>
+      </c-col>
+    </c-row>
+
+  </c-card-footer>
+</c-card>

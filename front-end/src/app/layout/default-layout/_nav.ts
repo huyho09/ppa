@@ -12,13 +12,13 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-people' },
     children: [
       {
-        name: 'Accordion',
-        url: '/employee-profile/accordion',
+        name: 'Employee Overview',
+        url: '/employee-profile/employee-overview',
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Breadcrumbs',
-        url: '/employee-profile/breadcrumbs',
+        name: 'Pending Approvals',
+        url: '/employee-profile/pending-approvals',
         icon: 'nav-icon-bullet'
       },
   
@@ -30,24 +30,26 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-description' },
     children: [
       {
-        name: 'Buttons',
-        url: '/project/buttons',
+        name: 'Client Overview',
+        url: '/project/client-overview',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Project Overview',
+        url: '/project/project-overview',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Project Requirement Assignment',
+        url: '/project/project-requirement-assignment',
         icon: 'nav-icon-bullet'
       },
     ]
   },
   {
     name: 'Billing',
-    url: '/billing',
     iconComponent: { name: 'cil-bold' },
-    children: [
-      {
-        name: 'Form Control',
-        url: '/billing/form-control',
-        icon: 'nav-icon-bullet'
-      },
-
-    ]
+    url: '/billing',
   },
   {
     name: 'User Access',
