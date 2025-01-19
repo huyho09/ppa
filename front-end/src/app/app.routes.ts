@@ -2,7 +2,12 @@ import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
 
 export const routes: Routes = [
-
+  // Redirect the base path to the login page
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -11,7 +16,7 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: '',
+        path: 'home',
         loadComponent: () => import('./views/home/home.component').then(m => m.HomeComponent),
         data: {
           title: ``
