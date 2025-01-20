@@ -52,6 +52,7 @@ export class ProjectDeleteComponent implements OnInit
           this.project = deleteProject
           this.projectService.deleteProject(deleteProject.id).subscribe(
             () => {
+              this.router.navigate(['/dashboard/project'])
             }
           )
         }

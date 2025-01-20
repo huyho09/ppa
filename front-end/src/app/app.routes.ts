@@ -18,6 +18,7 @@ import { CustomerIndexComponent } from './components/customer/customer-index/cus
 import { CustomerUpdateComponent } from './components/customer/customer-update/customer-update.component';
 import { CustomerDeleteComponent } from './components/customer/customer-delete/customer-delete.component';
 import { DepartmentDescribeComponent } from './department-describe/department-describe.component';
+import { OrgChartComponent } from './department-describe/org-chart/org-chart.component';
 
 export const routes: Routes = [
   // Login Route
@@ -44,7 +45,8 @@ export const routes: Routes = [
       { path: 'customer/update/:id', component: CustomerUpdateComponent },
       { path: 'customer/delete/:id', component: CustomerDeleteComponent },
 
-      {path: 'overview', component: DepartmentDescribeComponent}
+      {path: 'overview', component: DepartmentDescribeComponent},
+      {path: 'overview/orgchart', component: OrgChartComponent}
     ]
   },
 

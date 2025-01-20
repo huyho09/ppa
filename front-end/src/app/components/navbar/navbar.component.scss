@@ -1,16 +1,17 @@
 .sidenav {
   height: 100vh; // Full height
-  width: 250px; // Fixed width
+  width: 230px; // Fixed width
   position: fixed; // Stay in place
   top: 0;
   left: 0;
-  background-color: #111; // Dark background
+  background-color: black ; // Dark background
   overflow-x: hidden; // Disable horizontal scroll
   padding-top: 20px;
-  display: flex;
+  display: inline-block;
+  align-items: center;
   flex-direction: column;
   z-index: 1000; // Ensure the sidebar is above the content
-  
+
   // Links inside the sidenav
   a {
     padding: 10px 15px;
@@ -40,18 +41,32 @@
     &.show {
       display: flex; // Show submenu when active
     }
+    }
   }
+
+  .menu-header-bottom{
+    font-weight: bold;
+    margin-top: 500px;
+    border-radius: 10px;
+    width: 200px;
+    align-items: center;
+  }
+
 
   // Menu header styling
   .menu-header {
     cursor: pointer;
     font-weight: bold;
-
+    margin-left: 10px;
+    background-color: #575757;
+    border-radius: 10px;
+    width: 200px;
     &:hover {
       background-color: #333;
     }
   }
-}
+
+
 
 .content {
   margin-left: 250px; // Push the content to the right of the sidebar

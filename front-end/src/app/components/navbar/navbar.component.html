@@ -1,29 +1,45 @@
 <div class="sidenav">
-  <div class = "menu-header">
-    <a href="/dashboard/overview">Our Team</a>
+  <div>
+    <a class="menu-header" (click)="toggleSubmenu('overview')"> <i class ="bi bi-house"></i> Overview</a>
+    <div class="submenu" [class.show]="activeMenu === 'overview'">
+      <a href="/dashboard/overview/"><i class="bi bi-hash"></i> About Us</a>
+      <a href="/dashboard/overview/orgchart"><i class="bi bi-bar-chart-steps"></i> Org Chart</a>
+    </div>
   </div>
+  <br>
     <div>
-      <a class="menu-header" (click)="toggleSubmenu('employee')">Employees</a>
+      <a class="menu-header" (click)="toggleSubmenu('employee')"> <i class ="bi bi-people"></i> Members</a>
       <div class="submenu" [class.show]="activeMenu === 'employee'">
-        <a href="/dashboard/employee">My Team Members</a>
-        <a href="/dashboard/employee/create">Create Member</a>
+        <a href="/dashboard/employee"><i class="bi bi-hash"></i> My Team Members</a>
+        <a href="/dashboard/employee/create"><i class="bi bi-person-add"></i> Create Member</a>
       </div>
     </div>
+    <br>
     <div>
-      <a class="menu-header" (click)="toggleSubmenu('project')">Projects</a>
+      <a class="menu-header" (click)="toggleSubmenu('project')"> <i class="bi bi-folder"></i> Projects</a>
       <div class="submenu" [class.show]="activeMenu === 'project'">
-        <a href="/dashboard/project">Our Projects</a>
-        <a href="/dashboard/project/create">Create Project</a>
+        <a href="/dashboard/project"><i class="bi bi-hash"> </i>Our Projects</a>
+        <a href="/dashboard/project/create"><i class="bi bi-folder-plus"></i> Create Project </a>
       </div>
     </div>
+    <br>
     <div>
-        <a class="menu-header" (click)="toggleSubmenu('customer')">Customer</a>
+        <a class="menu-header" (click)="toggleSubmenu('customer')"><i class="bi bi-people-fill"></i> Customer</a>
         <div class="submenu" [class.show]="activeMenu === 'customer'">
-          <a href="/dashboard/customer">Our Customer</a>
-          <a href="/dashboard/customer/create">Create Customer</a>
+          <a href="/dashboard/customer"><i class="bi bi-hash"> </i>Our Customer</a>
+          <a href="/dashboard/customer/create"><i class="bi bi-person-add"></i> Create Customer</a>
         </div>
-      </div>
-      <div>
-        <a class="menu-header" href="/login">Log Out</a>
-      </div>
+    </div>
+    <br>
+    <div>
+      <a class ="menu-header" ><i class="bi bi-patch-question-fill"></i> Help</a>
+    </div>
+    <br>
+    <div>
+      <a class ="menu-header" ><i class="bi bi-bell-fill"></i>  Release Note</a>
+    </div>
+    <br>
+    <div class ="menu-header-bottom">
+        <a  href="/login"><i class="bi bi-power"></i> Log Out</a>
+    </div>
   </div>
