@@ -25,7 +25,7 @@ interface Project {
   employees: string[];
   customer: string;
   requirements: string;
-  skills: string;
+  skills: string[];
   result_image: string[];
   startDate: string;
   endDate: string;
@@ -42,6 +42,7 @@ export class ProjectCreateComponent implements OnInit{
   projects: Project[] = [];
   employees: Employee[] = [];
   customers: Customer[] = [];
+  skillsString: string = '';
   newProject : Project = {
     id: '',
     name: '',
@@ -49,7 +50,7 @@ export class ProjectCreateComponent implements OnInit{
     employees: [],
     customer: '',
     requirements: '',
-    skills: '',
+    skills: [],
     result_image: [],
     startDate: '',
     endDate: '',
@@ -70,6 +71,7 @@ export class ProjectCreateComponent implements OnInit{
       alert('End Date cannot happen before Start Date')
       return;
     }
+    this.newProject.skills = this.skillsString.split(',').map(skill => skill.trim())
     this.projectService.createProject(this.newProject).subscribe(
       (project) => {
         this.projects.push(project)
@@ -80,12 +82,14 @@ export class ProjectCreateComponent implements OnInit{
           employees: [],
           customer: '',
           requirements: '',
-          skills: '',
+          skills: [],
           result_image: [],
           startDate: '',
           endDate: '',
           status: ''
         }
+        this.skillsString = '';
+        this.router.navigate(['/dashboard/project'])
       }
     )
   }

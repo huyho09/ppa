@@ -9,7 +9,7 @@ interface Project {
   employees: string[];
   customer: string;
   requirements: string;
-  skills: string;
+  skills: string[];
   result_image: string[];
   startDate: string;
   endDate: string;
@@ -31,7 +31,7 @@ export class ProjectDeleteComponent implements OnInit
     employees: [],
     customer: '',
     requirements: '',
-    skills: '',
+    skills: [],
     result_image: [],
     startDate: '',
     endDate: '',

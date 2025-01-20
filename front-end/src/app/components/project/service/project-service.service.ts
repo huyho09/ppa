@@ -10,7 +10,7 @@ interface Project {
   employees: string[];
   customer: string;
   requirements: string;
-  skills: string;
+  skills: string[];
   result_image: string[];
   startDate: string;
   endDate: string;
@@ -34,7 +34,6 @@ export class ProjectServiceService {
   createProject(project:any): Observable<any> {
     const projects = this.getProjectsFromLocalStorage()
     project.id = uuidv4()
-    project.skills.trim()
     projects.push(project)
     this.saveProjectsToLocalStorage(projects)
     return of(project)

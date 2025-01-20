@@ -20,7 +20,7 @@ interface Project {
   employees: string[];
   customer: string;
   requirements: string;
-  skills: string;
+  skills: string[];
   result_image: string[];
   startDate: string;
   endDate: string;
@@ -55,16 +55,16 @@ project : Project = {
   employees: [],
   customer: '',
   requirements: '',
-  skills: '',
+  skills: [],
   result_image: [],
   startDate: '',
   endDate: '',
   status: ''
 }
+skillsString: string = '';
 ngOnInit(): void {
     this.loadEmployees()
     this.loadCustomers()
-    this.employeeService.getEmployeesFromLocalStorage()
     const id = this.route.snapshot.paramMap.get('id')
     if(id)
     {
@@ -72,6 +72,7 @@ ngOnInit(): void {
       if (foundProject)
       {
         this.project = foundProject;
+        this.skillsString =this.project.skills.join(',')
       }
       else
       {
@@ -93,6 +94,7 @@ loadCustomers()
   this.customerService.getCustomers().subscribe((customerData)=> this.customers = customerData)
 }
 updateProject() {
+  this.project.skills = this.skillsString.split(',')
   this.projectService.updateProject(this.project).subscribe(
     () => {
       this.router.navigate(['/dashboard/project'])

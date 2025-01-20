@@ -63,18 +63,19 @@
                 required
               />
             </div>
-
             <div class="form-group mt-2">
-              <label for="skills">Skills</label>
+              <label for="skillsString">Skills</label>
               <input
                 type="text"
                 class="form-control"
-                id="skills"
-                [(ngModel)]="project.skills"
-                name="skills"
+                id="skillsString"
+                name = "skillsString"
+                [(ngModel)]="skillsString" 
                 required
               />
             </div>
+            
+            
 
             <div class="form-group mt-2">
               <label for="startDate">Start Date</label>

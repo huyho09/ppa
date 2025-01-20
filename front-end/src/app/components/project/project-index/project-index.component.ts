@@ -3,6 +3,7 @@ import { ProjectServiceService } from '../service/project-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import {Chart} from 'chart.js/auto'
 interface Project {
   id: string;
   name: string;
@@ -38,6 +39,11 @@ export class ProjectIndexComponent implements OnInit {
         (data) => {
           this.projects = data
           this.countProjects()
+          this.countTotal= this.countOpen + this.countReview + this.countClosed + this.countInProgress
+          this.createOpenChart()
+          this.createInProgressChart()
+          this.createInReviewChart()
+          this.createClosedChart()
         }
       )
 
@@ -57,6 +63,137 @@ countProjects(): void{
         this.countClosed +=1
       }
     }
+}
+createOpenChart(): void {
+  new Chart('projectOpenChart', {
+    type: 'doughnut',
+    data: {
+      labels: ['Open', 'Other'],
+      datasets: [
+        {
+          label: 'Projects',
+          data: [
+            this.countOpen,
+            this.countTotal - this.countOpen,
+          ],
+          backgroundColor: ['#3498db', '#f1c40f'],
+          hoverOffset: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label:(tooltipItem) => {
+              const value = tooltipItem.raw;
+              return `$(value) projects`;
+            }
+          }
+        }
+      }
+    }
+  })
+}
+
+createInProgressChart(): void {
+  new Chart('projectInProgressChart', {
+    type: 'doughnut',
+    data: {
+      labels: ['In Progress', 'Other'],
+      datasets: [
+        {
+          label: 'Projects',
+          data: [
+            this.countInProgress,
+            this.countTotal - this.countInProgress,
+          ],
+          backgroundColor: ['#3498db', '#f1c40f'],
+          hoverOffset: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label:(tooltipItem) => {
+              const value = tooltipItem.raw;
+              return `$(value) projects`;
+            }
+          }
+        }
+      }
+    }
+  })
+}
+
+createInReviewChart(): void {
+  new Chart('projectInReviewChart', {
+    type: 'doughnut',
+    data: {
+      labels: ['In Review', 'Other'],
+      datasets: [
+        {
+          label: 'Projects',
+          data: [
+            this.countReview,
+            this.countTotal - this.countReview,
+          ],
+          backgroundColor: ['#3498db', '#f1c40f'],
+          hoverOffset: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label:(tooltipItem) => {
+              const value = tooltipItem.raw;
+              return `$(value) projects`;
+            }
+          }
+        }
+      }
+    }
+  })
+}
+
+createClosedChart(): void {
+  new Chart('projectClosedChart', {
+    type: 'doughnut',
+    data: {
+      labels: ['Closed', 'Other'],
+      datasets: [
+        {
+          label: 'Projects',
+          data: [
+            this.countClosed,
+            this.countTotal - this.countClosed,
+          ],
+          backgroundColor: ['#3498db', '#f1c40f'],
+          hoverOffset: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label:(tooltipItem) => {
+              const value = tooltipItem.raw;
+              return `$(value) projects`;
+            }
+          }
+        }
+      }
+    }
+  })
 }
 
 }
