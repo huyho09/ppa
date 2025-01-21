@@ -12,8 +12,8 @@ interface Project {
   requirements: string;
   skills: string[];
   result_image: string[];
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   status: string;
 }
 

@@ -19,6 +19,8 @@ import { CustomerUpdateComponent } from './components/customer/customer-update/c
 import { CustomerDeleteComponent } from './components/customer/customer-delete/customer-delete.component';
 import { DepartmentDescribeComponent } from './department-describe/department-describe.component';
 import { OrgChartComponent } from './department-describe/org-chart/org-chart.component';
+import { SqlDocsComponent } from './components/docs/BackEnd/sqlServer/sql-docs/sql-docs.component';
+import { NodeComponentComponent } from './components/docs/env/node-component/node-component.component';
 
 export const routes: Routes = [
   // Login Route
@@ -46,7 +48,11 @@ export const routes: Routes = [
       { path: 'customer/delete/:id', component: CustomerDeleteComponent },
 
       {path: 'overview', component: DepartmentDescribeComponent},
-      {path: 'overview/orgchart', component: OrgChartComponent}
+      {path: 'overview/orgchart', component: OrgChartComponent},
+
+      {path: 'docs/sql', component: SqlDocsComponent},
+      {path: 'docs/node', component: NodeComponentComponent}
+
     ]
   },
 

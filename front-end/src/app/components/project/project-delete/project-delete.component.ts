@@ -11,8 +11,8 @@ interface Project {
   requirements: string;
   skills: string[];
   result_image: string[];
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   status: string;
 }
 
@@ -33,8 +33,8 @@ export class ProjectDeleteComponent implements OnInit
     requirements: '',
     skills: [],
     result_image: [],
-    startDate: '',
-    endDate: '',
+    startDate: new Date(),
+    endDate: new Date(),
     status: ''
   }
   constructor(

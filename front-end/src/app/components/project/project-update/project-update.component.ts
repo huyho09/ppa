@@ -22,14 +22,14 @@ interface Project {
   requirements: string;
   skills: string[];
   result_image: string[];
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   status: string;
 }
 interface Employee{
-    firstname: '',
-    lastname: '',
-    role: '',
+    firstname: string,
+    lastname: string,
+    role: string,
 }
 @Component({
   selector: 'app-project-update',
@@ -57,8 +57,8 @@ project : Project = {
   requirements: '',
   skills: [],
   result_image: [],
-  startDate: '',
-  endDate: '',
+  startDate: new Date(),
+  endDate: new Date(),
   status: ''
 }
 skillsString: string = '';

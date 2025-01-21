@@ -34,26 +34,17 @@ export class ProjectIndexComponent implements OnInit {
   isFormVisible: boolean = false
   currentRequirements: string = ''
   todayDate: Date = new Date();
-  // countOverdue: number = 0;
-  // OverdueMessage: string ='Congratulation, you have no overdue Projects'
+  formatTodayDate: string = this.todayDate.toLocaleDateString('en-CA')
 
   constructor(private projectService: ProjectServiceService){}
 
   ngOnInit(): void {
+      console.log(this.formatTodayDate)
       this.projectService.getProjects().subscribe(
         (data) => {
           this.projects = data
           this.countProjects()
           this.countTotal= this.countOpen + this.countReview + this.countClosed + this.countInProgress;
-          // for(const project of this.projects)
-          // {
-          //   project.startDate = new Date(project.startDate)
-          //   project.endDate = new Date(project.endDate)
-          //   if (project.endDate < this.todayDate)
-          //   {
-          //     this.OverdueMessage = project.id + " : is overdue, please be caution!"
-          //   }
-          // }
           this.createOpenChart()
           this.createInProgressChart()
           this.createInReviewChart()

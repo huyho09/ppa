@@ -51,7 +51,12 @@
       <tr *ngFor="let project of projects">
         <td>{{ project.status }}</td>
         <td>
-          <a [routerLink]="['/dashboard/project/update', project.id]">{{ project.name }}</a>
+          <a  [ngClass]="{
+            'text-red': project.status !== 'closed' && project.endDate < formatTodayDate
+          }"
+          [routerLink]="['/dashboard/project/update', project.id]">
+          {{ project.name }}
+        </a>
         </td>
         <td>{{ project.department }}</td>
         <td>
@@ -78,7 +83,7 @@
         <td style="width: 300px; cursor: pointer;" class="ellipsis" (click)="showForm(project.requirements) ">{{project.requirements}}</td>
         <div id="popupForm" [class.active]="isFormVisible" class = "form-popup">
           <form>
-            <button type="button" (click)="showForm(project.requirements)" >X</button>
+            <button type="button" (click)="showForm(project.requirements)" >[X]</button>
             <br><br>
             <h1 style="font-weight: bold;">Requirements</h1>
             <br>
