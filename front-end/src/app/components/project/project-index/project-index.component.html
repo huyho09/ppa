@@ -22,9 +22,18 @@
     </div>
   </div>
 </div>
+<br>
 
+<br><br>
+<!-- <div class = "container">
+  <form class = "form-inline">
+    <input class = "form-control mr-sm-2" type="search" placeholder="search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div> -->
 <div class='container'>
-  <table class="table table-striped fixed-width-table">
+
+  <table id = "projectDataTable" class="table  fixed-width-table">
     <thead>
       <tr>
         <th style="width: 300px;">Status</th>
@@ -33,7 +42,7 @@
         <th style="width: 300px;">Employees</th>
         <th style="width: 300px;">Customers</th>
         <th style="width: 300px;">Skills</th>
-        <th style="width: 300px;">Requirements</th>
+        <th style="width: 400px;">Requirements</th>
         <th style="width: 300px;">Start Date</th>
         <th style="width: 300px;">End Date</th>
       </tr>
@@ -41,33 +50,51 @@
     <tbody>
       <tr *ngFor="let project of projects">
         <td>{{ project.status }}</td>
-        <td><a [routerLink]="['/dashboard/project/update', project.id]">{{ project.name }}</a></td>
+        <td>
+          <a [routerLink]="['/dashboard/project/update', project.id]">{{ project.name }}</a>
+        </td>
         <td>{{ project.department }}</td>
         <td>
-          <table style="width: 300px;">
+          <table style="width: 300px;" class="table">
             <tr *ngFor="let employee of project.employees">
               <td style="padding: 6px;">{{ employee }}</td>
             </tr>
           </table>
         </td>
         <td>
-          <table style="width: 300px;">
+          <table style="width: 300px;" class="table">
             <tr *ngFor="let customer of project.customer">
               <td style="padding: 6px;">{{ customer }}</td>
             </tr>
           </table>
         </td>
         <td>
-          <table style="width: 300px;">
+          <table style="width: 300px;" class="table">
             <tr *ngFor="let skill of project.skills">
               <td style="padding: 6px;">{{ skill }}</td>
             </tr>
           </table>
         </td>
-        <td style="width: 300px;">{{ project.requirements }}</td>
+        <td style="width: 300px; cursor: pointer;" class="ellipsis" (click)="showForm(project.requirements) ">{{project.requirements}}</td>
+        <div id="popupForm" [class.active]="isFormVisible" class = "form-popup">
+          <form>
+            <button type="button" (click)="showForm(project.requirements)" >X</button>
+            <br><br>
+            <h1 style="font-weight: bold;">Requirements</h1>
+            <br>
+            <hr>
+            <p>
+              {{currentRequirements}}
+            </p>
+          </form>
+        </div>
         <td style="width: 300px;">{{ project.startDate }}</td>
         <td style="width: 300px;">{{ project.endDate }}</td>
       </tr>
     </tbody>
   </table>
 </div>
+
+
+
+

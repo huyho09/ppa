@@ -27,8 +27,8 @@ interface Project {
   requirements: string;
   skills: string[];
   result_image: string[];
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   status: string;
 }
 @Component({
@@ -52,8 +52,8 @@ export class ProjectCreateComponent implements OnInit{
     requirements: '',
     skills: [],
     result_image: [],
-    startDate: '',
-    endDate: '',
+    startDate: new Date(),
+    endDate: new Date(),
     status: ''
   }
   constructor(
@@ -69,6 +69,11 @@ export class ProjectCreateComponent implements OnInit{
     if(endDate <= startDate)
     {
       alert('End Date cannot happen before Start Date')
+      return;
+    }
+    if(this.newProject.customer === '' || this.newProject.department === '' || this.newProject.employees === null || this.newProject.name === '' || this.newProject.requirements === '' || this.newProject.skills === null || this.newProject.startDate === '' || this.newProject.status === '')
+    {
+      alert('Please fill out all the field')
       return;
     }
     this.newProject.skills = this.skillsString.split(',').map(skill => skill.trim())

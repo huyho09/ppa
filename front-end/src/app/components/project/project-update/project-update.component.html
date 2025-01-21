@@ -37,45 +37,8 @@
                 required
               />
             </div>
-          
-            <div class="form-group mt-2">
-              <label for="employees">Contributor</label>
-              <select class="form-control" id="employees" [(ngModel)]="project.employees" name="employees" multiple>
-                <option *ngFor="let employee of employees" [value]="employee.firstname + employee.lastname + '-' + employee.role">{{employee.firstname + employee.lastname + '-' + employee.role }}</option>
-              </select>
-            </div>
 
-            <div class ="form-control mt-2">
-              <label for = "customer">Customer</label>
-              <select class = "form-control" id = "customer" name ="customer" [(ngModel)] = "project.customer" multiple>
-                <option *ngFor="let customer of customers" [value]="customer.firstname + customer.lastname ">{{ customer.firstname + ' ' + customer.lastname}}</option>
-              </select>
-            </div>
 
-            <div class="form-group mt-2">
-              <label for="requirements">Requirements</label>
-              <input
-                type="text"
-                class="form-control"
-                id="requirements"
-                [(ngModel)]="project.requirements"
-                name="requirements"
-                required
-              />
-            </div>
-            <div class="form-group mt-2">
-              <label for="skillsString">Skills</label>
-              <input
-                type="text"
-                class="form-control"
-                id="skillsString"
-                name = "skillsString"
-                [(ngModel)]="skillsString" 
-                required
-              />
-            </div>
-            
-            
 
             <div class="form-group mt-2">
               <label for="startDate">Start Date</label>
@@ -110,8 +73,46 @@
                 <option value="closed">Closed</option>
               </select>
             </div>
+
+            <div class="form-group mt-2">
+              <label for="employees">Contributor</label>
+              <select class="form-control" id="employees" [(ngModel)]="project.employees" name="employees" multiple>
+                <option *ngFor="let employee of employees" [value]="employee.firstname + employee.lastname + '-' + employee.role">{{employee.firstname + employee.lastname + '-' + employee.role }}</option>
+              </select>
+            </div>
+
+            <div class ="form-group mt-2">
+              <label for = "customer">Customer</label>
+              <select class = "form-control" id = "customer" name ="customer" [(ngModel)] = "project.customer" multiple>
+                <option *ngFor="let customer of customers" [value]="customer.firstname + customer.lastname ">{{ customer.firstname + ' ' + customer.lastname}}</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-2">
+              <label for="requirements">Requirements</label>
+              <textarea
+                type="text"
+                class="form-control"
+                id="requirements"
+                [(ngModel)]="project.requirements"
+                name="requirements"
+                required
+              >
+            </textarea>
+            </div>
+            <div class="form-group mt-2">
+              <label for="skillsString">Skills</label>
+              <input
+                type="text"
+                class="form-control"
+                id="skillsString"
+                name = "skillsString"
+                [(ngModel)]="skillsString"
+                required
+              />
+            </div>
           <button type="submit" class="btn btn-primary mt-3"><a href="/dashboard/project"></a>Save</button>
-          <button type="button" class="btn btn-danger" [routerLink]="['/dashboard/project/delete', project.id]">Delete</button>        </form>
+          <button type="button" class="btn btn-danger mt-3" [routerLink]="['/dashboard/project/delete', project.id]">Delete</button>        </form>
         </div>
       </div>
     </div>
