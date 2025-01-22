@@ -21,6 +21,10 @@ import { DepartmentDescribeComponent } from './department-describe/department-de
 import { OrgChartComponent } from './department-describe/org-chart/org-chart.component';
 import { SqlDocsComponent } from './components/docs/BackEnd/sqlServer/sql-docs/sql-docs.component';
 import { NodeComponentComponent } from './components/docs/env/node-component/node-component.component';
+import { DepartmenIndexComponentComponent } from './components/department/departmen-index/departmen-index-component/departmen-index-component.component';
+import { DepartmentCreateComponentComponent } from './components/department/departmen-create/department-create-component/department-create-component.component';
+import { DepartmentUpdateComponentComponent } from './components/department/departmen-update/department-update-component/department-update-component.component';
+import { DepartmentDeleteComponentComponent } from './components/department/departmen-delete/department-delete-component/department-delete-component.component';
 
 export const routes: Routes = [
   // Login Route
@@ -46,6 +50,11 @@ export const routes: Routes = [
       { path: 'customer/create', component: CustomerCreateComponent },
       { path: 'customer/update/:id', component: CustomerUpdateComponent },
       { path: 'customer/delete/:id', component: CustomerDeleteComponent },
+
+      {path: 'department', component: DepartmenIndexComponentComponent},
+      {path: 'department/create',component: DepartmentCreateComponentComponent},
+      {path: 'department/update/:id', component: DepartmentUpdateComponentComponent},
+      {path: 'department/delete/:id', component: DepartmentDeleteComponentComponent},
 
       {path: 'overview', component: DepartmentDescribeComponent},
       {path: 'overview/orgchart', component: OrgChartComponent},

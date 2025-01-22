@@ -23,7 +23,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
       username: 'sa',
       password: 'Password@123',
       entities: [Project, Department, Customer, Employee],
-      synchronize: false,
+      synchronize: true,
       options: {
         encrypt: false,
         trustServerCertificate: true,

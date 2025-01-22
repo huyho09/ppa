@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { ProjectServiceService } from '../service/project-service.service';
 import { EmployeeServiceService } from '../../employee/service/employee-service.service';
 import { CustomerServiceService } from '../../customer/service/customer-service.service';
+import { DepartmentServiceService } from '../../department/service/department-service.service';
 interface Customer {
   id: string;
   avatar: string;
@@ -17,6 +18,9 @@ interface Employee{
   firstname: string,
   lastname: string,
   role: string,
+}
+interface Department{
+  name: string
 }
 interface Project {
   id: string;
@@ -42,6 +46,7 @@ export class ProjectCreateComponent implements OnInit{
   projects: Project[] = [];
   employees: Employee[] = [];
   customers: Customer[] = [];
+  departments: Department[] = [];
   skillsString: string = '';
   newProject : Project = {
     id: '',
@@ -60,6 +65,7 @@ export class ProjectCreateComponent implements OnInit{
     private projectService: ProjectServiceService,
     private employeeService: EmployeeServiceService,
     private CustomerService: CustomerServiceService,
+    private departmentService: DepartmentServiceService,
     private router: Router,
   ) {}
 
@@ -100,6 +106,10 @@ export class ProjectCreateComponent implements OnInit{
     this.employeeService.getEmployees().subscribe((data) => {
       this.employees = data;
     });
-    this.CustomerService.getCustomers().subscribe((customerData) => {this.customers = customerData})
+    this.departmentService.getDepartments().subscribe(
+      (departmentData) => {
+        this.departments = departmentData
+      }
+    )
     }
 }

@@ -4,11 +4,14 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 export class Customer {
 
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column('text')
-    name: string;
+    firstname: string;
+
+    @Column('text')
+    lastname: string;
 
     @Column('varchar',{length: 255, unique: true })
     email: string;

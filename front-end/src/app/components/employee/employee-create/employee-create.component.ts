@@ -3,6 +3,11 @@ import { EmployeeServiceService } from '../service/employee-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { DepartmentServiceService } from '../../department/service/department-service.service';
+
+interface Department {
+  name: string,
+}
 
 interface Employee {
   id: string;
@@ -13,6 +18,7 @@ interface Employee {
   birthday: string;
   skills: string;
   role: string;
+  department: string;
   is_admin: boolean;
 }
 
@@ -23,8 +29,9 @@ interface Employee {
   templateUrl: './employee-create.component.html',
   styleUrls: ['./employee-create.component.scss'],
 })
-export class EmployeeCreateComponent {
+export class EmployeeCreateComponent implements OnInit {
   employees: Employee[] = [];
+  departments: Department[] = [];
   newEmployee = {
     id: '',
     avatar: '',
@@ -34,13 +41,23 @@ export class EmployeeCreateComponent {
     birthday: '',
     skills: '',
     role: '',
+    department: '',
     is_admin: false,
   };
 
   constructor(
     private employeeService: EmployeeServiceService,
+    private departmentService: DepartmentServiceService,
     private router: Router,
   ) {}
+
+  ngOnInit(): void {
+      this.departmentService.getDepartments().subscribe(
+        (data) => {
+          this.departments = data
+        }
+      )
+  }
 
   addEmployee(): void {
     this.employeeService
@@ -56,11 +73,13 @@ export class EmployeeCreateComponent {
           birthday: '',
           skills: '',
           role: '',
+          department:'',
           is_admin: false,
-        
+
         };
         this.router.navigate(['/dashboard/employee'])
       });
   }
+
 
 }

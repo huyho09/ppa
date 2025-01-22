@@ -3,10 +3,8 @@ import { CustomerServiceService } from '../service/customer-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 interface Customer {
   id: string;
-  avatar: string;
   firstname: string;
   lastname: string;
-  gender: string;
   email: string;
 }
 @Component({
@@ -16,14 +14,14 @@ interface Customer {
   styleUrl: './customer-delete.component.scss'
 })
 export class CustomerDeleteComponent implements OnInit{
+
 customer: Customer = {
   id: '',
-  avatar: '',
   firstname: '',
   lastname: '',
-  gender: '',
-  email: ''
+  email: '',
 }
+id: string = ''
 constructor(
   private customerService: CustomerServiceService,
   private route: ActivatedRoute,
@@ -33,10 +31,10 @@ ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')
     if (id)
     {
-      const deleteCustomer = this.customerService.getCustomerById(id)
+      this.customerService.getCustomerByIdWithApiCall(id)
       this.router.navigate(['/dashboard/customer'])
-      this.customerService.deleteCustomer(deleteCustomer.id).subscribe()
+      this.customerService.deleteCustomerWithApiCall(id).subscribe(
+      )
     }
 }
-
 }

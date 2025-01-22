@@ -24,8 +24,6 @@ export class CustomerCreateComponent {
     private CustomerService: CustomerServiceService,
     private router: Router,
   ) {}
-
-  customers: Customer[] = []
   customer : Customer = {
     id: '',
     avatar: '',
@@ -34,22 +32,13 @@ export class CustomerCreateComponent {
     gender: '',
     email: ''
   }
-  addCustomer(){
-    this.CustomerService.createCustomer(this.customer).subscribe(
-      (customer) => {
-        this.customers.push(customer)
-        this.customer = {
-          id: '',
-          avatar: '',
-          firstname: '',
-          lastname: '',
-          gender: '',
-          email: ''
-        }
+  addCustomer() {
+    this.CustomerService.createCustomerWithApiCall(this.customer).subscribe(
+      (response) => {
         this.router.navigate(['/dashboard/customer'])
-
       }
     )
   }
+
 
 }

@@ -5,14 +5,13 @@
       <div class="card">
         <img [src]="'assets/data/Avatar.jpg'" alt="Avatar" class="card-img-top avatar-img" width="100%">
         <div class="card-body">
-          <h5 class="card-title">{{employee.id}}</h5>
-          <p class="card-text"><strong>Firstname:</strong>{{employee.firstname}}</p>
-          <p class="card-text"><strong>Lastname:</strong>{{employee.lastname}}</p>
+          <h5 class="card-title">{{employee.firstname + employee.lastname}}</h5>
           <p class="card-text"><strong>Email:</strong>{{employee.email}}</p>
           <p class="card-text"><strong>Birthday:</strong>{{employee.birthday}}</p>
           <p class="card-text"><strong>Role:</strong>{{employee.role}}</p>
           <p class="card-text"><strong>Admin:</strong>{{employee.is_admin ? 'Yes' : 'No'}}</p>
           <p class="card-text"><strong>Role:</strong>{{employee.skills}}</p>
+          <p class="card-text"><strong>Department: </strong>{{employee.department}}</p>
           <a [routerLink]="['/dashboard/employee/update', employee.id]">Edit</a>
           <br>
           <a [routerLink]="['/dashboard/employee/delete', employee.id]">Delete</a>

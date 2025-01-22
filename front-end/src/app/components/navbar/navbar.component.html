@@ -1,9 +1,17 @@
 <div class="sidenav">
   <div>
-    <a class="menu-header" (click)="toggleSubmenu('overview')"> <i class ="bi bi-house"></i> Overview</a>
+    <a class="menu-header" (click)="toggleSubmenu('overview')"><i class="bi bi-trophy"></i> Overview</a>
     <div class="submenu" [class.show]="activeMenu === 'overview'">
       <a href="/dashboard/overview/"><i class="bi bi-hash"></i> About Us</a>
       <a href="/dashboard/overview/orgchart"><i class="bi bi-bar-chart-steps"></i> Org Chart</a>
+    </div>
+  </div>
+  <br>
+  <div>
+    <a class="menu-header" (click)="toggleSubmenu('department')"> <i class ="bi bi-house"></i> Department</a>
+    <div class="submenu" [class.show]="activeMenu === 'department'">
+      <a href="/dashboard/department/"><i class="bi bi-hash"></i> Department</a>
+      <a href="/dashboard/department/create"><i class="bi bi-bookmark-plus"></i> Create Department</a>
     </div>
   </div>
   <br>
@@ -32,7 +40,7 @@
     </div>
     <br>
     <div>
-      <a class="menu-header" (click)="toggleSubmenu('docs')"><i class="bi bi-file-text-fill"></i>My Docs</a>
+      <a  style = "margin-top: 200px;"class="menu-header" (click)="toggleSubmenu('docs')"><i class="bi bi-file-text-fill"></i>My Docs</a>
       <div class="submenu" [class.show]="activeMenu === 'docs'">
         <a href="/dashboard/docs/sql"><i class="bi bi-hash"> </i>SQL Docs</a>
         <a href="/dashboard/docs/node"><i class="bi bi-hash"> </i>Node Docs</a>
@@ -49,7 +57,7 @@
       <a class ="menu-header" ><i class="bi bi-bell-fill"></i>  Release Note</a>
     </div>
     <br>
-    <div class ="menu-header-bottom">
+    <div class ="menu-header">
         <a  href="/login"><i class="bi bi-power"></i> Log Out</a>
     </div>
   </div>

@@ -2,7 +2,10 @@ import {IsString, IsArray} from 'class-validator'
 export class CreateCustomerDto {
     
     @IsString()
-    name: string;
+    firstname: string;
+
+    @IsString()
+    lastname: string
 
     @IsString()
     email: string;

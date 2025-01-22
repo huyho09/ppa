@@ -3,6 +3,7 @@ import { EmployeeServiceService } from '../service/employee-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DepartmentServiceService } from '../../department/service/department-service.service';
 interface Employee {
   id: string;
   avatar: string;
@@ -12,7 +13,11 @@ interface Employee {
   birthday: string;
   skills: string;
   role: string;
+  department: string;
   is_admin: boolean;
+}
+interface Department {
+  name: string
 }
 @Component({
   selector: 'app-employee-update',
@@ -31,14 +36,23 @@ export class EmployeeUpdateComponent implements OnInit {
     birthday: '',
     skills: '',
     role: '',
+    department: '',
     is_admin: false,
   }
   constructor(
     private employeeService: EmployeeServiceService,
+    private departmentService: DepartmentServiceService,
     private route: ActivatedRoute,
     private router: Router
   ){}
+
+  departments: Department[] = [];
   ngOnInit(): void {
+    this.departmentService.getDepartments().subscribe(
+      (data) => {
+        this.departments = data;
+      }
+    )
     const id = this.route.snapshot.paramMap.get('id');
     if(id)
     {
@@ -51,6 +65,7 @@ export class EmployeeUpdateComponent implements OnInit {
         console.log("Employee not found with id" + id)
       }
     }
+
   }
 
   updateEmployee(): void

@@ -7,10 +7,8 @@ import { EmployeeServiceService } from '../../employee/service/employee-service.
 import { CustomerServiceService } from '../../customer/service/customer-service.service';
 interface Customer {
   id: string;
-  avatar: string;
   firstname: string;
   lastname: string;
-  gender: string;
   email: string;
 }
 interface Project {
@@ -64,7 +62,6 @@ project : Project = {
 skillsString: string = '';
 ngOnInit(): void {
     this.loadEmployees()
-    this.loadCustomers()
     const id = this.route.snapshot.paramMap.get('id')
     if(id)
     {
@@ -89,10 +86,7 @@ loadEmployees()
 
   })
 }
-loadCustomers()
-{
-  this.customerService.getCustomers().subscribe((customerData)=> this.customers = customerData)
-}
+
 updateProject() {
   this.project.skills = this.skillsString.split(',')
   this.projectService.updateProject(this.project).subscribe(

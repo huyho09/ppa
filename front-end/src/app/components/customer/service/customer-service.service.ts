@@ -5,10 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 interface Customer {
   id: string;
-  avatar: string;
   firstname: string;
   lastname: string;
-  gender: string;
   email: string;
 }
 @Injectable({
@@ -18,53 +16,33 @@ export class CustomerServiceService {
 
   constructor(private http:HttpClient) {}
 
-  private localStorageKey = 'customers'
+  private api_url = 'http://localhost:3000/customers'
 
   Customers: Customer[]= []
 
-  getCustomers(): Observable<Customer[]>{
-    const customers = this.getCustomerFromLocalStorage()
-    return of(customers)
+  getCustomersWithApiCall() {
+    return this.http.get<any>(this.api_url)
   }
-  createCustomer(customer:any): Observable<Customer>{
-    const customers = this.getCustomerFromLocalStorage()
+  getCustomerByIdWithApiCall(id: string){
+    const url = `${this.api_url}/${id}`;
+    return this.http.get<Customer>(url)
+  }
+  createCustomerWithApiCall(customer:Customer): Observable<any>
+  {
     customer.id = uuidv4()
-    if (customer.gender == "male")
-    {
-      customer.avatar = "/assets/data/Avatar.jpg"
-    }
-    else{
-      customer.avatar = "/assets/data/women.jpg"
-    }
-    customers.push(customer)
-    this.saveCustomerToLocalStorage(customers)
-    return of(customers)
-  }
-  updateCustomer(id: string,updatedCustomer: any): Observable<Customer>{
-    const customers = this.getCustomerFromLocalStorage()
-    const customerIndex = customers.findIndex((customer: Customer) => customer.id === id);
-    customers[customerIndex] = updatedCustomer
-    this.saveCustomerToLocalStorage(customers)
-    return of(customers[customerIndex])
-  }
-  
-  deleteCustomer(id: string){
-    const customers = this.getCustomerFromLocalStorage().filter((customer: Customer) => customer.id !== id)
-    localStorage.setItem('customers',JSON.stringify(customers))
-    return of(null)
-   
-  }
-  getCustomerById(id: string) {
-    const customers = this.getCustomerFromLocalStorage()
-    return customers.find((customer: Customer) => customer.id === id)
+    return this.http.post(this.api_url,customer)
   }
 
-  getCustomerFromLocalStorage(){
-    const customersJson = localStorage.getItem('customers')
-    return customersJson ? JSON.parse(customersJson) : [] 
+  updateCustomerWithApiCall(id:string,updatedCustomer:Customer): Observable<any>
+  {
+    const url = `${this.api_url}/${id}`
+    return this.http.patch(url,updatedCustomer)
   }
-  saveCustomerToLocalStorage(custmersJson: any[]) {
-    const customer = JSON.stringify(custmersJson)
-    localStorage.setItem('customers',customer)
+  deleteCustomerWithApiCall(id:string): Observable<any>
+  {
+    const url = `${this.api_url}/${id}`
+    return this.http.delete(url)
   }
-}
+
+  }
+

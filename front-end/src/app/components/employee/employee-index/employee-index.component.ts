@@ -11,6 +11,7 @@ interface Employee {
   birthday: string;
   skills: string;
   role: string;
+  department: string;
   is_admin: boolean;
 }
 
@@ -23,7 +24,6 @@ interface Employee {
 })
 export class EmployeeIndexComponent implements OnInit {
   employees: Employee[] = [];
-
   constructor(private employeeService: EmployeeServiceService) {}
 
   ngOnInit(): void {

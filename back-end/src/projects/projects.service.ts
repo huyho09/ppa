@@ -24,11 +24,9 @@ export class ProjectsService {
   async create(createProjectDto: CreateProjectDto): Promise<Project> {
     const employees = await this.employeeRepository.find({where : {id : In (createProjectDto.employeesIds)}})
     const department = await this.departmentRepository.findOne({where : {id : createProjectDto.departmentId}})
-    const customer = await this.customerRepository.findOne({where : {id: createProjectDto.customerId}})
     const project = this.projectRepository.create(createProjectDto)
     project.employees = employees
     project.department = department
-    project.customer = customer
     return this.projectRepository.save(project);
   }
 
@@ -41,17 +39,12 @@ export class ProjectsService {
   }
 
   async update(id: number, updateProjectDto: UpdateProjectDto): Promise<Project> {
-    const project = await this.projectRepository.findOneOrFail({where : {id}, relations:['department','customer','employees']})
+    const project = await this.projectRepository.findOneOrFail({where : {id}, relations:['department','employees']})
     if (updateProjectDto.departmentId)
     {
       const department = await this.departmentRepository.findOne({where : {id:updateProjectDto.departmentId}})
       project.department = department
     }
-    if (updateProjectDto.customerId)
-      {
-        const customer = await this.customerRepository.findOne({where : {id:updateProjectDto.customerId}})
-        project.customer = customer
-      }
       if (updateProjectDto.employeesIds)
         {
           const employess = await this.employeeRepository.find({where : {id: In(updateProjectDto.employeesIds)}})

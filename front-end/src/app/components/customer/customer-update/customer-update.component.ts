@@ -5,10 +5,8 @@ import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { CustomerServiceService } from '../service/customer-service.service';
 interface Customer {
   id: string;
-  avatar: string;
   firstname: string;
   lastname: string;
-  gender: string;
   email: string;
 }
 @Component({
@@ -20,10 +18,8 @@ interface Customer {
 export class CustomerUpdateComponent implements OnInit {
 customer: Customer = {
   id: '',
-  avatar: '',
   firstname: '',
   lastname: '',
-  gender: '',
   email: ''
 }
 id : string = '';
@@ -37,13 +33,16 @@ ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')
     if(id)
     {
-      const foundCustomer = this.customerService.getCustomerById(id)
-      this.customer = foundCustomer
-      this.id = this.customer.id
+      this.customerService.getCustomerByIdWithApiCall(id).subscribe(
+        (data) => {
+          this.customer = data
+          this.id = this.customer.id
+        }
+      )
     }
 }
 updateCustomer () {
-  this.customerService.updateCustomer(this.id, this.customer).subscribe(
+  this.customerService.updateCustomerWithApiCall(this.id,this.customer).subscribe(
     () => {
       this.router.navigate(['/dashboard/customer'])
     }

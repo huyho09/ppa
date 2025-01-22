@@ -24,22 +24,16 @@ export class CustomersService {
     return this.customerRepository.find();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.customerRepository.findOneOrFail({where : {id}});
   }
 
-  async update(id: number, updateCustomerDto: UpdateCustomerDto) {
+  async update(id: string, updateCustomerDto: UpdateCustomerDto) {
     await this.customerRepository.update(id, updateCustomerDto)
     return this.customerRepository.findOneOrFail({where : {id}});
   }
 
-  async remove(id: number) {
-    const projects = await this.projectRepository.find({where: {department:{id}}})
-    for(const project of projects)
-    {
-      project.customer = null;
-      await this.projectRepository.save(project)
-    }
+  async remove(id: string) {
     return this.customerRepository.delete(id)
   }
 }
