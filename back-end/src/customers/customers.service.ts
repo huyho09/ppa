@@ -17,6 +17,13 @@ export class CustomersService {
   ){}
   create(createCustomerDto: CreateCustomerDto) {
     const new_customer = this.customerRepository.create(createCustomerDto)
+    if (new_customer.gender === 'male')
+    {
+      new_customer.avatar = '/assets/data/Avatar.jpg'
+    }
+    else {
+      new_customer.avatar = '/assets/data/women.jpg'
+    }
     return this.customerRepository.save(new_customer)
   }
 

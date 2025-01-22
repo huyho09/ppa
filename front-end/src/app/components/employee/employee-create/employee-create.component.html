@@ -1,100 +1,89 @@
 <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="card">
-          <div class="card-body">
-            <form (ngSubmit)="addEmployee()">
-              <div class="form-group">
-                <label for="name">First Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  [(ngModel)]="newEmployee.firstname"
-                  name="firstname"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="name">Last Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  [(ngModel)]="newEmployee.lastname"
-                  name="lastname"
-                  required
-                />
-              </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <form (ngSubmit)="addEmployee()">
+            <div class="form-group">
+              <label for="name">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                [(ngModel)]="newEmployee.firstname"
+                name="firstname"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                [(ngModel)]="newEmployee.lastname"
+                name="lastname"
+                required
+              />
+            </div>
 
-              <div class="form-group mt-2">
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  [(ngModel)]="newEmployee.email"
-                  name="email"
-                  required
-                />
-              </div>
+            <div class="form-group mt-2">
+              <label for="gender">Gender</label>
+              <select 
+                id="gender" 
+                name="gender" 
+                class="form-control" 
+                [(ngModel)]="newEmployee.gender"
+                required
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
 
-              <div class="form-group mt-2">
-                <label for="birthday">Birthday</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  id="birthday"
-                  [(ngModel)]="newEmployee.birthday"
-                  name="birthday"
-                  required
-                />
-              </div>
+            
+            <div class="form-group mt-2">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                [(ngModel)]="newEmployee.email"
+                required
+              />
+            </div>
 
-              <div class="form-group mt-2">
-                <label for="role">Role</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="role"
-                  [(ngModel)]="newEmployee.role"
-                  name="role"
-                  required
-                />
-              </div>
 
-              <div class="form-group mt-2">
-                <label for="skills">Skills</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="skills"
-                  [(ngModel)]="newEmployee.skills"
-                  name="skills"
-                  required
-                />
-              </div>
+            <div class = "form-group mt-2">
+              <label for ="skills">Skills</label>
+              <input
+              type="text"
+              class="form-control"
+              id = "skills"
+              name ="skills"
+              [(ngModel)] = "newEmployee.skills"
+              required
+              >
+            </div>
 
-              <div class="form-group mt-2">
-                <label for="department">Department</label>
-                <select class="form-control" id="department" [(ngModel)]="newEmployee.department" name="department">
-                  <option *ngFor="let department of departments" [value]="department.name">{{department.name}}</option>
-                </select>
-              </div>
 
-              <div class="form-group mt-2">
-                <label for="isAdmin">Admin</label>
-                <input
-                  type="checkbox"
-                  id="isAdmin"
-                  [(ngModel)]="newEmployee.is_admin"
-                  name="is_admin"
-                />
-              </div>
-              <button type="submit" class="btn btn-primary mt-3">Save</button>
-            </form>
-          </div>
+            <div class = "form-group mt-2">
+              <label for ="role">Roles</label>
+              <input
+              type="text"
+              class="form-control"
+              id = "role"
+              name ="role"
+              [(ngModel)] = "newEmployee.role"
+              required
+              >
+            </div>
+            
+            <button type="submit" class=" form-control btn btn-primary mt-3">Save</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -5,9 +5,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 interface Customer {
   id: string;
+  avatar: string;
   firstname: string;
   lastname: string;
   email: string;
+  gender: string
 }
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,6 @@ export class CustomerServiceService {
 
   private api_url = 'http://localhost:3000/customers'
 
-  Customers: Customer[]= []
 
   getCustomersWithApiCall() {
     return this.http.get<any>(this.api_url)

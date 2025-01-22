@@ -4,23 +4,27 @@
       <div class="card">
         <div class="card-body">
           <form (ngSubmit)="updateEmployee()">
+            <div class = "form-group" style="padding-left: 150px;">
+              <img src="{{employee.avatar}}" alt="avatar" id="avatar" name ="avatar" style="display: block; width: 200px; height: 200px;">
+            </div>
+            
             <div class="form-group">
-              <label for="firstname">First Name</label>
+              <label for="name">First Name</label>
               <input
                 type="text"
                 class="form-control"
-                id="firstname"
+                id="name"
                 [(ngModel)]="employee.firstname"
                 name="firstname"
                 required
               />
             </div>
             <div class="form-group">
-              <label for="lastname">Last Name</label>
+              <label for="name">Last Name</label>
               <input
                 type="text"
                 class="form-control"
-                id="lastname"
+                id="name"
                 [(ngModel)]="employee.lastname"
                 name="lastname"
                 required
@@ -28,70 +32,59 @@
             </div>
 
             <div class="form-group mt-2">
+              <label for="gender">Gender</label>
+              <select 
+                id="gender" 
+                name="gender" 
+                class="form-control" 
+                [(ngModel)]="employee.gender"
+                required
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+
+            
+            <div class="form-group mt-2">
               <label for="email">Email</label>
               <input
                 type="email"
                 class="form-control"
                 id="email"
-                [(ngModel)]="employee.email"
                 name="email"
+                [(ngModel)]="employee.email"
                 required
               />
             </div>
 
-            <div class="form-group mt-2">
-              <label for="birthday">Birthday</label>
+
+            <div class = "form-group mt-2">
+              <label for ="skills">Skills</label>
               <input
-                type="date"
-                class="form-control"
-                id="birthday"
-                [(ngModel)]="employee.birthday"
-                name="birthday"
-                required
-              />
+              type="text"
+              class="form-control"
+              id = "skills"
+              name ="skills"
+              [(ngModel)] = "employee.skills"
+              required
+              >
             </div>
 
-            <div class="form-group mt-2">
-              <label for="role">Role</label>
-              <input
-                type="text"
-                class="form-control"
-                id="role"
-                [(ngModel)]="employee.role"
-                name="role"
-                required
-              />
-            </div>
 
-            <div class="form-group mt-2">
-              <label for="skills">Skills</label>
+            <div class = "form-group mt-2">
+              <label for ="role">Roles</label>
               <input
-                type="text"
-                class="form-control"
-                id="skills"
-                [(ngModel)]="employee.skills"
-                name="skills"
-                required
-              />
+              type="text"
+              class="form-control"
+              id = "role"
+              name ="role"
+              [(ngModel)] = "employee.role"
+              required
+              >
             </div>
-
-            <div class="form-group mt-2">
-              <label for="department">Department</label>
-              <select class="form-control" id="department" [(ngModel)]="employee.department" name="department">
-                <option *ngFor="let department of departments" [value]="department.name">{{department.name}}</option>
-              </select>
-            </div>
-
-            <div class="form-group mt-2">
-              <label for="isAdmin">Admin</label>
-              <input
-                type="checkbox"
-                id="isAdmin"
-                [(ngModel)]="employee.is_admin"
-                name="is_admin"
-              />
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Save</button>
+            
+            <button type="submit" class=" form-control btn btn-primary mt-3">Save</button>
           </form>
         </div>
       </div>

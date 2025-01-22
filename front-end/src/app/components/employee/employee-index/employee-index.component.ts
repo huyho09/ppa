@@ -2,34 +2,65 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeServiceService } from '../service/employee-service.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 interface Employee {
   id: string;
   avatar: string;
   firstname: string;
   lastname: string;
+  gender: string;
   email: string;
-  birthday: string;
-  skills: string;
+  skills: string[];
   role: string;
-  department: string;
   is_admin: boolean;
 }
 
 @Component({
   selector: 'app-employee-index',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,FormsModule],
   templateUrl: './employee-index.component.html',
   styleUrls: ['./employee-index.component.scss']
 })
 export class EmployeeIndexComponent implements OnInit {
   employees: Employee[] = [];
+  searchText: string = '';
   constructor(private employeeService: EmployeeServiceService) {}
 
   ngOnInit(): void {
-    this.employeeService.getEmployees().subscribe((data) => {
+    this.employeeService.getEmployeesWithApiCall().subscribe((data : Employee[]) => {
       this.employees = data;
+      for(const employee of this.employees)
+      {
+        // console.log(typeof(employee.email))
+        // console.log(typeof(employee.firstname))
+        // console.log(typeof(employee.lastname))
+        // console.log(typeof(employee.role))
+      }
     });
+  }
+  filterEmployee() : Employee[] {
+    if(!this.searchText)
+    {
+      return this.employees
+    }
+    const search = this.searchText.toLowerCase().trim();
+    return this.employees.filter(
+      employee => Object.values(employee).some(
+        value =>{
+          // console.log(value)
+          if (typeof(value) === 'string') 
+            {
+              return value.toLowerCase().includes(search.toLowerCase())
+            }
+          else if (Array.isArray(value))
+          {
+            return value.some((skill) => skill.toLowerCase().includes(this.searchText))
+          }
+          return false
+          }
+      )
+    )
   }
 
 

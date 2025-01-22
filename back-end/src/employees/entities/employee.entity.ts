@@ -3,14 +3,20 @@ import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Employee {
-    @PrimaryGeneratedColumn()
-    id : number
+    @PrimaryGeneratedColumn('uuid')
+    id : string
 
+    @Column('text')
+    avatar: string; 
+    
     @Column('varchar',{length: 255})
     firstname: string
 
     @Column('varchar',{length: 255})
     lastname: string
+
+    @Column('text')
+    gender: string
 
     @Column('varchar',{length: 255, unique: true, nullable: false })
     email: string

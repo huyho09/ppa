@@ -9,38 +9,49 @@ interface Employee {
   firstname: string;
   lastname: string;
   email: string;
-  birthday: string;
-  skills: string;
+  gender: string
+  skills: string[];
   role: string;
-  department: string;
   is_admin: boolean;
 }
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeServiceService {
-  private apiUrl = 'assets/data/employees.json';
   private localStorageKey = 'employees';
   employees: Employee[] = [];
   notify: string ='';
   constructor(private http: HttpClient) {}
 
+  private apiUrl = 'http://127.0.0.1:3000/employees';
+ 
   getEmployeesJson(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
-  // getEmployees(): Observable<any[]> {
-  //   const employees = localStorage.getItem(this.storageKey)
-  //   if (employees != null)
-  //   {
-  //     const employees_json = JSON.parse(employees)
-  //     return employees_json
+ getEmployeesWithApiCall(){
+  return this.http.get<Employee[]>(this.apiUrl)
+ }
 
-  //   }
-  //   else
-  //   {
+ getEmployeeWithApiCall(id: string) {
+  const api_url = this.apiUrl + '/' + id
+  return this.http.get<Employee>(api_url)
+ }
 
-  //   }
-  // }
+ createEmployeeWithApiCall(employee: Employee): Observable<any>{
+  employee.id = uuidv4()
+  return this.http.post(this.apiUrl,employee)
+ }
+
+ updateEmployeeWithApiCall(id:string, updatedEmployee: Employee): Observable<any>{
+  const api_url = this.apiUrl + '/' +id
+  return this.http.patch(api_url,updatedEmployee)
+ }
+
+ deleteEmployeeWithApiCall(id: string): Observable<any>
+ {
+  const api_url = this.apiUrl + '/' +id
+  return this.http.delete(api_url)
+ }
   getEmployees(): Observable<any[]> {
     const employees = this.getEmployeesFromLocalStorage();
     console.log(employees)

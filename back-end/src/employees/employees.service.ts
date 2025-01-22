@@ -16,6 +16,14 @@ export class EmployeesService {
   ){}
   create(createEmployeeDto: CreateEmployeeDto) {
     const new_employee = this.employeeRepository.create(createEmployeeDto)
+    if(new_employee.gender === 'male')
+      {
+        new_employee.avatar = '/assets/data/Avatar.jpg'
+      }
+    if(new_employee.gender === 'female')
+      {
+        new_employee.avatar = '/assets/data/women.jpg'
+      } 
     return this.employeeRepository.save(new_employee)
   }
 
@@ -23,31 +31,25 @@ export class EmployeesService {
     return this.employeeRepository.find();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.employeeRepository.findOneOrFail({where : {id}});
   }
 
-  async update(id: number, updateEmployeeDto: UpdateEmployeeDto) {
+  async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
     await this.employeeRepository.update(id,updateEmployeeDto)
     return this.employeeRepository.findOneOrFail({where: {id}});
   }
 
-  async remove(id: number) {
-    // Find the employee along with associated projects
+  async remove(id: string) {
     const employee = await this.employeeRepository.findOne({ where: { id }, relations: ['project'] });
     
-    // Iterate over each project the employee is part of
     for (const project of employee.project) {
-      // Remove the employee from the project
       project.employees = project.employees.filter(emp => emp.id !== id);
       
-      // Save the updated project
       await this.projectRepository.save(project);
     }
 
-    // Now, remove the employee from the employee table
     await this.employeeRepository.delete(id);
-
     return { message: `Employee with ID ${id} successfully removed` };
   }
 }

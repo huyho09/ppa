@@ -8,10 +8,16 @@ export class Customer {
     id: string;
 
     @Column('text')
+    avatar: string;
+    
+    @Column('text')
     firstname: string;
 
     @Column('text')
     lastname: string;
+    
+    @Column('text')
+    gender: string;
 
     @Column('varchar',{length: 255, unique: true })
     email: string;

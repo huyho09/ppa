@@ -5,10 +5,13 @@ export class CreateCustomerDto {
     firstname: string;
 
     @IsString()
-    lastname: string
+    lastname: string;
 
     @IsString()
     email: string;
+    
+    @IsString()
+    gender: string;
 
     @IsArray()
     projectIds: number[];

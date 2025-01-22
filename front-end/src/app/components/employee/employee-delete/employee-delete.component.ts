@@ -39,18 +39,13 @@ export class EmployeeDeleteComponent {
     const id = this.route.snapshot.paramMap.get('id');
     if(id)
     {
-      const deletedEmployee = this.employeeService.getEmployeeById(id)
-      this.router.navigate(['dashboard/employee'])
-      if(deletedEmployee)
-      {
-        this.employee = deletedEmployee;
-        this.employeeService.deleteEmployee(deletedEmployee.id).subscribe(() =>
-          {
-            });
-      }
-      else{
-        console.log("Employee not found with id" + id)
-      }
+      this.employeeService.getEmployeeWithApiCall(id).subscribe(
+        () => {
+          this.employeeService.deleteEmployeeWithApiCall(id)
+          this.router.navigate(['/dashboard/employee'])
+        }
+      )
+      
     }
     }
 

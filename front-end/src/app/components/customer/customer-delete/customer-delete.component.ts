@@ -32,8 +32,10 @@ ngOnInit(): void {
     if (id)
     {
       this.customerService.getCustomerByIdWithApiCall(id)
-      this.router.navigate(['/dashboard/customer'])
       this.customerService.deleteCustomerWithApiCall(id).subscribe(
+        () => {
+          this.router.navigate(['/dashboard/customer'])
+        }
       )
     }
 }

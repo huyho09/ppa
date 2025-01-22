@@ -5,9 +5,11 @@ import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { CustomerServiceService } from '../service/customer-service.service';
 interface Customer {
   id: string;
+  avatar: string;
   firstname: string;
   lastname: string;
   email: string;
+  gender: string
 }
 @Component({
   selector: 'app-customer-update',
@@ -18,9 +20,11 @@ interface Customer {
 export class CustomerUpdateComponent implements OnInit {
 customer: Customer = {
   id: '',
+  avatar: '',
   firstname: '',
   lastname: '',
-  email: ''
+  email: '',
+  gender: '',
 }
 id : string = '';
 constructor(

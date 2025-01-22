@@ -8,6 +8,7 @@ interface Customer {
   id: string;
   firstname: string;
   lastname: string;
+  gender: string;
   email: string;
 }
 @Component({
