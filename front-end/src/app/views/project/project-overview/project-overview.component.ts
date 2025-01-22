@@ -14,7 +14,7 @@ import {
 
 @Component({
     selector: 'app-buttons',
-    templateUrl: './buttons.component.html',
+    templateUrl: './project-overview.component.html',
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonDirective, IconDirective, RouterLink]
 })
 export class ProjectOverviewComponent {

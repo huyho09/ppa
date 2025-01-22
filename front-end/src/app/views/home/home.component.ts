@@ -30,7 +30,7 @@ interface IUser {
 @Component({
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.scss'],
-  imports: [TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ReactiveFormsModule, CardFooterComponent, GutterDirective, RouterLink]
+  imports: [TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ReactiveFormsModule, CardFooterComponent, RouterLink]
 })
 
 export class HomeComponent implements OnInit {

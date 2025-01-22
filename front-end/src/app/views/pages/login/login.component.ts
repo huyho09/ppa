@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
-import { NgStyle } from '@angular/common';
-import { IconDirective } from '@coreui/icons-angular';
 import { FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CacheService } from '../../../services/cache.service';
-import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective } from '@coreui/angular';
+import {  } from '@coreui/angular';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    imports: [ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective, NgStyle, CommonModule,FormsModule]
+    imports: [ CommonModule,FormsModule]
 })
 export class LoginComponent {
   constructor(private router:Router, private authService: CacheService){}

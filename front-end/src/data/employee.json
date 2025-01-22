@@ -18,5 +18,25 @@
       "MaternityStartDate": "2023-12-23",
       "MaternityEndDate": "2023-12-26",
       "Remarks": "remark"
+    },
+    {
+      "EmployeeID": 2,
+      "NTID": "123123",
+      "EmployeeName": "Nguyen Van B",
+      "DOB": "1998-01-12",
+      "Gender": true,
+      "EmployeeLevel": 51,
+      "Team": "abc",
+      "SOJoinedDate": "2023-10-01",
+      "BoschJoinedDate": "2023-10-02",
+      "ResourceType": "type",
+      "TotalYearExperienceBeforeBosch": 2,
+      "Status": "Reject",
+      "DeactivationReason": "reason",
+      "LastWorkingDate": "2023-12-01",
+      "TerminationDate": "2023-12-02",
+      "MaternityStartDate": "2023-12-23",
+      "MaternityEndDate": "2023-12-26",
+      "Remarks": "remark"
     }
   ]

@@ -29,25 +29,25 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let employee of employees">
-              <td>{{ employee.EmployeeID }}</td>
-              <td>{{ employee.NTID }}</td>
-              <td>{{ employee.EmployeeName }}</td>
-              <td>{{ employee.DOB }}</td>
-              <td>{{ employee.Gender ? 'Male' : 'Female' }}</td>
-              <td>{{ employee.Team }}</td>
-              <td>{{ employee.EmployeeLevel }}</td>           
-              <td>{{ employee.SOJoinedDate }}</td>
-              <td>{{ employee.BoschJoinedDate }}</td>
-              <td>{{ employee.ResourceType }}</td>
-              <td>{{ employee.TotalYearExperienceBeforeBosch }}</td>
-              <td>{{ employee.Status }}</td>
-              <td>{{ employee.DeactivationReason }}</td>
-              <td>{{ employee.LastWorkingDate }}</td>
-              <td>{{ employee.TerminationDate }}</td>
-              <td>{{ employee.MaternityStartDate }} </td>
-              <td>{{ employee.MaternityEndDate }}</td>
-              <td>{{ employee.Remarks}}</td>
+            <tr *ngFor="let employee of employees" [hidden]="employee.Status != 'Active'">
+                <td>{{ employee.EmployeeID }}</td>
+                <td>{{ employee.NTID }}</td>
+                <td>{{ employee.EmployeeName }}</td>
+                <td>{{ employee.DOB }}</td>
+                <td>{{ employee.Gender ? 'Male' : 'Female' }}</td>
+                <td>{{ employee.Team }}</td>
+                <td>{{ employee.EmployeeLevel }}</td>
+                <td>{{ employee.SOJoinedDate }}</td>
+                <td>{{ employee.BoschJoinedDate }}</td>
+                <td>{{ employee.ResourceType }}</td>
+                <td>{{ employee.TotalYearExperienceBeforeBosch }}</td>
+                <td>{{ employee.Status }}</td>
+                <td>{{ employee.DeactivationReason }}</td>
+                <td>{{ employee.LastWorkingDate }}</td>
+                <td>{{ employee.TerminationDate }}</td>
+                <td>{{ employee.MaternityStartDate }} </td>
+                <td>{{ employee.MaternityEndDate }}</td>
+                <td>{{ employee.Remarks}}</td>
             </tr>
             <!-- More rows here -->
           </tbody>

@@ -10,7 +10,7 @@ export interface Employee {
     BoschJoinedDate: string; // ISO date string format
     ResourceType: string;
     TotalYearExperienceBeforeBosch: number;
-    Status: string;
+    Status: string | null;
     DeactivationReason: string | null; // Optional field
     LastWorkingDate: string | null; // Optional field
     TerminationDate: string | null; // Optional field

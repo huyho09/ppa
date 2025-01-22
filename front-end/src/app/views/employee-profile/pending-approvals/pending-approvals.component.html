@@ -1,4 +1,54 @@
-<c-row >
+<c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <i class="fa-light fa-user"></i>
+    <c-card>
+      <c-card-header>
+      </c-card-header>
+      <c-card-body>
+        <!-- Display Employee Data -->
+        <table id="example" class="display" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th class="col-1">Action</th>
+              <th>Employee ID</th>
+              <th>NTID</th>
+              <th>Employee Name</th>
+              <th>DOB</th>
+              <th>Gender</th>
+              <th>Team</th>
+              <th>Employee Level</th>
+              <th>SO Joined Date</th>
+              <th>Bosch Joined Date</th>
+              <th>Resource Type</th>
+              <th>Total Year Experience Before Bosch</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees" [hidden]="employee.Status == 'Active'">
+                <td class="col-1">
+                  <select class="form-select" (change)="updateStatus(employee.EmployeeID, $event)">
+                    <option value="">Select</option>
+                    <option value="Active">Approve</option>
+                    <option value="Reject">Reject</option>
+                  </select>
+                </td>
+                <td>{{ employee.EmployeeID }}</td>
+                <td>{{ employee.NTID }}</td>
+                <td>{{ employee.EmployeeName }}</td>
+                <td>{{ employee.DOB }}</td>
+                <td>{{ employee.Gender ? 'Male' : 'Female' }}</td>
+                <td>{{ employee.Team }}</td>
+                <td>{{ employee.EmployeeLevel }}</td>
+                <td>{{ employee.SOJoinedDate }}</td>
+                <td>{{ employee.BoschJoinedDate }}</td>
+                <td>{{ employee.ResourceType }}</td>
+                <td>{{ employee.TotalYearExperienceBeforeBosch }}</td>
+            </tr>
+            <!-- More rows here -->
+          </tbody>
+        </table>
+
+      </c-card-body>
+    </c-card>
   </c-col>
+</c-row>

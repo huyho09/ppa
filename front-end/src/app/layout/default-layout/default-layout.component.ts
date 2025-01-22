@@ -2,14 +2,10 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NgScrollbar } from 'ngx-scrollbar';
 
-import { IconDirective } from '@coreui/icons-angular';
 import {
-  ContainerComponent,
   ShadowOnScrollDirective,
-  SidebarBrandComponent,
   SidebarComponent,
   SidebarFooterComponent,
-  SidebarHeaderComponent,
   SidebarNavComponent,
   SidebarToggleDirective,
   SidebarTogglerDirective
@@ -31,10 +27,6 @@ function isOverflown(element: HTMLElement) {
     styleUrls: ['./default-layout.component.scss'],
     imports: [
         SidebarComponent,
-        SidebarHeaderComponent,
-        SidebarBrandComponent,
-        RouterLink,
-        IconDirective,
         NgScrollbar,
         SidebarNavComponent,
         SidebarFooterComponent,
@@ -42,7 +34,6 @@ function isOverflown(element: HTMLElement) {
         SidebarTogglerDirective,
         DefaultHeaderComponent,
         ShadowOnScrollDirective,
-        ContainerComponent,
         RouterOutlet,
         DefaultFooterComponent
     ]
