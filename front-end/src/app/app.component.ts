@@ -15,7 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     imports: [RouterOutlet, FontAwesomeModule ]
 })
 export class AppComponent implements OnInit {
-  title = 'SODA';
+  title = 'SOP';
 
   readonly #destroyRef: DestroyRef = inject(DestroyRef);
   readonly #activatedRoute: ActivatedRoute = inject(ActivatedRoute);

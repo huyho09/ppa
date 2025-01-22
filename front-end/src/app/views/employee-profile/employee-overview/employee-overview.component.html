@@ -30,24 +30,67 @@
           </thead>
           <tbody>
             <tr *ngFor="let employee of employees" [hidden]="employee.Status != 'Active'">
-                <td>{{ employee.EmployeeID }}</td>
-                <td>{{ employee.NTID }}</td>
-                <td>{{ employee.EmployeeName }}</td>
-                <td>{{ employee.DOB }}</td>
-                <td>{{ employee.Gender ? 'Male' : 'Female' }}</td>
-                <td>{{ employee.Team }}</td>
-                <td>{{ employee.EmployeeLevel }}</td>
-                <td>{{ employee.SOJoinedDate }}</td>
-                <td>{{ employee.BoschJoinedDate }}</td>
-                <td>{{ employee.ResourceType }}</td>
-                <td>{{ employee.TotalYearExperienceBeforeBosch }}</td>
-                <td>{{ employee.Status }}</td>
-                <td>{{ employee.DeactivationReason }}</td>
-                <td>{{ employee.LastWorkingDate }}</td>
-                <td>{{ employee.TerminationDate }}</td>
-                <td>{{ employee.MaternityStartDate }} </td>
-                <td>{{ employee.MaternityEndDate }}</td>
-                <td>{{ employee.Remarks}}</td>
+                <td>
+                  <input [(ngModel)]="employee.EmployeeName" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.NTID" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.EmployeeName" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.DOB" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
+                <td>
+                  <select class="form-select" [(ngModel)]="employee.Gender" (ngModelChange)="onChangeGender(employee.EmployeeID, $event)"
+                >
+                  <option [ngValue]=true>Male</option>
+                  <option [ngValue]=false>Female</option>
+                </select>
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.Team" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.EmployeeLevel" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.SOJoinedDate" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="date" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.BoschJoinedDate" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="date" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.ResourceType" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.TotalYearExperienceBeforeBosch" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
+                <td>
+                  <select class="form-select" [(ngModel)]="employee.Status" (change)="updateStatus(employee.EmployeeID, $event)">
+                    <option value="Active">Active</option>
+                    <option value="Reject">Reject</option>
+                  </select>
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.DeactivationReason" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.LastWorkingDate" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="date" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.TerminationDate" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="date" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.MaternityStartDate" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="date" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.MaternityEndDate" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="date" />
+                </td>
+                <td>
+                  <input [(ngModel)]="employee.Remarks" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
+                </td>
             </tr>
             <!-- More rows here -->
           </tbody>

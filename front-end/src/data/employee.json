@@ -4,7 +4,7 @@
       "NTID": "123123",
       "EmployeeName": "Nguyen Van A",
       "DOB": "1998-01-12",
-      "Gender": true,
+      "Gender": false,
       "EmployeeLevel": 51,
       "Team": "abc",
       "SOJoinedDate": "2023-10-01",
