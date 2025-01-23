@@ -8,9 +8,9 @@ interface Department {
   id: string,
   name: string,
   overview: string,
-  employeesIds: string[],
-  createdDate: Date,
+  createdAt: string,
 }
+
 
 @Component({
   selector: 'app-departmen-index-component',
@@ -26,9 +26,12 @@ export class DepartmenIndexComponentComponent implements OnInit {
     private departmentService: DepartmentServiceService,
    ){}
    ngOnInit(): void {
-       this.departmentService.getDepartments().subscribe(
+       this.departmentService.getDepartmentsWithApiCall().subscribe(
        (data) => {
-        this.departments = data;
+        this.departments = data.map(department => ({
+          ...department,
+          createdAt: new Date(Number(department.createdAt)).toLocaleString()
+        }));
        }
        )
    }

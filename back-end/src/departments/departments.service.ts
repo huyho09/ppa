@@ -16,6 +16,8 @@ export class DepartmentsService {
   ){}
   create(createDepartmentDto: CreateDepartmentDto) {
     const new_department = this.departmentRepository.create(createDepartmentDto)
+    const create_at = new Date()
+    new_department.createdAt = create_at.getTime().toString()
     return this.departmentRepository.save(new_department);
   }
 
@@ -23,16 +25,16 @@ export class DepartmentsService {
     return this.departmentRepository.find();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.departmentRepository.findOneOrFail({where : {id}});
   }
 
-  async update(id: number, updateDepartmentDto: UpdateDepartmentDto) {
+  async update(id: string, updateDepartmentDto: UpdateDepartmentDto) {
     await this.departmentRepository.update(id,updateDepartmentDto)
     return this.departmentRepository.findOneOrFail({where : {id}});
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const projects = await this.projectRepository.find({where: {department:{id}}})
     for(const project of projects)
     {

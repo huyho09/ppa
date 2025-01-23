@@ -4,7 +4,6 @@
     <thead>
       <tr>
         <th style="width: 300px;">Name</th>
-        <th style="width: 300px;">Employees</th>
         <th style="width: 300px;">Overview</th>
         <th style="width: 300px;">createdDate</th>
 
@@ -18,13 +17,7 @@
           {{ department.name }}
         </a>
         </td>
-        <td>
-          <table style="width: 300px;" class="table">
-            <tr *ngFor="let employee of department.employeesIds">
-              <td style="padding: 6px;">{{ employee }}</td>
-            </tr>
-          </table>
-        </td>
+
         <td style="width: 300px; cursor: pointer;" class="ellipsis" (click)="showForm(department.overview) ">{{department.overview}}</td>
         <div id="popupForm" [class.active]="isFormVisible" class = "form-popup">
           <form>
@@ -38,7 +31,7 @@
             </p>
           </form>
         </div>
-        <td style="width: 300px;">{{ department.createdDate }}</td>
+        <td style="width: 300px;">{{ department.createdAt }}</td>
       </tr>
     </tbody>
   </table>

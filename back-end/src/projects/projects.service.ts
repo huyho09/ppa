@@ -22,11 +22,11 @@ export class ProjectsService {
 
   ){}
   async create(createProjectDto: CreateProjectDto): Promise<Project> {
-    const employees = await this.employeeRepository.find({where : {id : In (createProjectDto.employeesIds)}})
-    const department = await this.departmentRepository.findOne({where : {id : createProjectDto.departmentId}})
+    // const employees = await this.employeeRepository.find({where : {id : In (createProjectDto.employeesIds)}})
+    // const department = await this.departmentRepository.findOne({where : {id : createProjectDto.departmentId}})
     const project = this.projectRepository.create(createProjectDto)
-    project.employees = employees
-    project.department = department
+    // project.employees = employees
+    // project.department = department
     return this.projectRepository.save(project);
   }
 
@@ -40,16 +40,16 @@ export class ProjectsService {
 
   async update(id: number, updateProjectDto: UpdateProjectDto): Promise<Project> {
     const project = await this.projectRepository.findOneOrFail({where : {id}, relations:['department','employees']})
-    if (updateProjectDto.departmentId)
-    {
-      const department = await this.departmentRepository.findOne({where : {id:updateProjectDto.departmentId}})
-      project.department = department
-    }
-      if (updateProjectDto.employeesIds)
-        {
-          const employess = await this.employeeRepository.find({where : {id: In(updateProjectDto.employeesIds)}})
-          project.employees = employess
-        }
+    // if (updateProjectDto.departmentId)
+    // {
+    //   const department = await this.departmentRepository.findOne({where : {id:updateProjectDto.departmentId}})
+    //   project.department = department
+    // }
+    //   if (updateProjectDto.employeesIds)
+    //     {
+    //       const employess = await this.employeeRepository.find({where : {id: In(updateProjectDto.employeesIds)}})
+    //       project.employees = employess
+    //     }
       await this.projectRepository.save(project)
       return this.projectRepository.findOneOrFail({where : {id}});
   }

@@ -14,7 +14,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 @Module({
   imports: [
-    ProjectsModule,
+    // ProjectsModule,
     TypeOrmModule.forRoot({
       type: "mssql",
       host: '127.0.0.1',

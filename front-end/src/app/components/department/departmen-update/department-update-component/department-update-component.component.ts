@@ -9,13 +9,9 @@ interface Department {
   id: string,
   name: string,
   overview: string,
-  employeesIds: string[],
-  createdDate: Date,
+  createdAt: string,
 }
-interface Employee {
-  firstname: string,
-  lastname: string,
-}
+
 
 @Component({
   selector: 'app-department-update-component',
@@ -26,7 +22,6 @@ interface Employee {
 export class DepartmentUpdateComponentComponent implements OnInit {
   constructor(
     private departmentService: DepartmentServiceService,
-    private employeeService: EmployeeServiceService,
     private router: Router,
     private route: ActivatedRoute
   ){
@@ -35,28 +30,29 @@ export class DepartmentUpdateComponentComponent implements OnInit {
     id: '',
     name: '',
     overview: '',
-    employeesIds: [],
-    createdDate: new Date(),
-  }
-  employees: Employee[] = []
+    createdAt: ''  }
+
+  id: string = '';
 
 
   ngOnInit(): void {
-      this.employeeService.getEmployees().subscribe(
-        (data) => {
-          this.employees = data
-        }
-      )
       const id = this.route.snapshot.paramMap.get('id')
       if(id)
       {
-        const foundDepartment = this.departmentService.getDepartmentById(id)
-        this.department = foundDepartment;
+        this.departmentService.getDepartmentWithApiCall(id).subscribe(
+          (data) =>
+          {
+            this.department = data;
+            this.department.createdAt = new Date(Number(this.department.createdAt)).toString()
+            this.id = data.id
+          }
+        )
       }
   }
   updateDepartment() {
-    this.departmentService.updateDepartment(this.department).subscribe(
+    this.departmentService.updateDepartmentWithApiCall(this.id,this.department).subscribe(
       () => {
+
         this.router.navigate(['/dashboard/department'])
       }
     )

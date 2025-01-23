@@ -10,53 +10,37 @@ interface Department {
   id: string,
   name: string,
   overview: string,
-  employeesIds: string[],
-  createdDate: Date,
+  createdDate: string
 }
 
-interface Employees{
-  firstname: string,
-  lastname: string,
-}
-
-interface Projects{
-  name: string,
-}
 @Component({
   selector: 'app-department-create-component',
   imports: [CommonModule,FormsModule,RouterModule],
   templateUrl: './department-create-component.component.html',
   styleUrl: './department-create-component.component.scss'
 })
-export class DepartmentCreateComponentComponent implements OnInit {
+export class DepartmentCreateComponentComponent {
   newDepartment: Department = {
     id: '',
     name: '',
     overview: '',
-    employeesIds: [],
-    createdDate: new Date(),
+    createdDate: '',
 
   }
   departments: Department[] = [];
-  employeesIds: Employees[] = [];
 
   constructor(
     private departmentService: DepartmentServiceService,
-    private employeeService: EmployeeServiceService,
     private router: Router,
   ){}
-  ngOnInit(): void {
-      this.employeeService.getEmployees().subscribe(
-        (data) => {
-          this.employeesIds = data
-        }
-      )
 
-  }
   addDepartment() : void {
-    this.departmentService.createDepartment(this.newDepartment).subscribe(
-      (department) => {
-        this.departments.push(department)
+    const created_at = new Date()
+    this.newDepartment.createdDate = created_at.getTime().toString();
+    this.departmentService.createDepartmentWithApiCall(this.newDepartment).subscribe(
+      () => {
+        console.log(this.newDepartment.createdDate)
+        console.log(typeof(this.newDepartment.createdDate))
         this.router.navigate(['/dashboard/department'])
       }
     )

@@ -3,15 +3,18 @@ import { Column, Entity, OneToMany,PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Department {
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
-    @Column()
+    @Column('text')
     name: string;
 
-    @Column()
+    @Column('text')
     overview: string;
 
     @OneToMany(() => Project, project => project.department)
     project: Project[];
+
+    @Column('text')
+    createdAt: string;
 }

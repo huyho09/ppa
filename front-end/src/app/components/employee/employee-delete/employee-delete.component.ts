@@ -39,13 +39,12 @@ export class EmployeeDeleteComponent {
     const id = this.route.snapshot.paramMap.get('id');
     if(id)
     {
-      this.employeeService.getEmployeeWithApiCall(id).subscribe(
+      this.employeeService.deleteEmployeeWithApiCall(id).subscribe(
         () => {
-          this.employeeService.deleteEmployeeWithApiCall(id)
           this.router.navigate(['/dashboard/employee'])
         }
       )
-      
+
     }
     }
 

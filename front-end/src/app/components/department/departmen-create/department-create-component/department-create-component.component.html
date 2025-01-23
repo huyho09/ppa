@@ -27,14 +27,8 @@
               ></textarea>
             </div>
 
-            <div class="form-group mt-2">
-              <label for="employeesIds">Contributor</label>
-              <select class="form-control" id="employeesIds" [(ngModel)]="newDepartment.employeesIds" name="employeesIds" multiple>
-                <option *ngFor="let employee of employeesIds" [value]="employee.firstname + employee.lastname ">{{ employee.firstname + ' ' + employee.lastname }}</option>
-              </select>
-            </div>
 
-          <button type="submit" class="btn btn-primary mt-3"><a href="/dashboard/project"></a>Save</button>
+          <button type="submit" class=" form-control btn btn-primary mt-3"><a href="/dashboard/project"></a>Save</button>
           </form>
         </div>
       </div>

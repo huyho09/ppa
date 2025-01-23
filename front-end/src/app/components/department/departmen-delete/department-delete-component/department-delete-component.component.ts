@@ -6,8 +6,7 @@ interface Department {
   id: string,
   name: string,
   overview: string,
-  employeesIds: string[],
-  createdDate: Date,
+  createdAt: string,
 }
 
 
@@ -19,13 +18,6 @@ interface Department {
 })
 export class DepartmentDeleteComponentComponent implements OnInit {
 
-  department: Department = {
-    id: '',
-    name: '',
-    overview: '',
-    employeesIds: [],
-    createdDate: new Date(),
-  }
   constructor(
     private departmentService : DepartmentServiceService,
     private route: ActivatedRoute,
@@ -36,13 +28,12 @@ export class DepartmentDeleteComponentComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id')
     if (id)
     {
-      const deletedDepartment = this.departmentService.getDepartmentById(id)
-      this.router.navigate(['/dashboard/department'])
-      if (deletedDepartment)
-      {
-        this.department = deletedDepartment
-        this.departmentService.deleteDepartment(deletedDepartment.id).subscribe()
-      }
+      this.departmentService.deleteDepartmentWithApiCall(id).subscribe(
+        () =>
+        {
+          this.router.navigate(['/dashboard/department'])
+        }
+      )
 
     }
 

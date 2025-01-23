@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeServiceService } from '../service/employee-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 interface Employee {
   id: string;
   avatar: string;
@@ -18,7 +18,7 @@ interface Employee {
 @Component({
   selector: 'app-employee-update',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RouterModule],
   templateUrl: './employee-update.component.html',
   styleUrl: './employee-update.component.scss'
 })

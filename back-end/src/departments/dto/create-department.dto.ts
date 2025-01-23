@@ -1,4 +1,4 @@
-import {IsString, IsArray} from 'class-validator'
+import {IsString, IsArray, IsDate} from 'class-validator'
 export class CreateDepartmentDto {
     
     @IsString()
@@ -9,4 +9,7 @@ export class CreateDepartmentDto {
 
     @IsArray()
     projectIds: number[];
+
+    @IsString()
+    createAt: string;
 }
