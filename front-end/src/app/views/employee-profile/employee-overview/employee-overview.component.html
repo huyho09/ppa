@@ -8,7 +8,7 @@
         <table id="example" class="display" cellspacing="0" width="100%">
           <thead>
             <tr>
-              <th>Employee ID</th>
+              <!-- <th>Employee ID</th> -->
               <th>NTID</th>
               <th>Employee Name</th>
               <th>DOB</th>
@@ -30,9 +30,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let employee of employees" [hidden]="employee.Status != 'Active'">
-                <td>
+                <!-- <td>
                   <input [(ngModel)]="employee.EmployeeName" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td>
+                </td> -->
                 <td>
                   <input [(ngModel)]="employee.NTID" (change)="onChangeGender(employee.EmployeeID, $event)" class="form-control" type="text" />
                 </td>
