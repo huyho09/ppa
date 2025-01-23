@@ -1,0 +1,109 @@
+<c-row ngPreserveWhitespaces style="margin: 1rem;">
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="EmployeeID" class="form-label">Employee ID<span style="color: red;">(*)</span></label>
+            <input type="number" [(ngModel)]="employee.EmployeeID" (change)="onChange('EmployeeID', $event)"
+                class="form-control" id="EmployeeID">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="NTID" class="form-label">NTID<span style="color: red;">(*)</span></label>
+            <input type="text" [(ngModel)]="employee.NTID" (change)="onChange('NTID', $event)" class="form-control"
+                id="NTID">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="EmployeeName" class="form-label">Employee Name<span style="color: red;">(*)</span></label>
+            <input type="text" [(ngModel)]="employee.EmployeeName" (change)="onChange('EmployeeName', $event)"
+                class="form-control" id="EmployeeName">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="DOB" class="form-label">DOB</label>
+            <input type="date" [(ngModel)]="employee.DOB" (change)="onChange('DOB', $event)" class="form-control"
+                id="DOB">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Gender" class="form-label">Gender</label>
+            <select id="Gender" class="form-select" [(ngModel)]="employee.Gender" (change)="onChange('Gender', $event)">
+                <option [ngValue]=true>Male</option>
+                <option [ngValue]=false>Female</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="EmployeeLevel" class="form-label">Employee Level<span style="color: red;">(*)</span></label>
+            <input type="number" [(ngModel)]="employee.EmployeeLevel" (change)="onChange('EmployeeLevel', $event)"
+                class="form-control" id="EmployeeLevel">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Team" class="form-label">Team<span style="color: red;">(*)</span></label>
+            <input type="text" [(ngModel)]="employee.Team" (change)="onChange('Team', $event)" class="form-control"
+                id="Team">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="SOJoinedDate" class="form-label">SO Joined Date</label>
+            <input type="date" [(ngModel)]="employee.SOJoinedDate" (change)="onChange('SOJoinedDate', $event)"
+                class="form-control" id="SOJoinedDate">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="BoschJoinedDate" class="form-label">Bosch Joined Date</label>
+            <input type="date" [(ngModel)]="employee.BoschJoinedDate" (change)="onChange('BoschJoinedDate', $event)"
+                class="form-control" id="BoschJoinedDate">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="ResourceType" class="form-label">Resource Type</label>
+            <select id="ResourceType" class="form-select" [(ngModel)]="employee.ResourceType"
+                (change)="onChange('ResourceType', $event)">
+                <option [defaultSelected]="" value="Internal">Internal</option>
+                <option value="External">External</option>
+                <option value="Fixed term">Fixed term</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="TotalYearExperienceBeforeBosch" class="form-label">Total Year Experience Before Bosch<span style="color: red;">(*)</span></label>
+            <input type="number" [(ngModel)]="employee.TotalYearExperienceBeforeBosch"
+                (change)="onChange('TotalYearExperienceBeforeBosch', $event)" class="form-control"
+                id="TotalYearExperienceBeforeBosch">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Status" class="form-label">Status</label>
+            <select id="Status" class="form-select">
+                <option value="Working">Working</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12">
+        <div class="mb-3">
+            <label for="Remarks" class="form-label">Remarks</label>
+            <input type="text" [(ngModel)]="employee.Remarks" (change)="onChange('Remarks', $event)"
+                class="form-control" id="Remarks">
+        </div>
+    </c-col>
+    <c-col xs="12">
+        <div class="mb-3 float-left">
+            <button class="btn btn-primary" type="button" value="Submit" [disabled]="(!employee.EmployeeName) || (!employee.EmployeeID) || (employee.EmployeeID == 0) 
+             || (!employee.NTID) || (!employee.EmployeeLevel) || (employee.EmployeeLevel == 0) || (!employee.Team) || (!employee.TotalYearExperienceBeforeBosch) || (employee.TotalYearExperienceBeforeBosch == 0)"
+            (click)="handleSubmit()" >Submit</button>
+            <button class="btn btn-secondary" (click)="handleCancel()" type="button" value="Cancel">Cancel</button>
+        </div>
+    </c-col>
+</c-row>

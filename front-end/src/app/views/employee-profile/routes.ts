@@ -21,7 +21,7 @@ export const routes: Routes = [
           title: 'Pending Approvals'
         }
       },
-    ]
+    ],
   }
 ];
 

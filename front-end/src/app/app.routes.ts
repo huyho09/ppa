@@ -27,6 +27,13 @@ export const routes: Routes = [
         loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
       },
       {
+        path: 'employee-create',
+        loadComponent: () => import('./views/employee-profile/employee-create/employee-create.component').then(m => m.EmployeeCreateComponent),
+        data: {
+          title: 'Employee Create'
+        }
+      },
+      {
         path: 'employee-profile',
         loadChildren: () => import('./views/employee-profile/routes').then((m) => m.routes)
       },

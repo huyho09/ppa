@@ -1,5 +1,4 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import {
   RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent
 } from '@coreui/angular';
@@ -9,18 +8,18 @@ import { Employee } from '../../../dtos/employee-dto';
 import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 declare var $: any;
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-employee-overview',
   templateUrl: './employee-overview.component.html',
   styleUrls: ['./employee-overview.component.scss'],
   imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule
-    ,FormsModule]
+    , FormsModule]
 })
 
 export class EmployeeOverviewComponent {
   employees: Employee[] = employeesData;
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor(private cdRef: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit() {
     // Initialize DataTables on a table element after the view is initialized
@@ -51,12 +50,12 @@ export class EmployeeOverviewComponent {
     }
   }
 
-   // Function to save the employees array to localStorage
-   saveEmployeesToLocalStorage() {
+  // Function to save the employees array to localStorage
+  saveEmployeesToLocalStorage() {
     localStorage.setItem('employees', JSON.stringify(this.employees));
   }
 
-  onChangeGender(employeeID: number, event: Event | null) {
+  onChangeFields(employeeID: number, event: Event | null) {
     const employee = this.employees.find(emp => emp.EmployeeID === employeeID);
     console.log(employee, employeeID);
     if (employee && event?.target) {
@@ -65,6 +64,10 @@ export class EmployeeOverviewComponent {
       this.cdRef.detectChanges();
       this.saveEmployeesToLocalStorage();
     }
+  }
+
+  handleCreateEmployee() {
+    this.router.navigate(['/employee-create']);
   }
 
 }
