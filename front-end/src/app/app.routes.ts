@@ -34,6 +34,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'client-create',
+        loadComponent: () => import('./views/project/client-create/client-create.component').then(m => m.ClientCreateComponent),
+        data: {
+          title: 'Client Create'
+        }
+      },
+      {
         path: 'employee-profile',
         loadChildren: () => import('./views/employee-profile/routes').then((m) => m.routes)
       },

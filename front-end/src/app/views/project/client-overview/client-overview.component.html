@@ -1,5 +1,51 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
+    <c-card>
+      <c-card-header>
+        <button class="btn btn-primary" (click)="handleCreateClient()">Create</button>
+        <button class="btn btn-secondary" (click)="onEditRecord()" *ngIf="!isEdit">Edit</button>
+        <button class="btn btn-outline-success" (click)="onEditRecord()" *ngIf="isEdit">Save</button>
+      </c-card-header>
+      <c-card-body>
+        <!-- Display Employee Data -->
+        <table id="example" class="display" cellspacing="0" width="100%" data-page-length="10">
+          <thead>
+            <tr>
+              <th>Client Name</th>
+              <th>Client Division</th>
+              <th>Client Country</th>
+              <th>Win Rate(%)</th>
+              <th>SAP ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let client of clients">
+              <td><span *ngIf="!isEdit">{{client.ClientName}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="client.ClientName" (change)="onChangeFields(client.ClientID, $event)"
+                  class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{client.ClientDivision}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="client.ClientDivision" (change)="onChangeFields(client.ClientID, $event)"
+                  class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{client.ClientCountry}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="client.ClientCountry" (change)="onChangeFields(client.ClientID, $event)"
+                  class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{client.WinRate}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="client.WinRate" (change)="onChangeFields(client.ClientID, $event)"
+                  class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{client.SAPID}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="client.SAPID" (change)="onChangeFields(client.ClientID, $event)"
+                  class="form-control" type="text" />
+              </td>
+            </tr>
+            <!-- More rows here -->
+          </tbody>
+        </table>
+
+      </c-card-body>
+    </c-card>
   </c-col>
 </c-row>
-<svg cIcon class="my-1" name="cilBell" size="lg"></svg>

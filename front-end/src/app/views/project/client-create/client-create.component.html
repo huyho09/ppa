@@ -1,0 +1,43 @@
+<c-row ngPreserveWhitespaces style="margin: 1rem;">
+    <c-col xs="12" md="6">
+        <div class="mb-3">
+            <label for="ClientName" class="form-label">Employee Name<span style="color: red;">(*)</span></label>
+            <input type="text" [(ngModel)]="client.ClientName" (change)="onChange('ClientName', $event)"
+                class="form-control" id="EmployeeID">
+        </div>
+    </c-col>
+    <c-col xs="12" md="6">
+        <div class="mb-3">
+            <label for="ClientDivision" class="form-label">Client Division<span style="color: red;">(*)</span></label>
+            <select id="ClientDivision" class="form-select" [(ngModel)]="client.ClientDivision"
+                (change)="onChange('ClientDivision', $event)">
+                <option value="CC">CC</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="6">
+        <div class="mb-3">
+            <label for="ClientCountry" class="form-label">Client Country<span style="color: red;">(*)</span></label>
+            <select id="ClientCountry" class="form-select" [(ngModel)]="client.ClientCountry"
+                (change)="onChange('ClientCountry', $event)">
+                <option value="CN">CN</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="6">
+        <div class="mb-3">
+            <label for="SAPID" class="form-label">SAP ID<span style="color: red;">(*)</span></label>
+            <input type="text" [(ngModel)]="client.SAPID" (change)="onChange('SAPID', $event)"
+                class="form-control" id="SAPID">
+        </div>
+    </c-col>
+   
+    <c-col xs="12">
+        <div class="mb-3 float-left">
+            <button class="btn btn-primary" type="button" value="Submit" [disabled]="(!client.ClientName)
+             || (!client.SAPID)"
+            (click)="handleSubmit()" >Submit</button>
+            <button class="btn btn-secondary" (click)="handleCancel()" type="button" value="Cancel">Cancel</button>
+        </div>
+    </c-col>
+</c-row>

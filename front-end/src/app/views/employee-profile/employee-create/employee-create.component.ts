@@ -36,18 +36,18 @@ export class EmployeeCreateComponent {
     MaternityStartDate: ""
   };
 
-   constructor(private router: Router) { }
+  constructor(private router: Router) { }
   onChange(field: string, event: Event) {
     const inputValue = (event.target as HTMLInputElement).value;
     console.log('Current form data:', this.employee);
   }
-  handleCancel(){
+  handleCancel() {
     this.router.navigate(['/employee-profile/employee-overview']);
   }
-  handleSubmit(){
+  handleSubmit() {
     const storedEmployees = localStorage.getItem('employees');
     if (storedEmployees) {
-      var employees : Employee[]  = JSON.parse(storedEmployees);
+      var employees: Employee[] = JSON.parse(storedEmployees);
       employees = [...employees, this.employee];
       localStorage.setItem('employees', JSON.stringify(employees));
     }

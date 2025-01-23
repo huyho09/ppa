@@ -20,7 +20,24 @@ a {
   text-decoration: none;
 }
 
-table th,
-table td {
+.table th,
+.table td {
+	min-width: 175px;
   text-align: center;
+}
+
+	.table th:first-child,
+	.table td:first-child {
+		min-width: 50px;
+	}
+
+	.table th:last-child,
+	.table td:last-child {
+		min-width: 250px;
+	}
+
+.dataTables_filter label {
+	width: 50%;
+	float: left;
+	margin-bottom: 25px;
 }

@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 
 export class EmployeeOverviewComponent {
   employees: Employee[] = employeesData;
+  isEdit: boolean = false;
   constructor(private cdRef: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit() {
@@ -36,6 +37,8 @@ export class EmployeeOverviewComponent {
     const storedEmployees = localStorage.getItem('employees');
     if (storedEmployees) {
       this.employees = JSON.parse(storedEmployees);
+    } else {
+      this.saveEmployeesToLocalStorage
     }
   }
 
@@ -69,5 +72,9 @@ export class EmployeeOverviewComponent {
   handleCreateEmployee() {
     this.router.navigate(['/employee-create']);
   }
-
+  
+  onEditRecord(){
+    this.isEdit = !this.isEdit;
+    this.cdRef.detectChanges();
+  }
 }
