@@ -42,17 +42,6 @@ export class EmployeeOverviewComponent {
     }
   }
 
-  updateStatus(employeeID: number, event: Event | null) {
-    const employee = this.employees.find(emp => emp.EmployeeID === employeeID);
-    console.log(employee, employeeID);
-    if (employee && event?.target) {
-      const valueStatus = (event.target as HTMLSelectElement).value;
-      employee.Status = valueStatus;
-      this.cdRef.detectChanges();
-      this.saveEmployeesToLocalStorage();
-    }
-  }
-
   // Function to save the employees array to localStorage
   saveEmployeesToLocalStorage() {
     localStorage.setItem('employees', JSON.stringify(this.employees));

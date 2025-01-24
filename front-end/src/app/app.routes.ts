@@ -41,6 +41,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'project-create',
+        loadComponent: () => import('./views/project/project-create/project-create.component').then(m => m.ProjectCreateComponent),
+        data: {
+          title: 'Project Create'
+        }
+      },
+      {
         path: 'employee-profile',
         loadChildren: () => import('./views/employee-profile/routes').then((m) => m.routes)
       },

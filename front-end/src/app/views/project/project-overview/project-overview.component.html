@@ -1,4 +1,108 @@
 <c-row ngPreserveWhitespaces>
-  <c-col>
+  <c-col xs="12">
+    <c-card>
+      <c-card-header>
+        <button class="btn btn-primary" (click)="handleCreateProject()">Create</button>
+        <button class="btn btn-secondary" (click)="onEditRecord()" *ngIf="!isEdit">Edit</button>
+        <button class="btn btn-warning" (click)="onEditRecord()" *ngIf="isEdit">Stop Edit</button>
+      </c-card-header>
+      <c-card-body>
+        <!-- Display Employee Data -->
+        <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Project Name</th>
+              <th>Client Name</th>
+              <th>Sub Project Name</th>
+              <th>Team</th>
+              <th>Sub Team</th>
+              <th>Status</th>
+              <th>Contract Type</th>
+              <th>Billing Method</th>
+              <th>Billing Rate</th>
+              <th>Contract Currency</th>
+              <th>Billing Frequency</th>
+              <th>PO Number & SAP Contract Number</th>
+              <th>Contract Number</th>
+              <th>PO Amount</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let project of projects" >
+              <td>
+                <button class="btn btn-success" (click)="onChangeFields(project.ProjectID, $event)"
+                [disabled]="(!isEdit)">Save</button>
+                <button class="btn btn-danger" (click)="onChangeFields(project.ProjectID, $event)"
+                [disabled]="(!isEdit)">Delete</button>
+              </td>
+              <td><span *ngIf="!isEdit">{{project.ProjectName}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.ProjectName" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.ClientName}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.ClientName" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.SubProjectName}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.SubProjectName" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.Team}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.Team" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.SubTeam}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.SubTeam" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.Status}}</span>
+                <select *ngIf="isEdit" class="form-select" [(ngModel)]="project.Status">
+                  <option [ngValue]="projectStatusEnum['In Contact']">{{ projectStatusEnum['In Contact'] }}</option>
+                  <option [ngValue]="projectStatusEnum['Proposing']">{{ projectStatusEnum['Proposing'] }}</option>
+                  <option [ngValue]="projectStatusEnum['Won']">{{ projectStatusEnum['Won'] }}</option>
+                  <option [ngValue]="projectStatusEnum['Lost/Cancel']">{{ projectStatusEnum['Lost/Cancel'] }}</option>
+                </select>
+              </td>
+              <td><span *ngIf="!isEdit">{{project.ContractType}}</span>
+                <select *ngIf="isEdit" class="form-select" [(ngModel)]="project.ContractType">
+                  <option [ngValue]="contractTypeEnum['T&M (YE4)']">{{ contractTypeEnum['T&M (YE4)'] }}</option>
+                  <option [ngValue]="contractTypeEnum['Service based (YEB)']">{{ contractTypeEnum['Service based (YEB)'] }}</option>
+                </select>
+              </td>
+              <td><span *ngIf="!isEdit">{{project.BillingMethod}}</span>
+                <select *ngIf="isEdit" class="form-select" [(ngModel)]="project.BillingMethod">
+                  <option [ngValue]="billingMethodEnum['Email']">{{ billingMethodEnum['Email'] }}</option>
+                  <option [ngValue]="billingMethodEnum['Call']">{{ billingMethodEnum['Call'] }}</option>
+                </select>
+              </td>
+              <td><span *ngIf="!isEdit">{{project.BillingRate}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.BillingRate" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.ContractCurrency}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.ContractCurrency" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.BillingFrequency}}</span>
+                <select *ngIf="isEdit" class="form-select" [(ngModel)]="project.Status">
+                  <option [ngValue]="billingFrequencyEnum['Quarterly']">{{ billingFrequencyEnum['Quarterly'] }}</option>
+                  <option [ngValue]="billingFrequencyEnum['Monthly']">{{ billingFrequencyEnum['Monthly'] }}</option>
+                  <option [ngValue]="billingFrequencyEnum['One time']">{{ billingFrequencyEnum['One time'] }}</option>
+                </select>
+              </td>
+              <td><span *ngIf="!isEdit">{{project.PONumber_SAPContractNumber}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.PONumber_SAPContractNumber" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.ContractNumber}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.ContractNumber" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.PO_Amount}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.PO_Amount" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{project.Remarks}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="project.Remarks" class="form-control" type="text" />
+              </td>
+            </tr>
+            <!-- More rows here -->
+          </tbody>
+        </table>
+
+      </c-card-body>
+    </c-card>
   </c-col>
 </c-row>

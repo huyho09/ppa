@@ -4,14 +4,14 @@
       <c-card-header>
         <button class="btn btn-primary" (click)="handleCreateEmployee()">Create</button>
         <button class="btn btn-secondary" (click)="onEditRecord()" *ngIf="!isEdit">Edit</button>
-        <button class="btn btn-outline-success" (click)="onEditRecord()" *ngIf="isEdit">Save</button>
+        <button class="btn btn-warning" (click)="onEditRecord()" *ngIf="isEdit">Stop Edit</button>
       </c-card-header>
       <c-card-body>
         <!-- Display Employee Data -->
-        <table id="example" class="display" cellspacing="0" width="100%">
+        <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
           <thead>
             <tr>
-              <!-- <th>Employee ID</th> -->
+              <th [hidden]="!isEdit">Action</th>
               <th>NTID</th>
               <th>Employee Name</th>
               <th>DOB</th>
@@ -32,68 +32,72 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let employee of employees" [hidden]="employee.Status != 'Active'">
-                <!-- <td>
-                  <input [(ngModel)]="employee.EmployeeID" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td> -->
-                <td><span *ngIf="!isEdit">{{employee.NTID}}</span>
-                  <input  *ngIf="isEdit" [(ngModel)]="employee.NTID" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.EmployeeName}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.EmployeeName" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.DOB}}</span>
-                  <input  *ngIf="isEdit" [(ngModel)]="employee.DOB" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="date" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.Gender}}</span>
-                  <select *ngIf="isEdit" class="form-select" [(ngModel)]="employee.Gender" (ngModelChange)="onChangeFields(employee.EmployeeID, $event)"
-                >
+            <tr *ngFor="let employee of employees" [hidden]="employee.Status != 'Active' && !isEdit">
+              <td [hidden]="!isEdit">
+                <button class="btn btn-success" (click)="onChangeFields(employee.EmployeeID, $event)"
+                  *ngIf="isEdit">Save</button>
+                <button class="btn btn-danger" (click)="onChangeFields(employee.EmployeeID, $event)"
+                  *ngIf="isEdit">Delete</button>
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.NTID}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.NTID" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.EmployeeName}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.EmployeeName" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.DOB}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.DOB" class="form-control" type="date" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.Gender}}</span>
+                <select *ngIf="isEdit" class="form-select" [(ngModel)]="employee.Gender"
+                  (ngModelChange)="onChangeFields(employee.EmployeeID, $event)">
                   <option [ngValue]=true>Male</option>
                   <option [ngValue]=false>Female</option>
                 </select>
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.Team}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.Team" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.EmployeeLevel}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.EmployeeLevel" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.SOJoinedDate}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.SOJoinedDate" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="date" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.BoschJoinedDate}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.BoschJoinedDate" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="date" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.ResourceType}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.ResourceType" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.TotalYearExperienceBeforeBosch}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.TotalYearExperienceBeforeBosch" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.Status}}</span>
-                  <select *ngIf="isEdit" class="form-select" [(ngModel)]="employee.Status" (change)="updateStatus(employee.EmployeeID, $event)">
-                    <option value="Active">Active</option>
-                    <option value="Reject">Reject</option>
-                  </select>
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.DeactivationReason}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.DeactivationReason" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.LastWorkingDate}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.LastWorkingDate" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="date" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.TerminationDate}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.TerminationDate" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="date" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.MaternityStartDate}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.MaternityStartDate" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="date" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.MaternityEndDate}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.MaternityEndDate" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="date" />
-                </td>
-                <td><span *ngIf="!isEdit">{{employee.Remarks}}</span>
-                  <input *ngIf="isEdit" [(ngModel)]="employee.Remarks" (change)="onChangeFields(employee.EmployeeID, $event)" class="form-control" type="text" />
-                </td>
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.Team}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.Team" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.EmployeeLevel}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.EmployeeLevel" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.SOJoinedDate}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.SOJoinedDate" class="form-control" type="date" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.BoschJoinedDate}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.BoschJoinedDate" class="form-control" type="date" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.ResourceType}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.ResourceType" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.TotalYearExperienceBeforeBosch}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.TotalYearExperienceBeforeBosch" class="form-control"
+                  type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.Status}}</span>
+                <select *ngIf="isEdit" class="form-select" [(ngModel)]="employee.Status">
+                  <option value="Active">Active</option>
+                  <option value="Reject">Reject</option>
+                </select>
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.DeactivationReason}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.DeactivationReason" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.LastWorkingDate}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.LastWorkingDate" class="form-control" type="date" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.TerminationDate}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.TerminationDate" class="form-control" type="date" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.MaternityStartDate}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.MaternityStartDate" class="form-control" type="date" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.MaternityEndDate}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.MaternityEndDate" class="form-control" type="date" />
+              </td>
+              <td><span *ngIf="!isEdit">{{employee.Remarks}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="employee.Remarks" class="form-control" type="text" />
+              </td>
             </tr>
             <!-- More rows here -->
           </tbody>

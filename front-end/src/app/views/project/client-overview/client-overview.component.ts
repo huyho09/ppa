@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-client-overview',
   templateUrl: './client-overview.component.html',
   styleUrls: ['./client-overview.component.scss'],
-  imports: [RowComponent, ColComponent, FormsModule, CardComponent,CardHeaderComponent, CardBodyComponent, CommonModule]
+  imports: [RowComponent, ColComponent, FormsModule, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule]
 })
 export class ClientOverviewComponent {
   clients: Client[] = [{
@@ -36,20 +36,13 @@ export class ClientOverviewComponent {
     // Initialize DataTables on a table element after the view is initialized
     $(document).ready(function () {
       $('#example').dataTable({
-        "sScrollX": "100%",
-        "sScrollXInner": "110%",
+        responsive: true,
+        sScrollX: "100%",
+        sScrollXInner: "110%",
       });
     });
     this.loadClientsFromLocalStorage();
   }
-  formCheck1 = this.formBuilder.group({
-    checkbox1: false,
-    checkbox2: false,
-    checkbox3: false
-  });
-  formRadio1 = new UntypedFormGroup({
-    radio1: new UntypedFormControl('Radio1')
-  });
 
   constructor(
     private formBuilder: UntypedFormBuilder, private router: Router, private cdRef: ChangeDetectorRef
@@ -78,22 +71,11 @@ export class ClientOverviewComponent {
     }
   }
 
-  setCheckBoxValue(controlName: string) {
-    const prevValue = this.formCheck1.get(controlName)?.value;
-    const value = this.formCheck1.value;
-    value[controlName] = !prevValue;
-    this.formCheck1.setValue(value);
-  }
-
-  setRadioValue(value: string): void {
-    this.formRadio1.setValue({ radio1: value });
-  }
-
   handleCreateClient() {
     this.router.navigate(['/client-create']);
   }
 
-  onEditRecord(){
+  onEditRecord() {
     this.isEdit = !this.isEdit;
     this.cdRef.detectChanges();
   }

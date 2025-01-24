@@ -4,13 +4,14 @@
       <c-card-header>
         <button class="btn btn-primary" (click)="handleCreateClient()">Create</button>
         <button class="btn btn-secondary" (click)="onEditRecord()" *ngIf="!isEdit">Edit</button>
-        <button class="btn btn-outline-success" (click)="onEditRecord()" *ngIf="isEdit">Save</button>
+        <button class="btn btn-warning" (click)="onEditRecord()" *ngIf="isEdit">Stop Edit</button>
       </c-card-header>
       <c-card-body>
         <!-- Display Employee Data -->
-        <table id="example" class="display" cellspacing="0" width="100%" data-page-length="10">
+        <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
           <thead>
             <tr>
+              <th>Action</th>
               <th>Client Name</th>
               <th>Client Division</th>
               <th>Client Country</th>
@@ -20,25 +21,26 @@
           </thead>
           <tbody>
             <tr *ngFor="let client of clients">
+              <td>
+                <button [disabled]="(!isEdit)" class="btn btn-success"
+                  (click)="onChangeFields(client.ClientID, $event)">Save</button>
+                <button [disabled]="(!isEdit)" class="btn btn-danger"
+                  (click)="onChangeFields(client.ClientID, $event)">Delete</button>
+              </td>
               <td><span *ngIf="!isEdit">{{client.ClientName}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="client.ClientName" (change)="onChangeFields(client.ClientID, $event)"
-                  class="form-control" type="text" />
+                <input *ngIf="isEdit" [(ngModel)]="client.ClientName" class="form-control" type="text" />
               </td>
               <td><span *ngIf="!isEdit">{{client.ClientDivision}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="client.ClientDivision" (change)="onChangeFields(client.ClientID, $event)"
-                  class="form-control" type="text" />
+                <input *ngIf="isEdit" [(ngModel)]="client.ClientDivision" class="form-control" type="text" />
               </td>
               <td><span *ngIf="!isEdit">{{client.ClientCountry}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="client.ClientCountry" (change)="onChangeFields(client.ClientID, $event)"
-                  class="form-control" type="text" />
+                <input *ngIf="isEdit" [(ngModel)]="client.ClientCountry" class="form-control" type="text" />
               </td>
               <td><span *ngIf="!isEdit">{{client.WinRate}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="client.WinRate" (change)="onChangeFields(client.ClientID, $event)"
-                  class="form-control" type="text" />
+                <input *ngIf="isEdit" [(ngModel)]="client.WinRate" class="form-control" type="text" />
               </td>
               <td><span *ngIf="!isEdit">{{client.SAPID}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="client.SAPID" (change)="onChangeFields(client.ClientID, $event)"
-                  class="form-control" type="text" />
+                <input *ngIf="isEdit" [(ngModel)]="client.SAPID" class="form-control" type="text" />
               </td>
             </tr>
             <!-- More rows here -->
