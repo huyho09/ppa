@@ -44,7 +44,37 @@ export class ProjectOverviewComponent {
     ContractNumber: "",
     PO_Amount: 1000,
     Remarks: "",
-  }];
+  },
+  {
+    ProjectID: 2,
+    ProjectName: "Project2",
+    ClientName: "Client 2",
+    SubProjectName: "",
+    Team: "Team 2",
+    SubTeam: "",
+    Status: ProjectStatusEnum.Won,
+    CancellationReason: "",
+    PIF_ID: "",
+    MCR_ID_BM_Number: "",
+    ResourceGroup_ID: "",
+    RevenueSource: "",
+    Direct_Indirect: "",
+    WorkingModel: WorkingModelEnum.Onsite,
+    ContractType: ContractTypeEnum['Service based (YEB)'],
+    BillingMethod: BillingMethodEnum.Email,
+    BillingRate: 100,
+    ContractCurrency: "EUR",
+    TargetCurrency: "EUR",
+    Contractual_PMO_In_Period: 0,
+    StartPeriod: "2025-01-10",
+    EndPeriod: "2026-01-10",
+    BillingFrequency: BillingFrequencyEnum.Monthly,
+    PONumber_SAPContractNumber: "",
+    ContractNumber: "",
+    PO_Amount: 1000,
+    Remarks: "",
+  }
+];
   projectStatusEnum = ProjectStatusEnum;
   contractTypeEnum = ContractTypeEnum;
   billingMethodEnum = BillingMethodEnum;

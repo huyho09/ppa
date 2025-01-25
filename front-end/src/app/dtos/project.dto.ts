@@ -29,30 +29,30 @@ export interface Project {
 }
 
 export enum ProjectStatusEnum {
-    "In Contact",
-    "Proposing",
-    "Won",
-    "Lost/Cancel"
+    "In Contact" = "In Contact",
+    "Proposing" = "Proposing",
+    "Won" = "Won",
+    "Lost/Cancel" = "Lost/Cancel"
 }
 
 export enum WorkingModelEnum {
-    "Onsite",
-    "Offshore",
-    "Nearshore",
+    "Onsite" = "Onsite",
+    "Offshore" = "Offshore",
+    "Nearshore" = "Nearshore",
 }
 
 export enum ContractTypeEnum {
-    "T&M (YE4)",
-    "Service based (YEB)",
+    "T&M (YE4)" = "T&M (YE4)",
+    "Service based (YEB)" = "Service based (YEB)",
 }
 
 export enum BillingMethodEnum {
-    "Email",
-    "Call"
+    "Email" = "Email",
+    "Call" = "Call"
 }
 
 export enum BillingFrequencyEnum {
-    "Quarterly",
-    "Monthly",
-    "One time",
+    "Quarterly" = "Quarterly",
+    "Monthly" = "Monthly",
+    "One time" = "One time",
 }

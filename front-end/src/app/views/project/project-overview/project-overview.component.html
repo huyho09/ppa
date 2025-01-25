@@ -79,7 +79,7 @@
                 <input *ngIf="isEdit" [(ngModel)]="project.ContractCurrency" class="form-control" type="text" />
               </td>
               <td><span *ngIf="!isEdit">{{project.BillingFrequency}}</span>
-                <select *ngIf="isEdit" class="form-select" [(ngModel)]="project.Status">
+                <select *ngIf="isEdit" class="form-select" [(ngModel)]="project.BillingFrequency">
                   <option [ngValue]="billingFrequencyEnum['Quarterly']">{{ billingFrequencyEnum['Quarterly'] }}</option>
                   <option [ngValue]="billingFrequencyEnum['Monthly']">{{ billingFrequencyEnum['Monthly'] }}</option>
                   <option [ngValue]="billingFrequencyEnum['One time']">{{ billingFrequencyEnum['One time'] }}</option>
