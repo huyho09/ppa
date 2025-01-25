@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import {
   RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent
 } from '@coreui/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, UntypedFormBuilder } from '@angular/forms';
 import employeesData from '../../../../data/employee.json'; // Ensure your environment supports JSON imports
 import { Employee } from '../../../dtos/employee-dto';
 import { CommonModule } from '@angular/common';
@@ -20,8 +20,7 @@ import { Router } from '@angular/router';
 export class EmployeeOverviewComponent {
   employees: Employee[] = employeesData;
   isEdit: boolean = false;
-  constructor(private cdRef: ChangeDetectorRef, private router: Router) { }
-
+ 
   ngOnInit() {
     // Initialize DataTables on a table element after the view is initialized
     $(document).ready(function () {
@@ -32,6 +31,7 @@ export class EmployeeOverviewComponent {
     });
     this.loadEmployeesFromLocalStorage();
   }
+  constructor(private formBuilder: UntypedFormBuilder, private cdRef: ChangeDetectorRef, private router: Router) { }
 
   loadEmployeesFromLocalStorage() {
     const storedEmployees = localStorage.getItem('employees');
@@ -59,6 +59,7 @@ export class EmployeeOverviewComponent {
   }
 
   handleCreateEmployee() {
+    this.saveEmployeesToLocalStorage();
     this.router.navigate(['/employee-create']);
   }
   

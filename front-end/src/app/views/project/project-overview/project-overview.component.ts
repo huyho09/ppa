@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import {
   RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent
 } from '@coreui/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, UntypedFormBuilder } from '@angular/forms';
 import { Project, ProjectStatusEnum, WorkingModelEnum, ContractTypeEnum, BillingMethodEnum, BillingFrequencyEnum } from '../../../dtos/project.dto';
 import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -80,7 +80,7 @@ export class ProjectOverviewComponent {
   billingMethodEnum = BillingMethodEnum;
   billingFrequencyEnum = BillingFrequencyEnum;
   isEdit: boolean = false;
-  constructor(private cdRef: ChangeDetectorRef, private router: Router) { }
+  constructor(private formBuilder: UntypedFormBuilder, private cdRef: ChangeDetectorRef, private router: Router) { }
   ngOnInit() {
     // Initialize DataTables on a table element after the view is initialized
     $(document).ready(function () {
@@ -115,6 +115,7 @@ export class ProjectOverviewComponent {
   }
 
   handleCreateProject() {
+    this.saveProjectsToLocalStorage();
     this.router.navigate(['/project-create']);
   }
 

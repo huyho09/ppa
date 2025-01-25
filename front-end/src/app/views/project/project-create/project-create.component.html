@@ -1,1 +1,153 @@
-<p>project-create works!</p>
+<c-row ngPreserveWhitespaces style="margin: 1rem;">
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="ProjectName" class="form-label">Project Name<span style="color: red;">(*)</span></label>
+            <input type="text" [(ngModel)]="project.ProjectName" (change)="onChange('ProjectName', $event)"
+                class="form-control" id="ProjectName">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="ClientName" class="form-label">Client Name</label>
+            <select id="ClientName" class="form-select" (change)="onChange('ClientName', $event)">
+                <option *ngFor="let client of clients" [value]="client.ClientName">
+                    {{client.ClientName}}
+                </option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="SubProjectName" class="form-label">Sub-Project Name</label>
+            <select id="SubProjectName" class="form-select" (change)="onChange('SubProjectName', $event)">
+                <option *ngFor="let subProjectItem of subProjects" [value]="subProjectItem.ProjectName">
+                    {{subProjectItem.ProjectName}}
+                </option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Team" class="form-label">Team<span style="color: red;">(*)</span></label>
+            <input type="text" [(ngModel)]="project.Team" (change)="onChange('Team', $event)" class="form-control"
+                id="Team">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="SubTeam" class="form-label">Sub-Team<span style="color: red;">(*)</span></label>
+            <input type="text" [(ngModel)]="project.SubTeam" (change)="onChange('SubTeam', $event)" class="form-control"
+                id="SubTeam">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Status" class="form-label">Status</label>
+            <select id="Status" class="form-select" [(ngModel)]="project.Status" (change)="onChange('Gender', $event)">
+                <option [ngValue]="projectStatusEnum['In Contact']">{{projectStatusEnum['In Contact']}}</option>
+                <option [ngValue]="projectStatusEnum['Lost/Cancel']">{{projectStatusEnum['Lost/Cancel']}}</option>
+                <option [ngValue]="projectStatusEnum.Proposing">{{projectStatusEnum.Proposing}}</option>
+                <option [ngValue]="projectStatusEnum.Won">{{projectStatusEnum.Won}}</option>
+            </select>
+        </div>
+    </c-col>
+
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="BillingRate" class="form-label">Billing Rate<span style="color: red;">(*)</span></label>
+            <input type="number" [(ngModel)]="project.BillingRate" (change)="onChange('BillingRate', $event)"
+                class="form-control" id="BillingRate">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="ContractCurrency" class="form-label">ContractCurrency</label>
+            <select id="ContractCurrency" class="form-select" [(ngModel)]="project.ContractCurrency"
+                (change)="onChange('ContractCurrency', $event)">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="VND">VND</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="TargetCurrency" class="form-label">Target Currency<span style="color: red;">(*)</span></label>
+            <input type="text" [(ngModel)]="project.TargetCurrency" (change)="onChange('BillingRate', $event)"
+                class="form-control" id="TargetCurrency">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Contractual_PMO_In_Period" class="form-label">Contractual PMO In Period<span
+                    style="color: red;">(*)</span></label>
+            <input type="number" [(ngModel)]="project.Contractual_PMO_In_Period"
+                (change)="onChange('Contractual_PMO_In_Period', $event)" class="form-control"
+                id="Contractual_PMO_In_Period">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="StartPeriod" class="form-label">Start Period<span style="color: red;">(*)</span></label>
+            <input type="date" [(ngModel)]="project.StartPeriod" (change)="onChange('StartPeriod', $event)"
+                class="form-control" id="StartPeriod">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="EndPeriod" class="form-label">End Period<span style="color: red;">(*)</span></label>
+            <input type="date" [(ngModel)]="project.EndPeriod" (change)="onChange('EndPeriod', $event)"
+                class="form-control" id="EndPeriod">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="BillingFrequency" class="form-label">Billing Frequency</label>
+            <select id="BillingFrequency" class="form-select" [(ngModel)]="project.BillingFrequency"
+                (change)="onChange('BillingFrequency', $event)">
+                <option [ngValue]="billingFrequencyEnum.Monthly">{{billingFrequencyEnum.Monthly}}</option>
+                <option [ngValue]="billingFrequencyEnum['One time']">{{billingFrequencyEnum['One time']}}</option>
+                <option [ngValue]="billingFrequencyEnum.Quarterly">{{billingFrequencyEnum.Quarterly}}</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="PONumber_SAPContractNumber" class="form-label">PO Number & SAP Contract Number<span
+                    style="color: red;">(*)</span></label>
+            <input type="number" [(ngModel)]="project.PONumber_SAPContractNumber"
+                (change)="onChange('PONumber_SAPContractNumber', $event)" class="form-control"
+                id="PONumber_SAPContractNumber">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="ContractNumber" class="form-label">Contract Number<span style="color: red;">(*)</span></label>
+            <input type="number" [(ngModel)]="project.ContractNumber" (change)="onChange('ContractNumber', $event)"
+                class="form-control" id="ContractNumber">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="PO_Amount" class="form-label">PO Amount<span style="color: red;">(*)</span></label>
+            <input type="number" [(ngModel)]="project.PO_Amount" (change)="onChange('PO_Amount', $event)"
+                class="form-control" id="PO_Amount">
+        </div>
+    </c-col>
+    <c-col xs="12">
+        <div class="mb-3">
+            <label for="Remarks" class="form-label">Remarks</label>
+            <textarea type="text" [(ngModel)]="project.Remarks" (change)="onChange('Remarks', $event)" class="form-control"
+                id="Remarks"></textarea>
+        </div>
+    </c-col>
+    <c-col xs="12">
+        <div class="mb-3 float-left">
+            <button class="btn btn-primary" type="button" value="Submit"
+                [disabled]="(!project.ProjectName) || (!project.Team) || (project.BillingRate == 0) || (!project.PO_Amount) || (project.PO_Amount == 0)
+             || (!project.TargetCurrency) || (!project.Contractual_PMO_In_Period) || (project.Contractual_PMO_In_Period == 0)"
+                (click)="handleSubmit()">Submit</button>
+            <button class="btn btn-secondary" (click)="handleCancel()" type="button" value="Cancel">Cancel</button>
+        </div>
+    </c-col>
+</c-row>

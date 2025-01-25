@@ -1,13 +1,6 @@
 <c-row ngPreserveWhitespaces style="margin: 1rem;">
     <c-col xs="12" md="3">
         <div class="mb-3">
-            <label for="EmployeeID" class="form-label">Employee ID<span style="color: red;">(*)</span></label>
-            <input type="number" [(ngModel)]="employee.EmployeeID" (change)="onChange('EmployeeID', $event)"
-                class="form-control" id="EmployeeID">
-        </div>
-    </c-col>
-    <c-col xs="12" md="3">
-        <div class="mb-3">
             <label for="NTID" class="form-label">NTID<span style="color: red;">(*)</span></label>
             <input type="text" [(ngModel)]="employee.NTID" (change)="onChange('NTID', $event)" class="form-control"
                 id="NTID">
@@ -100,8 +93,7 @@
     </c-col>
     <c-col xs="12">
         <div class="mb-3 float-left">
-            <button class="btn btn-primary" type="button" value="Submit" [disabled]="(!employee.EmployeeName) || (!employee.EmployeeID) || (employee.EmployeeID == 0) 
-             || (!employee.NTID) || (!employee.EmployeeLevel) || (employee.EmployeeLevel == 0) || (!employee.Team) || (!employee.TotalYearExperienceBeforeBosch) || (employee.TotalYearExperienceBeforeBosch == 0)"
+            <button class="btn btn-primary" type="button" value="Submit" [disabled]="(!employee.EmployeeName) || (!employee.NTID) || (!employee.EmployeeLevel) || (employee.EmployeeLevel == 0) || (!employee.Team) || (!employee.TotalYearExperienceBeforeBosch) || (employee.TotalYearExperienceBeforeBosch == 0)"
             (click)="handleSubmit()" >Submit</button>
             <button class="btn btn-secondary" (click)="handleCancel()" type="button" value="Cancel">Cancel</button>
         </div>

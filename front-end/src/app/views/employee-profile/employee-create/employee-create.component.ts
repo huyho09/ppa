@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 
 export class EmployeeCreateComponent {
   employee: Employee = {
-    EmployeeID: 0,
+    EmployeeID: Math.floor(Math.random() * 10000),
     NTID: "",
     EmployeeName: "",
     DOB: "",
