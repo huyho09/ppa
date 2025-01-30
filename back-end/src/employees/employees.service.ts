@@ -41,15 +41,6 @@ export class EmployeesService {
   }
 
   async remove(id: string) {
-    const employee = await this.employeeRepository.findOne({ where: { id }, relations: ['project'] });
-    
-    for (const project of employee.project) {
-      project.employees = project.employees.filter(emp => emp.id !== id);
-      
-      await this.projectRepository.save(project);
-    }
-
-    await this.employeeRepository.delete(id);
-    return { message: `Employee with ID ${id} successfully removed` };
+    return await this.employeeRepository.delete(id);
   }
 }

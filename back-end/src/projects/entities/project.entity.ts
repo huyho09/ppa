@@ -1,47 +1,51 @@
 import { Customer } from 'src/customers/entities/customer.entity';
 import { Department } from 'src/departments/entities/department.entity';
 import { Employee } from 'src/employees/entities/employee.entity';
+import { ProjectEmployee } from 'src/project-employees/entities/project-employee.entity';
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, OneToOne, OneToMany, JoinColumn, ManyToMany, JoinTable, ManyToOne} from 'typeorm';
 
 @Entity()
 
 export class Project {
-    @PrimaryGeneratedColumn()
-    id : number;
+    @PrimaryGeneratedColumn('uuid')
+    id : string;
 
     @Column('text')
-    project_name: string;
+    name: string;
 
-    @ManyToOne( () => Department, department => department.project)
+    @ManyToOne( () => Department,{cascade: true})
     @JoinColumn()
     department : Department;
 
-    @ManyToMany ( () => Employee, employees=> employees.project , {nullable:true})
-    @JoinTable()
-    employees: Employee[];
+    @OneToMany ( () => ProjectEmployee, projectEmployee=> projectEmployee.project , {nullable:true, cascade: true})
+    projectEmployees: ProjectEmployee[];
 
-    @ManyToOne( () => Customer, customer =>customer.project)
+    @ManyToOne( () => Customer, {cascade: true})
     @JoinColumn()
     customer: Customer;
 
     @Column('text')
-    project_description: string;
+    requirements: string;
     
     @Column('simple-array')
-    project_skills: string[];
+    skills: string[];
 
-    @Column('text')
-    project_requirments: string;
-
-    @Column('text')
-    project_result: string;
+    @Column({type: 'text',nullable: true})
+    result: string;
 
     @Column({type: 'text', nullable: true})
     project_result_image: string;
 
-    @Column({type:'datetime',default: () => 'CURRENT_TIMESTAMP'})
-    project_created: Date;
-
-    @Column({type:'date' , nullable: true})
-    project_end_at: Date;
+    @Column({ type: 'text', default: () => `CAST(DATEDIFF(SECOND, '1970-01-01', GETUTCDATE()) AS NVARCHAR)` })
+    project_start_date: string;
+    
+    @Column({ type: 'text', nullable: true })
+    project_end_date: string;
+    
+    @Column({ type: 'text', default: () => `CAST(DATEDIFF(SECOND, '1970-01-01', GETUTCDATE()) AS NVARCHAR)` })
+    createdAt: string;
+    
+    @Column({ type: 'text', default: () => `CAST(DATEDIFF(SECOND, '1970-01-01', GETUTCDATE()) AS NVARCHAR)` })
+    lastUpdatedAt: string;
+    
 }

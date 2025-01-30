@@ -1,46 +1,10 @@
-<!-- <div class="picture-container">
-  <div class="row">
-    <div class="col">
-        <div class="chart-container">
-            <canvas id="projectOpenChart"></canvas>
-        </div>
-    </div>
-    <div class="col">
-        <div class="chart-container">
-            <canvas id="projectInProgressChart"></canvas>
-        </div>
-    </div>
-    <div class="col">
-        <div class="chart-container">
-            <canvas id="projectInReviewChart"></canvas>
-        </div>
-    </div>
-    <div class="col">
-        <div class="chart-container">
-            <canvas id="projectClosedChart"></canvas>
-        </div>
-    </div>
-  </div>
-</div>
-<br>
 
-<br><br> -->
-<!-- <div class = "container">
-  <form class = "form-inline">
-    <input class = "form-control mr-sm-2" type="search" placeholder="search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</div> -->
 <div class='container'>
 
   <table id = "projectDataTable" class="table  fixed-width-table">
     <thead>
       <tr>
-        <th style="width: 300px;">Status</th>
         <th style="width: 300px;">Name</th>
-        <th style="width: 300px;">Department</th>
-        <th style="width: 300px;">Employees</th>
-        <th style="width: 300px;">Customers</th>
         <th style="width: 300px;">Skills</th>
         <th style="width: 400px;">Requirements</th>
         <th style="width: 300px;">Start Date</th>
@@ -49,30 +13,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let project of projects">
-        <td>{{ project.status }}</td>
         <td>
-          <a  [ngClass]="{
-            'text-red': project.status !== 'closed' && project.endDate < formatTodayDate
-          }"
+          <a 
           [routerLink]="['/dashboard/project/update', project.id]">
           {{ project.name }}
         </a>
         </td>
-        <td>{{ project.department }}</td>
-        <td>
-          <table style="width: 300px;" class="table">
-            <tr *ngFor="let employee of project.employees">
-              <td style="padding: 6px;">{{ employee }}</td>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <table style="width: 300px;" class="table">
-            <tr *ngFor="let customer of project.customer">
-              <td style="padding: 6px;">{{ customer }}</td>
-            </tr>
-          </table>
-        </td>
+
         <td>
           <table style="width: 300px;" class="table">
             <tr *ngFor="let skill of project.skills">
@@ -93,8 +40,8 @@
             </p>
           </form>
         </div>
-        <td style="width: 300px;">{{ project.startDate }}</td>
-        <td style="width: 300px;">{{ project.endDate }}</td>
+        <td style="width: 300px;">{{ project.createdAt}}</td>
+        <td style="width: 300px;">{{ project.endAt }}</td>
       </tr>
     </tbody>
   </table>

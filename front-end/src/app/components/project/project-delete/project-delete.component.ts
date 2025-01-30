@@ -2,18 +2,42 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectServiceService } from '../service/project-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+interface Employee {
+  id: string;
+  firstname: string;
+  lastname: string;
+}
+
 interface Project {
   id: string;
   name: string;
-  department: string;
-  employees: string[];
-  customer: string;
   requirements: string;
   skills: string[];
   result_image: string[];
-  startDate: Date;
-  endDate: Date;
-  status: string;
+  project_start_date: string;
+  project_end_date: string;
+  createdAt: string;
+  lastUpdatedat: string;
+  department: Department;
+  customer: Customer;
+}
+
+interface Department {
+  id: string;
+  name : string;
+}
+
+interface Customer {
+  id: string;
+  firstname: string;
+  lastname: string;
+}
+
+interface ProjectEmployee {
+  employeeId: string;
+  role_in_project: string;
+  task: string; 
+  effort: number;
 }
 
 @Component({
@@ -24,19 +48,20 @@ interface Project {
 })
 export class ProjectDeleteComponent implements OnInit
 {
-  project: Project = {
+  project : Project = {
     id: '',
     name: '',
-    department: '',
-    employees: [],
-    customer: '',
+    department: {id: '', name: ''},
+    customer: { id: '', firstname: '' , lastname: ''},
     requirements: '',
     skills: [],
     result_image: [],
-    startDate: new Date(),
-    endDate: new Date(),
-    status: ''
+    project_start_date: '',
+    project_end_date: '',
+    createdAt: '',
+    lastUpdatedat: '',
   }
+
   constructor(
     private projectService: ProjectServiceService,
     private route: ActivatedRoute,

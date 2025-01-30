@@ -26,7 +26,7 @@ export class ProjectsController {
   @ApiOperation({ summary: 'Get a specific project by ID' })
   @ApiParam({ name: 'id', description: 'ID of the project' }) // Describes the 'id' parameter
   findOne(@Param('id') id: string) {
-    return this.projectsService.findOne(+id);
+    return this.projectsService.findOne(id);
   }
 
   @Patch(':id')
@@ -34,13 +34,13 @@ export class ProjectsController {
   @ApiParam({ name: 'id', description: 'ID of the project to update' }) // Describes the 'id' parameter
   @ApiBody({ type: UpdateProjectDto }) // Adds description for the body parameter
   update(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {
-    return this.projectsService.update(+id, updateProjectDto);
+    return this.projectsService.update(id, updateProjectDto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete a project by ID' })
   @ApiParam({ name: 'id', description: 'ID of the project to delete' }) // Describes the 'id' parameter
   remove(@Param('id') id: string) {
-    return this.projectsService.remove(+id);
+    return this.projectsService.remove(id);
   }
 }

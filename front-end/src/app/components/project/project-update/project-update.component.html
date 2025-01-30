@@ -1,21 +1,10 @@
-<div class="container mt-4">
+<div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="card">
         <div class="card-body">
           <form (ngSubmit)="updateProject()">
-            <div class="form-group">
-              <label for="id">Project ID: </label>
-              <input
-                type="text"
-                class="form-control"
-                id="id"
-                [(ngModel)]="project.id"
-                name="id"
-                readonly
-              />
-            </div>
-            <div class="form-group">
+            <div class="form-group mt-2">
               <label for="name">Project Name: </label>
               <input
                 type="text"
@@ -26,91 +15,152 @@
                 required
               />
             </div>
-            <div class="form-group">
+
+            <div class="form-group mt-2">
               <label for="department">Department</label>
-              <input
-                type="text"
-                class="form-control"
-                id="department"
-                [(ngModel)]="project.department"
-                name="department"
-                required
-              />
-            </div>
-
-            <div class="form-group mt-2">
-              <label for="startDate">Start Date</label>
-              <input
-                type="date"
-                class="form-control"
-                id="startDate"
-                [(ngModel)]="project.startDate"
-                name="startDate"
-                required
-              />
-            </div>
-
-            <div class="form-group mt-2">
-              <label for="endDate">End Date</label>
-              <input
-                type="date"
-                class="form-control"
-                id="endDate"
-                [(ngModel)]="project.endDate"
-                name="endDate"
-                required
-              />
-            </div>
-
-            <div class="form-group mt-2">
-              <label for="status">status</label>
-              <select name="status" id="status" [(ngModel)]="project.status">
-                <option value="opened">Opened</option>
-                <option value="in_progress">In Progress</option>
-                <option value="in_review">In Review</option>
-                <option value="closed">Closed</option>
+              <select class="form-control" id="department" name="department" [(ngModel)]="project.department.id" required>
+                <option *ngFor="let department of departments" [value]="department.id">
+                  {{ department.name }}
+                </option>
               </select>
             </div>
 
             <div class="form-group mt-2">
-              <label for="employees">Contributor</label>
-              <select class="form-control" id="employees" [(ngModel)]="project.employees" name="employees" multiple>
-                <option *ngFor="let employee of employees" [value]="employee.firstname + employee.lastname + '-' + employee.role">{{employee.firstname + employee.lastname + '-' + employee.role }}</option>
-              </select>
+              <label for="project_start_date">Start Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="project_start_date"
+                [(ngModel)]="project.project_start_date"
+                name="project_start_date"
+                required
+              />
             </div>
 
-            <div class ="form-group mt-2">
-              <label for = "customer">Customer</label>
-              <select class = "form-control" id = "customer" name ="customer" [(ngModel)] = "project.customer" multiple>
-                <option *ngFor="let customer of customers" [value]="customer.firstname + customer.lastname ">{{ customer.firstname + ' ' + customer.lastname}}</option>
+            <div class="form-group mt-2">
+              <label for="project_end_date">End Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="project_end_date"
+                [(ngModel)]="project.project_end_date"
+                name="project_end_date"
+                required
+              />
+            </div>
+            <div class="form-group mt-2">
+              <label for="employees" >Assign Employees</label>
+              <select 
+                id="employees"
+                class = "form-control"
+                multiple
+                (change)="onEmployeeSelect($event)"
+              >
+                <option *ngFor="let employee of employees" [value]="employee.id" class>
+                  {{ employee.firstname }} {{ employee.lastname }}
+                </option>
+              </select>
+            </div>
+         
+            <div *ngFor="let projectEmp of projectEmployee; let i = index">
+              <h3></h3>
+              <div class = "form-group mt-2">
+                <h3>{{selectedEmployees[i]}}</h3>
+              </div>
+              <div class="form-group mt-2">
+                <div>
+                  <label for="role{{ i }}" >Role</label>
+                  <input
+                    type="text"
+                    id="role{{ i }}"
+                    class = "form-control"
+                    [(ngModel)]="projectEmp.role_in_project"
+                    name="role{{ i }}"
+                  />
+                </div>
+                <div class = "form-group mt-2">
+                  <label for="task{{ i }}">Task</label>
+                  <input
+                    type="text"
+                    id="task{{ i }}"
+                    [(ngModel)]="projectEmp.task"
+                    name="task{{ i }}"
+                    class="form-control"
+                  />
+                </div>
+                <div class = "form-group mt-2">
+                  <label for="effort{{ i }}" >Effort (hours)</label>
+                  <input
+                    type="number"
+                    id="effort{{ i }}"
+                    [(ngModel)]="projectEmp.effort"
+                    name="effort{{ i }}"
+                    class = "form-control"
+                    min="0"
+                  />
+                  <hr>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group mt-2">
+              <label for="customer">Customer</label>
+              <select class="form-control" id="customer" name="customer" [(ngModel)]="project.customer.id" required>
+                <option *ngFor="let customer of customers" [value]="customer.id">
+                  {{ customer.firstname + ' ' + customer.lastname }}
+                </option>
               </select>
             </div>
 
             <div class="form-group mt-2">
               <label for="requirements">Requirements</label>
               <textarea
-                type="text"
                 class="form-control"
                 id="requirements"
                 [(ngModel)]="project.requirements"
                 name="requirements"
                 required
-              >
-            </textarea>
+              ></textarea>
             </div>
+
             <div class="form-group mt-2">
               <label for="skillsString">Skills</label>
               <input
                 type="text"
                 class="form-control"
                 id="skillsString"
-                name = "skillsString"
                 [(ngModel)]="skillsString"
+                name="skillsString"
                 required
               />
             </div>
-          <button type="submit" class="btn btn-primary mt-3"><a href="/dashboard/project"></a>Save</button>
-          <button type="button" class="btn btn-danger mt-3" [routerLink]="['/dashboard/project/delete', project.id]">Delete</button>        </form>
+
+            <div class = "form-group mt-2">
+              <label for="createdAt">Created At</label>
+              <input
+              type="text"
+              class = "form-control"
+              id = "createdAt"
+              name = "createdAt"
+              [(ngModel)] = "project.createdAt"
+              readonly
+              >
+            </div>
+
+            <div class = "form-group mt-2">
+              <label for="lastUpdatedAt">Last Updated At</label>
+              <input
+              type="text"
+              class = "form-control"
+              id = "lastUpdatedAt"
+              name = "lastUpdatedAt"
+              [(ngModel)] = "project.lastUpdatedat"
+              readonly
+              >
+            </div>
+
+            <button type="submit" class="form-control btn-primary mt-3">Save</button>
+          </form>
         </div>
       </div>
     </div>

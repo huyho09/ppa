@@ -4,19 +4,47 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {Chart} from 'chart.js/auto'
+import { CustomerServiceService } from '../../customer/service/customer-service.service';
+import { DepartmentServiceService } from '../../department/service/department-service.service';
+interface Employee {
+  id: string;
+  firstname: string;
+  lastname: string;
+}
+
 interface Project {
   id: string;
   name: string;
-  department: string;
-  employees: string[];
-  customer: string;
   requirements: string;
-  skills: string;
+  skills: string[];
   result_image: string[];
-  startDate: string | Date;
-  endDate: string | Date;
-  status: string;
+  project_start_date: string;
+  project_end_date: string;
+  lastUpdatedat: string;
+  department: Department;
+  customer: Customer;
+  createdAt : string;
+  endAt: string;
 }
+
+interface Department {
+  id: string;
+  name: string;
+}
+
+interface Customer {
+  id: string;
+  firstname: string;
+  lastname: string;
+}
+
+interface ProjectEmployee {
+  employeeId: string;
+  role_in_project: string;
+  task: string;
+  effort: number;
+}
+
 @Component({
   selector: 'app-project-index',
   imports: [FormsModule,CommonModule,RouterModule],
@@ -26,29 +54,48 @@ interface Project {
 export class ProjectIndexComponent implements OnInit {
 
   projects: Project[] = []
-  countTotal: number = 0
-  countOpen: number = 0
-  countInProgress: number = 0
-  countReview: number = 0
-  countClosed: number = 0
+  
   isFormVisible: boolean = false
   currentRequirements: string = ''
   todayDate: Date = new Date();
   formatTodayDate: string = this.todayDate.toLocaleDateString('en-CA')
-
-  constructor(private projectService: ProjectServiceService){}
-
+  customers : Customer[] = [];
+  departments : Department[] = [];
+  customerProject: string = '';
+  departmentProject: string = '';
+  constructor(
+    private projectService: ProjectServiceService,
+    private customerService: CustomerServiceService,
+    private departmentService : DepartmentServiceService,
+  ){}
+  getDepartmentName(id: string){
+    const departmentName = this.departments.find(department => department.id === id)
+    return departmentName?.name
+  }
+  getCustomerName(id: string) {
+    const customerName = this.customers.find(customer => customer.id === id)
+    return customerName?.firstname + " " + customerName?.lastname
+  }
   ngOnInit(): void {
-      console.log(this.formatTodayDate)
-      this.projectService.getProjects().subscribe(
+      this.projectService.getProjectsWithApiCall().subscribe(
         (data) => {
-          this.projects = data
-          this.countProjects()
-          this.countTotal= this.countOpen + this.countReview + this.countClosed + this.countInProgress;
-          this.createOpenChart()
-          this.createInProgressChart()
-          this.createInReviewChart()
-          this.createClosedChart()
+          this.projects = data.map(project => ({
+            ...project,
+            createdAt: new Date(Number(project.project_start_date)).toString(),
+            endAt: new Date(Number(project.project_end_date)).toString()
+          }))
+          console.log(this.projects)
+        }
+        
+      )
+      this.customerService.getCustomersWithApiCall().subscribe(
+        (customersData) => {
+          this.customers = customersData
+        }
+      )
+      this.departmentService.getDepartmentsWithApiCall().subscribe(
+        (departmentsData) => {
+          this.departments = departmentsData
         }
       )
   }
@@ -65,152 +112,6 @@ showForm(requirements: string) : void{
     console.log('form is closed')
   }
 }
-countProjects(): void{
-  for(const project of this.projects)
-    {
-      if (project.status === 'opened')
-      {
-        this.countOpen +=1
-      }
-      else if (project.status === 'in_progress')
-        this.countInProgress +=1
-      else if (project.status === 'in_review')
-        this.countReview +=1
-      else {
-        this.countClosed +=1
-      }
-    }
-}
-createOpenChart(): void {
-  new Chart('projectOpenChart', {
-    type: 'doughnut',
-    data: {
-      labels: ['Open', 'Other'],
-      datasets: [
-        {
-          label: 'Projects',
-          data: [
-            this.countOpen,
-            this.countTotal - this.countOpen,
-          ],
-          backgroundColor: ['#3498db', '#f1c40f'],
-          hoverOffset: 4
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label:(tooltipItem) => {
-              const value = tooltipItem.raw;
-              return `$(value) projects`;
-            }
-          }
-        }
-      }
-    }
-  })
-}
 
-createInProgressChart(): void {
-  new Chart('projectInProgressChart', {
-    type: 'doughnut',
-    data: {
-      labels: ['In Progress', 'Other'],
-      datasets: [
-        {
-          label: 'Projects',
-          data: [
-            this.countInProgress,
-            this.countTotal - this.countInProgress,
-          ],
-          backgroundColor: ['#3498db', '#f1c40f'],
-          hoverOffset: 4
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label:(tooltipItem) => {
-              const value = tooltipItem.raw;
-              return `$(value) projects`;
-            }
-          }
-        }
-      }
-    }
-  })
-}
-
-createInReviewChart(): void {
-  new Chart('projectInReviewChart', {
-    type: 'doughnut',
-    data: {
-      labels: ['In Review', 'Other'],
-      datasets: [
-        {
-          label: 'Projects',
-          data: [
-            this.countReview,
-            this.countTotal - this.countReview,
-          ],
-          backgroundColor: ['#3498db', '#f1c40f'],
-          hoverOffset: 4
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label:(tooltipItem) => {
-              const value = tooltipItem.raw;
-              return `$(value) projects`;
-            }
-          }
-        }
-      }
-    }
-  })
-}
-
-createClosedChart(): void {
-  new Chart('projectClosedChart', {
-    type: 'doughnut',
-    data: {
-      labels: ['Closed', 'Other'],
-      datasets: [
-        {
-          label: 'Projects',
-          data: [
-            this.countClosed,
-            this.countTotal - this.countClosed,
-          ],
-          backgroundColor: ['#3498db', '#f1c40f'],
-          hoverOffset: 4
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label:(tooltipItem) => {
-              const value = tooltipItem.raw;
-              return `$(value) projects`;
-            }
-          }
-        }
-      }
-    }
-  })
-}
 
 }

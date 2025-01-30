@@ -11,10 +11,12 @@ import { Department } from './departments/entities/department.entity';
 import { Customer } from './customers/entities/customer.entity';
 import { Employee } from './employees/entities/employee.entity';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ProjectEmployeesModule } from './project-employees/project-employees.module';
+import { ProjectEmployee } from './project-employees/entities/project-employee.entity';
 
 @Module({
   imports: [
-    // ProjectsModule,
+    ProjectsModule,
     TypeOrmModule.forRoot({
       type: "mssql",
       host: '127.0.0.1',
@@ -22,7 +24,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
       database: 'webapplication',
       username: 'sa',
       password: 'Password@123',
-      entities: [Project, Department, Customer, Employee],
+      entities: [Project, Department, Customer, Employee, ProjectEmployee],
       synchronize: true,
       options: {
         encrypt: false,
@@ -33,6 +35,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
     DepartmentsModule,
     CustomersModule,
     EmployeesModule,
+    ProjectEmployeesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

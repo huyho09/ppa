@@ -1,19 +1,7 @@
 .container {
   margin-top: 30px;
+  width: 1500px;
 }
-
-.card {
-  max-width: 100%; // Ensures the card does not overflow
-  margin: 10px; // Adds some space between cards
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Adds subtle shadow
-  border-radius: 8px; // Rounded corners
-  overflow: hidden; // Ensures the image does not overflow
-  transition: transform 0.3s ease, box-shadow 0.3s ease; // Smooth transition on hover
-
-  &:hover {
-    transform: scale(1.05); // Slightly enlarge the card on hover
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); // Increase shadow on hover
-  }
 
   .avatar-img {
     border-radius: 50%; // Makes the avatar circular
@@ -23,22 +11,6 @@
     margin: 0 auto; // Centers the avatar image
   }
 
-  .card-body {
-    padding: 15px; // Adds padding inside the card
-    text-align: left; // Centers the text
-  }
-
-  .card-title {
-    font-size: 1.25rem; // Slightly smaller font size for the title
-    font-weight: bold; // Makes the title bold
-    margin-bottom: 10px; // Adds space below the title
-  }
-
-  .card-text {
-    font-size: 0.875rem; // Smaller font size for the text
-    color: #555; // Dark gray color for text
-    margin-bottom: 5px; // Adds space between text elements
-  }
 
   ul {
     list-style-type: none; // Removes default list bullets
@@ -50,21 +22,10 @@
     font-size: 0.875rem; // Smaller font size for skills
     color: #777; // Lighter gray color for skills
   }
-}
+
 
 .row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.col-md-6 {
-  flex: 1 1 calc(50% - 20px); // 2 cards per row on medium screens
-  margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .col-md-6 {
-    flex: 1 1 calc(100% - 20px); // 1 card per row on smaller screens
-  }
 }

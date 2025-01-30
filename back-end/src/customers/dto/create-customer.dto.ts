@@ -2,6 +2,8 @@ import {IsString, IsArray} from 'class-validator'
 export class CreateCustomerDto {
     
     @IsString()
+    id: string;
+    @IsString()
     firstname: string;
 
     @IsString()
@@ -13,7 +15,5 @@ export class CreateCustomerDto {
     @IsString()
     gender: string;
 
-    @IsArray()
-    projectIds: number[];
 
 }

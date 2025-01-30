@@ -25,7 +25,4 @@ export class CreateEmployeeDto {
     @IsBoolean()
     is_admin: boolean;
 
-    @IsArray()
-    projectIds: number[];
-
 }
