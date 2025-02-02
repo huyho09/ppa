@@ -97,7 +97,7 @@ export class ProjectOverviewComponent {
     if (storedProjects) {
       this.projects = JSON.parse(storedProjects);
     } else {
-      this.saveProjectsToLocalStorage;
+      this.saveProjectsToLocalStorage();
     }
   }
 

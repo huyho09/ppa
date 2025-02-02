@@ -2,130 +2,173 @@
   <c-col xs="12">
     <c-card>
       <c-card-header>
+        <button class="btn btn-primary" (click)="handleCreateBillings()">Create</button>
         <button class="btn btn-secondary" (click)="onEditRecord()" *ngIf="!isEdit">Edit</button>
         <button class="btn btn-warning" (click)="onEditRecord()" *ngIf="isEdit">Stop Edit</button>
       </c-card-header>
       <c-card-body>
-          <div class="row">
-            <!-- Column 1 -->
-            <div class="col-12 col-md-6">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>EUR/USD</th>
-                    <th>1.1</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>JPY/USD</td>
-                    <td>0.0092</td>
-                  </tr>
-                  <tr>
-                    <td>VND/USD</td>
-                    <td>0.04</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-        
-            <!-- Column 2 -->
-            <div class="col-12 col-md-6">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>EI-300343</th>
-                    <th>MCR</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>EI-300354</td>
-                    <td>NON MCR</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-        
-            <!-- Column 3 -->
-            <div class="col-12 col-md-4">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Team:</th>
-                    <th>OPM31</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1.655.280</td>
-                    <td>Revenue (Total)</td>
-                  </tr>
-                  <tr>
-                    <td>1.655.280</td>
-                    <td>Revenue (Sub Total)</td>
-                  </tr>
-                  <tr>
-                    <td>0</td>
-                    <td>Other Rev. (Sub total)</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <div class="row">
+          <!-- Column 1 -->
+          <div class="col-12 col-md-6">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>EUR/USD</th>
+                  <th>1.1</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>JPY/USD</td>
+                  <td>0.0092</td>
+                </tr>
+                <tr>
+                  <td>VND/USD</td>
+                  <td>0.04</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
+          <!-- Column 2 -->
+          <div class="col-12 col-md-6">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>EI-300343</th>
+                  <th>MCR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>EI-300354</td>
+                  <td>NON MCR</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="col-12 col-md-4">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Team:</th>
+                  <th>OPM31</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"),
+                    sumPlanRev("Plan_3"),sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"),
+                    sumPlanRev("Plan_7"), sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"),
+                    sumPlanRev("Plan_11"), sumPlanRev("Plan_12")
+                    ])}}</td>
+                  <td>Revenue (Total)</td>
+                </tr>
+                <tr>
+                  <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"),
+                    sumPlanRev("Plan_3"),sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"),
+                    sumPlanRev("Plan_7"), sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"),
+                    sumPlanRev("Plan_11"), sumPlanRev("Plan_12")
+                    ])}}</td>
+                  <td>Revenue (Sub Total)</td>
+                </tr>
+                <tr>
+                  <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"),
+                    sumPlanRev("Plan_3"),sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"),
+                    sumPlanRev("Plan_7"), sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"),
+                    sumPlanRev("Plan_11"), sumPlanRev("Plan_12")
+                    ]) -
+                    sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"),
+                    sumPlanRev("Plan_3"),sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"),
+                    sumPlanRev("Plan_7"), sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"),
+                    sumPlanRev("Plan_11"), sumPlanRev("Plan_12")
+                    ])
+                    }}</td>
+                  <td>Other Rev. (Sub total)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <div style="overflow-x:auto">
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th></th>
                 <th></th>
-                <th>Plan</th>
-                <th>Plan</th>
-                <th>Plan</th>
-                <th>Plan</th>
-                <th>Plan</th>
+                <th>Plan (1)</th>
+                <th>Billed (1)</th>
+                <th>Unbilled SAP (1)</th>
+                <th>Unbilled no PO (1)</th>
+                <th>Other Rev. (1)</th>
 
-                <th>Plan</th>
-                <th>Billed</th>
-                <th>Unbilled SAP</th>
-                <th>Unbilled no PO</th>
-                <th>Other Rev.</th>
+                <th>Plan (2)</th>
+                <th>Billed (2)</th>
+                <th>Unbilled SAP (2)</th>
+                <th>Unbilled no PO (2)</th>
+                <th>Other Rev. (2)</th>
 
-                <th>Plan</th>
-                <th>Billed</th>
-                <th>Unbilled SAP</th>
-                <th>Unbilled no PO</th>
-                <th>Other Rev.</th>
+                <th>Plan (3)</th>
+                <th>Billed (3)</th>
+                <th>Unbilled SAP (3)</th>
+                <th>Unbilled no PO (3)</th>
+                <th>Other Rev. (3)</th>
 
-                <th>Plan</th>
-                <th>Billed</th>
-                <th>Unbilled SAP</th>
-                <th>Unbilled no PO</th>
-                <th>Other Rev.</th>
+                <th>Plan (4)</th>
+                <th>Billed (4)</th>
+                <th>Unbilled SAP (4)</th>
+                <th>Unbilled no PO (4)</th>
+                <th>Other Rev. (4)</th>
 
-                <th>Plan</th>
-                <th>Billed</th>
-                <th>Unbilled SAP</th>
-                <th>Unbilled no PO</th>
-                <th>Other Rev.</th>
+                <th>Plan (5)</th>
+                <th>Billed (5)</th>
+                <th>Unbilled SAP (5)</th>
+                <th>Unbilled no PO (5)</th>
+                <th>Other Rev. (5)</th>
 
-                <th>Plan</th>
-                <th>Billed</th>
-                <th>Unbilled SAP</th>
-                <th>Unbilled no PO</th>
-                <th>Other Rev.</th>
+                <th>Plan (6)</th>
+                <th>Billed (6)</th>
+                <th>Unbilled SAP (6)</th>
+                <th>Unbilled no PO (6)</th>
+                <th>Other Rev. (6)</th>
 
-                <th>Plan</th>
-                <th>Billed</th>
-                <th>Unbilled SAP</th>
-                <th>Unbilled no PO</th>
-                <th>Other Rev.</th>
+                <th>Plan (7)</th>
+                <th>Billed (7)</th>
+                <th>Unbilled SAP (7)</th>
+                <th>Unbilled no PO (7)</th>
+                <th>Other Rev. (7)</th>
 
-                <th>Plan</th>
-                <th>Billed</th>
-                <th>Unbilled SAP</th>
-                <th>Unbilled no PO</th>
-                <th>Other Rev.</th>
+                <th>Plan (8)</th>
+                <th>Billed (8)</th>
+                <th>Unbilled SAP (8)</th>
+                <th>Unbilled no PO (8)</th>
+                <th>Other Rev. (8)</th>
+
+                <th>Plan (9)</th>
+                <th>Billed (9)</th>
+                <th>Unbilled SAP (9)</th>
+                <th>Unbilled no PO (9)</th>
+                <th>Other Rev. (9)</th>
+
+                <th>Plan (10)</th>
+                <th>Billed (10)</th>
+                <th>Unbilled SAP (10)</th>
+                <th>Unbilled no PO (10)</th>
+                <th>Other Rev. (10)</th>
+
+                <th>Plan (11)</th>
+                <th>Billed (11)</th>
+                <th>Unbilled SAP (11)</th>
+                <th>Unbilled no PO (11)</th>
+                <th>Other Rev. (11)</th>
+
+                <th>Plan (12)</th>
+                <th>Billed (12)</th>
+                <th>Unbilled SAP (12)</th>
+                <th>Unbilled no PO (12)</th>
+                <th>Other Rev. (12)</th>
 
                 <th></th>
                 <th>Plan (1)</th>
@@ -145,232 +188,681 @@
             <tbody>
               <tr>
                 <td><b>PMO</b></td>
-                <td>15.57</td>
+                <td>{{sumTotalPMO() / 12}}</td>
                 <td><b>JAN</b></td>
+                <td colspan="4"></td>
                 <td><b>FEB</b></td>
+                <td colspan="4"></td>
                 <td><b>MAR</b></td>
+                <td colspan="4"></td>
                 <td><b>APR</b></td>
+                <td colspan="4"></td>
                 <td><b>MAY</b></td>
+                <td colspan="4"></td>
                 <td><b>JUN</b></td>
                 <td colspan="4"></td>
                 <td><b>JUL</b></td>
                 <td colspan="4"></td>
-
                 <td><b>AUG</b></td>
                 <td colspan="4"></td>
-
                 <td><b>SEP</b></td>
                 <td colspan="4"></td>
-                
                 <td><b>OCT</b></td>
                 <td colspan="4"></td>
-
                 <td><b>NOV</b></td>
                 <td colspan="4"></td>
-
                 <td><b>DEC</b></td>
                 <td colspan="4"></td>
-
                 <td><b>Revenue</b></td>
                 <td colspan="12"></td>
 
               </tr>
               <tr>
                 <td><b>Total:</b></td>
-                <td>186.80</td>
-                <td>22.80</td>
-                <td>20.80</td>
-                <td>20.80</td>
-                <td>13.80</td>
-                <td>13.80</td>
+                <td>{{sumTotalPMO()}}</td>
+                <td>{{sumArrayByAtribute("Plan_1")}}</td>
+                <td>{{sumArrayByAtribute("Billed_1")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_1")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_1")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_1")}}</td>
+                <td>{{sumArrayByAtribute("Plan_2")}}</td>
+                <td>{{sumArrayByAtribute("Billed_2")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_2")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_2")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_2")}}</td>
+                <td>{{sumArrayByAtribute("Plan_3")}}</td>
+                <td>{{sumArrayByAtribute("Billed_3")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_3")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_3")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_3")}}</td>
+                <td>{{sumArrayByAtribute("Plan_4")}}</td>
+                <td>{{sumArrayByAtribute("Billed_4")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_4")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_4")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_4")}}</td>
+                <td>{{sumArrayByAtribute("Plan_5")}}</td>
+                <td>{{sumArrayByAtribute("Billed_5")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_5")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_5")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_5")}}</td>
+                <td>{{sumArrayByAtribute("Plan_6")}}</td>
+                <td>{{sumArrayByAtribute("Billed_6")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_6")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_6")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_6")}}</td>
 
-                <td>13.80</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
+                <td>{{sumArrayByAtribute("Plan_7")}}</td>
+                <td>{{sumArrayByAtribute("Billed_7")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_7")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_7")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_7")}}</td>
 
-                <td>13.50</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
+                <td>{{sumArrayByAtribute("Plan_8")}}</td>
+                <td>{{sumArrayByAtribute("Billed_8")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_8")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_8")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_8")}}</td>
 
-                <td>13.50</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
+                <td>{{sumArrayByAtribute("Plan_9")}}</td>
+                <td>{{sumArrayByAtribute("Billed_9")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_9")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_9")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_9")}}</td>
 
-                <td>13.50</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                
-                <td>13.50</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
+                <td>{{sumArrayByAtribute("Plan_10")}}</td>
+                <td>{{sumArrayByAtribute("Billed_10")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_10")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_10")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_10")}}</td>
 
-                <td>13.50</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
-                <td>1.00</td>
+                <td>{{sumArrayByAtribute("Plan_11")}}</td>
+                <td>{{sumArrayByAtribute("Billed_11")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_11")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_11")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_11")}}</td>
 
-                <td>13.50</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1655280</td>
-
-                <td>203040.00</td>
-                <td>185040.00</td>
-                <td>185040.00</td>
-                <td>122040.00</td>
-                <td>122040.00</td>
-                <td>122040.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
+                <td>{{sumArrayByAtribute("Plan_12")}}</td>
+                <td>{{sumArrayByAtribute("Billed_12")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_12")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_12")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_12")}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"),
+                  sumPlanRev("Plan_3"),sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"),
+                  sumPlanRev("Plan_7"), sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"),
+                  sumPlanRev("Plan_11"), sumPlanRev("Plan_12")
+                  ])}}</td>
+                <td>{{sumPlanRev("Plan_1")}}</td>
+                <td>{{sumPlanRev("Plan_2")}}</td>
+                <td>{{sumPlanRev("Plan_3")}}</td>
+                <td>{{sumPlanRev("Plan_4")}}</td>
+                <td>{{sumPlanRev("Plan_5")}}</td>
+                <td>{{sumPlanRev("Plan_6")}}</td>
+                <td>{{sumPlanRev("Plan_7")}}</td>
+                <td>{{sumPlanRev("Plan_8")}}</td>
+                <td>{{sumPlanRev("Plan_9")}}</td>
+                <td>{{sumPlanRev("Plan_10")}}</td>
+                <td>{{sumPlanRev("Plan_11")}}</td>
+                <td>{{sumPlanRev("Plan_12")}}</td>
 
               </tr>
               <tr>
                 <td><b>Subtotal:</b></td>
-                <td>186.80</td>
-                <td>22.80</td>
-                <td>20.80</td>
-                <td>20.80</td>
-                <td>13.80</td>
-                <td>13.80</td>
+                <td>{{sumTotalPMO()}}</td>
+                <td>{{sumArrayByAtribute("Plan_1")}}</td>
+                <td>{{sumArrayByAtribute("Billed_1")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_1")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_1")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_1")}}</td>
+                <td>{{sumArrayByAtribute("Plan_2")}}</td>
+                <td>{{sumArrayByAtribute("Billed_2")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_2")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_2")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_2")}}</td>
+                <td>{{sumArrayByAtribute("Plan_3")}}</td>
+                <td>{{sumArrayByAtribute("Billed_3")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_3")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_3")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_3")}}</td>
+                <td>{{sumArrayByAtribute("Plan_4")}}</td>
+                <td>{{sumArrayByAtribute("Billed_4")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_4")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_4")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_4")}}</td>
+                <td>{{sumArrayByAtribute("Plan_5")}}</td>
+                <td>{{sumArrayByAtribute("Billed_5")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_5")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_5")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_5")}}</td>
+                <td>{{sumArrayByAtribute("Plan_6")}}</td>
+                <td>{{sumArrayByAtribute("Billed_6")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_6")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_6")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_6")}}</td>
 
-                <td>13.80</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td>{{sumArrayByAtribute("Plan_7")}}</td>
+                <td>{{sumArrayByAtribute("Billed_7")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_7")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_7")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_7")}}</td>
 
-                <td>13.50</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td>{{sumArrayByAtribute("Plan_8")}}</td>
+                <td>{{sumArrayByAtribute("Billed_8")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_8")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_8")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_8")}}</td>
 
-                <td>13.50</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td>{{sumArrayByAtribute("Plan_9")}}</td>
+                <td>{{sumArrayByAtribute("Billed_9")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_9")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_9")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_9")}}</td>
 
-                <td>13.50</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                
-                <td>13.50</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td>{{sumArrayByAtribute("Plan_10")}}</td>
+                <td>{{sumArrayByAtribute("Billed_10")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_10")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_10")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_10")}}</td>
 
-                <td>13.50</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td>{{sumArrayByAtribute("Plan_11")}}</td>
+                <td>{{sumArrayByAtribute("Billed_11")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_11")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_11")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_11")}}</td>
 
-                <td>13.50</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1655280</td>
-
-                <td>203040.00</td>
-                <td>185040.00</td>
-                <td>185040.00</td>
-                <td>122040.00</td>
-                <td>122040.00</td>
-                <td>122040.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
-                <td>119340.00</td>
+                <td>{{sumArrayByAtribute("Plan_12")}}</td>
+                <td>{{sumArrayByAtribute("Billed_12")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_12")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_12")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_12")}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"),
+                  sumPlanRev("Plan_3"),sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"),
+                  sumPlanRev("Plan_7"), sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"),
+                  sumPlanRev("Plan_11"), sumPlanRev("Plan_12")
+                  ])}}</td>
+                <td>{{sumPlanRev("Plan_1")}}</td>
+                <td>{{sumPlanRev("Plan_2")}}</td>
+                <td>{{sumPlanRev("Plan_3")}}</td>
+                <td>{{sumPlanRev("Plan_4")}}</td>
+                <td>{{sumPlanRev("Plan_5")}}</td>
+                <td>{{sumPlanRev("Plan_6")}}</td>
+                <td>{{sumPlanRev("Plan_7")}}</td>
+                <td>{{sumPlanRev("Plan_8")}}</td>
+                <td>{{sumPlanRev("Plan_9")}}</td>
+                <td>{{sumPlanRev("Plan_10")}}</td>
+                <td>{{sumPlanRev("Plan_11")}}</td>
+                <td>{{sumPlanRev("Plan_12")}}</td>
 
               </tr>
               <tr>
                 <td><b>YTD:</b></td>
-                <td>1585.10</td>
-                <td>22.80</td>
-                <td>43.60</td>
-                <td>64.40</td>
-                <td>78.20</td>
-                <td>92.00</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Billed_1"),
+                  sumArrayByAtribute("Unbilled_SAP_1"),
+                  sumArrayByAtribute("Unbilled_No_PO_1"),sumArrayByAtribute("Other_Rev_1"),
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2")]),
 
-                <td>105.80</td>
-                <td>5.00</td>
-                <td>5.00</td>
-                <td>5.00</td>
-                <td>5.00</td>
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"),
+                  sumArrayByAtribute("Billed_2"),sumArrayByAtribute("Billed_3")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3")]),
 
-                <td>119.30</td>
-                <td>6.00</td>
-                <td>6.00</td>
-                <td>6.00</td>
-                <td>6.00</td>
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4")]),
 
-                <td>132.80</td>
-                <td>7.00</td>
-                <td>7.00</td>
-                <td>7.00</td>
-                <td>7.00</td>
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5")]),
 
-                <td>146.30</td>
-                <td>8.00</td>
-                <td>8.00</td>
-                <td>8.00</td>
-                <td>8.00</td>
-                
-                <td>159.80</td>
-                <td>9.00</td>
-                <td>9.00</td>
-                <td>9.00</td>
-                <td>9.00</td>
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6")]),
 
-                <td>173.30</td>
-                <td>10.00</td>
-                <td>10.00</td>
-                <td>10.00</td>
-                <td>10.00</td>
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"),]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7")]),
 
-                <td>186.80</td>
-                <td>10.00</td>
-                <td>10.00</td>
-                <td>10.00</td>
-                <td>10.00</td>
-                <td>11757420</td>
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8")]),
 
-                <td>203040.00</td>
-                <td>388080.00</td>
-                <td>573120.00</td>
-                <td>695160.00</td>
-                <td>817200.00</td>
-                <td>939240.00</td>
-                <td>1058580.00</td>
-                <td>1177920.00</td>
-                <td>1297260.00</td>
-                <td>1416600.00</td>
-                <td>1535940.00</td>
-                <td>1655280.00</td>
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8"),
+                  sumArrayByAtribute("Plan_9")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8"),
+                  sumArrayByAtribute("Billed_9")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8"),
+                  sumArrayByAtribute("Unbilled_SAP_9")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8"),
+                  sumArrayByAtribute("Unbilled_No_PO_9")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8"),
+                  sumArrayByAtribute("Other_Rev_9")]),
+
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8"),
+                  sumArrayByAtribute("Plan_9"), sumArrayByAtribute("Plan_10")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8"),
+                  sumArrayByAtribute("Billed_9"), sumArrayByAtribute("Billed_10")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8"),
+                  sumArrayByAtribute("Unbilled_SAP_9"), sumArrayByAtribute("Unbilled_SAP_10")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8"),
+                  sumArrayByAtribute("Unbilled_No_PO_9"), sumArrayByAtribute("Unbilled_No_PO_10")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8"),
+                  sumArrayByAtribute("Other_Rev_9"), sumArrayByAtribute("Other_Rev_10")]),
+
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8"),
+                  sumArrayByAtribute("Plan_9"), sumArrayByAtribute("Plan_10"), sumArrayByAtribute("Plan_11")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8"),
+                  sumArrayByAtribute("Billed_9"), sumArrayByAtribute("Billed_10"), sumArrayByAtribute("Billed_11")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8"),
+                  sumArrayByAtribute("Unbilled_SAP_9"), sumArrayByAtribute("Unbilled_SAP_10"),
+                  sumArrayByAtribute("Unbilled_SAP_11")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8"),
+                  sumArrayByAtribute("Unbilled_No_PO_9"), sumArrayByAtribute("Unbilled_No_PO_10"),
+                  sumArrayByAtribute("Unbilled_No_PO_11")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8"),
+                  sumArrayByAtribute("Other_Rev_9"), sumArrayByAtribute("Other_Rev_10"),
+                  sumArrayByAtribute("Other_Rev_11")]),
+
+                  sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8"),
+                  sumArrayByAtribute("Plan_9"), sumArrayByAtribute("Plan_10"), sumArrayByAtribute("Plan_11"),
+                  sumArrayByAtribute("Plan_12")]),
+                  sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8"),
+                  sumArrayByAtribute("Billed_9"), sumArrayByAtribute("Billed_10"), sumArrayByAtribute("Billed_11"),
+                  sumArrayByAtribute("Billed_12")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8"),
+                  sumArrayByAtribute("Unbilled_SAP_9"), sumArrayByAtribute("Unbilled_SAP_10"),
+                  sumArrayByAtribute("Unbilled_SAP_11"), sumArrayByAtribute("Unbilled_SAP_12")]),
+                  sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8"),
+                  sumArrayByAtribute("Unbilled_No_PO_9"), sumArrayByAtribute("Unbilled_No_PO_10"),
+                  sumArrayByAtribute("Unbilled_No_PO_11"), sumArrayByAtribute("Unbilled_No_PO_12")]),
+                  sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8"),
+                  sumArrayByAtribute("Other_Rev_9"), sumArrayByAtribute("Other_Rev_10"),
+                  sumArrayByAtribute("Other_Rev_11"), sumArrayByAtribute("Other_Rev_12")]),
+                  ])}}</td>
+                <td>{{sumArrayByAtribute("Plan_1")}}</td>
+                <td>{{sumArrayByAtribute("Billed_1")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_SAP_1")}}</td>
+                <td>{{sumArrayByAtribute("Unbilled_No_PO_1")}}</td>
+                <td>{{sumArrayByAtribute("Other_Rev_1")}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2")])}}
+                </td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2")])}}
+                </td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5")])}}
+                </td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8")])}}
+                </td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8"),
+                  sumArrayByAtribute("Plan_9")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8"),
+                  sumArrayByAtribute("Billed_9")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8"),
+                  sumArrayByAtribute("Unbilled_SAP_9")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8"),
+                  sumArrayByAtribute("Unbilled_No_PO_9")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8"),
+                  sumArrayByAtribute("Other_Rev_9")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8"),
+                  sumArrayByAtribute("Plan_9"), sumArrayByAtribute("Plan_10") ])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8"),
+                  sumArrayByAtribute("Billed_9"), sumArrayByAtribute("Billed_10")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8"),
+                  sumArrayByAtribute("Unbilled_SAP_9"), sumArrayByAtribute("Unbilled_SAP_10")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8"),
+                  sumArrayByAtribute("Unbilled_No_PO_9"), sumArrayByAtribute("Unbilled_No_PO_10")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8"),
+                  sumArrayByAtribute("Other_Rev_9"), sumArrayByAtribute("Other_Rev_10")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8"),
+                  sumArrayByAtribute("Plan_9"), sumArrayByAtribute("Plan_10"), sumArrayByAtribute("Plan_11")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8"),
+                  sumArrayByAtribute("Billed_9"), sumArrayByAtribute("Billed_10"), sumArrayByAtribute("Billed_11")])}}
+                </td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8"),
+                  sumArrayByAtribute("Unbilled_SAP_9"), sumArrayByAtribute("Unbilled_SAP_10"),
+                  sumArrayByAtribute("Unbilled_SAP_11")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8"),
+                  sumArrayByAtribute("Unbilled_No_PO_9"), sumArrayByAtribute("Unbilled_No_PO_10"),
+                  sumArrayByAtribute("Unbilled_No_PO_11")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8"),
+                  sumArrayByAtribute("Other_Rev_9"), sumArrayByAtribute("Other_Rev_10"),
+                  sumArrayByAtribute("Other_Rev_11")])}}</td>
+
+                <td>{{sumArrayNumber([sumArrayByAtribute("Plan_1"), sumArrayByAtribute("Plan_2"),
+                  sumArrayByAtribute("Plan_3"), sumArrayByAtribute("Plan_4"), sumArrayByAtribute("Plan_5"),
+                  sumArrayByAtribute("Plan_6"), sumArrayByAtribute("Plan_7"), sumArrayByAtribute("Plan_8"),
+                  sumArrayByAtribute("Plan_9"), sumArrayByAtribute("Plan_10"), sumArrayByAtribute("Plan_11"),
+                  sumArrayByAtribute("Plan_12")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Billed_1"), sumArrayByAtribute("Billed_2"),
+                  sumArrayByAtribute("Billed_3"), sumArrayByAtribute("Billed_4"), sumArrayByAtribute("Billed_5"),
+                  sumArrayByAtribute("Billed_6"), sumArrayByAtribute("Billed_7"), sumArrayByAtribute("Billed_8"),
+                  sumArrayByAtribute("Billed_9"), sumArrayByAtribute("Billed_10"), sumArrayByAtribute("Billed_11"),
+                  sumArrayByAtribute("Billed_12")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_SAP_1"), sumArrayByAtribute("Unbilled_SAP_2"),
+                  sumArrayByAtribute("Unbilled_SAP_3"), sumArrayByAtribute("Unbilled_SAP_4"),
+                  sumArrayByAtribute("Unbilled_SAP_5"), sumArrayByAtribute("Unbilled_SAP_6"),
+                  sumArrayByAtribute("Unbilled_SAP_7"), sumArrayByAtribute("Unbilled_SAP_8"),
+                  sumArrayByAtribute("Unbilled_SAP_9"), sumArrayByAtribute("Unbilled_SAP_10"),
+                  sumArrayByAtribute("Unbilled_SAP_11"), sumArrayByAtribute("Unbilled_SAP_12")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Unbilled_No_PO_1"), sumArrayByAtribute("Unbilled_No_PO_2"),
+                  sumArrayByAtribute("Unbilled_No_PO_3"), sumArrayByAtribute("Unbilled_No_PO_4"),
+                  sumArrayByAtribute("Unbilled_No_PO_5"), sumArrayByAtribute("Unbilled_No_PO_6"),
+                  sumArrayByAtribute("Unbilled_No_PO_7"), sumArrayByAtribute("Unbilled_No_PO_8"),
+                  sumArrayByAtribute("Unbilled_No_PO_9"), sumArrayByAtribute("Unbilled_No_PO_10"),
+                  sumArrayByAtribute("Unbilled_No_PO_11"), sumArrayByAtribute("Unbilled_No_PO_12")])}}</td>
+                <td>{{sumArrayNumber([sumArrayByAtribute("Other_Rev_1"), sumArrayByAtribute("Other_Rev_2"),
+                  sumArrayByAtribute("Other_Rev_3"), sumArrayByAtribute("Other_Rev_4"),
+                  sumArrayByAtribute("Other_Rev_5"), sumArrayByAtribute("Other_Rev_6"),
+                  sumArrayByAtribute("Other_Rev_7"), sumArrayByAtribute("Other_Rev_8"),
+                  sumArrayByAtribute("Other_Rev_9"), sumArrayByAtribute("Other_Rev_10"),
+                  sumArrayByAtribute("Other_Rev_11"), sumArrayByAtribute("Other_Rev_12")])}}</td>
+
+                <td>{{sumPlanRev("Plan_1") + sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8"), sumPlanRev("Plan_9")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"), sumPlanRev("Plan_11")]) +
+                  sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"), sumPlanRev("Plan_11"),
+                  sumPlanRev("Plan_12")])
+                  }}</td>
+                <td>{{sumPlanRev("Plan_1")}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8"), sumPlanRev("Plan_9")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"), sumPlanRev("Plan_11")])}}</td>
+                <td>{{sumArrayNumber([sumPlanRev("Plan_1"), sumPlanRev("Plan_2"), sumPlanRev("Plan_3"),
+                  sumPlanRev("Plan_4"), sumPlanRev("Plan_5"), sumPlanRev("Plan_6"), sumPlanRev("Plan_7"),
+                  sumPlanRev("Plan_8"), sumPlanRev("Plan_9"), sumPlanRev("Plan_10"), sumPlanRev("Plan_11"),
+                  sumPlanRev("Plan_12")])}}</td>
 
               </tr>
             </tbody>
@@ -407,13 +899,38 @@
               <th>Rate in Billing<p>CUR</p>
               </th>
               <th>CONV</th>
+              <th>CUR</th>
               <th>Rate in USD</th>
               <th>Total PMO</th>
               <th>Plan (1)</th>
+              <th>Billed (6)</th>
+              <th>Unbilled SAP (6)</th>
+              <th>Unbilled no PO (6)</th>
+              <th>Other Rev. (6)</th>
+
               <th>Plan (2)</th>
+              <th>Billed (2)</th>
+              <th>Unbilled SAP (2)</th>
+              <th>Unbilled no PO (2)</th>
+              <th>Other Rev. (2)</th>
+
               <th>Plan (3)</th>
+              <th>Billed (3)</th>
+              <th>Unbilled SAP (3)</th>
+              <th>Unbilled no PO (3)</th>
+              <th>Other Rev. (3)</th>
+
               <th>Plan (4)</th>
+              <th>Billed (4)</th>
+              <th>Unbilled SAP (4)</th>
+              <th>Unbilled no PO (4)</th>
+              <th>Other Rev. (4)</th>
+
               <th>Plan (5)</th>
+              <th>Billed (5)</th>
+              <th>Unbilled SAP (5)</th>
+              <th>Unbilled no PO (5)</th>
+              <th>Other Rev. (5)</th>
 
               <th>Plan (6)</th>
               <th>Billed (6)</th>
@@ -472,93 +989,292 @@
             </tr>
           </thead>
           <tbody>
-            <!--   <tr *ngFor="let billingItem of billings"> -->
-            <tr>
+            <tr *ngFor="let billingItem of billings">
               <td>
-                <button [disabled]="(!isEdit)" class="btn btn-success">Save</button>
-                <button [disabled]="(!isEdit)" class="btn btn-danger">Delete</button>
+                <button [disabled]="(!isEdit)" (click)="onChangeFields(billingItem.BilllingId, $event)"
+                  class="btn btn-success">Save</button>
+                <button [disabled]="(!isEdit)" (click)="onChangeFields(billingItem.BilllingId, $event)"
+                  class="btn btn-danger">Delete</button>
               </td>
               <!--   <td><span *ngIf="!isEdit">{{billingItem.ClientName}}</span>
                 <input *ngIf="isEdit" [(ngModel)]="billingItem.ClientName" class="form-control" type="text" />
               </td> -->
-              <td>OPM31</td>
-              <td>OPM31</td>
-              <td>L1L2</td>
-              <td>Data Engineer & IT Consultant, Business Analyst, UI/UX, Process Consultant</td>
-              <td>Project 1</td>
-              <td>33911001</td>
-              <td>Nguyen Van A 01</td>
-              <td>MS-300001</td>
-              <td>Bosch BD</td>
-              <td>BD</td>
-              <td>BD</td>
-              <td>Direct</td>
-              <td>Non MCR</td>
-              <td>Nearshore</td>
-              <td>CN</td>
-              <td>Others</td>
-              <td>Service Based</td>
-              <td>9000</td>
-              <td>USD</td>
-              <td>{{convertCurrency("USD")}}</td>
-              <td>{{multiplyTwoNumber(9000, convertCurrency("USD"))}}</td>
-              <td>{{sumArrayNumber([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5])}}</td>
-              <td>0.5</td>
-              <td>0.5</td>
-              <td>0.5</td>
-              <td>0.5</td>
-              <td>0.5</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>0.5</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>0.5</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>0.5</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>0.5</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>0.5</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>0.5</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>{{sumArrayNumber([multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5),multiplyTwoNumber(9000,
-                0.5),multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5)
-                , multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5),
-                multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5) ,multiplyTwoNumber(9000, 0.5)
+              <td><span *ngIf="!isEdit">{{billingItem.Team}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Team" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Team_CF}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Team_CF" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Sub_Team}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Sub_Team" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Sub_Team_CF}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Sub_Team_CF" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Sub_Project}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Sub_Project" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Emp_ID}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Emp_ID" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Employee_Name}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Employee_Name" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.PIF_ID}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.PIF_ID" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Rev_Source}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Rev_Source" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Cus_Div}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Div" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Cus_Div_CF}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Div_CF" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.DI}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.DI" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.MCR}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.MCR" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Onsite_Nearshore_Offshore}}</span>
+                <select *ngIf="isEdit" class="form-select" [(ngModel)]="billingItem.Onsite_Nearshore_Offshore">
+                  <option value="Onsite">Onsite</option>
+                  <option value="Nearshore">Nearshore</option>
+                  <option value="Offshore">Offshore</option>
+                </select>
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Cus_Country}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Country" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Cus_Country_CF}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Country_CF" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Contract_Type}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Contract_Type" class="form-control" type="text" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Rate_In_Billing}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Rate_In_Billing" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.CONV}}</span>
+                <select *ngIf="isEdit" class="form-select" [(ngModel)]="billingItem.CONV">
+                  <option value="USD">USD</option>
+                  <option value="VND">VND</option>
+                  <option value="EUR">EUR</option>
+                  <option value="JPY">JPY</option>
+                </select>
+              </td>
+              <td>{{convertCurrency(billingItem.CONV)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, convertCurrency(billingItem.CONV))}}</td>
+              <td>{{sumArrayNumber([billingItem.Plan_1, billingItem.Plan_2, billingItem.Plan_3, billingItem.Plan_4,
+                billingItem.Plan_5, billingItem.Plan_6, billingItem.Plan_7, billingItem.Plan_8, billingItem.Plan_9,
+                billingItem.Plan_10, billingItem.Plan_11, billingItem.Plan_12])}}</td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_1}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_1" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_1}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_1" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_1}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_1" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_1}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_1" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_1}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_1" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_2}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_2" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_2}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_2" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_2}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_2" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_2}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_2" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_2}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_2" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_3}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_3" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_3}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_3" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_3}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_3" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_3}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_3" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_3}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_3" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_4}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_4" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_4}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_4" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_4}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_4" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_4}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_4" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_4}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_4" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_5}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_5" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_5}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_5" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_5}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_5" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_5}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_5" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_5}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_5" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_6}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_6" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_6}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_6" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_6}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_6" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_6}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_6" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_6}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_6" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_7}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_7" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_7}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_7" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_7}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_7" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_7}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_7" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_7}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_7" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_8}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_8" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_8}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_8" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_8}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_8" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_8}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_8" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_8}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_8" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_9}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_9" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_9}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_9" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_9}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_9" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_9}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_9" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_9}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_9" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_10}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_10" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_10}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_10" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_10}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_10" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_10}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_10" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_10}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_10" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_11}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_11" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_11}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_11" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_11}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_11" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_11}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_11" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_11}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_11" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Plan_12}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_12" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Billed_12}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_12" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_12}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_12" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_12}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_12" class="form-control" type="number" />
+              </td>
+              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_12}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_12" class="form-control" type="number" />
+              </td>
+              <td>{{sumArrayNumber([multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_1),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_2),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_3),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_4),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_5),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_6),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_7),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_8),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_9),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_10),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_11),
+                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_12)
                 ])}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
-              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_1)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_2)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_3)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_4)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_5)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_6)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_7)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_8)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_9)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_10)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_11)}}</td>
+              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_12)}}</td>
 
             </tr>
             <!-- More rows here -->

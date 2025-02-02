@@ -48,6 +48,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'billing-create',
+        loadComponent: () => import('./views/billing/billing-create/billing-create.component').then(m => m.BillingCreateComponent),
+        data: {
+          title: 'Billing Create'
+        }
+      },
+      {
         path: 'employee-profile',
         loadChildren: () => import('./views/employee-profile/routes').then((m) => m.routes)
       },

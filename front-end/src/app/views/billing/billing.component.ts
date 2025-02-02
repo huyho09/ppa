@@ -9,6 +9,7 @@ declare var $: any;
 import { Router } from '@angular/router';
 import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { BillingInterface } from "../../dtos/billing-dto";
 
 @Component({
   selector: 'app-billing',
@@ -18,10 +19,193 @@ import { MatFormFieldModule } from "@angular/material/form-field";
   styleUrl: './billing.component.scss'
 })
 export class BillingComponent {
-  billings: any[] = [];
-  isEdit: boolean = false;
+  billings: BillingInterface[] = [{
+    BilllingId: 1,
+    Team: "OPM31",
+    Team_CF: "OPM31",
+    Sub_Team: "L1L2",
+    Sub_Team_CF: "Data Engineer & IT Consultant, Business Analyst, UI/UX, Process Consultant",
+    Sub_Project: "Project 1",
+    Emp_ID: 33911001,
+    Employee_Name: "Nguyen Van A 01",
+    PIF_ID: "MS-300001",
+    Rev_Source: "Bosch BD",
+    Cus_Div: "BD",
+    Cus_Div_CF: "BD",
+    DI: "Direct",
+    MCR: "Non MCR",
+    Onsite_Nearshore_Offshore: "Nearshore",
+    Cus_Country: "CN",
+    Cus_Country_CF: "Others",
+    Contract_Type: "Service Based",
+    Rate_In_Billing: 9000,
+    CONV: "USD",
+    Plan_1: 0.5,
+    Billed_1: 0,
+    Unbilled_SAP_1: 0,
+    Unbilled_No_PO_1: 0,
+    Other_Rev_1: 0,
 
-  constructor(private formBuilder: UntypedFormBuilder, private cdRef: ChangeDetectorRef, private router: Router) { }
+    Plan_2: 0.5,
+    Billed_2: 0,
+    Unbilled_SAP_2: 0,
+    Unbilled_No_PO_2: 0,
+    Other_Rev_2: 0,
+
+    Plan_3: 0.5,
+    Billed_3: 0,
+    Unbilled_SAP_3: 0,
+    Unbilled_No_PO_3: 0,
+    Other_Rev_3: 0,
+
+    Plan_4: 0.5,
+    Billed_4: 0,
+    Unbilled_SAP_4: 0,
+    Unbilled_No_PO_4: 0,
+    Other_Rev_4: 0,
+
+    Plan_5: 0.5,
+    Billed_5: 0,
+    Unbilled_SAP_5: 0,
+    Unbilled_No_PO_5: 0,
+    Other_Rev_5: 0,
+
+    Plan_6: 0.5,
+    Billed_6: 0,
+    Unbilled_SAP_6: 0,
+    Unbilled_No_PO_6: 0,
+    Other_Rev_6: 0,
+
+    Plan_7: 0.5,
+    Billed_7: 0,
+    Unbilled_SAP_7: 0,
+    Unbilled_No_PO_7: 0,
+    Other_Rev_7: 0,
+
+    Plan_8: 0.5,
+    Billed_8: 0,
+    Unbilled_SAP_8: 0,
+    Unbilled_No_PO_8: 0,
+    Other_Rev_8: 0,
+
+    Plan_9: 0.5,
+    Billed_9: 0,
+    Unbilled_SAP_9: 0,
+    Unbilled_No_PO_9: 0,
+    Other_Rev_9: 0,
+
+    Plan_10: 0.5,
+    Billed_10: 0,
+    Unbilled_SAP_10: 0,
+    Unbilled_No_PO_10: 0,
+    Other_Rev_10: 0,
+
+    Plan_11: 0.5,
+    Billed_11: 0,
+    Unbilled_SAP_11: 0,
+    Unbilled_No_PO_11: 0,
+    Other_Rev_11: 0,
+
+    Plan_12: 0.5,
+    Billed_12: 0,
+    Unbilled_SAP_12: 0,
+    Unbilled_No_PO_12: 0,
+    Other_Rev_12: 0,
+  },
+  {
+    BilllingId: 2,
+    Team: "OPM31",
+    Team_CF: "OPM31",
+    Sub_Team: "L1L2",
+    Sub_Team_CF: "Data Engineer & IT Consultant, Business Analyst, UI/UX, Process Consultant",
+    Sub_Project: "Project 2",
+    Emp_ID: 33911001,
+    Employee_Name: "Nguyen Van A 02",
+    PIF_ID: "MS-300001",
+    Rev_Source: "Bosch BD",
+    Cus_Div: "BD",
+    Cus_Div_CF: "BD",
+    DI: "Direct",
+    MCR: "Non MCR",
+    Onsite_Nearshore_Offshore: "Nearshore",
+    Cus_Country: "CN",
+    Cus_Country_CF: "Others",
+    Contract_Type: "Service Based",
+    Rate_In_Billing: 9000,
+    CONV: "USD",
+    Plan_1: 0.5,
+    Billed_1: 0,
+    Unbilled_SAP_1: 0,
+    Unbilled_No_PO_1: 0,
+    Other_Rev_1: 0,
+
+    Plan_2: 0.5,
+    Billed_2: 0,
+    Unbilled_SAP_2: 0,
+    Unbilled_No_PO_2: 0,
+    Other_Rev_2: 0,
+
+    Plan_3: 0.5,
+    Billed_3: 0,
+    Unbilled_SAP_3: 0,
+    Unbilled_No_PO_3: 0,
+    Other_Rev_3: 0,
+
+    Plan_4: 0.5,
+    Billed_4: 0,
+    Unbilled_SAP_4: 0,
+    Unbilled_No_PO_4: 0,
+    Other_Rev_4: 0,
+
+    Plan_5: 0.5,
+    Billed_5: 0,
+    Unbilled_SAP_5: 0,
+    Unbilled_No_PO_5: 0,
+    Other_Rev_5: 0,
+
+    Plan_6: 0.5,
+    Billed_6: 0,
+    Unbilled_SAP_6: 0,
+    Unbilled_No_PO_6: 0,
+    Other_Rev_6: 0,
+
+    Plan_7: 0.5,
+    Billed_7: 0,
+    Unbilled_SAP_7: 0,
+    Unbilled_No_PO_7: 0,
+    Other_Rev_7: 0,
+
+    Plan_8: 0.5,
+    Billed_8: 0,
+    Unbilled_SAP_8: 0,
+    Unbilled_No_PO_8: 0,
+    Other_Rev_8: 0,
+
+    Plan_9: 0.5,
+    Billed_9: 0,
+    Unbilled_SAP_9: 0,
+    Unbilled_No_PO_9: 0,
+    Other_Rev_9: 0,
+
+    Plan_10: 0.5,
+    Billed_10: 0,
+    Unbilled_SAP_10: 0,
+    Unbilled_No_PO_10: 0,
+    Other_Rev_10: 0,
+
+    Plan_11: 0.5,
+    Billed_11: 0,
+    Unbilled_SAP_11: 0,
+    Unbilled_No_PO_11: 0,
+    Other_Rev_11: 0,
+
+    Plan_12: 0.5,
+    Billed_12: 0,
+    Unbilled_SAP_12: 0,
+    Unbilled_No_PO_12: 0,
+    Other_Rev_12: 0,
+  }];
+  isEdit: boolean = false;
 
   ngOnInit() {
     // Initialize DataTables on a table element after the view is initialized
@@ -32,12 +216,32 @@ export class BillingComponent {
         "bInfo": false,
         "paging": false,
         "bPaginate": false,
-        "searching": false
       });
     });
+    this.loadBillingsFromLocalStorage()
   }
+
+  constructor(private formBuilder: UntypedFormBuilder, private cdRef: ChangeDetectorRef, private router: Router) { }
+
+  loadBillingsFromLocalStorage() {
+    const storedBillings = localStorage.getItem('billings');
+    if (storedBillings && storedBillings != null) {
+      this.billings = JSON.parse(storedBillings);
+    } else {
+      this.saveBillingsToLocalStorage
+    }
+  }
+
+  saveBillingsToLocalStorage() {
+    localStorage.setItem('billings', JSON.stringify(this.billings));
+  }
+
   onChangeFields(billingID: number, event: Event | null) {
-    this.cdRef.detectChanges();
+    const billing = this.billings.find(emp => emp.BilllingId === billingID);
+    if(billing && event?.target){
+      this.cdRef.detectChanges();
+      this.saveBillingsToLocalStorage();
+    }
   }
 
   onEditRecord() {
@@ -47,6 +251,32 @@ export class BillingComponent {
 
   sumArrayNumber(arr: number[]): number {
     return arr.reduce((acc, num) => acc + num, 0);
+  }
+  sumArrayByAtribute(attribute: keyof BillingInterface): number {
+    if (!this.billings || this.billings.length === 0) {
+      return 0;
+    }
+  
+    return this.billings
+      .map(item => Number(item[attribute]) || 0)
+      .reduce((acc, num) => acc + num, 0);
+  }
+
+  sumPlanRev(attribute: keyof BillingInterface): number {
+    if (!this.billings || this.billings.length === 0) {
+      return 0;
+    }
+    var mapData =  this.billings.map(item => Number(item[attribute]) * (item.Rate_In_Billing * this.convertCurrency(item.CONV)) || 0)
+    return mapData.reduce((acc, num) => acc + num, 0);
+  }
+
+  sumTotalPMO(): number{
+    if (!this.billings || this.billings.length === 0) {
+      return 0;
+    }
+    var mapData = this.billings.map(item => this.sumArrayNumber([item.Plan_1, item.Plan_2, item.Plan_3, item.Plan_4,
+      item.Plan_5, item.Plan_6, item.Plan_7, item.Plan_8, item.Plan_9, item.Plan_10, item.Plan_11, item.Plan_12]) || 0)
+    return mapData.reduce((acc, num) => acc + num, 0);
   }
 
   multiplyTwoNumber(a: number, b: number): number {
@@ -69,4 +299,10 @@ export class BillingComponent {
         return 0.0092;
     }
   }
+
+  handleCreateBillings() {
+    this.saveBillingsToLocalStorage();
+    this.router.navigate(['/billing-create']);
+  }
+
 }
