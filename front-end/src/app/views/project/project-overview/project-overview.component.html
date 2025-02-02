@@ -30,12 +30,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let project of projects" >
+            <tr *ngFor="let project of projects">
               <td>
                 <button class="btn btn-success" (click)="onChangeFields(project.ProjectID, $event)"
-                [disabled]="(!isEdit)">Save</button>
+                  [disabled]="(!isEdit)">Save</button>
                 <button class="btn btn-danger" (click)="onChangeFields(project.ProjectID, $event)"
-                [disabled]="(!isEdit)">Delete</button>
+                  [disabled]="(!isEdit)">Delete</button>
               </td>
               <td><span *ngIf="!isEdit">{{project.ProjectName}}</span>
                 <input *ngIf="isEdit" [(ngModel)]="project.ProjectName" class="form-control" type="text" />
@@ -51,6 +51,13 @@
               </td>
               <td><span *ngIf="!isEdit">{{project.SubTeam}}</span>
                 <input *ngIf="isEdit" [(ngModel)]="project.SubTeam" class="form-control" type="text" />
+                <!--  <mat-form-field *ngIf="isEdit" >
+                  <mat-select [(ngModel)]="project.SubTeam" [multiple]="true">
+                    <mat-option value="option1">Option 1</mat-option>
+                    <mat-option value="option2">Option 2</mat-option>
+                    <mat-option value="option3">Option 3</mat-option>
+                  </mat-select>
+                </mat-form-field> -->
               </td>
               <td><span *ngIf="!isEdit">{{project.Status}}</span>
                 <select *ngIf="isEdit" class="form-select" [(ngModel)]="project.Status">
@@ -63,7 +70,8 @@
               <td><span *ngIf="!isEdit">{{project.ContractType}}</span>
                 <select *ngIf="isEdit" class="form-select" [(ngModel)]="project.ContractType">
                   <option [ngValue]="contractTypeEnum['T&M (YE4)']">{{ contractTypeEnum['T&M (YE4)'] }}</option>
-                  <option [ngValue]="contractTypeEnum['Service based (YEB)']">{{ contractTypeEnum['Service based (YEB)'] }}</option>
+                  <option [ngValue]="contractTypeEnum['Service based (YEB)']">{{ contractTypeEnum['Service based (YEB)']
+                    }}</option>
                 </select>
               </td>
               <td><span *ngIf="!isEdit">{{project.BillingMethod}}</span>
@@ -86,7 +94,8 @@
                 </select>
               </td>
               <td><span *ngIf="!isEdit">{{project.PONumber_SAPContractNumber}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="project.PONumber_SAPContractNumber" class="form-control" type="text" />
+                <input *ngIf="isEdit" [(ngModel)]="project.PONumber_SAPContractNumber" class="form-control"
+                  type="text" />
               </td>
               <td><span *ngIf="!isEdit">{{project.ContractNumber}}</span>
                 <input *ngIf="isEdit" [(ngModel)]="project.ContractNumber" class="form-control" type="text" />

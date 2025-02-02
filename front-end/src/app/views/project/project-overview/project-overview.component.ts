@@ -8,12 +8,13 @@ import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 declare var $: any;
 import { Router } from '@angular/router';
-
+import { MatSelectModule } from "@angular/material/select";
+import { MatFormFieldModule } from "@angular/material/form-field";
 @Component({
   selector: 'app-buttons',
   templateUrl: './project-overview.component.html',
   imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule
-    , FormsModule]
+  , FormsModule, MatSelectModule, MatFormFieldModule]
 })
 export class ProjectOverviewComponent {
   projects: Project[] = [{

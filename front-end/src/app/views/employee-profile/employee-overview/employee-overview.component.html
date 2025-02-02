@@ -11,7 +11,7 @@
         <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
           <thead>
             <tr>
-              <th [hidden]="!isEdit">Action</th>
+              <th>Action</th>
               <th>NTID</th>
               <th>Employee Name</th>
               <th>DOB</th>
@@ -33,11 +33,11 @@
           </thead>
           <tbody>
             <tr *ngFor="let employee of employees" [hidden]="employee.Status != 'Active' && !isEdit">
-              <td [hidden]="!isEdit">
+              <td>
                 <button class="btn btn-success" (click)="onChangeFields(employee.EmployeeID, $event)"
-                  *ngIf="isEdit">Save</button>
+                [disabled]="(!isEdit)">Save</button>
                 <button class="btn btn-danger" (click)="onChangeFields(employee.EmployeeID, $event)"
-                  *ngIf="isEdit">Delete</button>
+                [disabled]="(!isEdit)">Delete</button>
               </td>
               <td><span *ngIf="!isEdit">{{employee.NTID}}</span>
                 <input *ngIf="isEdit" [(ngModel)]="employee.NTID" class="form-control" type="text" />

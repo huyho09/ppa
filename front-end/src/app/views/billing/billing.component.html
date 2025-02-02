@@ -1,1 +1,571 @@
-<p>billing works!</p>
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card>
+      <c-card-header>
+        <button class="btn btn-secondary" (click)="onEditRecord()" *ngIf="!isEdit">Edit</button>
+        <button class="btn btn-warning" (click)="onEditRecord()" *ngIf="isEdit">Stop Edit</button>
+      </c-card-header>
+      <c-card-body>
+          <div class="row">
+            <!-- Column 1 -->
+            <div class="col-12 col-md-6">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>EUR/USD</th>
+                    <th>1.1</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>JPY/USD</td>
+                    <td>0.0092</td>
+                  </tr>
+                  <tr>
+                    <td>VND/USD</td>
+                    <td>0.04</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        
+            <!-- Column 2 -->
+            <div class="col-12 col-md-6">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>EI-300343</th>
+                    <th>MCR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>EI-300354</td>
+                    <td>NON MCR</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        
+            <!-- Column 3 -->
+            <div class="col-12 col-md-4">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Team:</th>
+                    <th>OPM31</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1.655.280</td>
+                    <td>Revenue (Total)</td>
+                  </tr>
+                  <tr>
+                    <td>1.655.280</td>
+                    <td>Revenue (Sub Total)</td>
+                  </tr>
+                  <tr>
+                    <td>0</td>
+                    <td>Other Rev. (Sub total)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <div style="overflow-x:auto">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Plan</th>
+                <th>Plan</th>
+                <th>Plan</th>
+                <th>Plan</th>
+                <th>Plan</th>
+
+                <th>Plan</th>
+                <th>Billed</th>
+                <th>Unbilled SAP</th>
+                <th>Unbilled no PO</th>
+                <th>Other Rev.</th>
+
+                <th>Plan</th>
+                <th>Billed</th>
+                <th>Unbilled SAP</th>
+                <th>Unbilled no PO</th>
+                <th>Other Rev.</th>
+
+                <th>Plan</th>
+                <th>Billed</th>
+                <th>Unbilled SAP</th>
+                <th>Unbilled no PO</th>
+                <th>Other Rev.</th>
+
+                <th>Plan</th>
+                <th>Billed</th>
+                <th>Unbilled SAP</th>
+                <th>Unbilled no PO</th>
+                <th>Other Rev.</th>
+
+                <th>Plan</th>
+                <th>Billed</th>
+                <th>Unbilled SAP</th>
+                <th>Unbilled no PO</th>
+                <th>Other Rev.</th>
+
+                <th>Plan</th>
+                <th>Billed</th>
+                <th>Unbilled SAP</th>
+                <th>Unbilled no PO</th>
+                <th>Other Rev.</th>
+
+                <th>Plan</th>
+                <th>Billed</th>
+                <th>Unbilled SAP</th>
+                <th>Unbilled no PO</th>
+                <th>Other Rev.</th>
+
+                <th></th>
+                <th>Plan (1)</th>
+                <th>Plan (2)</th>
+                <th>Plan (3)</th>
+                <th>Plan (4)</th>
+                <th>Plan (5)</th>
+                <th>Plan (6)</th>
+                <th>Plan (7)</th>
+                <th>Plan (8)</th>
+                <th>Plan (9)</th>
+                <th>Plan (10)</th>
+                <th>Plan (11)</th>
+                <th>Plan (12)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>PMO</b></td>
+                <td>15.57</td>
+                <td><b>JAN</b></td>
+                <td><b>FEB</b></td>
+                <td><b>MAR</b></td>
+                <td><b>APR</b></td>
+                <td><b>MAY</b></td>
+                <td><b>JUN</b></td>
+                <td colspan="4"></td>
+                <td><b>JUL</b></td>
+                <td colspan="4"></td>
+
+                <td><b>AUG</b></td>
+                <td colspan="4"></td>
+
+                <td><b>SEP</b></td>
+                <td colspan="4"></td>
+                
+                <td><b>OCT</b></td>
+                <td colspan="4"></td>
+
+                <td><b>NOV</b></td>
+                <td colspan="4"></td>
+
+                <td><b>DEC</b></td>
+                <td colspan="4"></td>
+
+                <td><b>Revenue</b></td>
+                <td colspan="12"></td>
+
+              </tr>
+              <tr>
+                <td><b>Total:</b></td>
+                <td>186.80</td>
+                <td>22.80</td>
+                <td>20.80</td>
+                <td>20.80</td>
+                <td>13.80</td>
+                <td>13.80</td>
+
+                <td>13.80</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+
+                <td>13.50</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+
+                <td>13.50</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+
+                <td>13.50</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                
+                <td>13.50</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+
+                <td>13.50</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+                <td>1.00</td>
+
+                <td>13.50</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1655280</td>
+
+                <td>203040.00</td>
+                <td>185040.00</td>
+                <td>185040.00</td>
+                <td>122040.00</td>
+                <td>122040.00</td>
+                <td>122040.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+
+              </tr>
+              <tr>
+                <td><b>Subtotal:</b></td>
+                <td>186.80</td>
+                <td>22.80</td>
+                <td>20.80</td>
+                <td>20.80</td>
+                <td>13.80</td>
+                <td>13.80</td>
+
+                <td>13.80</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+
+                <td>13.50</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+
+                <td>13.50</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+
+                <td>13.50</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                
+                <td>13.50</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+
+                <td>13.50</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+
+                <td>13.50</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1655280</td>
+
+                <td>203040.00</td>
+                <td>185040.00</td>
+                <td>185040.00</td>
+                <td>122040.00</td>
+                <td>122040.00</td>
+                <td>122040.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+                <td>119340.00</td>
+
+              </tr>
+              <tr>
+                <td><b>YTD:</b></td>
+                <td>1585.10</td>
+                <td>22.80</td>
+                <td>43.60</td>
+                <td>64.40</td>
+                <td>78.20</td>
+                <td>92.00</td>
+
+                <td>105.80</td>
+                <td>5.00</td>
+                <td>5.00</td>
+                <td>5.00</td>
+                <td>5.00</td>
+
+                <td>119.30</td>
+                <td>6.00</td>
+                <td>6.00</td>
+                <td>6.00</td>
+                <td>6.00</td>
+
+                <td>132.80</td>
+                <td>7.00</td>
+                <td>7.00</td>
+                <td>7.00</td>
+                <td>7.00</td>
+
+                <td>146.30</td>
+                <td>8.00</td>
+                <td>8.00</td>
+                <td>8.00</td>
+                <td>8.00</td>
+                
+                <td>159.80</td>
+                <td>9.00</td>
+                <td>9.00</td>
+                <td>9.00</td>
+                <td>9.00</td>
+
+                <td>173.30</td>
+                <td>10.00</td>
+                <td>10.00</td>
+                <td>10.00</td>
+                <td>10.00</td>
+
+                <td>186.80</td>
+                <td>10.00</td>
+                <td>10.00</td>
+                <td>10.00</td>
+                <td>10.00</td>
+                <td>11757420</td>
+
+                <td>203040.00</td>
+                <td>388080.00</td>
+                <td>573120.00</td>
+                <td>695160.00</td>
+                <td>817200.00</td>
+                <td>939240.00</td>
+                <td>1058580.00</td>
+                <td>1177920.00</td>
+                <td>1297260.00</td>
+                <td>1416600.00</td>
+                <td>1535940.00</td>
+                <td>1655280.00</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Display Employee Data -->
+        <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Team</th>
+              <th>Team(CF)</th>
+              <th>Sub Team</th>
+              <th>Sub Team (CF)</th>
+              <th>Sub Project</th>
+              <th>Emp ID</th>
+              <th>Employee Name</th>
+              <th>PIF ID</th>
+              <th>Rev. Source<p>BP/ ++</p>
+              </th>
+              <th>Cus. Div.<p>BP/ ++</p>
+              </th>
+              <th>Cus. Div(CF)<p>BP/ ++</p>
+              </th>
+              <th>D/I<p>BP</p>
+              </th>
+              <th>MCR</th>
+              <th>Onsite/ Nearshore/ Offshore<p>BP</p>
+              </th>
+              <th>Cus. Country</th>
+              <th>Cus. Country (CF)<p>BP</p>
+              </th>
+              <th>Contract type</th>
+              <th>Rate in Billing<p>CUR</p>
+              </th>
+              <th>CONV</th>
+              <th>Rate in USD</th>
+              <th>Total PMO</th>
+              <th>Plan (1)</th>
+              <th>Plan (2)</th>
+              <th>Plan (3)</th>
+              <th>Plan (4)</th>
+              <th>Plan (5)</th>
+
+              <th>Plan (6)</th>
+              <th>Billed (6)</th>
+              <th>Unbilled SAP (6)</th>
+              <th>Unbilled no PO (6)</th>
+              <th>Other Rev. (6)</th>
+
+              <th>Plan (7)</th>
+              <th>Billed (7)</th>
+              <th>Unbilled SAP (7)</th>
+              <th>Unbilled no PO (7)</th>
+              <th>Other Rev. (7)</th>
+
+              <th>Plan (8)</th>
+              <th>Billed (8)</th>
+              <th>Unbilled SAP (8)</th>
+              <th>Unbilled no PO (8)</th>
+              <th>Other Rev. (8)</th>
+
+              <th>Plan (9)</th>
+              <th>Billed (9)</th>
+              <th>Unbilled SAP (9)</th>
+              <th>Unbilled no PO (9)</th>
+              <th>Other Rev. (9)</th>
+
+              <th>Plan (10)</th>
+              <th>Billed (10)</th>
+              <th>Unbilled SAP (10)</th>
+              <th>Unbilled no PO (10)</th>
+              <th>Other Rev. (10)</th>
+
+              <th>Plan (11)</th>
+              <th>Billed (11)</th>
+              <th>Unbilled SAP (11)</th>
+              <th>Unbilled no PO (11)</th>
+              <th>Other Rev. (11)</th>
+
+              <th>Plan (12)</th>
+              <th>Billed (12)</th>
+              <th>Unbilled SAP (12)</th>
+              <th>Unbilled no PO (12)</th>
+              <th>Other Rev. (12)</th>
+              <th>Total Revenue</th>
+              <th>Jan_Rev</th>
+              <th>Feb_Rev</th>
+              <th>Mar_Rev</th>
+              <th>Apr_Rev</th>
+              <th>May_Rev</th>
+              <th>Jun_Rev</th>
+              <th>Jul_Rev</th>
+              <th>Aug_Rev</th>
+              <th>Sep_Rev</th>
+              <th>Oct_Rev</th>
+              <th>Nov_Rev</th>
+              <th>Dec_Rev</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--   <tr *ngFor="let billingItem of billings"> -->
+            <tr>
+              <td>
+                <button [disabled]="(!isEdit)" class="btn btn-success">Save</button>
+                <button [disabled]="(!isEdit)" class="btn btn-danger">Delete</button>
+              </td>
+              <!--   <td><span *ngIf="!isEdit">{{billingItem.ClientName}}</span>
+                <input *ngIf="isEdit" [(ngModel)]="billingItem.ClientName" class="form-control" type="text" />
+              </td> -->
+              <td>OPM31</td>
+              <td>OPM31</td>
+              <td>L1L2</td>
+              <td>Data Engineer & IT Consultant, Business Analyst, UI/UX, Process Consultant</td>
+              <td>Project 1</td>
+              <td>33911001</td>
+              <td>Nguyen Van A 01</td>
+              <td>MS-300001</td>
+              <td>Bosch BD</td>
+              <td>BD</td>
+              <td>BD</td>
+              <td>Direct</td>
+              <td>Non MCR</td>
+              <td>Nearshore</td>
+              <td>CN</td>
+              <td>Others</td>
+              <td>Service Based</td>
+              <td>9000</td>
+              <td>USD</td>
+              <td>{{convertCurrency("USD")}}</td>
+              <td>{{multiplyTwoNumber(9000, convertCurrency("USD"))}}</td>
+              <td>{{sumArrayNumber([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5])}}</td>
+              <td>0.5</td>
+              <td>0.5</td>
+              <td>0.5</td>
+              <td>0.5</td>
+              <td>0.5</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>0.5</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>0.5</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>0.5</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>0.5</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>0.5</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>0.5</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{{sumArrayNumber([multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5),multiplyTwoNumber(9000,
+                0.5),multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5)
+                , multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5),
+                multiplyTwoNumber(9000, 0.5), multiplyTwoNumber(9000, 0.5) ,multiplyTwoNumber(9000, 0.5)
+                ])}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+              <td>{{multiplyTwoNumber(9000, 0.5)}}</td>
+
+            </tr>
+            <!-- More rows here -->
+          </tbody>
+        </table>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
