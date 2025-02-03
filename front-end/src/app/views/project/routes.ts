@@ -15,6 +15,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'sub-project/table-dashboard',
+        loadComponent: () => import('./sub-project/table-dashboard/table-dashboard.component').then(m => m.TableDashboardComponent),
+        data: {
+          title: 'Sub-Project Overview'
+        }
+      },
+      {
         path: 'project-overview',
         loadComponent: () => import('./project-overview/project-overview.component').then(m => m.ProjectOverviewComponent),
         data: {

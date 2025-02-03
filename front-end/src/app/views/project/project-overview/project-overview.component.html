@@ -14,7 +14,7 @@
               <th>Action</th>
               <th>Project Name</th>
               <th>Client Name</th>
-              <th>Sub Project Name</th>
+              <th>Sub Project Counts</th>
               <th>Team</th>
               <th>Sub Team</th>
               <th>Status</th>
@@ -43,8 +43,8 @@
               <td><span *ngIf="!isEdit">{{project.ClientName}}</span>
                 <input *ngIf="isEdit" [(ngModel)]="project.ClientName" class="form-control" type="text" />
               </td>
-              <td><span *ngIf="!isEdit">{{project.SubProjectName}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="project.SubProjectName" class="form-control" type="text" />
+              <td><span>{{project.SubProjectIds?.length}}</span>
+                <!-- <input *ngIf="isEdit" [(ngModel)]="project.SubProjectName" class="form-control" type="text" /> -->
               </td>
               <td><span *ngIf="!isEdit">{{project.Team}}</span>
                 <input *ngIf="isEdit" [(ngModel)]="project.Team" class="form-control" type="text" />

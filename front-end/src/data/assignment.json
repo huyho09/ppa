@@ -1,0 +1,26 @@
+[
+    {
+        "AssignmentID": 1,
+        "EmployeeID": 1,
+        "RemainingCapacity": 40,
+        "Authority": "Proxy",
+        "PMOMonthlyBudget": 5000,
+        "PMOTotalBudget": 20000
+    },
+    {
+        "AssignmentID": 2,
+        "EmployeeID": 1,
+        "RemainingCapacity": 30,
+        "Authority": "Proxy",
+        "PMOMonthlyBudget": 4000,
+        "PMOTotalBudget": 16000
+    },
+    {
+        "AssignmentID": 3,
+        "EmployeeID": 4,
+        "RemainingCapacity": 50,
+        "Authority": "Proxy",
+        "PMOMonthlyBudget": null,
+        "PMOTotalBudget": 25000
+    }
+]

@@ -1,0 +1,46 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+        <c-card>
+            <c-card-header>
+                <h3>Sub Projects Overview</h3>
+            </c-card-header>
+            <c-card-body>
+                <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
+                    <thead>
+                        <tr>
+                            <th>SubProject ID</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Project ID</th>
+                            <th>Assignment IDs</th>
+                            <th>Requirement IDs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let subProject of subProjects">
+                            <td><span>{{ subProject.SubProjectID }}</span></td>
+                            <td><span>{{ subProject.StartTime || 'N/A' }}</span></td>
+                            <td><span>{{ subProject.EndTime || 'N/A' }}</span></td>
+                            <td><span>{{ subProject.ProjectID }}</span></td>
+                            <td>
+                                <span
+                                    *ngIf="subProject.AssignmentIDs && subProject.AssignmentIDs.length > 0; else noAssignment">
+                                    {{ subProject.AssignmentIDs.length }}
+                                </span>
+                                <ng-template #noAssignment>0</ng-template>
+                            </td>
+                            <td>
+                                <span
+                                    *ngIf="subProject.RequirementIDs && subProject.RequirementIDs.length > 0; else noRequirement">
+                                    {{ subProject.RequirementIDs.length }}
+                                </span>
+                                <ng-template #noRequirement>0</ng-template>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>

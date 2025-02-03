@@ -35,15 +35,20 @@ export const navItems: INavData[] = [
         icon: 'nav-icon-bullet'
       },
       {
+        name: 'Sub-Project Overview',
+        url: '/project/sub-project/table-dashboard',
+        icon: 'nav-icon-bullet'
+      },
+      {
         name: 'Project Overview',
         url: '/project/project-overview',
         icon: 'nav-icon-bullet'
       },
-      {
-        name: 'Project Requirement Assignment',
-        url: '/project/project-requirement-assignment',
-        icon: 'nav-icon-bullet'
-      },
+      // {
+      //   name: 'Project Requirement Assignment',
+      //   url: '/project/project-requirement-assignment',
+      //   icon: 'nav-icon-bullet'
+      // },
     ]
   },
   {

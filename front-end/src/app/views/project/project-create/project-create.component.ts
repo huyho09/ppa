@@ -19,7 +19,7 @@ export class ProjectCreateComponent {
     ProjectID: Math.floor(Math.random() * 10000),
     ProjectName: "",
     ClientName: "",
-    SubProjectName: "",
+    SubProjectIds: [],
     Team: "",
     SubTeam: "",
     Status: ProjectStatusEnum['In Contact'],

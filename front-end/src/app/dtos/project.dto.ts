@@ -1,8 +1,11 @@
+import { SubProject } from './sub-project';
+
 export interface Project {
     ProjectID: number,
     ProjectName: string | null,
     ClientName: string | null,
-    SubProjectName: string | null,
+    SubProjectIds: number[] | null,
+    SubProjects?: SubProject[], // temp
     Team: string | null,
     SubTeam: string | null,
     Status: ProjectStatusEnum | null,

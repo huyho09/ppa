@@ -10,72 +10,19 @@ declare var $: any;
 import { Router } from '@angular/router';
 import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import projectsData from '../../../../data/project.json'; // Ensure your environment supports JSON imports
+import subProjectsData from '../../../../data/sub-project.json'; // Ensure your environment supports JSON imports
+import { SubProject } from '../../../dtos/sub-project'
+
 @Component({
   selector: 'app-buttons',
   templateUrl: './project-overview.component.html',
   imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule
-  , FormsModule, MatSelectModule, MatFormFieldModule]
+    , FormsModule, MatSelectModule, MatFormFieldModule]
 })
 export class ProjectOverviewComponent {
-  projects: Project[] = [{
-    ProjectID: 1,
-    ProjectName: "Project1",
-    ClientName: "Client 1",
-    SubProjectName: "",
-    Team: "Team 1",
-    SubTeam: "",
-    Status: ProjectStatusEnum.Won,
-    CancellationReason: "",
-    PIF_ID: "",
-    MCR_ID_BM_Number: "",
-    ResourceGroup_ID: "",
-    RevenueSource: "",
-    Direct_Indirect: "",
-    WorkingModel: WorkingModelEnum.Onsite,
-    ContractType: ContractTypeEnum['Service based (YEB)'],
-    BillingMethod: BillingMethodEnum.Email,
-    BillingRate: 100,
-    ContractCurrency: "EUR",
-    TargetCurrency: "EUR",
-    Contractual_PMO_In_Period: 0,
-    StartPeriod: "2025-01-10",
-    EndPeriod: "2026-01-10",
-    BillingFrequency: BillingFrequencyEnum.Monthly,
-    PONumber_SAPContractNumber: "",
-    ContractNumber: "",
-    PO_Amount: 1000,
-    Remarks: "",
-  },
-  {
-    ProjectID: 2,
-    ProjectName: "Project2",
-    ClientName: "Client 2",
-    SubProjectName: "",
-    Team: "Team 2",
-    SubTeam: "",
-    Status: ProjectStatusEnum.Won,
-    CancellationReason: "",
-    PIF_ID: "",
-    MCR_ID_BM_Number: "",
-    ResourceGroup_ID: "",
-    RevenueSource: "",
-    Direct_Indirect: "",
-    WorkingModel: WorkingModelEnum.Onsite,
-    ContractType: ContractTypeEnum['Service based (YEB)'],
-    BillingMethod: BillingMethodEnum.Email,
-    BillingRate: 100,
-    ContractCurrency: "EUR",
-    TargetCurrency: "EUR",
-    Contractual_PMO_In_Period: 0,
-    StartPeriod: "2025-01-10",
-    EndPeriod: "2026-01-10",
-    BillingFrequency: BillingFrequencyEnum.Monthly,
-    PONumber_SAPContractNumber: "",
-    ContractNumber: "",
-    PO_Amount: 1000,
-    Remarks: "",
-  }
-];
+  projects: Project[] = projectsData;
+  subProjects: SubProject[] = subProjectsData;
   projectStatusEnum = ProjectStatusEnum;
   contractTypeEnum = ContractTypeEnum;
   billingMethodEnum = BillingMethodEnum;
