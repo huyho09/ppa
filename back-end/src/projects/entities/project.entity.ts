@@ -1,7 +1,6 @@
 import { Customer } from 'src/customers/entities/customer.entity';
 import { Department } from 'src/departments/entities/department.entity';
 import { Employee } from 'src/employees/entities/employee.entity';
-import { ProjectEmployee } from 'src/project-employees/entities/project-employee.entity';
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, OneToOne, OneToMany, JoinColumn, ManyToMany, JoinTable, ManyToOne} from 'typeorm';
 
 @Entity()
@@ -14,14 +13,15 @@ export class Project {
     name: string;
 
     @ManyToOne( () => Department,{cascade: true})
-    @JoinColumn()
     department : Department;
 
-    @OneToMany ( () => ProjectEmployee, projectEmployee=> projectEmployee.project , {nullable:true, cascade: true})
-    projectEmployees: ProjectEmployee[];
+    // @OneToMany ( () => ProjectEmployee, projectEmployee=> projectEmployee.project , {nullable:true, cascade: true})
+    // projectEmployees: ProjectEmployee[];
+
+    @OneToMany(()=>Employee, employees=> employees.project)
+    employees: Employee[]
 
     @ManyToOne( () => Customer, {cascade: true})
-    @JoinColumn()
     customer: Customer;
 
     @Column('text')

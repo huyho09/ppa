@@ -1,6 +1,5 @@
-import { ProjectEmployee } from "src/project-employees/entities/project-employee.entity";
 import { Project } from "src/projects/entities/project.entity";
-import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Employee {
@@ -30,5 +29,10 @@ export class Employee {
 
     @Column({ type: 'bit', default: false })
     is_admin: boolean;    
+
+    @ManyToOne(() => Project,project=> project.employees)
+    @JoinColumn()
+    project: Project;
+    
 
 }

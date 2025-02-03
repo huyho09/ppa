@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { DepartmentServiceService } from '../../department/service/department-service.service';
+import { ProjectServiceService } from '../../project/service/project-service.service';
 
 
 
@@ -17,6 +18,7 @@ interface Employee {
   skills: string[];
   role: string;
   is_admin: boolean;
+  project: {name: string, id: string};
 }
 
 @Component({
@@ -26,8 +28,9 @@ interface Employee {
   templateUrl: './employee-create.component.html',
   styleUrls: ['./employee-create.component.scss'],
 })
-export class EmployeeCreateComponent {
+export class EmployeeCreateComponent implements OnInit{
   employees: Employee[] = [];
+  projects: { id: string; name: string }[] = [];
   newEmployee = {
     id: '',
     avatar: '',
@@ -38,17 +41,28 @@ export class EmployeeCreateComponent {
     skills: [],
     role: '',
     is_admin: false,
+    project: {id: '',name: ''}
   };
 
   constructor(
     private employeeService: EmployeeServiceService,
+    private projectService: ProjectServiceService,
     private router: Router,
   ) {}
 
-
+ngOnInit(): void {
+    this.projectService.getProjectsWithApiCall().subscribe(
+      (projectsData) => {
+        this.projects =projectsData.map((project) => ({
+          id: project.id,
+          name: project.name,
+        }))
+      }
+    )
+}
   addEmployee(){
     this.employeeService.createEmployeeWithApiCall(this.newEmployee).subscribe(
-      (data) => {
+      () => {
         this.router.navigate(['/dashboard/employee'])
       }
     )

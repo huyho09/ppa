@@ -2,6 +2,9 @@
   table-layout: fixed;
   width: 100%;
 }
+:host{
+  overflow-x: auto;
+}
 .ellipsis {
   white-space: nowrap;
   overflow: hidden;
@@ -37,14 +40,6 @@
 
 .form-popup.active {
   display: block;
-}
-
-.container {
-  display: flex;
-  width: 100%;
-  padding-top: 30px;
-  overflow-x: auto;
-  overflow-y: auto;
 }
 
 .picture-container {

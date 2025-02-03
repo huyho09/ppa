@@ -64,6 +64,7 @@ employees: Employee[] = []
 departments: Department[] =[]
 projectEmployee: ProjectEmployee[] =[]
 selectedEmployees: string[] = [];
+id: string = '';
 
 project: Project = {
   id: '',
@@ -78,15 +79,16 @@ project: Project = {
   createdAt: '',
   lastUpdatedat: '',
 };
-skillsString: string = '';
+
+skillsString: string =''
 ngOnInit(): void {
-  this.loadEmployees()
   this.loadCustomers()
   this.loadDepartment()
   
     const id = this.route.snapshot.paramMap.get('id')
     if(id)
     {
+      this.id = id
       this.projectService.getProjectWithApiCall(id).subscribe(
         (response : any) => {
           if(response)
@@ -94,50 +96,15 @@ ngOnInit(): void {
             this.project = response
             this.project.project_start_date = new Date(Number(this.project.project_start_date)).toISOString().split('T')[0];
             this.project.project_end_date = new Date(Number(this.project.project_end_date)).toISOString().split('T')[0];
-
-            console.log(this.project.department)
+            this.skillsString = this.project.skills.join(',')
+            console.log(this.project.skills)
           }
         }
       )
     }
 
 }
-onEmployeeSelect(event: Event): void {
-  const selectedOptions = (event.target as HTMLSelectElement).selectedOptions;
-  this.projectEmployee = []; 
-  this.selectedEmployees = []
 
-  for (let i = 0; i < selectedOptions.length; i++) {
-    const employeeId = selectedOptions[i].value.split(': ')[1] || selectedOptions[i].value;
-    const employeeName = (this.getEmployeeName(employeeId))
-
-    if(employeeName && !this.selectedEmployees.includes(employeeName)){
-      this.selectedEmployees.push(employeeName)
-    }
-    if (!this.projectEmployee.some((pe) => pe.employeeId === employeeId)) {
-      this.projectEmployee.push({
-        employeeId,
-        role_in_project: '',
-        task: '',
-        effort: 0,
-      });
-    }
-  }
-}
-
-getEmployeeName(id: string) : string | undefined{
-  const findEmp = this.employees.find((emp) => emp.id === id)
-  const empName = findEmp?.firstname + ' ' + findEmp?.lastname
-  return empName
-}
-loadEmployees()
-{
-  this.employeeService.getEmployeesWithApiCall().subscribe((employeesData: Employee[]) =>
-  {
-    this.employees = employeesData
-
-  })
-}
 loadCustomers(){
   this.customerService.getCustomersWithApiCall().subscribe(
     (customersData: Customer[]) => {
@@ -155,9 +122,10 @@ loadDepartment(){
 }
 
 updateProject() {
-  this.project.skills = this.skillsString.split(',')
-  this.projectService.updateProject(this.project).subscribe(
+  this.project.skills = this.skillsString.split(',').map(skill=> skill.trim())
+  this.projectService.updateProjectWithApiCall(this.id,this.project).subscribe(
     () => {
+      this.router.navigate(['/dashboard/project'])
     }
   )
 }

@@ -81,10 +81,10 @@ export class ProjectIndexComponent implements OnInit {
         (data) => {
           this.projects = data.map(project => ({
             ...project,
-            createdAt: new Date(Number(project.project_start_date)).toString(),
-            endAt: new Date(Number(project.project_end_date)).toString()
+            createdAt: new Date(Number(project.project_start_date)).toLocaleDateString(),
+            endAt: new Date(Number(project.project_end_date)).toLocaleDateString()
+            
           }))
-          console.log(this.projects)
         }
         
       )

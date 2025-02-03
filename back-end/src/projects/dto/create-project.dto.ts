@@ -2,37 +2,29 @@ import { Type } from 'class-transformer';
 import { IsString, IsArray, IsOptional, IsDate, ValidateNested } from 'class-validator'
 import { CreateCustomerDto } from 'src/customers/dto/create-customer.dto';
 import { CreateDepartmentDto } from 'src/departments/dto/create-department.dto';
-import { CreateProjectEmployeeDto } from 'src/project-employees/dto/create-project-employee.dto';
+import { CreateEmployeeDto } from 'src/employees/dto/create-employee.dto';
+import { Employee } from 'src/employees/entities/employee.entity';
 export class CreateProjectDto {
         @IsString()
-        project_name: string;
+        name: string;
 
-        @ValidateNested()
         @Type(()=>CreateDepartmentDto)
-        @IsString()
         department : CreateDepartmentDto;
-    
-        @ValidateNested()
-        @Type(()=>CreateProjectEmployeeDto)
-        @IsArray()
-        employees: CreateProjectEmployeeDto[];
- 
-        @ValidateNested()
-        @Type(()=>CreateCustomerDto)
-        @IsString()
-        customer: CreateCustomerDto;
 
+        @Type(()=>CreateCustomerDto)
+        customer: CreateCustomerDto;
+        
         @IsString()
-        project_description: string;
+        description: string; 
         
         @IsArray()
-        project_skills: string[];
+        skills: string[];
 
         @IsString()
-        project_requirements: string;
+        requirements: string;
     
         @IsString()
-        project_result: string;
+        result: string;
     
         @IsString()
         @IsOptional()
@@ -50,5 +42,6 @@ export class CreateProjectDto {
 
         @IsString()
         lastUpdatedAt: string;
+        
     
 }

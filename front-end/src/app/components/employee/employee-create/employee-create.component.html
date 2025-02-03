@@ -79,6 +79,25 @@
               required
               >
             </div>
+
+            <div class = "form-group mt-2">
+              <label for = "projects"> Projects Assign</label>
+              <select
+              id ="projects"
+              name="projects"
+              class = "form-control"
+              [(ngModel)] = "newEmployee.project"
+              required
+              >
+              <option *ngFor="let project of projects" [value]="project.id">{{project.name}}</option>
+            
+            </select>
+            </div>
+
+            <div class ="form-group mt-2">
+              <label for ="is_admin">Admin</label>
+              <input type="checkbox" id ="is_admin" class ="form-control" name="is_admin" [(ngModel)] ="newEmployee.is_admin">
+            </div>
             
             <button type="submit" class=" form-control btn btn-primary mt-3">Save</button>
           </form>

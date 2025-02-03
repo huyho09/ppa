@@ -6,10 +6,9 @@ import { Project } from './entities/project.entity';
 import { Employee } from 'src/employees/entities/employee.entity';
 import { Department } from 'src/departments/entities/department.entity';
 import { Customer } from 'src/customers/entities/customer.entity';
-import { ProjectEmployee } from 'src/project-employees/entities/project-employee.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Project, Employee,Department,Customer,ProjectEmployee])],
+  imports: [TypeOrmModule.forFeature([Project, Employee,Department,Customer])],
   controllers: [ProjectsController],
   providers: [ProjectsService],
 })

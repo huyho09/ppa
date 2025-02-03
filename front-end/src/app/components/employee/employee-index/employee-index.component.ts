@@ -13,6 +13,7 @@ interface Employee {
   skills: string[];
   role: string;
   is_admin: boolean;
+  project: {name: string,id:string};
 }
 
 @Component({
@@ -39,29 +40,42 @@ export class EmployeeIndexComponent implements OnInit {
       }
     });
   }
-  filterEmployee() : Employee[] {
+  filterEmployee(): Employee[] {
     if(!this.searchText)
     {
       return this.employees
     }
     const search = this.searchText.toLowerCase().trim();
     return this.employees.filter(
-      employee => Object.values(employee).some(
-        value =>{
-          // console.log(value)
-          if (typeof(value) === 'string') 
-            {
-              return value.toLowerCase().includes(search.toLowerCase())
-            }
-          else if (Array.isArray(value))
-          {
-            return value.some((skill) => skill.toLowerCase().includes(this.searchText))
-          }
-          return false
-          }
-      )
+      emp => {
+        const projectNameMatches = emp.project && emp.project.name.toLowerCase().includes(search)
+        return this.isEmployeeMatch(emp,search) || projectNameMatches
+      }
     )
   }
-
+  isEmployeeMatch(employee:Employee,search: string): boolean {
+    for(let key in employee)
+    {
+      const value = employee[key as keyof Employee];
+      if(typeof(value)=== 'string')
+      {
+        if(value.toLowerCase().includes(search))
+        {
+          return true
+        }
+      }
+      else if ( Array.isArray(value))
+      {
+        for(let item of value)
+        {
+          if(item.toLowerCase().includes(search))
+          {
+            return true
+          }
+        }
+      }
+    }
+    return false
+  }
 
 }

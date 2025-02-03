@@ -13,6 +13,7 @@ interface Employee {
   skills: string[];
   role: string;
   is_admin: boolean;
+  project: {id: string,name: string};
 }
 @Injectable({
   providedIn: 'root',
@@ -20,14 +21,11 @@ interface Employee {
 export class EmployeeServiceService {
   private localStorageKey = 'employees';
   employees: Employee[] = [];
-  notify: string ='';
   constructor(private http: HttpClient) {}
 
   private apiUrl = 'http://127.0.0.1:3000/employees';
  
-  getEmployeesJson(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
-  }
+
  getEmployeesWithApiCall(){
   return this.http.get<Employee[]>(this.apiUrl)
  }
@@ -52,6 +50,10 @@ export class EmployeeServiceService {
   const api_url = this.apiUrl + '/' +id
   return this.http.delete(api_url)
  }
+//WITH LOCAL STORAGE
+ getEmployeesJson(): Observable<any> {
+  return this.http.get<any>(this.apiUrl);
+}
   getEmployees(): Observable<any[]> {
     const employees = this.getEmployeesFromLocalStorage();
     console.log(employees)

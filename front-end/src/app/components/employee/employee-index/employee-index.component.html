@@ -1,36 +1,45 @@
-
-<div class = "container">
-  <input type="text" [(ngModel)]="searchText" placeholder="Search..." />
+<div class = "row">
+  <div class = "col-11">
+    
+  </div>
 </div>
-<div class='container'>
-  <table id = "employeesDataTable" class="table  fixed-width-table">
-    <thead>
-      <tr>
-        <th style="width: 300px;">Name</th>
-        <th style="width: 300px;">Email</th>
-        <th style="width: 300px;">Gender</th>
-        <th style="width: 300px;">Skills</th>
-        <th style="width: 300px;">Role</th>
-        <th style="width: 300px;">Admin</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let employee of filterEmployee()">
-        <td>
-          <a
-          [routerLink]="['/dashboard/employee/update', employee.id]">
-          {{ employee.firstname + ' ' + employee.lastname }}
-        </a>
-        <td style="width: 300px;">{{ employee.email }}</td>
-        <td style="width: 300px;">{{ employee.gender }}</td>
-        <td>
-          <table *ngFor="let skill of employee.skills">
-            <td>{{skill}}</td>
-          </table>
-        </td>
-        <td style="width: 300px;">{{ employee.role }}</td>
-        <td style="width: 300px;">{{ employee.is_admin ? 'Yes' : 'No' }}</td>
-    </tbody>
-  </table>
-</div>
+      <div class="card-header bg-primary text-white">
+        <h4>Employee List</h4>
+      </div>
+      <div class="card-body">
+        <!-- Search Box -->
+        <div class="mb-4">
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            placeholder="Search..."
+            class="form-control"
+          />
+        </div>
 
+        <!-- Cards Display -->
+        <div class="row">
+          <div class="col-md-4 mb-4" *ngFor="let employee of filterEmployee()">
+            <div class="card">
+              <div class="card-body">
+                <img [src]="employee.avatar" alt="Employee Avatar" class = "avatar" id ="avatar" name = "avatar" style="border-radius: 50px; object-fit: cover; float: right; width: 150px; height: 150px;">
+                <!-- Employee Name -->
+                <h5 class="card-title">
+                  <a [routerLink]="['/dashboard/employee/update', employee.id]">
+                    {{ employee.firstname + ' ' + employee.lastname }}
+                  </a>
+                </h5>
+                <p class="card-text"><strong>Email:</strong> {{ employee.email }}</p>
+                <p class="card-text"><strong>Gender:</strong> {{ employee.gender }}</p>
+                <p class="card-text"><strong>Skills:</strong></p>
+                <ul>
+                  <li *ngFor="let skill of employee.skills">{{ skill }}</li>
+                </ul>
+                <p class="card-text"><strong>Role:</strong> {{ employee.role }}</p>
+                <p class="card-text"><strong>Admin:</strong> {{ employee.is_admin ? 'Yes' : 'No' }}</p>
+                <p class="card-text"><strong>Project:</strong> {{ employee.project.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

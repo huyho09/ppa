@@ -1,4 +1,7 @@
-import { IsArray, IsBoolean, IsString } from 'class-validator'
+import { IsArray, IsBoolean, IsOptional, IsString, ValidateNested } from 'class-validator'
+import { Type } from 'class-transformer';
+import { CreateProjectDto } from 'src/projects/dto/create-project.dto';
+
 export class CreateEmployeeDto {
     
     @IsString()
@@ -24,5 +27,9 @@ export class CreateEmployeeDto {
 
     @IsBoolean()
     is_admin: boolean;
+
+    @IsString()
+    @IsOptional()
+    projectId: string;
 
 }

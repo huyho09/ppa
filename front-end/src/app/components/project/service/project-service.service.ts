@@ -77,26 +77,27 @@ export class ProjectServiceService {
     return this.http.post<Project>(this.apiUrl, project)
   }
 
-  updateProjectWithApiCall(id: string, updatedProject: any): Observable<Project> {
-    const api_url = `${this.apiUrl}/${id}`
-    return this.http.patch<any>(api_url,updatedProject)
+  updateProjectWithApiCall(id: string, updatedProject: Project): Observable<any> {
+    const api_url = this.apiUrl + '/' +id
+    if (updatedProject.project_start_date)
+    {
+      const startDateUpdate = new Date (updatedProject.project_start_date)
+      updatedProject.project_start_date = startDateUpdate.getTime().toString()
+    }
+    if(updatedProject.project_end_date)
+    {
+      const endDateUpdate = new Date(updatedProject.project_end_date)
+      updatedProject.project_end_date = endDateUpdate.getTime().toString()
+    }
+    return this.http.patch(api_url,updatedProject)
 
   }
-
+  
   deleteProjectWithApiCall(id : string)
   {
     return this.http.delete(`${this.apiUrl}/${id}`)
   }
 
-  createProjectEmployeeWithApiCall (projectEmployee: ProjectEmployee): Observable<ProjectEmployee>
-  {
-    const api_url = 'http://localhost:3000/project-employees'
-    return this.http.post<ProjectEmployee>(api_url,projectEmployee)
-  }
-  updateProjectEmployeeWithApiCall(id : number, updatedProjectEmployee: any): Observable<any> {
-    const api_url = `http://localhost:3000/project-employees/${id}`
-    return this.http.patch<ProjectEmployee>(api_url, updatedProjectEmployee)
-  }
   //With Local Storage
   private localKeyStorage = 'projects'
   private projects : Project[] = []

@@ -79,16 +79,12 @@ export class ProjectCreateComponent implements OnInit {
   selectedEmployee: string[] = [];
   constructor(
     private projectService: ProjectServiceService,
-    private employeeService: EmployeeServiceService,
     private customerService: CustomerServiceService,
     private departmentService: DepartmentServiceService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.employeeService.getEmployeesWithApiCall().subscribe((employeeData: Employee[]) => {
-      this.employees = employeeData;
-    });
 
     this.departmentService.getDepartmentsWithApiCall().subscribe((departmentData) => {
       this.departments = departmentData;
@@ -99,34 +95,7 @@ export class ProjectCreateComponent implements OnInit {
     });
   }
 
-  onEmployeeSelect(event: Event): void {
-    const selectedOptions = (event.target as HTMLSelectElement).selectedOptions;
-    this.projectEmployee = []; 
-    this.selectedEmployee = []
 
-    for (let i = 0; i < selectedOptions.length; i++) {
-      const employeeId = selectedOptions[i].value.split(': ')[1] || selectedOptions[i].value;
-      const employeeName = (this.getEmployeeName(employeeId))
-
-      if(employeeName && !this.selectedEmployee.includes(employeeName)){
-        this.selectedEmployee.push(employeeName)
-      }
-      if (!this.projectEmployee.some((pe) => pe.employeeId === employeeId)) {
-        this.projectEmployee.push({
-          employeeId,
-          role_in_project: '',
-          task: '',
-          effort: 0,
-        });
-      }
-    }
-  }
-
-  getEmployeeName(id : string): string | undefined{
-    const employeeGetName = this.employees.find(emp => emp.id === id)
-    const employeeName = employeeGetName?.firstname + " " + employeeGetName?.lastname
-    return employeeName
-  }
 
   addProject(): void {
     if (this.newProject.project_start_date > this.newProject.project_end_date) {
@@ -147,22 +116,9 @@ export class ProjectCreateComponent implements OnInit {
         name: '',
       };
 
-    this.projectService.createProjectWithApiCall(this.newProject).subscribe((createdProject) => {
-      console.log('Project Employees:', this.projectEmployee);
-      const projectEmployeeRequests = this.projectEmployee.map((employee) => {
-        const payload = {
-          role_in_project: employee.role_in_project,
-          task: employee.task,
-          effort: employee.effort,
-          projectId: createdProject.id,
-          employeeId: employee.employeeId,
-        };
-        return this.projectService.createProjectEmployeeWithApiCall(payload);
-      });
-
-      forkJoin(projectEmployeeRequests).subscribe(() => {
-        this.router.navigate(['/dashboard/project']);
-      });
+    this.projectService.createProjectWithApiCall(this.newProject).subscribe(() => {
+      this.router.navigate(['/dashboard/project']);
+      
     });
   }
 }

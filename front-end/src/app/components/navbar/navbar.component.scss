@@ -1,18 +1,15 @@
 .sidenav {
-  height: 100vh; // Full height
-  width: 230px; // Fixed width
-  position: fixed; // Stay in place
-  top: 0;
-  left: 0;
-  background-color: black ; // Dark background
-  overflow-x: hidden; // Disable horizontal scroll
+  height: 100vh; 
+  width: 230px; 
+  position: flex; 
+  background-color: black ; 
+  overflow-x: hidden; 
   padding-top: 20px;
   display: inline-block;
   align-items: center;
   flex-direction: column;
-  z-index: 1000; // Ensure the sidebar is above the content
+  z-index: 1000; 
 
-  // Links inside the sidenav
   a {
     padding: 10px 15px;
     text-decoration: none;
