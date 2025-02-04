@@ -1,6 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import {
-  RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent
+  RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ButtonCloseDirective,
+  ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective
 } from '@coreui/angular';
 import { FormsModule, UntypedFormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -13,8 +14,8 @@ import { BillingInterface } from "../../dtos/billing-dto";
 
 @Component({
   selector: 'app-billing',
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule
-    , FormsModule, MatSelectModule, MatFormFieldModule],
+  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule,
+    FormsModule, MatSelectModule, MatFormFieldModule, ButtonCloseDirective, ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective],
   templateUrl: './billing.component.html',
   styleUrl: './billing.component.scss'
 })
@@ -206,6 +207,7 @@ export class BillingComponent {
     Other_Rev_12: 0,
   }];
   isEdit: boolean = false;
+  currentItemId = 0;
 
   ngOnInit() {
     // Initialize DataTables on a table element after the view is initialized
@@ -238,10 +240,20 @@ export class BillingComponent {
 
   onChangeFields(billingID: number, event: Event | null) {
     const billing = this.billings.find(emp => emp.BilllingId === billingID);
-    if(billing && event?.target){
+    if (billing && event?.target) {
       this.cdRef.detectChanges();
       this.saveBillingsToLocalStorage();
     }
+  }
+
+  onDeleteItem(billingID: number) {
+    const billing = this.billings.find(emp => emp.BilllingId === billingID);
+    if (billing) {
+      this.cdRef.detectChanges();
+      this.billings = this.billings.filter(x => x.BilllingId !== billingID);
+      localStorage.setItem('billings', JSON.stringify(this.billings));
+    }
+    this.visible = false;
   }
 
   onEditRecord() {
@@ -256,7 +268,7 @@ export class BillingComponent {
     if (!this.billings || this.billings.length === 0) {
       return 0;
     }
-  
+
     return this.billings
       .map(item => Number(item[attribute]) || 0)
       .reduce((acc, num) => acc + num, 0);
@@ -266,16 +278,16 @@ export class BillingComponent {
     if (!this.billings || this.billings.length === 0) {
       return 0;
     }
-    var mapData =  this.billings.map(item => Number(item[attribute]) * (item.Rate_In_Billing * this.convertCurrency(item.CONV)) || 0)
+    var mapData = this.billings.map(item => Number(item[attribute]) * (item.Rate_In_Billing * this.convertCurrency(item.CONV)) || 0)
     return mapData.reduce((acc, num) => acc + num, 0);
   }
 
-  sumTotalPMO(): number{
+  sumTotalPMO(): number {
     if (!this.billings || this.billings.length === 0) {
       return 0;
     }
     var mapData = this.billings.map(item => this.sumArrayNumber([item.Plan_1, item.Plan_2, item.Plan_3, item.Plan_4,
-      item.Plan_5, item.Plan_6, item.Plan_7, item.Plan_8, item.Plan_9, item.Plan_10, item.Plan_11, item.Plan_12]) || 0)
+    item.Plan_5, item.Plan_6, item.Plan_7, item.Plan_8, item.Plan_9, item.Plan_10, item.Plan_11, item.Plan_12]) || 0)
     return mapData.reduce((acc, num) => acc + num, 0);
   }
 
@@ -303,6 +315,21 @@ export class BillingComponent {
   handleCreateBillings() {
     this.saveBillingsToLocalStorage();
     this.router.navigate(['/billing-create']);
+  }
+
+  public visible = false;
+
+  toggleLiveDelete(billingID: number) {
+    this.visible = true;
+    this.currentItemId = billingID
+  }
+
+  toggleLiveDemo() {
+    this.visible = !this.visible;
+  }
+
+  handleLiveDemoChange(event: any) {
+    this.visible = event;
   }
 
 }

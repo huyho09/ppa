@@ -1,6 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import {
-  RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent
+  RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ButtonCloseDirective,
+  ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective
 } from '@coreui/angular';
 import { FormsModule, UntypedFormBuilder } from '@angular/forms';
 import employeesData from '../../../../data/employee.json'; // Ensure your environment supports JSON imports
@@ -14,13 +15,13 @@ import { Router } from '@angular/router';
   templateUrl: './employee-overview.component.html',
   styleUrls: ['./employee-overview.component.scss'],
   imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule
-    , FormsModule]
+    , FormsModule, ButtonCloseDirective, ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective]
 })
 
 export class EmployeeOverviewComponent {
   employees: Employee[] = employeesData;
   isEdit: boolean = false;
- 
+  currentItemId = 0;
   ngOnInit() {
     // Initialize DataTables on a table element after the view is initialized
     $(document).ready(function () {
@@ -62,9 +63,34 @@ export class EmployeeOverviewComponent {
     this.saveEmployeesToLocalStorage();
     this.router.navigate(['/employee-create']);
   }
-  
-  onEditRecord(){
+
+  onEditRecord() {
     this.isEdit = !this.isEdit;
     this.cdRef.detectChanges();
+  }
+
+  onDeleteItem(employeeID: number) {
+    const billing = this.employees.find(emp => emp.EmployeeID === employeeID);
+    if (billing) {
+      this.cdRef.detectChanges();
+      this.employees = this.employees.filter(x => x.EmployeeID !== employeeID);
+      localStorage.setItem('employees', JSON.stringify(this.employees));
+    }
+    this.visible = false;
+  }
+
+  public visible = false;
+
+  toggleLiveDelete(billingID: number) {
+    this.visible = true;
+    this.currentItemId = billingID
+  }
+
+  toggleLiveDemo() {
+    this.visible = !this.visible;
+  }
+
+  handleLiveDemoChange(event: any) {
+    this.visible = event;
   }
 }

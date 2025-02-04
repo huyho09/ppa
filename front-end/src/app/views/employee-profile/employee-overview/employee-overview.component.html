@@ -35,9 +35,9 @@
             <tr *ngFor="let employee of employees" [hidden]="employee.Status != 'Active' && !isEdit">
               <td>
                 <button class="btn btn-success" (click)="onChangeFields(employee.EmployeeID, $event)"
-                [disabled]="(!isEdit)">Save</button>
-                <button class="btn btn-danger" (click)="onChangeFields(employee.EmployeeID, $event)"
-                [disabled]="(!isEdit)">Delete</button>
+                  [disabled]="(!isEdit)">Save</button>
+                <button class="btn btn-danger" (click)="toggleLiveDelete(employee.EmployeeID)"
+                  [disabled]="(!isEdit)">Delete</button>
               </td>
               <td><span *ngIf="!isEdit">{{employee.NTID}}</span>
                 <input *ngIf="isEdit" [(ngModel)]="employee.NTID" class="form-control" type="text" />
@@ -107,3 +107,16 @@
     </c-card>
   </c-col>
 </c-row>
+<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Delete Bill</h5>
+    <button (click)="toggleLiveDemo()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>Do you want to delete this row?</c-modal-body>
+  <c-modal-footer>
+    <button (click)="toggleLiveDemo()" cButton color="secondary">
+      No
+    </button>
+    <button (click)="onDeleteItem(currentItemId)" cButton color="primary">Yes</button>
+  </c-modal-footer>
+</c-modal>

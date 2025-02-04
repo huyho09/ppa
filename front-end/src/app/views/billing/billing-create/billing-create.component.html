@@ -1,1 +1,233 @@
-<p>billing-create works!</p>
+<c-row ngPreserveWhitespaces style="margin: 1rem;">
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Team" class="form-label">Team</label>
+            <select id="Team" class="form-select" [(ngModel)]="billing.Team" (change)="onChange('Team', $event)">
+                <option [defaultSelected]="" value="OPM31">OPM31</option>
+                <option value="OPM30">OPM30</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Team_CF" class="form-label">Team (CF)</label>
+            <select id="Team_CF" class="form-select" [(ngModel)]="billing.Team_CF"
+                (change)="onChange('Team_CF', $event)">
+                <option [defaultSelected]="" value="OPM31">OPM31</option>
+                <option value="OPM30">OPM30</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Sub_Team" class="form-label">Sub Team</label>
+            <input type="text" [(ngModel)]="billing.Sub_Team" (change)="onChange('Sub_Team', $event)"
+                class="form-control" id="Sub_Team">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Sub_Team_CF" class="form-label">Sub Team (CF)</label>
+            <input type="text" [(ngModel)]="billing.Sub_Team_CF" (change)="onChange('Sub_Team_CF', $event)"
+                class="form-control" id="Sub_Team_CF">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Sub_Project" class="form-label">Sub Project</label>
+            <input type="text" [(ngModel)]="billing.Sub_Project" (change)="onChange('Sub_Project', $event)"
+                class="form-control" id="Sub_Project">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Emp_ID" class="form-label">Emp ID</label>
+            <input type="text" [(ngModel)]="billing.Emp_ID" (change)="onChange('Emp_ID', $event)" class="form-control"
+                id="Emp_ID">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Employee_Name" class="form-label">Employee Name</label>
+            <input type="text" [(ngModel)]="billing.Employee_Name" (change)="onChange('Employee_Name', $event)"
+                class="form-control" id="Employee_Name">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="PIF_ID" class="form-label">PIF ID</label>
+            <input type="text" [(ngModel)]="billing.PIF_ID" (change)="onChange('PIF_ID', $event)" class="form-control"
+                id="PIF_ID">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Rev_Source" class="form-label">Rev Source</label>
+            <input type="text" [(ngModel)]="billing.Rev_Source" (change)="onChange('Rev_Source', $event)"
+                class="form-control" id="Rev_Source">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Cus_Div" class="form-label">Cus Div</label>
+            <input type="text" [(ngModel)]="billing.Cus_Div" (change)="onChange('Cus_Div', $event)" class="form-control"
+                id="Cus_Div">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Cus_Div_CF" class="form-label">Cus Div (CF)</label>
+            <input type="text" [(ngModel)]="billing.Cus_Div_CF" (change)="onChange('Cus_Div_CF', $event)"
+                class="form-control" id="Cus_Div_CF">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="DI" class="form-label">D/I</label>
+            <select id="DI" class="form-select" [(ngModel)]="billing.DI" (change)="onChange('DI', $event)">
+                <option value="Direct">Direct</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="MCR" class="form-label">MCR</label>
+            <select id="MCR" class="form-select" [(ngModel)]="billing.MCR" (change)="onChange('MCR', $event)">
+                <option value="MCR">MCR</option>
+                <option value="Non MCR">Non MCR</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Onsite_Nearshore_Offshore" class="form-label">Onsite/Nearshore/Offshore</label>
+            <select id="Onsite_Nearshore_Offshore" class="form-select" [(ngModel)]="billing.Onsite_Nearshore_Offshore"
+                (change)="onChange('Onsite_Nearshore_Offshore', $event)">
+                <option value="Onsite">Onsite</option>
+                <option value="Nearshore">Nearshore</option>
+                <option value="Offshore">Offshore</option>
+            </select>
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Cus_Country" class="form-label">Cus Country</label>
+            <input type="text" [(ngModel)]="billing.Cus_Country" (change)="onChange('Cus_Country', $event)"
+                class="form-control" id="Cus_Country">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Cus_Country_CF" class="form-label">Cus Country (CF)</label>
+            <input type="text" [(ngModel)]="billing.Cus_Country_CF" (change)="onChange('Cus_Country_CF', $event)"
+                class="form-control" id="Cus_Country_CF">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Contract_Type" class="form-label">Contract Type</label>
+            <input type="text" [(ngModel)]="billing.Contract_Type" (change)="onChange('Contract_Type', $event)"
+                class="form-control" id="Contract_Type">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="Rate_In_Billing" class="form-label">Rate In Billing</label>
+            <input type="number" [(ngModel)]="billing.Rate_In_Billing" (change)="onChange('Rate_In_Billing', $event)"
+                class="form-control" id="Rate_In_Billing">
+        </div>
+    </c-col>
+    <c-col xs="12" md="3">
+        <div class="mb-3">
+            <label for="CONV" class="form-label">CONV</label>
+            <select id="CONV" class="form-select" [(ngModel)]="billing.CONV" (change)="onChange('CONV', $event)">
+                <option value="USD">USD</option>
+                <option value="VND">VND</option>
+                <option value="EUR">EUR</option>
+                <option value="JPY">JPY</option>
+            </select>
+        </div>
+    </c-col>
+    <!--  <c-col xs="12" class="mt-3">
+        <c-row>
+            <c-col xs="12" md="2">
+                <div class="mb-3">
+                    <label for="Plan_1" class="form-label">Plan 1:</label>
+                    <input type="number" [(ngModel)]="billing.Plan_1" (change)="onChange('Plan_1', $event)"
+                        class="form-control" id="Plan_1">
+                </div>
+            </c-col>
+            <c-col xs="12" md="2">
+                <div class="mb-3">
+                    <label for="Billed_1" class="form-label">Billed 1:</label>
+                    <input type="number" [(ngModel)]="billing.Billed_1" (change)="onChange('Billed_1', $event)"
+                        class="form-control" id="Billed_1">
+                </div>
+            </c-col>
+            <c-col xs="12" md="3">
+                <div class="mb-3">
+                    <label for="Unbilled_SAP_1" class="form-label">Unbilled SAP 1:</label>
+                    <input type="number" [(ngModel)]="billing.Unbilled_SAP_1"
+                        (change)="onChange('Unbilled_SAP_1', $event)" class="form-control" id="Unbilled_SAP_1">
+                </div>
+            </c-col>
+            <c-col xs="12" md="3">
+                <div class="mb-3">
+                    <label for="Unbilled_No_PO_1" class="form-label">Unbilled No PO 1:</label>
+                    <input type="number" [(ngModel)]="billing.Unbilled_No_PO_1"
+                        (change)="onChange('Unbilled_No_PO_1', $event)" class="form-control" id="Unbilled_No_PO_1">
+                </div>
+            </c-col>
+            <c-col xs="12" md="2">
+                <div class="mb-3">
+                    <label for="Other_Rev_1" class="form-label">Other Rev 1:</label>
+                    <input type="number" [(ngModel)]="billing.Other_Rev_1" (change)="onChange('Other_Rev_1', $event)"
+                        class="form-control" id="Other_Rev_1">
+                </div>
+            </c-col>
+        </c-row>
+        <c-row>
+            <c-col xs="12" md="2">
+                <div class="mb-3">
+                    <label for="Plan_2" class="form-label">Plan 2:</label>
+                    <input type="number" [(ngModel)]="billing.Plan_2" (change)="onChange('Plan_2', $event)"
+                        class="form-control" id="Plan_2">
+                </div>
+            </c-col>
+            <c-col xs="12" md="2">
+                <div class="mb-3">
+                    <label for="Billed_2" class="form-label">Billed 2:</label>
+                    <input type="number" [(ngModel)]="billing.Billed_2" (change)="onChange('Billed_2', $event)"
+                        class="form-control" id="Billed_2">
+                </div>
+            </c-col>
+            <c-col xs="12" md="3">
+                <div class="mb-3">
+                    <label for="Unbilled_SAP_2" class="form-label">Unbilled SAP 2:</label>
+                    <input type="number" [(ngModel)]="billing.Unbilled_SAP_2"
+                        (change)="onChange('Unbilled_SAP_2', $event)" class="form-control" id="Unbilled_SAP_2">
+                </div>
+            </c-col>
+            <c-col xs="12" md="3">
+                <div class="mb-3">
+                    <label for="Unbilled_No_PO_2" class="form-label">Unbilled No PO 2:</label>
+                    <input type="number" [(ngModel)]="billing.Unbilled_No_PO_2"
+                        (change)="onChange('Unbilled_No_PO_2', $event)" class="form-control" id="Unbilled_No_PO_2">
+                </div>
+            </c-col>
+            <c-col xs="12" md="2">
+                <div class="mb-3">
+                    <label for="Other_Rev_2" class="form-label">Other Rev 2:</label>
+                    <input type="number" [(ngModel)]="billing.Other_Rev_2" (change)="onChange('Other_Rev_2', $event)"
+                        class="form-control" id="Other_Rev_2">
+                </div>
+            </c-col>
+        </c-row>
+    </c-col> -->
+    <c-col xs="12">
+        <div class="mb-3 float-left">
+            <button class="btn btn-primary" type="button" value="Submit" (click)="handleSubmit()">Submit</button>
+            <button class="btn btn-secondary" (click)="handleCancel()" type="button" value="Cancel">Cancel</button>
+        </div>
+    </c-col>
+</c-row>
