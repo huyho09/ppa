@@ -16,24 +16,26 @@ export class EmployeesService {
   ){}
   async create(createEmployeeDto: CreateEmployeeDto) {
     const new_employee = this.employeeRepository.create(createEmployeeDto)
-    if(new_employee.project){
-      const project = await this.projectRepository.findOne({where: {id: createEmployeeDto.projectId}})
-      if(project){
-        new_employee.project = project
-        await this.pushEmployeeToProject(new_employee,project.id)
-      }
-      else{
-        console.log('No Project Found')
-      }
+    // if(createEmployeeDto.projectId){
+    //   const project = await this.projectRepository.findOne({where: {id: createEmployeeDto.projectId}})
+    //   if(project){
+    //     new_employee.project = project
+    //     await this.pushEmployeeToProject(new_employee,project.id)
+    //   }
+    //   else{
+    //     new_employee.project = null
+    //   }
+    // }
+    // else {
+    //   new_employee.project = null
+    // }
+    if (!new_employee.avatar)
+    {
+      new_employee.avatar = '/assets/data/Avatar.jpg'
     }
-    if(new_employee.gender === 'male')
-      {
-        new_employee.avatar = '/assets/data/Avatar.jpg'
-      }
-    if(new_employee.gender === 'female')
-      {
-        new_employee.avatar = '/assets/data/women.jpg'
-      } 
+    else {
+      
+    }
     return this.employeeRepository.save(new_employee)
   }
 

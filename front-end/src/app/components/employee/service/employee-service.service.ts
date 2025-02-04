@@ -24,7 +24,7 @@ export class EmployeeServiceService {
   constructor(private http: HttpClient) {}
 
   private apiUrl = 'http://127.0.0.1:3000/employees';
- 
+
 
  getEmployeesWithApiCall(){
   return this.http.get<Employee[]>(this.apiUrl)

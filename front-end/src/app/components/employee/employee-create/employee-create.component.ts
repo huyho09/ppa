@@ -18,7 +18,12 @@ interface Employee {
   skills: string[];
   role: string;
   is_admin: boolean;
-  project: {name: string, id: string};
+  project: Project;
+}
+
+interface Project{
+  id: string;
+  name: string
 }
 
 @Component({
@@ -28,7 +33,7 @@ interface Employee {
   templateUrl: './employee-create.component.html',
   styleUrls: ['./employee-create.component.scss'],
 })
-export class EmployeeCreateComponent implements OnInit{
+export class EmployeeCreateComponent implements OnInit {
   employees: Employee[] = [];
   projects: { id: string; name: string }[] = [];
   newEmployee = {
@@ -50,22 +55,19 @@ export class EmployeeCreateComponent implements OnInit{
     private router: Router,
   ) {}
 
-ngOnInit(): void {
-    this.projectService.getProjectsWithApiCall().subscribe(
-      (projectsData) => {
-        this.projects =projectsData.map((project) => ({
-          id: project.id,
-          name: project.name,
-        }))
-      }
-    )
-}
+  ngOnInit(): void {
+      this.projectService.getProjectsWithApiCall().subscribe(
+        (projectsData) => {
+          this.projects = projectsData
+        }
+      )
+  }
   addEmployee(){
     this.employeeService.createEmployeeWithApiCall(this.newEmployee).subscribe(
-      () => {
+      (data) => {
         this.router.navigate(['/dashboard/employee'])
       }
     )
   }
-  
+
 }

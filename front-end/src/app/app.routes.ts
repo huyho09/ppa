@@ -25,10 +25,12 @@ import { DepartmenIndexComponentComponent } from './components/department/depart
 import { DepartmentCreateComponentComponent } from './components/department/departmen-create/department-create-component/department-create-component.component';
 import { DepartmentUpdateComponentComponent } from './components/department/departmen-update/department-update-component/department-update-component.component';
 import { DepartmentDeleteComponentComponent } from './components/department/departmen-delete/department-delete-component/department-delete-component.component';
+import { UploadPictureComponent } from './components/upload-picture/upload-picture.component';
 
 export const routes: Routes = [
   // Login Route
   { path: 'login', component: LoginComponent },
+  { path: 'upload', component: UploadPictureComponent},
 
   // Dashboard Route with Child Routes
   {

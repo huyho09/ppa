@@ -54,6 +54,10 @@ export class EmployeeUpdateComponent implements OnInit {
       this.employeeService.getEmployeeWithApiCall(id).subscribe(
         (data) => {
           this.employee = data
+          if (!this.employee.project)
+          {
+            this.employee.project = {id: '', name: ''}
+          }
           this.id = id
         }
       )

@@ -1,6 +1,6 @@
 <div class = "row">
   <div class = "col-11">
-    
+
   </div>
 </div>
       <div class="card-header bg-primary text-white">
@@ -37,7 +37,13 @@
                 </ul>
                 <p class="card-text"><strong>Role:</strong> {{ employee.role }}</p>
                 <p class="card-text"><strong>Admin:</strong> {{ employee.is_admin ? 'Yes' : 'No' }}</p>
-                <p class="card-text"><strong>Project:</strong> {{ employee.project.name }}</p>
+                <div *ngIf="!employee.project || !employee.project.id; else projectAssigned">
+                  <p class = "card-text"><strong>Project: </strong>Don't have project</p>
+                </div>
+
+                <ng-template #projectAssigned>
+                  <p class = "card-text"><strong>Project:</strong><a [routerLink]="['/dashboard/project/update',employee.project.id]"> {{ employee.project.name }}</a></p>
+                </ng-template>
               </div>
             </div>
           </div>

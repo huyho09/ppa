@@ -11,6 +11,7 @@ import { Department } from './departments/entities/department.entity';
 import { Customer } from './customers/entities/customer.entity';
 import { Employee } from './employees/entities/employee.entity';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { UploadPictureModule } from './upload-picture/upload-picture.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
     DepartmentsModule,
     CustomersModule,
     EmployeesModule,
+    UploadPictureModule,
   ],
   controllers: [AppController],
   providers: [AppService],

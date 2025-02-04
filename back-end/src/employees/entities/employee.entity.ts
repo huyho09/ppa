@@ -30,7 +30,7 @@ export class Employee {
     @Column({ type: 'bit', default: false })
     is_admin: boolean;    
 
-    @ManyToOne(() => Project,project=> project.employees)
+    @ManyToOne(() => Project,project=> project.employees, {nullable: true})
     @JoinColumn()
     project: Project;
     
