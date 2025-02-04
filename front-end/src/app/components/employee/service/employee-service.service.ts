@@ -13,7 +13,7 @@ interface Employee {
   skills: string[];
   role: string;
   is_admin: boolean;
-  project: {id: string,name: string};
+  project: {id: string,name: string}|null;
 }
 @Injectable({
   providedIn: 'root',
@@ -35,9 +35,23 @@ export class EmployeeServiceService {
   return this.http.get<Employee>(api_url)
  }
 
- createEmployeeWithApiCall(employee: Employee): Observable<any>{
+ createEmployeeWithApiCall(employee: Employee,avatarFile: File | null): Observable<any>{
   employee.id = uuidv4()
-  return this.http.post(this.apiUrl,employee)
+  const formData = new FormData();
+  formData.append('id',employee.id)
+  if(avatarFile)
+  {
+    formData.append('avatar',avatarFile,avatarFile.name);
+  }
+  formData.append('firstname',employee.firstname)
+  formData.append('email',employee.email)
+  formData.append('lastname',employee.lastname)
+  formData.append('skills',JSON.stringify(employee.skills))
+  formData.append('role',employee.role)
+  formData.append('is_admin',employee.is_admin.toString())
+  formData.append('gender',employee.gender)
+
+  return this.http.post(this.apiUrl,formData)
  }
 
  updateEmployeeWithApiCall(id:string, updatedEmployee: Employee): Observable<any>{

@@ -5,6 +5,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Employee } from './entities/employee.entity';
 import { In, Repository } from 'typeorm';
 import { Project } from 'src/projects/entities/project.entity';
+import { extname } from 'path';
+import * as fs from 'fs'
+import * as path from 'path'
+
 
 @Injectable()
 export class EmployeesService {
@@ -14,28 +18,17 @@ export class EmployeesService {
     @InjectRepository(Project)
     private readonly projectRepository: Repository<Project>
   ){}
-  async create(createEmployeeDto: CreateEmployeeDto) {
+  async create(createEmployeeDto: CreateEmployeeDto, file: Express.Multer.File) {
     const new_employee = this.employeeRepository.create(createEmployeeDto)
-    // if(createEmployeeDto.projectId){
-    //   const project = await this.projectRepository.findOne({where: {id: createEmployeeDto.projectId}})
-    //   if(project){
-    //     new_employee.project = project
-    //     await this.pushEmployeeToProject(new_employee,project.id)
-    //   }
-    //   else{
-    //     new_employee.project = null
-    //   }
-    // }
-    // else {
-    //   new_employee.project = null
-    // }
-    if (!new_employee.avatar)
-    {
-      new_employee.avatar = '/assets/data/Avatar.jpg'
+    if(file) {
+      const avatarPath = `assets/avatar/${new_employee.id}.png`
+      fs.writeFileSync(path.join(__dirname,'/../../../front-end/src/',avatarPath),file.buffer)
+      new_employee.avatar = avatarPath
     }
     else {
-      
+      new_employee.avatar = '/assets/data/Avatar.jpg'
     }
+   
     return this.employeeRepository.save(new_employee)
   }
 
@@ -47,11 +40,17 @@ export class EmployeesService {
     return this.employeeRepository.findOneOrFail({where : {id},relations:['project']});
   }
 
-  async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
+  async update(id: string, updateEmployeeDto: UpdateEmployeeDto,file:Express.Multer.File) {
     const employee = await this.employeeRepository.findOneOrFail({where: {id},relations: ['project']})
     if (!employee)
     {
       console.log("Can't find Employee")
+    }
+    if(file)
+    {
+      const avatarPath = `assets/avatar/${employee.id}.png`
+      fs.writeFileSync(path.join(__dirname,'/../../../front-end/src/',avatarPath),file.buffer)
+      employee.avatar = avatarPath
     }
     if (updateEmployeeDto.projectId && employee.project && updateEmployeeDto.projectId !== employee.project.id) 
       {

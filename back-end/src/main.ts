@@ -1,14 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { readdirSync } from 'fs';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  const uploadDirectory = join(__dirname, '..','uploads');
-  const files = readdirSync(uploadDirectory)
-  console.log("uploads: " , files)
   // Initialize Swagger
   const config = new DocumentBuilder()
     .setTitle('Web Application API')

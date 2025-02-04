@@ -14,7 +14,7 @@ interface Employee {
   skills: string[];
   role: string;
   is_admin: boolean;
-  project: {name: string, id:string}
+  project: {name: string, id:string} |null
 }
 
 @Component({
