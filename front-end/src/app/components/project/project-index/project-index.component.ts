@@ -3,13 +3,20 @@ import { ProjectServiceService } from '../service/project-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import {Chart} from 'chart.js/auto'
 import { CustomerServiceService } from '../../customer/service/customer-service.service';
 import { DepartmentServiceService } from '../../department/service/department-service.service';
+
 interface Employee {
   id: string;
+  avatar: string;
   firstname: string;
   lastname: string;
+  gender: string;
+  email: string;
+  skills: string[];
+  role: string;
+  is_admin: boolean;
+
 }
 
 interface Project {
@@ -25,6 +32,8 @@ interface Project {
   customer: Customer;
   createdAt : string;
   endAt: string;
+  employees: Employee[]
+
 }
 
 interface Department {
@@ -38,12 +47,6 @@ interface Customer {
   lastname: string;
 }
 
-interface ProjectEmployee {
-  employeeId: string;
-  role_in_project: string;
-  task: string;
-  effort: number;
-}
 
 @Component({
   selector: 'app-project-index',
@@ -54,7 +57,7 @@ interface ProjectEmployee {
 export class ProjectIndexComponent implements OnInit {
 
   projects: Project[] = []
-  
+  employees: Employee[] = []
   isFormVisible: boolean = false
   currentRequirements: string = ''
   todayDate: Date = new Date();
@@ -63,19 +66,12 @@ export class ProjectIndexComponent implements OnInit {
   departments : Department[] = [];
   customerProject: string = '';
   departmentProject: string = '';
+
   constructor(
     private projectService: ProjectServiceService,
     private customerService: CustomerServiceService,
     private departmentService : DepartmentServiceService,
   ){}
-  getDepartmentName(id: string){
-    const departmentName = this.departments.find(department => department.id === id)
-    return departmentName?.name
-  }
-  getCustomerName(id: string) {
-    const customerName = this.customers.find(customer => customer.id === id)
-    return customerName?.firstname + " " + customerName?.lastname
-  }
   ngOnInit(): void {
       this.projectService.getProjectsWithApiCall().subscribe(
         (data) => {

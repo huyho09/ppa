@@ -1,6 +1,24 @@
 .container {
   margin-top: 30px;
 }
+.employee-card {
+  background: #f8f9fa;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  .employee-avatar {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+}
 
 .card {
   max-width: 100%; // Ensures the card does not overflow

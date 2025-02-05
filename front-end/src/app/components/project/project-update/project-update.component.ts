@@ -8,10 +8,16 @@ import { CustomerServiceService } from '../../customer/service/customer-service.
 import { DepartmentServiceService } from '../../department/service/department-service.service';
 interface Employee {
   id: string;
+  avatar: string;
   firstname: string;
   lastname: string;
-}
+  gender: string;
+  email: string;
+  skills: string[];
+  role: string;
+  is_admin: boolean;
 
+}
 interface Project {
   id: string;
   name: string;
@@ -24,11 +30,13 @@ interface Project {
   lastUpdatedat: string;
   department: Department;
   customer: Customer;
+  employees: Employee[]
 }
 
 interface Department {
   id: string;
   name: string;
+  overview: string;
 }
 
 interface Customer {
@@ -37,12 +45,6 @@ interface Customer {
   lastname: string;
 }
 
-interface ProjectEmployee {
-  employeeId: string;
-  role_in_project: string;
-  task: string;
-  effort: number;
-}
 @Component({
   selector: 'app-project-update',
   standalone:true,
@@ -53,7 +55,6 @@ interface ProjectEmployee {
 export class ProjectUpdateComponent implements OnInit {
 constructor(
   private projectService: ProjectServiceService,
-  private employeeService: EmployeeServiceService,
   private customerService: CustomerServiceService,
   private departmentService: DepartmentServiceService,
   private route: ActivatedRoute,
@@ -62,15 +63,15 @@ constructor(
 customers: Customer[] = []
 employees: Employee[] = []
 departments: Department[] =[]
-projectEmployee: ProjectEmployee[] =[]
 selectedEmployees: string[] = [];
 id: string = '';
 
 project: Project = {
   id: '',
   name: '',
-  department: { id: '', name: '' },
+  department: { id: '', name: '' ,overview: ''},
   customer: { id: '', firstname: '', lastname: '' },
+  employees: [],
   requirements: '',
   skills: [],
   result_image: [],
@@ -94,6 +95,7 @@ ngOnInit(): void {
           if(response)
           {
             this.project = response
+            this.employees = response.employees
             this.project.project_start_date = new Date(Number(this.project.project_start_date)).toISOString().split('T')[0];
             this.project.project_end_date = new Date(Number(this.project.project_end_date)).toISOString().split('T')[0];
             this.skillsString = this.project.skills.join(',')

@@ -10,8 +10,15 @@ import { forkJoin } from 'rxjs';
 
 interface Employee {
   id: string;
+  avatar: string;
   firstname: string;
   lastname: string;
+  gender: string;
+  email: string;
+  skills: string[];
+  role: string;
+  is_admin: boolean;
+
 }
 
 interface Project {
@@ -27,6 +34,7 @@ interface Project {
   lastUpdatedat: string;
   department: Department;
   customer: Customer;
+  employees: Employee[]
 }
 
 interface Department {
@@ -68,6 +76,7 @@ export class ProjectCreateComponent implements OnInit {
     createdAt: '',
     endAt: '',
     lastUpdatedat: '',
+    employees: []
   };
 
   selectedEmployees: string[] = [];
@@ -115,7 +124,6 @@ export class ProjectCreateComponent implements OnInit {
         id: '',
         name: '',
       };
-
     this.projectService.createProjectWithApiCall(this.newProject).subscribe(() => {
       this.router.navigate(['/dashboard/project']);
       

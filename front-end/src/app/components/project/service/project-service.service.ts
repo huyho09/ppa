@@ -3,7 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
+interface Employee {
+  id: string;
+  avatar: string;
+  firstname: string;
+  lastname: string;
+  gender: string;
+  email: string;
+  skills: string[];
+  role: string;
+  is_admin: boolean;
 
+}
 interface Project {
   id: string;
   name: string;
@@ -16,6 +27,8 @@ interface Project {
   lastUpdatedat: string;
   department: Department;
   customer: Customer;
+  employees: Employee[]
+
 }
 
 interface Department {
