@@ -8,55 +8,54 @@
   </div>
   <br>
   <div>
-    <a class="menu-header" (click)="toggleSubmenu('department')"> <i class ="bi bi-house"></i> Department</a>
+    <a class="menu-header" (click)="toggleSubmenu('department')"><i class="bi bi-house"></i> Department</a>
     <div class="submenu" [class.show]="activeMenu === 'department'">
       <a href="/dashboard/department/"><i class="bi bi-hash"></i> Department</a>
       <a href="/dashboard/department/create"><i class="bi bi-bookmark-plus"></i> Create Department</a>
     </div>
   </div>
   <br>
-    <div>
-      <a class="menu-header" (click)="toggleSubmenu('employee')"> <i class ="bi bi-people"></i> Members</a>
-      <div class="submenu" [class.show]="activeMenu === 'employee'">
-        <a href="/dashboard/employee"><i class="bi bi-hash"></i> My Team Members</a>
-        <a href="/dashboard/employee/create"><i class="bi bi-person-add"></i> Create Member</a>
-      </div>
-    </div>
-    <br>
-    <div>
-      <a class="menu-header" (click)="toggleSubmenu('project')"> <i class="bi bi-folder"></i> Projects</a>
-      <div class="submenu" [class.show]="activeMenu === 'project'">
-        <a href="/dashboard/project"><i class="bi bi-hash"> </i>Our Projects</a>
-        <a href="/dashboard/project/create"><i class="bi bi-folder-plus"></i> Create Project </a>
-      </div>
-    </div>
-    <br>
-    <div>
-        <a class="menu-header" (click)="toggleSubmenu('customer')"><i class="bi bi-people-fill"></i> Customer</a>
-        <div class="submenu" [class.show]="activeMenu === 'customer'">
-          <a href="/dashboard/customer"><i class="bi bi-hash"> </i>Our Customer</a>
-          <a href="/dashboard/customer/create"><i class="bi bi-person-add"></i> Create Customer</a>
-        </div>
-    </div>
-    <br>
-    <div>
-      <a  style = "margin-top: 200px;"class="menu-header" (click)="toggleSubmenu('docs')"><i class="bi bi-file-text-fill"></i>My Docs</a>
-      <div class="submenu" [class.show]="activeMenu === 'docs'">
-        <a href="/dashboard/docs/sql"><i class="bi bi-hash"> </i>SQL Docs</a>
-        <a href="/dashboard/docs/node"><i class="bi bi-hash"> </i>Node Docs</a>
-        <!-- <a href="/dashboard/customer/create"><i class="bi bi-person-add"></i> Create Customer</a> -->
-      </div>
-  </div>
-    <br>
-    <div>
-      <a class ="menu-header" ><i class="bi bi-patch-question-fill"></i> Help</a>
-    </div>
-    <br>
-    <div>
-      <a class ="menu-header" ><i class="bi bi-bell-fill"></i>  Release Note</a>
-    </div>
-    <br>
-    <div class ="menu-header">
-        <a  href="/login"><i class="bi bi-power"></i> Log Out</a>
+  <div>
+    <a class="menu-header" (click)="toggleSubmenu('employee')"><i class="bi bi-people"></i> Members</a>
+    <div class="submenu" [class.show]="activeMenu === 'employee'">
+      <a href="/dashboard/employee"><i class="bi bi-hash"></i> My Team Members</a>
+      <a href="/dashboard/employee/create"><i class="bi bi-person-add"></i> Create Member</a>
     </div>
   </div>
+  <br>
+  <div>
+    <a class="menu-header" (click)="toggleSubmenu('project')"><i class="bi bi-folder"></i> Projects</a>
+    <div class="submenu" [class.show]="activeMenu === 'project'">
+      <a href="/dashboard/project"><i class="bi bi-hash"></i> Our Projects</a>
+      <a href="/dashboard/project/create"><i class="bi bi-folder-plus"></i> Create Project</a>
+    </div>
+  </div>
+  <br>
+  <div>
+    <a class="menu-header" (click)="toggleSubmenu('customer')"><i class="bi bi-people-fill"></i> Customer</a>
+    <div class="submenu" [class.show]="activeMenu === 'customer'">
+      <a href="/dashboard/customer"><i class="bi bi-hash"></i> Our Customer</a>
+      <a href="/dashboard/customer/create"><i class="bi bi-person-add"></i> Create Customer</a>
+    </div>
+  </div>
+  <br>
+  <div>
+    <a class="menu-header" (click)="toggleSubmenu('docs')"><i class="bi bi-file-text-fill"></i> My Docs</a>
+    <div class="submenu" [class.show]="activeMenu === 'docs'">
+      <a href="/dashboard/docs/sql"><i class="bi bi-hash"></i> SQL Docs</a>
+      <a href="/dashboard/docs/node"><i class="bi bi-hash"></i> Node Docs</a>
+    </div>
+  </div>
+  <br>
+  <div>
+    <a class="menu-header"><i class="bi bi-patch-question-fill"></i> Help</a>
+  </div>
+  <br>
+  <div>
+    <a class="menu-header"><i class="bi bi-bell-fill"></i> Release Note</a>
+  </div>
+  <br>
+  <div class="menu-header logout">
+    <a href="/login"><i class="bi bi-power"></i> Log Out</a>
+  </div>
+</div>
