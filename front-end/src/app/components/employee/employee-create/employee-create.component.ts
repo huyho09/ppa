@@ -4,7 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { ProjectServiceService } from '../../project/service/project-service.service';
+import { HttpClient } from '@angular/common/http';
 
+interface UploadResponse {
+  message: string;
+  filename: string;
+}
 interface Employee {
   id: string;
   avatar: string;
@@ -50,6 +55,7 @@ export class EmployeeCreateComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeServiceService,
+    private http: HttpClient,
     private projectService: ProjectServiceService,
     private router: Router
   ) {}
@@ -61,29 +67,27 @@ export class EmployeeCreateComponent implements OnInit {
   }
 
   onFileSelect(event: any): void {
-    this.avatarFile = event.target.files[0];
-    if(this.avatarFile)
-    {
-      this.avatarPreview = URL.createObjectURL(this.avatarFile)
+    const file:File = event.target.files[0];
+    if(file){
+      const formData = new FormData();
+      formData.append('file',file,file.name)
+      this.http.post<UploadResponse>('http://localhost:3000/upload-picture/upload', formData).subscribe(
+        (response) => {
+          console.log(response)
+          this.newEmployee.avatar = response.filename
+          console.log(this.newEmployee.avatar)
+          this.avatarPreview = `http://localhost:3000/upload-picture/${response.filename}`
+        }
+      )
     }
   }
 
   addEmployee(): void {
-    if (this.avatarFile) {
-      this.employeeService.createEmployeeWithApiCall(this.newEmployee, this.avatarFile).subscribe(
+      this.employeeService.createEmployeeWithApiCall(this.newEmployee).subscribe(
         (data) => {
           console.log(data)
           this.router.navigate(['/dashboard/employee']);
         }
       );
-    } else {
-      this.newEmployee.avatar = '/assets/data/Avatar.jpg';
-
-      this.employeeService.createEmployeeWithApiCall(this.newEmployee, null).subscribe(
-        () => {
-          this.router.navigate(['/dashboard/employee']);
-        }
-      );
-    }
   }
 }

@@ -26,20 +26,17 @@ interface Employee {
 export class EmployeeIndexComponent implements OnInit {
   employees: Employee[] = [];
   searchText: string = '';
-  constructor(private employeeService: EmployeeServiceService) {}
+  constructor(private employeeService: EmployeeServiceService) {
+
+  }
+
 
   ngOnInit(): void {
     this.employeeService.getEmployeesWithApiCall().subscribe((data : Employee[]) => {
       this.employees = data;
-      for(const employee of this.employees)
-      {
-        // console.log(typeof(employee.email))
-        // console.log(typeof(employee.firstname))
-        // console.log(typeof(employee.lastname))
-        // console.log(typeof(employee.role))
-      }
     });
   }
+
   filterEmployee(): Employee[] {
     if(!this.searchText)
     {

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProjectServiceService } from '../../project/service/project-service.service';
+import { HttpClient } from '@angular/common/http';
 interface Employee {
   id: string;
   avatar: string;
@@ -16,7 +17,10 @@ interface Employee {
   is_admin: boolean;
   project: {name: string, id:string} |null
 }
-
+interface UploadResponse {
+  message: string;
+  filename: string;
+}
 @Component({
   selector: 'app-employee-update',
   standalone: true,
@@ -39,13 +43,32 @@ export class EmployeeUpdateComponent implements OnInit {
     project: {name: '', id: ''},
   }
   id: string =''
+  avatarFile: File | null = null
+  avatarPreview: string | null = null
+
   constructor(
     private employeeService: EmployeeServiceService,
     private projectService: ProjectServiceService,
     private route: ActivatedRoute,
+    private http: HttpClient,
     private router: Router
   ){}
 
+  onFileSelect(event: any): void {
+    const file:File = event.target.files[0];
+    if(file){
+      const formData = new FormData();
+      formData.append('file',file,file.name)
+      this.http.post<UploadResponse>('http://localhost:3000/upload-picture/upload', formData).subscribe(
+        (response) => {
+          console.log(response)
+          this.employee.avatar = response.filename
+          console.log(this.employee.avatar)
+          this.avatarPreview = `http://localhost:3000/upload-picture/${response.filename}`
+        }
+      )
+    }
+  }
   ngOnInit(): void {
     this.loadProject()
     const id = this.route.snapshot.paramMap.get('id');
