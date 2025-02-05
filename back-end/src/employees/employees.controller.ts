@@ -9,10 +9,9 @@ export class EmployeesController {
   constructor(private readonly employeesService: EmployeesService) {}
 
   @Post()
-  @UseInterceptors(FileInterceptor('avatar'))
-  create(@Body() createEmployeeDto: CreateEmployeeDto,@UploadedFile() file: Express.Multer.File) {
+  create(@Body() createEmployeeDto: CreateEmployeeDto,) {
     
-    return this.employeesService.create(createEmployeeDto,file);
+    return this.employeesService.create(createEmployeeDto);
   }
 
   @Get()
@@ -28,8 +27,8 @@ export class EmployeesController {
   @Patch(':id')
   @UseInterceptors(FileInterceptor('avatar'))
   
-  update(@Param('id') id: string, @Body() updateEmployeeDto: UpdateEmployeeDto, @UploadedFile() file: Express.Multer.File) {
-    return this.employeesService.update(id, updateEmployeeDto,file);
+  update(@Param('id') id: string, @Body() updateEmployeeDto: UpdateEmployeeDto) {
+    return this.employeesService.update(id, updateEmployeeDto);
   }
 
   @Delete(':id')

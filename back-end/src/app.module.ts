@@ -11,6 +11,9 @@ import { Department } from './departments/entities/department.entity';
 import { Customer } from './customers/entities/customer.entity';
 import { Employee } from './employees/entities/employee.entity';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import {join} from 'path'
+import { UploadPictureModule } from './upload-picture/upload-picture.module';
 
 
 @Module({
@@ -34,6 +37,11 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
     DepartmentsModule,
     CustomersModule,
     EmployeesModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..','src','assets'),
+      serveRoot: '/assets'
+    }),
+    UploadPictureModule
     
   ],
   controllers: [AppController],

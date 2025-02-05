@@ -18,17 +18,8 @@ export class EmployeesService {
     @InjectRepository(Project)
     private readonly projectRepository: Repository<Project>
   ){}
-  async create(createEmployeeDto: CreateEmployeeDto, file: Express.Multer.File) {
+  async create(createEmployeeDto: CreateEmployeeDto) {
     const new_employee = this.employeeRepository.create(createEmployeeDto)
-    if(file) {
-      const avatarPath = `assets/avatar/${new_employee.id}.png`
-      fs.writeFileSync(path.join(__dirname,'/../../../front-end/src/',avatarPath),file.buffer)
-      new_employee.avatar = avatarPath
-    }
-    else {
-      new_employee.avatar = '/assets/data/Avatar.jpg'
-    }
-   
     return this.employeeRepository.save(new_employee)
   }
 
@@ -40,17 +31,11 @@ export class EmployeesService {
     return this.employeeRepository.findOneOrFail({where : {id},relations:['project']});
   }
 
-  async update(id: string, updateEmployeeDto: UpdateEmployeeDto,file:Express.Multer.File) {
+  async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
     const employee = await this.employeeRepository.findOneOrFail({where: {id},relations: ['project']})
     if (!employee)
     {
       console.log("Can't find Employee")
-    }
-    if(file)
-    {
-      const avatarPath = `assets/avatar/${employee.id}.png`
-      fs.writeFileSync(path.join(__dirname,'/../../../front-end/src/',avatarPath),file.buffer)
-      employee.avatar = avatarPath
     }
     if (updateEmployeeDto.projectId && employee.project && updateEmployeeDto.projectId !== employee.project.id) 
       {
