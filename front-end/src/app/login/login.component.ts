@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { EmployeeServiceService } from '../components/employee/service/employee-service.service';
+interface Employee {
+  email: string;
+  password:string;
+}
 
 @Component({
   selector: 'app-login',
@@ -11,32 +15,54 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
-  constructor(private router:Router){}
+export class LoginComponent implements OnInit {
+  constructor(
+    private router:Router,
+    private employeeService: EmployeeServiceService
+  ){}
   username: string ='';
   password: string ='';
   showError: string = '';
+  employees: Employee[] = [];
+  loginEmail: string = ''
+  loginPassword: string = ''
+
+  ngOnInit(): void {
+      this.employeeService.getEmployeesWithApiCall().subscribe(
+        (data) =>{
+          this.employees = data
+          console.log(this.employees)
+        }
+      )
+  }
   onSubmit(): void
   {
     this.showError = ''
-    if(this.username === 'admin@gmail.com' && this.password === 'Password@123')
+    if (this.loginEmail === null || this.loginEmail === undefined || this.loginEmail.trim() === '')
     {
-      this.router.navigate(['/dashboard/overview']);
+      this.showError = 'Please Input Your Email'
+      return
     }
-    else if (this.username === null || this.username === undefined || this.username.trim()==='')
+    else if ( this.loginPassword === null || this.loginPassword === undefined || this.loginEmail.trim() === '')
     {
-      this.showError = 'Username is required';
-      return;
+      this.showError = 'Please Input Your Password'
+      return
     }
-    else if (this.password === null || this.password === undefined || this.password.trim()==='')
+    else if (this.loginEmail && this.loginPassword)
     {
-      this.showError = 'Password is required';
-      return;
-    }
-    else
-    {
-      this.showError = 'Invalid login, please check ';
-      return;
+      this.employees.map(
+        (emp) => {
+          if (emp.email === this.loginEmail)
+          {
+            this.router.navigate(['/dashboard'])
+          }
+          else
+          {
+            this.showError = "Invalid Login"
+            return
+          }
+        }
+      )
     }
   }
 }

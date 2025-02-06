@@ -14,6 +14,7 @@ interface Employee {
   gender: string;
   skills: string[];
   role: string;
+  password: string;
   is_admin: boolean;
   project: {name: string, id:string} |null
 }
@@ -39,6 +40,7 @@ export class EmployeeUpdateComponent implements OnInit {
     email: '',
     skills: [],
     role: '',
+    password: '',
     is_admin: false,
     project: {name: '', id: ''},
   }

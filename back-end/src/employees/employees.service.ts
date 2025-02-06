@@ -6,8 +6,7 @@ import { Employee } from './entities/employee.entity';
 import { In, Repository } from 'typeorm';
 import { Project } from 'src/projects/entities/project.entity';
 import { extname } from 'path';
-import * as fs from 'fs'
-import * as path from 'path'
+
 
 
 @Injectable()

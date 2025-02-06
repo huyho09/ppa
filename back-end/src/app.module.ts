@@ -14,6 +14,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import {join} from 'path'
 import { UploadPictureModule } from './upload-picture/upload-picture.module';
+import { LoginModule } from './login/login.module';
 
 
 @Module({
@@ -41,7 +42,8 @@ import { UploadPictureModule } from './upload-picture/upload-picture.module';
       rootPath: join(__dirname, '..','src','assets'),
       serveRoot: '/assets'
     }),
-    UploadPictureModule
+    UploadPictureModule,
+    LoginModule
     
   ],
   controllers: [AppController],

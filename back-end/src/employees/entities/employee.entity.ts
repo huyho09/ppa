@@ -1,3 +1,4 @@
+import { CONFIGURABLE_MODULE_ID } from "@nestjs/common/module-utils/constants";
 import { Project } from "src/projects/entities/project.entity";
 import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -29,6 +30,9 @@ export class Employee {
 
     @Column({ type: 'bit', default: false })
     is_admin: boolean;    
+
+    @Column('text')
+    password: string;
 
     @ManyToOne(() => Project,project=> project.employees, {nullable: true})
     @JoinColumn()
