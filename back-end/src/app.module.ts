@@ -18,7 +18,6 @@ import { AuthModule } from './auth/auth.module';
 import * as crypto from 'crypto'
 import { AuthGuard, PassportModule } from '@nestjs/passport';
 import * as session from 'express-session'
-
 const secretKey = crypto.randomBytes(64).toString('hex')
 @Module({
   imports: [
