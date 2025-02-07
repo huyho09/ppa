@@ -2,7 +2,7 @@
     {
         "RequirementID": 1,
         "CategoryName": "Technical",
-        "Requirement": "Proficiency in JavaScript",
+        "RequirementType": "Mandatory",
         "CompetenceName": "Software Development",
         "CompetenceLevel": "Intermediate",
         "Ceftification": "JavaScript Developer Certificate"
@@ -10,7 +10,7 @@
     {
         "RequirementID": 2,
         "CategoryName": "Management",
-        "Requirement": "Experience in project management",
+        "RequirementType": "Optional",
         "CompetenceName": "Project Management",
         "CompetenceLevel": "Advanced",
         "Ceftification": "PMP"
@@ -18,7 +18,7 @@
     {
         "RequirementID": 3,
         "CategoryName": "Technical",
-        "Requirement": "Knowledge of cloud infrastructure",
+        "RequirementType": "Optional",
         "CompetenceName": "Cloud Engineering",
         "CompetenceLevel": "Expert",
         "Ceftification": "AWS Certified Solutions Architect"

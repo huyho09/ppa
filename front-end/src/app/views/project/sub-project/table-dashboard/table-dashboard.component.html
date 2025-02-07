@@ -4,12 +4,12 @@
             <c-card-header>
                 <!-- <h3>Sub Projects Overview</h3> -->
                 <button class="btn btn-primary" (click)="toggleLiveDemo()">Create</button>
-                <button class="btn btn-secondary" (click)="onEditRecord()" *ngIf="!isEdit">Edit</button>
             </c-card-header>
             <c-card-body>
                 <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
                     <thead>
                         <tr>
+                            <th>Action</th>
                             <th>SubProject ID</th>
                             <th>Start Time</th>
                             <th>End Time</th>
@@ -20,6 +20,10 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let subProject of subProjects">
+                            <td>
+                                <button class="btn btn-success" (click)="toggleLiveDemo(subProject)">View</button>
+                                <button class="btn btn-danger" (click)="toggleLiveDemo1()">Delete</button>
+                            </td>
                             <td>
                                 <span *ngIf="!isEdit">{{ subProject.SubProjectID }}</span>
                                 <input *ngIf="isEdit" [(ngModel)]="subProject.SubProjectID" class="form-control"
@@ -63,13 +67,26 @@
     </c-col>
 </c-row>
 
-<c-modal id="createSubProjectModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)" class="large-modal">
+<c-modal class="large-modal" id="createSubProjectModal" [visible]="visible"
+    (visibleChange)="handleLiveDemoChange($event)">
     <c-modal-header>
-        <h5 cModalTitle>Delete Bill</h5>
+        <h5 cModalTitle>Create New Sub-Project</h5>
         <button (click)="toggleLiveDemo()" cButtonClose></button>
     </c-modal-header>
     <c-modal-body>
         <c-row ngPreserveWhitespaces style="margin: 1rem;">
+            <c-col xs="12" md="6" md-offset="6">
+                <div class="mb-3">
+                    <label for="ProjectID" class="form-label">Project<span style="color: red;">(*)</span></label>
+                    <!-- <select id="ProjectID" class="form-select" [(ngModel)]="subProject.ProjectID"
+                        (change)="onChange('ProjectID', $event)">
+                        <option *ngFor="let project of projects" value="project.ProjectID">{{ project.ProjectName }}
+                        </option>
+                    </select> -->
+                    <input type="text" [(ngModel)]="subProject.ProjectID" (change)="onChange('ProjectID', $event)"
+                        class="form-control" id="ProjectID" placeholder="Please enter value ...">
+                </div>
+            </c-col>
             <c-col xs="12" md="6">
                 <div class="mb-3">
                     <label for="StartTime" class="form-label">Start Time<span style="color: red;">(*)</span></label>
@@ -84,39 +101,212 @@
                         class="form-control" id="EndTime" placeholder="Please enter value ...">
                 </div>
             </c-col>
-            <c-col xs="12" md="6">
-                <div class="mb-3">
-                    <label for="ProjectID" class="form-label">Project<span style="color: red;">(*)</span></label>
-                    <select id="ProjectID" class="form-select" [(ngModel)]="subProject.ProjectID"
-                        (change)="onChange('ProjectID', $event)">
-                        <option *ngFor="let project of projects" value="project.ProjectID">{{ project.ProjectName }}
-                        </option>
-                    </select>
-                </div>
-            </c-col>
-            <c-col xs="12" md="6">
+            <!-- <c-col xs="12" md="6">
                 <div class="mb-3">
                     <label for="ProjectID" class="form-label">Project<span style="color: red;">(*)</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Select Options</mat-label>
-                        <mat-select 
-                          [(ngModel)]="selectedItems" 
-                          multiple 
-                          panelClass="custom-dropdown-overlay">
-                          <mat-option *ngFor="let option of options" [value]="option.id">
-                            {{ option.name }}
-                          </mat-option>
+                        <mat-select [(ngModel)]="selectedOptions" multiple panelClass="custom-dropdown-overlay">
+                            <mat-option *ngFor="let option of projects" [value]="option.ProjectID">
+                                {{ option.ProjectName }}
+                            </mat-option>
                         </mat-select>
-                      </mat-form-field>                      
+                    </mat-form-field>
+                </div>
+            </c-col> -->
+            <c-col xs="12" md="12">
+                <div class="mb-3">
+                    <mat-tab-group>
+                        <mat-tab label="Assignments">
+                            <c-row class="tab-table-header" ngPreserveWhitespaces style="margin: 1rem;">
+                                <c-col class="col-table" xs="4" md="2">
+                                    <h5 class="form-label heading-table bg-primary text-white">NTID<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <h5 class="form-label heading-table bg-primary text-white">Employee Name<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <h5 class="form-label heading-table bg-primary text-white">Remaining Capacity<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <h5 class="form-label heading-table bg-primary text-white">PIC/ Proxy<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <h5 class="form-label heading-table bg-primary text-white">PMO Per Month<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <h5 class="form-label heading-table bg-primary text-white">Total PMO<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                            </c-row>
+                            <c-row class="tab-table-body" ngPreserveWhitespaces style="margin: 1rem;"
+                                *ngFor="let assignment of subProject.Assignments; let i = index">
+                                <c-col class="col-table" xs="4" md="2">
+                                    <input type="text" [(ngModel)]="assignment.EmployeeID"
+                                        (change)="onChange('EmployeeID', $event)" class="form-control" id="EmployeeID"
+                                        placeholder="Please enter value ...">
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <select id="EmployeeName" class="form-select" [(ngModel)]="assignment.EmployeeName"
+                                        (change)="onChange('EmployeeName', $event)">
+                                        <option *ngFor="let employee of employees" value="employee.EmployeeName">{{
+                                            employee.EmployeeName }}
+                                        </option>
+                                    </select>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <input type="text" [(ngModel)]="assignment.RemainingCapacity"
+                                        (change)="onChange('RemainingCapacity', $event)" class="form-control"
+                                        id="RemainingCapacity" placeholder="Please enter value ...">
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <div class="radio-container">
+                                        <label>
+                                            <input type="radio" [name]="'option' + i" [(ngModel)]="assignment.Authority" [checked]="assignment.Authority === 'PIC'"
+                                                value="PIC">
+                                            <span></span> PIC
+                                        </label>
+                                        <label>
+                                            <input type="radio" [name]="'option' + i" [(ngModel)]="assignment.Authority" [checked]="assignment.Authority === 'Proxy'"
+                                                value="Proxy">
+                                            <span></span> Proxy
+                                        </label>
+                                    </div>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <input type="text" [(ngModel)]="assignment.PMOMonthlyBudget"
+                                        (change)="onChange('PMOMonthlyBudget', $event)" class="form-control"
+                                        id="PMOMonthlyBudget" placeholder="Please enter value ...">
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="2">
+                                    <input type="text" [(ngModel)]="assignment.PMOTotalBudget"
+                                        (change)="onChange('PMOTotalBudget', $event)" class="form-control"
+                                        id="PMOTotalBudget" placeholder="Please enter value ...">
+                                    <button class="btn btn-delete-assignment" type="button" value="Submit"
+                                        (click)="handleDeleteAssignment(i)">
+                                        <i class="fa fa-times-circle fa-2" aria-hidden="true"></i>
+                                    </button>
+                                </c-col>
+                            </c-row>
+                            <button class="btn btn-outline-info btn-add-row" type="button" value="Submit"
+                                (click)="handleAddAssignment()">Add new</button>
+                        </mat-tab>
+                        <mat-tab label="Requirements">
+                            <c-row class="tab-table-header requirements" ngPreserveWhitespaces style="margin: 1rem;">
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <h5 class="form-label heading-table bg-primary text-white">Category<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <h5 class="form-label heading-table bg-primary text-white">Mandatory/ Optional<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <h5 class="form-label heading-table bg-primary text-white">Competence Name<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <h5 class="form-label heading-table bg-primary text-white">Competence Level<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <h5 class="form-label heading-table bg-primary text-white">Ceftification<span
+                                            style="color: red;">(*)</span></h5>
+                                </c-col>
+                            </c-row>
+                            <c-row class="tab-table-body requirements" ngPreserveWhitespaces style="margin: 1rem;"
+                                *ngFor="let requirement of subProject.Requirements; let i = index">
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <select id="CategoryName" class="form-select" [(ngModel)]="requirement.CategoryName"
+                                        (change)="onChange('CategoryName', $event)">
+                                        <option selected value="Soft Skill">Soft Skill</option>
+                                        <option value="Management">Management</option>
+                                        <option value="Technical">Technical</option>
+                                    </select>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <div class="radio-container">
+                                        <label>
+                                            <input type="radio" [name]="'option' + i" [(ngModel)]="requirement.RequirementType" [checked]="requirement.RequirementType === 'Mandatory'"
+                                                value="Mandatory">
+                                            <span></span> Mandatory
+                                        </label>
+                                        <label>
+                                            <input type="radio" [name]="'option' + i" [(ngModel)]="requirement.RequirementType" [checked]="requirement.RequirementType === 'Optional'"
+                                                value="Optional">
+                                            <span></span> Optional
+                                        </label>
+                                    </div>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <select id="CompetenceName" class="form-select"
+                                        [(ngModel)]="requirement.CompetenceName"
+                                        (change)="onChange('CompetenceName', $event)">
+                                        <option selected value="Communication">Communication</option>
+                                        <option value="Project Management">Project Management</option>
+                                        <option value="Cloud Engineering">Cloud Engineering</option>
+                                        <option value="Software Development">Software Development</option>
+                                    </select>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <select id="CompetenceLevel" class="form-select"
+                                        [(ngModel)]="requirement.CompetenceLevel"
+                                        (change)="onChange('CompetenceLevel', $event)">
+                                        <option selected value="Intermediate">Intermediate</option>
+                                        <option value="Advanced">Advanced</option>
+                                        <option value="2-Advance">2-Advance</option>
+                                        <option value="Expert">Expert</option>
+                                    </select>
+                                </c-col>
+                                <c-col class="col-table" xs="4" md="auto">
+                                    <input type="text" [(ngModel)]="requirement.Ceftification"
+                                        (change)="onChange('Ceftification', $event)" class="form-control"
+                                        id="Ceftification" placeholder="Please enter value ...">
+                                    <button class="btn btn-delete-row" type="button" value="Submit"
+                                        (click)="handleDeleteRequirement(i)">
+                                        <i class="fa fa-times-circle fa-2" aria-hidden="true"></i>
+                                    </button>
+                                </c-col>
+                            </c-row>
+                            <button class="btn btn-outline-info btn-add-row" type="button" value="Submit"
+                                (click)="handleAddRequirement()">Add new</button>
+                        </mat-tab>
+                    </mat-tab-group>
                 </div>
             </c-col>
+            <!-- <mat-tab-group>
+                <mat-tab *ngFor="let tab of tabs; let i = index" [label]="tab.label">
+                  <p>{{ tab.content }}</p>
+                  <button (click)="removeTab(i)">Remove Tab</button>
+                </mat-tab>
+              </mat-tab-group>
+              <button (click)="addTab()">Add Tab</button> -->
+
         </c-row>
     </c-modal-body>
     <c-modal-footer>
         <button (click)="toggleLiveDemo()" cButton color="secondary">
             No
         </button>
-        <!-- <button class="btn btn-primary" type="button" value="Submit" [disabled]="(!client.ClientName)
-                     || (!client.SAPID)" (click)="handleSubmit()">Submit</button> -->
+        <button class="btn btn-primary" type="button" value="Submit" (click)="handleSubmit()">Submit</button>
     </c-modal-footer>
 </c-modal>
+
+
+<c-modal id="liveDemoModalDetele" [visible]="visible1" (visibleChange)="handleLiveDemoChange1($event)">
+    <c-modal-header>
+      <h5 cModalTitle>Delete Sub-Project</h5>
+      <button (click)="toggleLiveDemo1()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>Do you want to delete this Sub-Project?</c-modal-body>
+    <c-modal-footer>
+      <button (click)="toggleLiveDemo1()" cButton color="secondary">
+        No
+      </button>
+      <button (click)="onDeleteItem(currentItemId)" cButton color="primary">Yes</button>
+    </c-modal-footer>
+  </c-modal>

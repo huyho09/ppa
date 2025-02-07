@@ -19,7 +19,7 @@
         "AssignmentID": 3,
         "EmployeeID": 4,
         "RemainingCapacity": 50,
-        "Authority": "Proxy",
+        "Authority": "PIC",
         "PMOMonthlyBudget": null,
         "PMOTotalBudget": 25000
     }

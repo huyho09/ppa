@@ -12,15 +12,15 @@
       "StartTime": "2023-02-15",
       "EndTime": "2023-10-30",
       "ProjectID": 102,
-      "AssignmentIDs": [4, 5],
-      "RequirementIDs": [3]
+      "AssignmentIDs": [3],
+      "RequirementIDs": [1,2]
     },
     {
       "SubProjectID": 3,
       "StartTime": "2023-03-01",
       "EndTime": "2023-09-30",
       "ProjectID": 103,
-      "AssignmentIDs": [6, 7],
+      "AssignmentIDs": [1,2],
       "RequirementIDs": [1, 3]
     }
 ]

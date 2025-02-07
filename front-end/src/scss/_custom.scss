@@ -6,33 +6,34 @@
 // custom tweaks for scrollbar styling (wip)
 @import "scrollbar";
 
- // custom calendar today cell color
+// custom calendar today cell color
 .calendar-cell.today {
-  --cui-calendar-cell-today-color: var(--cui-info) !important;
+	--cui-calendar-cell-today-color: var(--cui-info) !important;
 }
 
 // custom select week cursor pointer
 .select-week .calendar-row.current {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
-th{
+th {
 	min-width: 175px;
-	text-align: center; 
-    vertical-align: middle;
+	text-align: center;
+	vertical-align: middle;
 	background: dodgerblue;
 	color: whitesmoke;
 	font-family: sans-serif;
 	font-weight: lighter;
 }
+
 td {
 	min-width: 175px;
-	text-align: center; 
-    vertical-align: middle;
+	text-align: center;
+	vertical-align: middle;
 }
 
 
@@ -42,6 +43,160 @@ td {
 	margin-bottom: 25px;
 }
 
-.cdk-overlay-pane{
+.cdk-overlay-pane {
 	background: white;
 }
+
+.modal-open .cdk-overlay-container {
+	z-index: 100000 !important;
+}
+
+.modal-open input,
+.modal-open select {
+	height: 56px;
+}
+
+.modal-open .mdc-text-field--outlined .mat-mdc-form-field-infix,
+.modal-open .mdc-text-field--no-label .mat-mdc-form-field-infix {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.modal-open .large-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	/* Optional: add overlay effect */
+}
+
+.modal-open .large-modal .modal-content {
+	max-width: 260%;
+	/* Increase width */
+	width: 1560px;
+	/* Set a specific width */
+	right: 70%;
+}
+
+.modal-open .large-modal label[for="ProjectID"] {
+	width: 100%;
+}
+
+.modal-open .large-modal label[for="ProjectID"]+.mat-mdc-form-field {
+	width: 100%;
+}
+
+@media (max-width: 768px) {
+	.modal-open .large-modal .modal-content {
+		max-width: 100%;
+		/* Increase width */
+		width: fit-content;
+		/* Make it more responsive on smaller screens */
+		right: 0;
+	}
+}
+
+.mat-tab-group {
+	width: 100%;
+	max-width: 800px;
+	margin: auto;
+	background: white;
+	padding: 16px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+}
+
+.tab-table-header .col-table {
+	padding: 0;
+}
+.tab-table-body .col-table {
+	padding: 0 10px 8px;
+	display: flex;
+	align-items: center;
+    justify-content: center; 
+}
+
+.requirements .col-table {
+	width: 20%;
+}
+
+.tab-table-header .col-table h5{
+	padding: 14px 8px;
+	height: 50px;
+	font-size: 15px;
+}
+
+/* Style the container for radio buttons */
+.radio-container {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	font-family: Arial, sans-serif;
+	flex-direction: row;
+}
+  
+  /* Style for the radio label */
+  .radio-container label {
+	position: relative;
+	padding-left: 30px; /* Space for custom radio button */
+	font-size: 16px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	color: #333;
+  }
+  
+  /* Hide default radio button */
+  .radio-container input[type="radio"] {
+	display: none;
+  }
+  
+  /* Custom radio button */
+  .radio-container input[type="radio"] + span {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	padding-left: 8px;
+	background-color: #fff;
+	border: 2px solid #000;
+	transition: all 0.3s ease;
+  }
+  
+  /* Active state for radio button */
+  .radio-container input[type="radio"]:checked + span {
+	background-color: #fff;
+	border-color: #000;
+  }
+  
+  /* Inner circle when checked */
+  .radio-container input[type="radio"]:checked + span::after {
+	content: '';
+	position: absolute;
+	left: 4px;
+    top: 3px;
+    width: 9px;
+    height: 9px;
+	border-radius: 50%;
+	background-color: blue;
+  }
+  
+  /* Optional: Hover effects */  
+  .radio-container input[type="radio"]:focus + span {
+	border-color: #000;
+  }
+  
+  /* Optional: Add a little spacing between radio button and text */
+  .radio-container label span {
+	margin-right: 10px;
+  }
+  
+  .btn-add-row{
+	float: right;
+	margin-right: 16px;
+  }

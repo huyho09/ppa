@@ -19,6 +19,7 @@ import { BillingInterface } from "../../dtos/billing-dto";
   templateUrl: './billing.component.html',
   styleUrl: './billing.component.scss'
 })
+
 export class BillingComponent {
   billings: BillingInterface[] = [{
     BilllingId: 1,
@@ -331,5 +332,88 @@ export class BillingComponent {
   handleLiveDemoChange(event: any) {
     this.visible = event;
   }
+  toggleGroup(group: number, event: Event) {
+    const target = $(event.currentTarget); // Get clicked element
+    const $table = target.closest('table');
 
+    if ($table.length === 0) {
+      console.warn('No table found for the clicked element.');
+      return;
+    }
+
+    // Ensure the table has an ID
+    let tableId = $table.attr('id');
+    if (!tableId) {
+      tableId = 'datatable-' + new Date().getTime(); // Generate unique ID
+      $table.attr('id', tableId); // Assign new ID
+    }
+
+    // Ensure DataTable is initialized
+    // let dtTable = $.fn.dataTable.isDataTable('#' + tableId) ? $('#' + tableId).DataTable() : null;
+    // if (!dtTable) {
+    //   console.warn('DataTable is not initialized for table:', tableId);
+    //   return;
+    // }
+
+    let dtTable = $('#' + tableId).DataTable({
+      "deferRender": true, // Prevents rendering until needed
+      "bInfo": false,      // Hide info text
+      "paging": false,     // Disable pagination
+      "ordering": false,   // Disable sorting
+      "searching": false,  // Disable searching
+      "processing": false, // Avoid unnecessary UI changes
+      "retrieve": true,    // Prevent duplicate initialization
+    });
+
+    // var dtTable = new $.fn.dataTable.Api($('#' + tableId)); // Get API instance
+
+    const $groupTHs = $table.find('thead tr:last() th:not([rowspan="2"])[data-group="' + group + '"]');
+    if (target.find('i').hasClass('fa-plus-square')) {
+      target.find('i').removeClass('fa-plus-square').addClass('fa-minus-square');
+      target.closest('th').attr('colspan', target.attr('data-colspan'));
+      // let dtTable = $('#' + tableId).DataTable();
+      $groupTHs.not($groupTHs.first()).show().fadeIn(300);
+
+      var hasColspan = false;
+      $groupTHs.not($groupTHs.first()).each((i: number, element: HTMLElement) => {
+        var tds = $table.find('tbody tr td:nth-child(' + (dtTable.columns(element)[0][0] + 1) + ')');
+        console.log(tds);
+        if (tds.filter("[colspan]").length > 0 && hasColspan === false) {
+          hasColspan = true;
+          tds.each((i: number, ele: HTMLElement) => {
+            ele.style.display = 'table-cell';
+          });
+        }
+        if (tds.length > 0) {
+          tds.not(tds.first()).each((i: number, ele: HTMLElement) => {
+            ele.style.display = 'table-cell';
+          });
+        }
+
+      });
+    } else {
+      target.find('i').removeClass('fa-minus-square').addClass('fa-plus-square');
+      target.closest('th').attr('colspan', 1);
+      // let dtTable = $('#' + tableId).DataTable();
+      $groupTHs.not($groupTHs.first()).hide().fadeOut(300);
+
+      var hasColspan = false;
+      $groupTHs.not($groupTHs.first()).each((i: number, element: HTMLElement) => {
+        var tds = $table.find('tbody tr td:nth-child(' + (dtTable.columns(element)[0][0] + 1) + ')');
+        console.log(tds);
+        if (tds.filter("[colspan]").length > 0 && hasColspan === false) {
+          hasColspan = true;
+
+          tds.each((i: number, ele: HTMLElement) => {
+            ele.style.display = 'none';
+          });
+        }
+        if (tds.length > 0) {
+          tds.not(tds.first()).each((i: number, ele: HTMLElement) => {
+            ele.style.display = 'none';
+          });
+        }
+      });
+    }
+  }
 }

@@ -93,127 +93,197 @@
           </div>
         </div>
         <div style="overflow-x:auto">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="table-calc-pmo">
             <thead>
               <tr>
-                <th></th>
-                <th></th>
-                <th>Plan (1)</th>
-                <th>Billed (1)</th>
-                <th>Unbilled SAP (1)</th>
-                <th>Unbilled no PO (1)</th>
-                <th>Other Rev. (1)</th>
+                <th rowspan="2"></th>
+                <th rowspan="2"></th>
+                <th colspan="5">Group 1
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(1,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 2
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(2,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 3
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(3,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 4
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(4,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 5
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(5,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 6
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(6,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 7
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(7,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 8
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(8,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 9
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(9,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 10
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(10,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 11
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(11,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="5">Group 12
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(12,$event)" data-colspan="5">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
+                <th colspan="13">Group 13
+                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(13,$event)" data-colspan="13">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                  </button>
+                </th>
 
-                <th>Plan (2)</th>
-                <th>Billed (2)</th>
-                <th>Unbilled SAP (2)</th>
-                <th>Unbilled no PO (2)</th>
-                <th>Other Rev. (2)</th>
+              </tr>
+              <tr>
+                <th data-group="1">Plan (1)</th>
+                <th data-group="1">Billed (1)</th>
+                <th data-group="1">Unbilled SAP (1)</th>
+                <th data-group="1">Unbilled no PO (1)</th>
+                <th data-group="1">Other Rev. (1)</th>
 
-                <th>Plan (3)</th>
-                <th>Billed (3)</th>
-                <th>Unbilled SAP (3)</th>
-                <th>Unbilled no PO (3)</th>
-                <th>Other Rev. (3)</th>
+                <th data-group="2">Plan (2)</th>
+                <th data-group="2">Billed (2)</th>
+                <th data-group="2">Unbilled SAP (2)</th>
+                <th data-group="2">Unbilled no PO (2)</th>
+                <th data-group="2">Other Rev. (2)</th>
 
-                <th>Plan (4)</th>
-                <th>Billed (4)</th>
-                <th>Unbilled SAP (4)</th>
-                <th>Unbilled no PO (4)</th>
-                <th>Other Rev. (4)</th>
+                <th data-group="3">Plan (3)</th>
+                <th data-group="3">Billed (3)</th>
+                <th data-group="3">Unbilled SAP (3)</th>
+                <th data-group="3">Unbilled no PO (3)</th>
+                <th data-group="3">Other Rev. (3)</th>
 
-                <th>Plan (5)</th>
-                <th>Billed (5)</th>
-                <th>Unbilled SAP (5)</th>
-                <th>Unbilled no PO (5)</th>
-                <th>Other Rev. (5)</th>
+                <th data-group="4">Plan (4)</th>
+                <th data-group="4">Billed (4)</th>
+                <th data-group="4">Unbilled SAP (4)</th>
+                <th data-group="4">Unbilled no PO (4)</th>
+                <th data-group="4">Other Rev. (4)</th>
 
-                <th>Plan (6)</th>
-                <th>Billed (6)</th>
-                <th>Unbilled SAP (6)</th>
-                <th>Unbilled no PO (6)</th>
-                <th>Other Rev. (6)</th>
+                <th data-group="5">Plan (5)</th>
+                <th data-group="5">Billed (5)</th>
+                <th data-group="5">Unbilled SAP (5)</th>
+                <th data-group="5">Unbilled no PO (5)</th>
+                <th data-group="5">Other Rev. (5)</th>
 
-                <th>Plan (7)</th>
-                <th>Billed (7)</th>
-                <th>Unbilled SAP (7)</th>
-                <th>Unbilled no PO (7)</th>
-                <th>Other Rev. (7)</th>
+                <th data-group="6">Plan (6)</th>
+                <th data-group="6">Billed (6)</th>
+                <th data-group="6">Unbilled SAP (6)</th>
+                <th data-group="6">Unbilled no PO (6)</th>
+                <th data-group="6">Other Rev. (6)</th>
 
-                <th>Plan (8)</th>
-                <th>Billed (8)</th>
-                <th>Unbilled SAP (8)</th>
-                <th>Unbilled no PO (8)</th>
-                <th>Other Rev. (8)</th>
+                <th data-group="7">Plan (7)</th>
+                <th data-group="7">Billed (7)</th>
+                <th data-group="7">Unbilled SAP (7)</th>
+                <th data-group="7">Unbilled no PO (7)</th>
+                <th data-group="7">Other Rev. (7)</th>
 
-                <th>Plan (9)</th>
-                <th>Billed (9)</th>
-                <th>Unbilled SAP (9)</th>
-                <th>Unbilled no PO (9)</th>
-                <th>Other Rev. (9)</th>
+                <th data-group="8">Plan (8)</th>
+                <th data-group="8">Billed (8)</th>
+                <th data-group="8">Unbilled SAP (8)</th>
+                <th data-group="8">Unbilled no PO (8)</th>
+                <th data-group="8">Other Rev. (8)</th>
 
-                <th>Plan (10)</th>
-                <th>Billed (10)</th>
-                <th>Unbilled SAP (10)</th>
-                <th>Unbilled no PO (10)</th>
-                <th>Other Rev. (10)</th>
+                <th data-group="9">Plan (9)</th>
+                <th data-group="9">Billed (9)</th>
+                <th data-group="9">Unbilled SAP (9)</th>
+                <th data-group="9">Unbilled no PO (9)</th>
+                <th data-group="9">Other Rev. (9)</th>
 
-                <th>Plan (11)</th>
-                <th>Billed (11)</th>
-                <th>Unbilled SAP (11)</th>
-                <th>Unbilled no PO (11)</th>
-                <th>Other Rev. (11)</th>
+                <th data-group="10">Plan (10)</th>
+                <th data-group="10">Billed (10)</th>
+                <th data-group="10">Unbilled SAP (10)</th>
+                <th data-group="10">Unbilled no PO (10)</th>
+                <th data-group="10">Other Rev. (10)</th>
 
-                <th>Plan (12)</th>
-                <th>Billed (12)</th>
-                <th>Unbilled SAP (12)</th>
-                <th>Unbilled no PO (12)</th>
-                <th>Other Rev. (12)</th>
+                <th data-group="11">Plan (11)</th>
+                <th data-group="11">Billed (11)</th>
+                <th data-group="11">Unbilled SAP (11)</th>
+                <th data-group="11">Unbilled no PO (11)</th>
+                <th data-group="11">Other Rev. (11)</th>
 
-                <th></th>
-                <th>Plan (1)</th>
-                <th>Plan (2)</th>
-                <th>Plan (3)</th>
-                <th>Plan (4)</th>
-                <th>Plan (5)</th>
-                <th>Plan (6)</th>
-                <th>Plan (7)</th>
-                <th>Plan (8)</th>
-                <th>Plan (9)</th>
-                <th>Plan (10)</th>
-                <th>Plan (11)</th>
-                <th>Plan (12)</th>
+                <th data-group="12">Plan (12)</th>
+                <th data-group="12">Billed (12)</th>
+                <th data-group="12">Unbilled SAP (12)</th>
+                <th data-group="12">Unbilled no PO (12)</th>
+                <th data-group="12">Other Rev. (12)</th>
+
+
+                <th data-group="13"></th>
+                <th data-group="13">Plan (1)</th>
+                <th data-group="13">Plan (2)</th>
+                <th data-group="13">Plan (3)</th>
+                <th data-group="13">Plan (4)</th>
+                <th data-group="13">Plan (5)</th>
+                <th data-group="13">Plan (6)</th>
+                <th data-group="13">Plan (7)</th>
+                <th data-group="13">Plan (8)</th>
+                <th data-group="13">Plan (9)</th>
+                <th data-group="13">Plan (10)</th>
+                <th data-group="13">Plan (11)</th>
+                <th data-group="13">Plan (12)</th>
+
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><b>PMO</b></td>
                 <td>{{sumTotalPMO() / 12}}</td>
-                <td><b>JAN</b></td>
+                <td data-skip="true"><b>JAN</b></td>
                 <td colspan="4"></td>
-                <td><b>FEB</b></td>
+                <td data-skip="true"><b>FEB</b></td>
                 <td colspan="4"></td>
-                <td><b>MAR</b></td>
+                <td data-skip="true"><b>MAR</b></td>
                 <td colspan="4"></td>
-                <td><b>APR</b></td>
+                <td data-skip="true"><b>APR</b></td>
                 <td colspan="4"></td>
-                <td><b>MAY</b></td>
+                <td data-skip="true"><b>MAY</b></td>
                 <td colspan="4"></td>
-                <td><b>JUN</b></td>
+                <td data-skip="true"><b>JUN</b></td>
                 <td colspan="4"></td>
-                <td><b>JUL</b></td>
+                <td data-skip="true"><b>JUL</b></td>
                 <td colspan="4"></td>
-                <td><b>AUG</b></td>
+                <td data-skip="true"><b>AUG</b></td>
                 <td colspan="4"></td>
-                <td><b>SEP</b></td>
+                <td data-skip="true"><b>SEP</b></td>
                 <td colspan="4"></td>
-                <td><b>OCT</b></td>
+                <td data-skip="true"><b>OCT</b></td>
                 <td colspan="4"></td>
-                <td><b>NOV</b></td>
+                <td data-skip="true"><b>NOV</b></td>
                 <td colspan="4"></td>
-                <td><b>DEC</b></td>
+                <td data-skip="true"><b>DEC</b></td>
                 <td colspan="4"></td>
-                <td><b>Revenue</b></td>
+                <td data-skip="true"><b>Revenue</b></td>
                 <td colspan="12"></td>
 
               </tr>

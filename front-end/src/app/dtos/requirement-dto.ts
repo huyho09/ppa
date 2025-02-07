@@ -1,7 +1,7 @@
 export interface Requirement{
     RequirementID: number,
     CategoryName: string,
-    Requirement: string,
+    RequirementType: string,
     CompetenceName: string,
     CompetenceLevel: string,
     Ceftification: string
