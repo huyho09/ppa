@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, UseGuards } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProjectsModule } from './projects/projects.module';
@@ -14,9 +14,12 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import {join} from 'path'
 import { UploadPictureModule } from './upload-picture/upload-picture.module';
-import { LoginModule } from './login/login.module';
+import { AuthModule } from './auth/auth.module';
+import * as crypto from 'crypto'
+import { AuthGuard, PassportModule } from '@nestjs/passport';
+import * as session from 'express-session'
 
-
+const secretKey = crypto.randomBytes(64).toString('hex')
 @Module({
   imports: [
     ProjectsModule,
@@ -43,15 +46,26 @@ import { LoginModule } from './login/login.module';
       serveRoot: '/assets'
     }),
     UploadPictureModule,
-    LoginModule
-    
+    AuthModule,
+    PassportModule.register({session: true}),
   ],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule {
   constructor(private readonly appService: AppService) {}
-
+  configure(consumer: MiddlewareConsumer){
+    consumer
+    .apply(
+      session({
+        secret: secretKey,
+        resave: false,
+        saveUninitialized: false
+      })
+    )
+    .forRoutes('*')
+  }
   configureSwagger(app: any) {
     const config = new DocumentBuilder()
       .setTitle('Web Application API')
