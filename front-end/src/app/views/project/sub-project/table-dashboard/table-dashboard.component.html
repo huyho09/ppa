@@ -2,7 +2,9 @@
     <c-col xs="12">
         <c-card>
             <c-card-header>
-                <h3>Sub Projects Overview</h3>
+                <!-- <h3>Sub Projects Overview</h3> -->
+                <button class="btn btn-primary" (click)="toggleLiveDemo()">Create</button>
+                <button class="btn btn-secondary" (click)="onEditRecord()" *ngIf="!isEdit">Edit</button>
             </c-card-header>
             <c-card-body>
                 <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
@@ -12,16 +14,32 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Project ID</th>
-                            <th>Assignment IDs</th>
-                            <th>Requirement IDs</th>
+                            <th>Number of Assignments</th>
+                            <th>Number of Requirements</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let subProject of subProjects">
-                            <td><span>{{ subProject.SubProjectID }}</span></td>
-                            <td><span>{{ subProject.StartTime || 'N/A' }}</span></td>
-                            <td><span>{{ subProject.EndTime || 'N/A' }}</span></td>
-                            <td><span>{{ subProject.ProjectID }}</span></td>
+                            <td>
+                                <span *ngIf="!isEdit">{{ subProject.SubProjectID }}</span>
+                                <input *ngIf="isEdit" [(ngModel)]="subProject.SubProjectID" class="form-control"
+                                    type="text" />
+                            </td>
+                            <td>
+                                <span *ngIf="!isEdit">{{ subProject.StartTime || 'N/A' }}</span>
+                                <input *ngIf="isEdit" [(ngModel)]="subProject.StartTime" class="form-control"
+                                    type="text" />
+                            </td>
+                            <td>
+                                <span *ngIf="!isEdit">{{ subProject.EndTime || 'N/A' }}</span>
+                                <input *ngIf="isEdit" [(ngModel)]="subProject.EndTime" class="form-control"
+                                    type="text" />
+                            </td>
+                            <td>
+                                <span *ngIf="!isEdit">{{ subProject.ProjectID || 'N/A' }}</span>
+                                <input *ngIf="isEdit" [(ngModel)]="subProject.ProjectID" class="form-control"
+                                    type="text" />
+                            </td>
                             <td>
                                 <span
                                     *ngIf="subProject.AssignmentIDs && subProject.AssignmentIDs.length > 0; else noAssignment">
@@ -44,3 +62,61 @@
         </c-card>
     </c-col>
 </c-row>
+
+<c-modal id="createSubProjectModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)" class="large-modal">
+    <c-modal-header>
+        <h5 cModalTitle>Delete Bill</h5>
+        <button (click)="toggleLiveDemo()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+        <c-row ngPreserveWhitespaces style="margin: 1rem;">
+            <c-col xs="12" md="6">
+                <div class="mb-3">
+                    <label for="StartTime" class="form-label">Start Time<span style="color: red;">(*)</span></label>
+                    <input type="text" [(ngModel)]="subProject.StartTime" (change)="onChange('StartTime', $event)"
+                        class="form-control" id="StartTime" placeholder="Please enter value ...">
+                </div>
+            </c-col>
+            <c-col xs="12" md="6">
+                <div class="mb-3">
+                    <label for="EndTime" class="form-label">End Time<span style="color: red;">(*)</span></label>
+                    <input type="text" [(ngModel)]="subProject.EndTime" (change)="onChange('EndTime', $event)"
+                        class="form-control" id="EndTime" placeholder="Please enter value ...">
+                </div>
+            </c-col>
+            <c-col xs="12" md="6">
+                <div class="mb-3">
+                    <label for="ProjectID" class="form-label">Project<span style="color: red;">(*)</span></label>
+                    <select id="ProjectID" class="form-select" [(ngModel)]="subProject.ProjectID"
+                        (change)="onChange('ProjectID', $event)">
+                        <option *ngFor="let project of projects" value="project.ProjectID">{{ project.ProjectName }}
+                        </option>
+                    </select>
+                </div>
+            </c-col>
+            <c-col xs="12" md="6">
+                <div class="mb-3">
+                    <label for="ProjectID" class="form-label">Project<span style="color: red;">(*)</span></label>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Select Options</mat-label>
+                        <mat-select 
+                          [(ngModel)]="selectedItems" 
+                          multiple 
+                          panelClass="custom-dropdown-overlay">
+                          <mat-option *ngFor="let option of options" [value]="option.id">
+                            {{ option.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>                      
+                </div>
+            </c-col>
+        </c-row>
+    </c-modal-body>
+    <c-modal-footer>
+        <button (click)="toggleLiveDemo()" cButton color="secondary">
+            No
+        </button>
+        <!-- <button class="btn btn-primary" type="button" value="Submit" [disabled]="(!client.ClientName)
+                     || (!client.SAPID)" (click)="handleSubmit()">Submit</button> -->
+    </c-modal-footer>
+</c-modal>
