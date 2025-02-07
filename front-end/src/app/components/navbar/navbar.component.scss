@@ -1,6 +1,6 @@
 .sidenav {
   background-color: #343a40;
-  height: 100vh;
+  height: 100%;
   color: #fff;
   padding: 15px;
   font-family: Arial, sans-serif;
@@ -24,14 +24,14 @@
     overflow: hidden;
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     opacity: 0;
-  
+
     &.show {
-      max-height: 500px; 
+      max-height: 500px;
       opacity: 1;
     }
   }
-  
-  
+
+
   .menu-header {
     font-weight: bold;
     margin-bottom: 5px;

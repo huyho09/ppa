@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EmployeeServiceService } from '../components/employee/service/employee-service.service';
+import { LoginServiceService } from './login-service.service';
 interface Employee {
   email: string;
   password:string;
@@ -15,54 +16,39 @@ interface Employee {
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
   constructor(
     private router:Router,
-    private employeeService: EmployeeServiceService
+    private loginService: LoginServiceService
   ){}
-  username: string ='';
+  email: string ='';
   password: string ='';
   showError: string = '';
-  employees: Employee[] = [];
-  loginEmail: string = ''
-  loginPassword: string = ''
 
-  ngOnInit(): void {
-      this.employeeService.getEmployeesWithApiCall().subscribe(
-        (data) =>{
-          this.employees = data
-          console.log(this.employees)
-        }
-      )
-  }
   onSubmit(): void
   {
     this.showError = ''
-    if (this.loginEmail === null || this.loginEmail === undefined || this.loginEmail.trim() === '')
+    if (this.email === null || this.email === undefined || this.email.trim() === '')
     {
       this.showError = 'Please Input Your Email'
       return
     }
-    else if ( this.loginPassword === null || this.loginPassword === undefined || this.loginEmail.trim() === '')
+    else if ( this.password === null || this.password === undefined || this.password.trim() === '')
     {
       this.showError = 'Please Input Your Password'
       return
     }
-    else if (this.loginEmail && this.loginPassword)
-    {
-      this.employees.map(
-        (emp) => {
-          if (emp.email === this.loginEmail)
-          {
-            this.router.navigate(['/dashboard'])
-          }
-          else
-          {
-            this.showError = "Invalid Login"
-            return
-          }
-        }
-      )
-    }
+    this.loginService.login(this.email,this.password).subscribe(
+      (response) => {
+        console.log("login successfull ", response)
+        this.loginService.saveSession(response)
+        this.loginService.getSession()
+        this.router.navigate(['/dashboard/overview'])
+      },
+      error => {
+        this.showError = "Invalid login"
+        return
+      }
+    )
   }
 }

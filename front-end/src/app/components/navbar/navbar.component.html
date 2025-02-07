@@ -1,5 +1,13 @@
 <div class="sidenav">
   <div>
+    <a class="menu-header" (click)="toggleSubmenu('myProfile')"><img alt="avatar" id = "avatar" name = 'avatar' src="http://localhost:3000/upload-picture/{{user.sub.avatar}}" style="border-radius: 30%; width: 100px; height: 100px;"></a>
+    <div class="submenu" [class.show]="activeMenu === 'myProfile'">
+      <a href="dashboard/employee/update/{{user.id}}"><i class="bi bi-people"></i> My Profile</a>
+      <a href="/login"><i class="bi bi-power"></i> Log Out</a>
+    </div>
+  </div>
+  <br><br>
+  <div>
     <a class="menu-header" (click)="toggleSubmenu('overview')"><i class="bi bi-trophy"></i> Overview</a>
     <div class="submenu" [class.show]="activeMenu === 'overview'">
       <a href="/dashboard/overview/"><i class="bi bi-hash"></i> About Us</a>
@@ -55,7 +63,5 @@
     <a class="menu-header"><i class="bi bi-bell-fill"></i> Release Note</a>
   </div>
   <br>
-  <div class="menu-header">
-    <a href="/login"><i class="bi bi-power"></i> Log Out</a>
-  </div>
+
 </div>
