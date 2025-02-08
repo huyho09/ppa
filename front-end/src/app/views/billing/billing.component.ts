@@ -1,7 +1,8 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, signal } from '@angular/core';
 import {
   RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ButtonCloseDirective,
-  ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective
+  ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective,
+  ToastBodyComponent, ToastComponent, ToasterComponent, ToastHeaderComponent
 } from '@coreui/angular';
 import { FormsModule, UntypedFormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -14,7 +15,7 @@ import { BillingInterface } from "../../dtos/billing-dto";
 
 @Component({
   selector: 'app-billing',
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule,
+  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule, ToastBodyComponent, ToastComponent, ToasterComponent, ToastHeaderComponent,
     FormsModule, MatSelectModule, MatFormFieldModule, ButtonCloseDirective, ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective],
   templateUrl: './billing.component.html',
   styleUrl: './billing.component.scss'
@@ -210,6 +211,23 @@ export class BillingComponent {
   isEdit: boolean = false;
   currentItemId = 0;
 
+  position = 'top-center';
+  visibleToast = signal(false);
+  percentage = signal(0);
+
+  toggleToast() {
+    this.visibleToast.update((value) => !value);
+  }
+
+  onVisibleChange($event: boolean) {
+    this.visibleToast.set($event);
+    this.percentage.set(this.visibleToast() ? this.percentage() : 0);
+  }
+
+  onTimerChange($event: number) {
+    this.percentage.set($event * 25);
+  }
+
   ngOnInit() {
     // Initialize DataTables on a table element after the view is initialized
     $(document).ready(function () {
@@ -244,9 +262,13 @@ export class BillingComponent {
     if (billing && event?.target) {
       this.cdRef.detectChanges();
       this.saveBillingsToLocalStorage();
+      this.toggleToast();
+      $(event.target).closest("tr").find("input").removeClass("changed-cell");
     }
   }
-
+  onInputChange(event: Event) {
+    (event.target as HTMLInputElement).classList.add("changed-cell");
+  }
   onDeleteItem(billingID: number) {
     const billing = this.billings.find(emp => emp.BilllingId === billingID);
     if (billing) {

@@ -4,3 +4,7 @@
 // td:empty{
 //     display: none;
 // }
+.changed-cell {
+    background-color: yellow !important; /* Highlight changed cell */
+    transition: background-color 0.5s ease-in-out;
+  }
