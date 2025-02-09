@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef, signal } from '@angular/core';
 import {
   RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ButtonCloseDirective,
   ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective,
-  ToastBodyComponent, ToastComponent, ToasterComponent, ToastHeaderComponent
+  ToastBodyComponent, ToastComponent, ToasterComponent,
 } from '@coreui/angular';
 import { FormsModule, UntypedFormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -19,7 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-billing',
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule, ToastBodyComponent, ToastComponent, ToasterComponent, ToastHeaderComponent,
+  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule, ToastBodyComponent, ToastComponent, ToasterComponent,
     FormsModule, MatSelectModule, MatFormFieldModule, ButtonCloseDirective, ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, MatProgressSpinnerModule],
   templateUrl: './billing.component.html',
   styleUrl: './billing.component.scss'
@@ -213,11 +213,13 @@ export class BillingComponent {
     Other_Rev_12: 0,
   }];
   isEdit: boolean = false;
+  isSavedValue: boolean = false;
   currentItemId = 0;
 
   position = 'top-center';
   visibleToast = signal(false);
   percentage = signal(0);
+  currentUrl = '';
 
   public billingComponentModel = billingStructureData;
   public colorPalettes: any[] = colorPalettesData;
@@ -240,6 +242,7 @@ export class BillingComponent {
   public table: any;
 
   ngOnInit() {
+    this.loadBillingsFromLocalStorage();
     // Initialize DataTables on a table element after the view is initialized
     $(document).ready(function () {
       $('#example').dataTable({
@@ -248,9 +251,10 @@ export class BillingComponent {
         "bInfo": false,
         "paging": false,
         "bPaginate": false,
+        "bDestroy": true
       });
     });
-    this.loadBillingsFromLocalStorage()
+    
     console.log(this.billingComponentModel?.TableCalcBilling?.GroupColumns);
   }
 
@@ -276,6 +280,7 @@ export class BillingComponent {
       this.saveBillingsToLocalStorage();
       this.toggleToast();
       $(event.target).closest("tr").find("input").removeClass("changed-cell");
+      this.isSavedValue = true;
     }
   }
   onInputChange(event: Event) {
@@ -294,6 +299,12 @@ export class BillingComponent {
   onEditRecord() {
     this.isEdit = !this.isEdit;
     this.cdRef.detectChanges();
+    if(!this.isEdit){
+      if (!this.isSavedValue) {
+          window.location.reload();
+      } 
+      this.isSavedValue = false;    
+    }
   }
 
   sumArrayNumber(arr: number[]): number {
@@ -348,7 +359,7 @@ export class BillingComponent {
   }
 
   handleCreateBillings() {
-    this.saveBillingsToLocalStorage();
+    //this.saveBillingsToLocalStorage();
     this.router.navigate(['/billing-create']);
   }
 
