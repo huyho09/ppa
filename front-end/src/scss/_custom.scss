@@ -215,9 +215,9 @@ td {
 	font-size: 11px;
 }
 
-.toggle-containers .mat-mdc-form-field {
-	width: 60%;
-}
+// .toggle-containers .mat-mdc-form-field {
+// 	width: 60%;
+// }
 
 /* From Uiverse.io by Subaashbala */
 /* Prior to using this loader, please ensure that you have set a background image or background color, as the text is transparent and not designed with a solid color. */
@@ -391,15 +391,15 @@ body.loading {
 }
 
 /* Ultra-Compact Table */
-.zoom-out-table {
+.zoom-out-table:not(:has(input)) {
     font-size: 11px; /* Small text */
     width: 100%;
     border-collapse: collapse; /* Fix missing value */
 }
 
 /* Ensure columns shrink as much as possible */
-.zoom-out-table th,
-.zoom-out-table td {
+body:has(#table-calc-pmo) .card:not(:has(input)) th,
+.zoom-out-table:not(:has(input)) td {
     font-size: 11px;
     padding: 10px; /* Minimal padding */
     overflow: hidden;
@@ -410,20 +410,20 @@ body.loading {
 }
 
 /* Ensure th and td adjust similarly */
-.zoom-out-table th {
+body:has(#table-calc-pmo) .card:not(:has(input)) th {
     width: auto;
     min-width: 100px;
 }
 
-.zoom-out-table td {
+.zoom-out-table:not(:has(input)) td {
     width: auto;
     min-width: 100px;
     max-width: none; /* Remove fixed max-width */
 }
 
 /* Force buttons and spans inside table cells to be smaller */
-.zoom-out-table td button,
-.zoom-out-table td span {
+.zoom-out-table:not(:has(input)) td button,
+.zoom-out-table:not(:has(input)) td span {
     font-size: 11px; /* Reduce button & span text size */
     padding: 10px; /* Make buttons smaller */
     max-width: 150px; /* Restrict button width */
@@ -433,31 +433,31 @@ body.loading {
 }
 
 /* Force specific columns to be as narrow as possible */
-.zoom-out-table th:first-child,
-.zoom-out-table td:first-child,
-.zoom-out-table th:last-child,
-.zoom-out-table td:last-child {
+.zoom-out-table:not(:has(input)) th:first-child,
+.zoom-out-table:not(:has(input)) td:first-child,
+.zoom-out-table:not(:has(input)) th:last-child,
+.zoom-out-table:not(:has(input)) td:last-child {
     width: 1px; /* Force smallest width */
 }
 
 /* Ensure table remains scrollable if necessary */
-.zoom-out-table-container {
+.zoom-out-table:not(:has(input))-container {
     width: 100%;
     overflow-x: auto;
 }
 
 /* Specific adjustments for the table body (tbody) */
-.zoom-out-table tbody {
+.zoom-out-table:not(:has(input)) tbody {
     width: 100%;
 }
 
-.zoom-out-table tbody td {
+.zoom-out-table:not(:has(input)) tbody td {
     min-width: 100px;
     width: auto;
 }
 
-.zoom-out-table th:nth-child(1),
-.zoom-out-table td:nth-child(1){
+body:has(#table-calc-pmo) .card:not(:has(input)) th:nth-child(1),
+.zoom-out-table:not(:has(input)) td:nth-child(1){
     min-width: 140px!important;
 }
 
