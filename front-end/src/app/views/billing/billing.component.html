@@ -95,165 +95,26 @@
         <div style="overflow-x:auto">
           <table class="table table-bordered" id="table-calc-pmo">
             <thead>
-              <tr>
-                <th rowspan="2"></th>
-                <th rowspan="2"></th>
-                <th colspan="5">Group 1
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(1,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 2
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(2,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 3
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(3,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 4
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(4,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 5
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(5,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 6
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(6,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 7
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(7,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 8
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(8,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 9
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(9,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 10
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(10,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 11
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(11,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="5">Group 12
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(12,$event)" data-colspan="5">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-                <th colspan="13">Group 13
-                  <button type="button" class="btn-icon-expand" (click)="toggleGroup(13,$event)" data-colspan="13">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                  </button>
-                </th>
-
-              </tr>
-              <tr>
-                <th data-group="1">Plan (1)</th>
-                <th data-group="1">Billed (1)</th>
-                <th data-group="1">Unbilled SAP (1)</th>
-                <th data-group="1">Unbilled no PO (1)</th>
-                <th data-group="1">Other Rev. (1)</th>
-
-                <th data-group="2">Plan (2)</th>
-                <th data-group="2">Billed (2)</th>
-                <th data-group="2">Unbilled SAP (2)</th>
-                <th data-group="2">Unbilled no PO (2)</th>
-                <th data-group="2">Other Rev. (2)</th>
-
-                <th data-group="3">Plan (3)</th>
-                <th data-group="3">Billed (3)</th>
-                <th data-group="3">Unbilled SAP (3)</th>
-                <th data-group="3">Unbilled no PO (3)</th>
-                <th data-group="3">Other Rev. (3)</th>
-
-                <th data-group="4">Plan (4)</th>
-                <th data-group="4">Billed (4)</th>
-                <th data-group="4">Unbilled SAP (4)</th>
-                <th data-group="4">Unbilled no PO (4)</th>
-                <th data-group="4">Other Rev. (4)</th>
-
-                <th data-group="5">Plan (5)</th>
-                <th data-group="5">Billed (5)</th>
-                <th data-group="5">Unbilled SAP (5)</th>
-                <th data-group="5">Unbilled no PO (5)</th>
-                <th data-group="5">Other Rev. (5)</th>
-
-                <th data-group="6">Plan (6)</th>
-                <th data-group="6">Billed (6)</th>
-                <th data-group="6">Unbilled SAP (6)</th>
-                <th data-group="6">Unbilled no PO (6)</th>
-                <th data-group="6">Other Rev. (6)</th>
-
-                <th data-group="7">Plan (7)</th>
-                <th data-group="7">Billed (7)</th>
-                <th data-group="7">Unbilled SAP (7)</th>
-                <th data-group="7">Unbilled no PO (7)</th>
-                <th data-group="7">Other Rev. (7)</th>
-
-                <th data-group="8">Plan (8)</th>
-                <th data-group="8">Billed (8)</th>
-                <th data-group="8">Unbilled SAP (8)</th>
-                <th data-group="8">Unbilled no PO (8)</th>
-                <th data-group="8">Other Rev. (8)</th>
-
-                <th data-group="9">Plan (9)</th>
-                <th data-group="9">Billed (9)</th>
-                <th data-group="9">Unbilled SAP (9)</th>
-                <th data-group="9">Unbilled no PO (9)</th>
-                <th data-group="9">Other Rev. (9)</th>
-
-                <th data-group="10">Plan (10)</th>
-                <th data-group="10">Billed (10)</th>
-                <th data-group="10">Unbilled SAP (10)</th>
-                <th data-group="10">Unbilled no PO (10)</th>
-                <th data-group="10">Other Rev. (10)</th>
-
-                <th data-group="11">Plan (11)</th>
-                <th data-group="11">Billed (11)</th>
-                <th data-group="11">Unbilled SAP (11)</th>
-                <th data-group="11">Unbilled no PO (11)</th>
-                <th data-group="11">Other Rev. (11)</th>
-
-                <th data-group="12">Plan (12)</th>
-                <th data-group="12">Billed (12)</th>
-                <th data-group="12">Unbilled SAP (12)</th>
-                <th data-group="12">Unbilled no PO (12)</th>
-                <th data-group="12">Other Rev. (12)</th>
-
-
-                <th data-group="13"></th>
-                <th data-group="13">Plan (1)</th>
-                <th data-group="13">Plan (2)</th>
-                <th data-group="13">Plan (3)</th>
-                <th data-group="13">Plan (4)</th>
-                <th data-group="13">Plan (5)</th>
-                <th data-group="13">Plan (6)</th>
-                <th data-group="13">Plan (7)</th>
-                <th data-group="13">Plan (8)</th>
-                <th data-group="13">Plan (9)</th>
-                <th data-group="13">Plan (10)</th>
-                <th data-group="13">Plan (11)</th>
-                <th data-group="13">Plan (12)</th>
-
-              </tr>
+              <ng-container *ngIf="billingComponentModel?.TableCalcPMO?.GroupColumns?.length > 0">
+                <tr>
+                  <th *ngFor="let groupColumn of billingComponentModel.TableCalcPMO.GroupColumns"
+                    [attr.rowspan]="groupColumn.Rowspan > 0 ? groupColumn.Rowspan : null"
+                    [attr.colspan]="groupColumn.Colspan > 0 ? groupColumn.Colspan : null">
+                    <label *ngIf="groupColumn.Label" class="h6 font-bold">{{ groupColumn.Label }}</label>
+                  </th>
+                </tr>
+              </ng-container>
+              <ng-container *ngIf="billingComponentModel?.TableCalcPMO?.ColumnHeadings?.length > 0">
+                <tr>
+                  <th *ngFor="let groupColumn of billingComponentModel.TableCalcPMO.ColumnHeadings"
+                    [attr.rowspan]="groupColumn.Rowspan > 0 ? groupColumn.Rowspan : null"
+                    [attr.colspan]="groupColumn.Colspan > 0 ? groupColumn.Colspan : null">
+                    <ng-container *ngIf="groupColumn.Label?.length > 0">
+                      {{ groupColumn.Label }}
+                    </ng-container>
+                  </th>
+                </tr>
+              </ng-container>
             </thead>
             <tbody>
               <tr>
@@ -938,416 +799,406 @@
             </tbody>
           </table>
         </div>
-        <!-- Display Employee Data -->
-        <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
-          <thead>
-            <tr>
-              <th>Action</th>
-              <th>Team</th>
-              <th>Team(CF)</th>
-              <th>Sub Team</th>
-              <th>Sub Team (CF)</th>
-              <th>Sub Project</th>
-              <th>Emp ID</th>
-              <th>Employee Name</th>
-              <th>PIF ID</th>
-              <th>Rev. Source<p>BP/ ++</p>
-              </th>
-              <th>Cus. Div.<p>BP/ ++</p>
-              </th>
-              <th>Cus. Div(CF)<p>BP/ ++</p>
-              </th>
-              <th>D/I<p>BP</p>
-              </th>
-              <th>MCR</th>
-              <th>Onsite/ Nearshore/ Offshore<p>BP</p>
-              </th>
-              <th>Cus. Country</th>
-              <th>Cus. Country (CF)<p>BP</p>
-              </th>
-              <th>Contract type</th>
-              <th>Rate in Billing<p>CUR</p>
-              </th>
-              <th>CONV</th>
-              <th>CUR</th>
-              <th>Rate in USD</th>
-              <th>Total PMO</th>
-              <th>Plan (1)</th>
-              <th>Billed (6)</th>
-              <th>Unbilled SAP (6)</th>
-              <th>Unbilled no PO (6)</th>
-              <th>Other Rev. (6)</th>
+        <div style="overflow-x:auto" class="mt-5">
+          <div class="toggle-containers">
+            <!-- <button class="btn btn-primary mb-2 btn-toggle" (click)="toggleGrouping()">Toggle Grouping</button> -->
+            <ng-container *ngIf="billingComponentModel?.TableCalcBilling?.GroupColumns?.length > 0">
+              <div class="mb-3 w-50">
+                <label for="ProjectID" class="form-label font-bold">Toggle Group: </label>
+                <mat-form-field appearance="outline">
+                  <mat-select multiple panelClass="custom-dropdown-overlay">
+                    <mat-option *ngFor="let option of billingComponentModel?.TableCalcBilling?.GroupColumns"
+                      [value]="option.Colspan" (onSelectionChange)="toggleGrouping(option.ChildrenIndexs)">
+                      {{ option.Label || 'No Label' }} <!-- Adding a fallback text if Label is undefined -->
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </ng-container>
+          </div>
 
-              <th>Plan (2)</th>
-              <th>Billed (2)</th>
-              <th>Unbilled SAP (2)</th>
-              <th>Unbilled no PO (2)</th>
-              <th>Other Rev. (2)</th>
+          <!-- Display Biling Data -->
+          <table id="example" class="cell-border" cellspacing="0" width="100%" data-page-length="10">
+            <thead>
+              <ng-container *ngIf="billingComponentModel?.TableCalcPMO?.ColumnHeadings?.length > 0">
+                <tr>
+                  <th *ngFor="let groupColumn of billingComponentModel.TableCalcBilling.ColumnHeadings"
+                    [attr.rowspan]="groupColumn.Rowspan > 0 ? groupColumn.Rowspan : null"
+                    [attr.colspan]="groupColumn.Colspan > 0 ? groupColumn.Colspan : null">
+                    <ng-container *ngIf="groupColumn.Label?.length > 0">
+                      {{ groupColumn.Label }}
+                    </ng-container>
+                  </th>
+                </tr>
+              </ng-container>
+            </thead>
+            <tbody>
+              <tr *ngFor="let billingItem of billings">
+                <td>
+                  <button [disabled]="(!isEdit)" (click)="onChangeFields(billingItem.BilllingId, $event)"
+                    class="btn btn-success">Save</button>
+                  <button [disabled]="(!isEdit)" (click)="toggleLiveDelete(billingItem.BilllingId)"
+                    class="btn btn-danger">Delete</button>
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Team}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Team" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Team_CF}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Team_CF" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Sub_Team}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Sub_Team" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Sub_Team_CF}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Sub_Team_CF" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Sub_Project}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Sub_Project" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Emp_ID}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Emp_ID" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Employee_Name}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Employee_Name" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.PIF_ID}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.PIF_ID" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Rev_Source}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Rev_Source" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Cus_Div}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Div" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Cus_Div_CF}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Div_CF" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.DI}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.DI" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.MCR}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.MCR" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Onsite_Nearshore_Offshore}}</span>
+                  <select *ngIf="isEdit" class="form-select" [(ngModel)]="billingItem.Onsite_Nearshore_Offshore">
+                    <option value="Onsite">Onsite</option>
+                    <option value="Nearshore">Nearshore</option>
+                    <option value="Offshore">Offshore</option>
+                  </select>
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Cus_Country}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Country" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Cus_Country_CF}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Country_CF" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Contract_Type}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Contract_Type" class="form-control" type="text"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Rate_In_Billing}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Rate_In_Billing" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.CONV}}</span>
+                  <select *ngIf="isEdit" class="form-select" [(ngModel)]="billingItem.CONV">
+                    <option value="USD">USD</option>
+                    <option value="VND">VND</option>
+                    <option value="EUR">EUR</option>
+                    <option value="JPY">JPY</option>
+                  </select>
+                </td>
+                <td>{{convertCurrency(billingItem.CONV)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, convertCurrency(billingItem.CONV))}}</td>
+                <td>{{sumArrayNumber([billingItem.Plan_1, billingItem.Plan_2, billingItem.Plan_3, billingItem.Plan_4,
+                  billingItem.Plan_5, billingItem.Plan_6, billingItem.Plan_7, billingItem.Plan_8, billingItem.Plan_9,
+                  billingItem.Plan_10, billingItem.Plan_11, billingItem.Plan_12])}}</td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_1}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_1" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_1}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_1" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_1}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_1" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_1}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_1" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_1}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_1" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_2}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_2" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_2}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_2" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_2}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_2" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_2}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_2" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_2}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_2" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_3}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_3" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_3}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_3" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_3}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_3" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_3}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_3" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_3}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_3" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_4}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_4" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_4}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_4" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_4}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_4" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_4}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_4" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_4}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_4" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_5}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_5" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_5}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_5" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_5}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_5" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_5}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_5" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_5}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_5" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_6}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_6" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_6}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_6" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_6}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_6" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_6}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_6" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_6}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_6" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_7}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_7" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_7}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_7" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_7}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_7" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_7}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_7" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_7}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_7" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_8}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_8" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_8}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_8" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_8}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_8" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_8}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_8" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_8}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_8" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_9}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_9" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_9}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_9" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_9}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_9" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_9}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_9" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_9}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_9" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_10}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_10" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_10}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_10" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_10}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_10" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_10}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_10" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_10}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_10" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_11}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_11" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_11}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_11" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_11}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_11" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_11}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_11" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_11}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_11" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Plan_12}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_12" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Billed_12}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_12" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_12}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_12" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_12}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_12" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_12}}</span>
+                  <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_12" class="form-control" type="number"
+                    (keyup)="onInputChange($event)" />
+                </td>
+                <td>{{sumArrayNumber([multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_1),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_2),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_3),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_4),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_5),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_6),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_7),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_8),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_9),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_10),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_11),
+                  multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_12)
+                  ])}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_1)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_2)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_3)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_4)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_5)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_6)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_7)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_8)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_9)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_10)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_11)}}</td>
+                <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_12)}}</td>
 
-              <th>Plan (3)</th>
-              <th>Billed (3)</th>
-              <th>Unbilled SAP (3)</th>
-              <th>Unbilled no PO (3)</th>
-              <th>Other Rev. (3)</th>
-
-              <th>Plan (4)</th>
-              <th>Billed (4)</th>
-              <th>Unbilled SAP (4)</th>
-              <th>Unbilled no PO (4)</th>
-              <th>Other Rev. (4)</th>
-
-              <th>Plan (5)</th>
-              <th>Billed (5)</th>
-              <th>Unbilled SAP (5)</th>
-              <th>Unbilled no PO (5)</th>
-              <th>Other Rev. (5)</th>
-
-              <th>Plan (6)</th>
-              <th>Billed (6)</th>
-              <th>Unbilled SAP (6)</th>
-              <th>Unbilled no PO (6)</th>
-              <th>Other Rev. (6)</th>
-
-              <th>Plan (7)</th>
-              <th>Billed (7)</th>
-              <th>Unbilled SAP (7)</th>
-              <th>Unbilled no PO (7)</th>
-              <th>Other Rev. (7)</th>
-
-              <th>Plan (8)</th>
-              <th>Billed (8)</th>
-              <th>Unbilled SAP (8)</th>
-              <th>Unbilled no PO (8)</th>
-              <th>Other Rev. (8)</th>
-
-              <th>Plan (9)</th>
-              <th>Billed (9)</th>
-              <th>Unbilled SAP (9)</th>
-              <th>Unbilled no PO (9)</th>
-              <th>Other Rev. (9)</th>
-
-              <th>Plan (10)</th>
-              <th>Billed (10)</th>
-              <th>Unbilled SAP (10)</th>
-              <th>Unbilled no PO (10)</th>
-              <th>Other Rev. (10)</th>
-
-              <th>Plan (11)</th>
-              <th>Billed (11)</th>
-              <th>Unbilled SAP (11)</th>
-              <th>Unbilled no PO (11)</th>
-              <th>Other Rev. (11)</th>
-
-              <th>Plan (12)</th>
-              <th>Billed (12)</th>
-              <th>Unbilled SAP (12)</th>
-              <th>Unbilled no PO (12)</th>
-              <th>Other Rev. (12)</th>
-              <th>Total Revenue</th>
-              <th>Jan_Rev</th>
-              <th>Feb_Rev</th>
-              <th>Mar_Rev</th>
-              <th>Apr_Rev</th>
-              <th>May_Rev</th>
-              <th>Jun_Rev</th>
-              <th>Jul_Rev</th>
-              <th>Aug_Rev</th>
-              <th>Sep_Rev</th>
-              <th>Oct_Rev</th>
-              <th>Nov_Rev</th>
-              <th>Dec_Rev</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let billingItem of billings">
-              <td>
-                <button [disabled]="(!isEdit)" (click)="onChangeFields(billingItem.BilllingId, $event)"
-                  class="btn btn-success">Save</button>
-                <button [disabled]="(!isEdit)" (click)="toggleLiveDelete(billingItem.BilllingId)"
-                  class="btn btn-danger">Delete</button>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Team}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Team" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Team_CF}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Team_CF" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Sub_Team}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Sub_Team" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Sub_Team_CF}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Sub_Team_CF" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Sub_Project}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Sub_Project" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Emp_ID}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Emp_ID" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Employee_Name}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Employee_Name" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.PIF_ID}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.PIF_ID" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Rev_Source}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Rev_Source" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Cus_Div}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Div" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Cus_Div_CF}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Div_CF" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.DI}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.DI" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.MCR}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.MCR" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Onsite_Nearshore_Offshore}}</span>
-                <select *ngIf="isEdit" class="form-select" [(ngModel)]="billingItem.Onsite_Nearshore_Offshore">
-                  <option value="Onsite">Onsite</option>
-                  <option value="Nearshore">Nearshore</option>
-                  <option value="Offshore">Offshore</option>
-                </select>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Cus_Country}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Country" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Cus_Country_CF}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Cus_Country_CF" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Contract_Type}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Contract_Type" class="form-control" type="text" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Rate_In_Billing}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Rate_In_Billing" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.CONV}}</span>
-                <select *ngIf="isEdit" class="form-select" [(ngModel)]="billingItem.CONV">
-                  <option value="USD">USD</option>
-                  <option value="VND">VND</option>
-                  <option value="EUR">EUR</option>
-                  <option value="JPY">JPY</option>
-                </select>
-              </td>
-              <td>{{convertCurrency(billingItem.CONV)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, convertCurrency(billingItem.CONV))}}</td>
-              <td>{{sumArrayNumber([billingItem.Plan_1, billingItem.Plan_2, billingItem.Plan_3, billingItem.Plan_4,
-                billingItem.Plan_5, billingItem.Plan_6, billingItem.Plan_7, billingItem.Plan_8, billingItem.Plan_9,
-                billingItem.Plan_10, billingItem.Plan_11, billingItem.Plan_12])}}</td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_1}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_1" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_1}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_1" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_1}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_1" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_1}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_1" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_1}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_1" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_2}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_2" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_2}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_2" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_2}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_2" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_2}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_2" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_2}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_2" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_3}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_3" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_3}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_3" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_3}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_3" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_3}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_3" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_3}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_3" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_4}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_4" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_4}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_4" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_4}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_4" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_4}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_4" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_4}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_4" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_5}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_5" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_5}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_5" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_5}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_5" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_5}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_5" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_5}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_5" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_6}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_6" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_6}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_6" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_6}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_6" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_6}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_6" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_6}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_6" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_7}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_7" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_7}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_7" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_7}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_7" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_7}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_7" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_7}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_7" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_8}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_8" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_8}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_8" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_8}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_8" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_8}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_8" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_8}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_8" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_9}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_9" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_9}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_9" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_9}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_9" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_9}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_9" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_9}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_9" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_10}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_10" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_10}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_10" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_10}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_10" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_10}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_10" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_10}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_10" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_11}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_11" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_11}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_11" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_11}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_11" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_11}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_11" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_11}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_11" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Plan_12}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Plan_12" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Billed_12}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Billed_12" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_SAP_12}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_SAP_12" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Unbilled_No_PO_12}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Unbilled_No_PO_12" class="form-control" type="number" (keyup)="onInputChange($event)"/>
-              </td>
-              <td><span *ngIf="!isEdit">{{billingItem.Other_Rev_12}}</span>
-                <input *ngIf="isEdit" [(ngModel)]="billingItem.Other_Rev_12" class="form-control" type="number" (keyup)="onInputChange($event)" />
-              </td>
-              <td>{{sumArrayNumber([multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_1),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_2),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_3),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_4),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_5),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_6),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_7),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_8),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_9),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_10),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_11),
-                multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_12)
-                ])}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_1)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_2)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_3)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_4)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_5)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_6)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_7)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_8)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_9)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_10)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_11)}}</td>
-              <td>{{multiplyTwoNumber(billingItem.Rate_In_Billing, billingItem.Plan_12)}}</td>
-
-            </tr>
-            <!-- More rows here -->
-          </tbody>
-        </table>
-
+              </tr>
+              <!-- More rows here -->
+            </tbody>
+          </table>
+        </div>
       </c-card-body>
     </c-card>
   </c-col>
@@ -1377,3 +1228,27 @@
     </div>
   </c-toast>
 </c-toaster>
+
+<!-- Loading Spinner (Initially hidden) -->
+<!-- From Uiverse.io by Subaashbala -->
+  <div class="loader-overlay" *ngIf="isLoading">
+    <!-- From Uiverse.io by Pradeepsaranbishnoi -->
+    <!-- From Uiverse.io by StealthWorm -->
+    <div class="loader">
+      <div class="blackhole">
+        <div class="blackhole-circle"></div>
+        <div class="blackhole-disc"></div>
+      </div>
+
+      <div class="curve">
+        <svg viewBox="0 0 500 500">
+          <path id="loading" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97"></path>
+          <text width="500">
+            <textPath xlink:href="#loading">
+              loading...
+            </textPath>
+          </text>
+        </svg>
+      </div>
+    </div>
+  </div>

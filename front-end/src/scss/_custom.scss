@@ -111,18 +111,19 @@ td {
 .tab-table-header .col-table {
 	padding: 0;
 }
+
 .tab-table-body .col-table {
 	padding: 0 10px 8px;
 	display: flex;
 	align-items: center;
-    justify-content: center; 
+	justify-content: center;
 }
 
 .requirements .col-table {
 	width: 20%;
 }
 
-.tab-table-header .col-table h5{
+.tab-table-header .col-table h5 {
 	padding: 14px 8px;
 	height: 50px;
 	font-size: 15px;
@@ -136,25 +137,26 @@ td {
 	font-family: Arial, sans-serif;
 	flex-direction: row;
 }
-  
-  /* Style for the radio label */
-  .radio-container label {
+
+/* Style for the radio label */
+.radio-container label {
 	position: relative;
-	padding-left: 30px; /* Space for custom radio button */
+	padding-left: 30px;
+	/* Space for custom radio button */
 	font-size: 16px;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
 	color: #333;
-  }
-  
-  /* Hide default radio button */
-  .radio-container input[type="radio"] {
+}
+
+/* Hide default radio button */
+.radio-container input[type="radio"] {
 	display: none;
-  }
-  
-  /* Custom radio button */
-  .radio-container input[type="radio"] + span {
+}
+
+/* Custom radio button */
+.radio-container input[type="radio"]+span {
 	position: absolute;
 	left: 0;
 	top: 50%;
@@ -166,37 +168,223 @@ td {
 	background-color: #fff;
 	border: 2px solid #000;
 	transition: all 0.3s ease;
-  }
-  
-  /* Active state for radio button */
-  .radio-container input[type="radio"]:checked + span {
+}
+
+/* Active state for radio button */
+.radio-container input[type="radio"]:checked+span {
 	background-color: #fff;
 	border-color: #000;
-  }
-  
-  /* Inner circle when checked */
-  .radio-container input[type="radio"]:checked + span::after {
+}
+
+/* Inner circle when checked */
+.radio-container input[type="radio"]:checked+span::after {
 	content: '';
 	position: absolute;
 	left: 4px;
-    top: 3px;
-    width: 9px;
-    height: 9px;
+	top: 3px;
+	width: 9px;
+	height: 9px;
 	border-radius: 50%;
 	background-color: blue;
-  }
-  
-  /* Optional: Hover effects */  
-  .radio-container input[type="radio"]:focus + span {
+}
+
+/* Optional: Hover effects */
+.radio-container input[type="radio"]:focus+span {
 	border-color: #000;
-  }
-  
-  /* Optional: Add a little spacing between radio button and text */
-  .radio-container label span {
+}
+
+/* Optional: Add a little spacing between radio button and text */
+.radio-container label span {
 	margin-right: 10px;
-  }
-  
-  .btn-add-row{
+}
+
+.btn-add-row {
 	float: right;
 	margin-right: 16px;
-  }
+}
+
+.font-bold {
+	font-weight: bold !important;
+}
+
+.toggle-containers div.w-50 {
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.toggle-containers .mat-mdc-form-field {
+	width: 60%;
+}
+
+/* From Uiverse.io by Subaashbala */
+/* Prior to using this loader, please ensure that you have set a background image or background color, as the text is transparent and not designed with a solid color. */
+/* Full-screen overlay to block all content */
+/* Updated loader overlay CSS to prevent interaction with elements below */
+.loader-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	/* Darker background */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	/* High z-index to ensure it overlays on top */
+	pointer-events: auto;
+	/* Enable pointer events for the loader */
+}
+
+/* Disable pointer events for the body when the loader is active */
+body.loading {
+	pointer-events: none;
+}
+
+.loader {
+	display: flex;
+	width: 8rem;
+	height: 8rem;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	flex-direction: column;
+}
+
+.curve {
+	width: 180%;
+	height: 180%;
+	position: absolute;
+	animation: rotate 8s linear infinite;
+	fill: transparent;
+}
+
+.curve text {
+	letter-spacing: 20px;
+	text-transform: uppercase;
+	font: 1.5em "Fira Sans", sans-serif;
+	fill: white;
+	filter: drop-shadow(0 2px 8px black);
+}
+
+.blackhole {
+	z-index: -1;
+	display: flex;
+	position: absolute;
+	width: 8rem;
+	height: 8rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.blackhole-circle {
+	z-index: 0;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background: radial-gradient(circle at center, black 25%, white 35%, white 100%);
+	box-shadow: 0px 0px 2rem #c2babb;
+	align-items: center;
+	justify-content: center;
+}
+
+.blackhole-circle::after {
+	z-index: 0;
+	position: absolute;
+	content: "";
+	display: flex;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	border: 4px solid white;
+	background: radial-gradient(circle at center, black 35%, white 60%, white 100%);
+	box-shadow: 0px 0px 5rem #c2babb;
+	align-items: center;
+	justify-content: center;
+	filter: blur(4px);
+	animation: pulseAnimation linear infinite 2s alternate-reverse;
+}
+
+.blackhole-circle::before {
+	z-index: 1;
+	content: "";
+	display: flex;
+	width: 4rem;
+	height: 4rem;
+	border: 2px solid #ffffff;
+	box-shadow: 3px 3px 10px #c2babb, inset 0 0 1rem #ffffff;
+	border-radius: 50%;
+	top: 5rem;
+	filter: blur(0.5px);
+	animation: rotate linear infinite 3s;
+}
+
+.blackhole-disc {
+	position: absolute;
+	z-index: 0;
+	display: flex;
+	width: 5rem;
+	height: 10rem;
+	border-radius: 50%;
+	background: radial-gradient(circle at center, #ffffff 80%, #353535 90%, white 100%);
+	filter: blur(1rem) brightness(130%);
+	border: 1rem solid white;
+	box-shadow: 0px 0px 3rem #d7c4be;
+	transform: rotate3d(1, 1, 1, 220deg);
+	animation: pulseAnimation2 linear infinite 2s alternate-reverse;
+	justify-content: center;
+	align-items: center;
+}
+
+.blackhole-disc::before {
+	content: "";
+	position: absolute;
+	z-index: 0;
+	display: flex;
+	width: 5rem;
+	height: 10rem;
+	border-radius: 50%;
+	background: radial-gradient(circle at center, #ffffff 80%, #000 90%, white 100%);
+	filter: blur(3rem);
+	border: 1rem solid white;
+	box-shadow: 0px 0px 6rem #d7c4be;
+	animation: pulseAnimation linear infinite 2s alternate-reverse;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes pulseAnimation {
+	0% {
+		box-shadow: 0px 0px 3rem #c2babb;
+		transform: scale(1);
+	}
+
+	100% {
+		box-shadow: 0px 0px 5rem #c2babb;
+		transform: scale(1.09);
+	}
+}
+
+@keyframes pulseAnimation2 {
+	0% {
+		box-shadow: 0px 0px 3rem #c2babb;
+		transform: rotate3d(1, 1, 1, 220deg) scale(1);
+	}
+
+	100% {
+		box-shadow: 0px 0px 5rem #c2babb;
+		transform: rotate3d(1, 1, 1, 220deg) scale(.95);
+	}
+}

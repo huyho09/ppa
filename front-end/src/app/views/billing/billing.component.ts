@@ -12,11 +12,15 @@ import { Router } from '@angular/router';
 import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { BillingInterface } from "../../dtos/billing-dto";
+import { BillingComponentDAL, TableData, ColumnValue } from '../../models/systems/blling-component';
+import billingStructureData from '../../../assets/jsons/billing-data.json'
+import colorPalettesData from '../../../assets/jsons/color-palettes.json'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-billing',
   imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, CommonModule, NgxDatatableModule, ToastBodyComponent, ToastComponent, ToasterComponent, ToastHeaderComponent,
-    FormsModule, MatSelectModule, MatFormFieldModule, ButtonCloseDirective, ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective],
+    FormsModule, MatSelectModule, MatFormFieldModule, ButtonCloseDirective, ButtonDirective, ModalBodyComponent, ModalComponent, ModalFooterComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, MatProgressSpinnerModule],
   templateUrl: './billing.component.html',
   styleUrl: './billing.component.scss'
 })
@@ -215,6 +219,11 @@ export class BillingComponent {
   visibleToast = signal(false);
   percentage = signal(0);
 
+  public billingComponentModel = billingStructureData;
+  public colorPalettes: any[] = colorPalettesData;
+  GroupColumns: ColumnValue[] = billingStructureData.TableCalcPMO.GroupColumns;
+  isLoading: boolean = false;
+
   toggleToast() {
     this.visibleToast.update((value) => !value);
   }
@@ -228,6 +237,8 @@ export class BillingComponent {
     this.percentage.set($event * 25);
   }
 
+  public table: any;
+
   ngOnInit() {
     // Initialize DataTables on a table element after the view is initialized
     $(document).ready(function () {
@@ -240,6 +251,7 @@ export class BillingComponent {
       });
     });
     this.loadBillingsFromLocalStorage()
+    console.log(this.billingComponentModel?.TableCalcBilling?.GroupColumns);
   }
 
   constructor(private formBuilder: UntypedFormBuilder, private cdRef: ChangeDetectorRef, private router: Router) { }
@@ -437,5 +449,43 @@ export class BillingComponent {
         }
       });
     }
+  }
+
+  getRandomColor(): string {
+    const randomIndex = Math.floor(Math.random() * this.colorPalettes.length);
+    return this.colorPalettes[randomIndex]?.color;
+  }
+
+  toggleGrouping(columns: number[]): void {
+    // Record the start time
+    // const startTime = performance.now();
+
+    // Toggle visibility of group column
+    this.isLoading = true; // Show the loading spinner
+    // Loop through each column and toggle visibility
+    setTimeout(() => {
+      var table = $('#example').DataTable();
+      // Temporarily disable redraw
+      table.off('draw'); // Disable draw event to prevent reflow
+
+      // Toggle visibility of all columns
+      columns.forEach(colIndex => {
+        const column = table.column(colIndex);
+        column.visible(!column.visible());
+      });
+
+      // Enable redraw after all operations
+      table.draw(); // Redraw the table only once
+      table.on('draw', function () {
+        // any logic that should run after the table is drawn (optional)
+      });
+      this.isLoading = false; // Hide the loading spinner when done
+    }, 1000);
+
+    // Record the end time
+    // const endTime = performance.now();
+
+    // Log the time it took to run
+    // console.log(`toggleGrouping took ${endTime - startTime} milliseconds`);
   }
 }

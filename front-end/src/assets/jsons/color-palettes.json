@@ -1,0 +1,12 @@
+[
+    { "color": "#2196F3", "name": "Vibrant Blue" },
+    { "color": "#4CAF50", "name": "Fresh Green" },
+    { "color": "#FFC107", "name": "Warm Amber" },
+    { "color": "#F44336", "name": "Bright Red" },
+    { "color": "#9C27B0", "name": "Elegant Purple" },
+    { "color": "#00BCD4", "name": "Cool Cyan" },
+    { "color": "#795548", "name": "Coffee Brown" },
+    { "color": "#3F51B5", "name": "Deep Blue" },
+    { "color": "#E91E63", "name": "Pink Magenta" },
+    { "color": "#FF5722", "name": "Deep Orange" }
+]

@@ -44,12 +44,15 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/datatables.net/js/dataTables.min.js"
+              "node_modules/datatables.net/js/dataTables.min.js",
+              "node_modules/datatables.net-buttons/js/dataTables.buttons.min.js"
             ],
             "allowedCommonJsDependencies": [],
             "stylePreprocessorOptions": {
               "sass": {
-                "silenceDeprecations": ["import"]
+                "silenceDeprecations": [
+                  "import"
+                ]
               }
             }
           },
