@@ -212,6 +212,7 @@ td {
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
+	font-size: 11px;
 }
 
 .toggle-containers .mat-mdc-form-field {
@@ -387,4 +388,94 @@ body.loading {
 		box-shadow: 0px 0px 5rem #c2babb;
 		transform: rotate3d(1, 1, 1, 220deg) scale(.95);
 	}
+}
+
+/* Ultra-Compact Table */
+.zoom-out-table {
+    font-size: 11px; /* Small text */
+    width: 100%;
+    border-collapse: collapse; /* Fix missing value */
+}
+
+/* Ensure columns shrink as much as possible */
+.zoom-out-table th,
+.zoom-out-table td {
+    font-size: 11px;
+    padding: 10px; /* Minimal padding */
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    min-width: 100px; /* Allow columns to shrink but not too much */
+    width: auto; /* Allow columns to adjust to content */
+}
+
+/* Ensure th and td adjust similarly */
+.zoom-out-table th {
+    width: auto;
+    min-width: 100px;
+}
+
+.zoom-out-table td {
+    width: auto;
+    min-width: 100px;
+    max-width: none; /* Remove fixed max-width */
+}
+
+/* Force buttons and spans inside table cells to be smaller */
+.zoom-out-table td button,
+.zoom-out-table td span {
+    font-size: 11px; /* Reduce button & span text size */
+    padding: 10px; /* Make buttons smaller */
+    max-width: 150px; /* Restrict button width */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: word-break;
+}
+
+/* Force specific columns to be as narrow as possible */
+.zoom-out-table th:first-child,
+.zoom-out-table td:first-child,
+.zoom-out-table th:last-child,
+.zoom-out-table td:last-child {
+    width: 1px; /* Force smallest width */
+}
+
+/* Ensure table remains scrollable if necessary */
+.zoom-out-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Specific adjustments for the table body (tbody) */
+.zoom-out-table tbody {
+    width: 100%;
+}
+
+.zoom-out-table tbody td {
+    min-width: 100px;
+    width: auto;
+}
+
+.zoom-out-table th:nth-child(1),
+.zoom-out-table td:nth-child(1){
+    min-width: 140px!important;
+}
+
+
+body:has(#table-calc-pmo) .card{
+    font-size: 12px;
+}
+
+.toggle-containers div.w-50 {
+     font-size: 12px !important;
+    padding: 10px; 
+}
+
+.toggle-containers div.w-50 .mat-mdc-form-field-infix{
+     font-size: 12px !important;
+    padding-left: 10px; 
+}
+
+body:has(#table-calc-pmo) .mat-mdc-option span{
+     font-size: 12px !important;
 }

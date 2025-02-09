@@ -469,13 +469,7 @@ export class BillingComponent {
 
   toggleGrouping(columns: number[]): void {
     // Record the start time
-    // const startTime = performance.now();
-
-    // Toggle visibility of group column
-    this.isLoading = true; // Show the loading spinner
-    // Loop through each column and toggle visibility
-    setTimeout(() => {
-      var table = $('#example').DataTable();
+    var table = $('#example').DataTable();
       // Temporarily disable redraw
       table.off('draw'); // Disable draw event to prevent reflow
 
@@ -490,8 +484,16 @@ export class BillingComponent {
       table.on('draw', function () {
         // any logic that should run after the table is drawn (optional)
       });
-      this.isLoading = false; // Hide the loading spinner when done
-    }, 1000);
+    
+    // const startTime = performance.now();
+
+    // Toggle visibility of group column
+    // this.isLoading = true; // Show the loading spinner
+    // Loop through each column and toggle visibility
+    // setTimeout(() => {
+      
+    //   // this.isLoading = false; // Hide the loading spinner when done
+    // }, 1000);
 
     // Record the end time
     // const endTime = performance.now();
