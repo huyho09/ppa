@@ -220,6 +220,9 @@ export class BillingComponent {
   visibleToast = signal(false);
   percentage = signal(0);
   currentUrl = '';
+  currency_EUR_USD = 1.1;
+  currency_JPY_USD = 0.0092;
+  currency_VND_USD = 0.04;
 
   public billingComponentModel = billingStructureData;
   public colorPalettes: any[] = colorPalettesData;
@@ -254,7 +257,7 @@ export class BillingComponent {
         "bDestroy": true
       });
     });
-    
+
     console.log(this.billingComponentModel?.TableCalcBilling?.GroupColumns);
   }
 
@@ -283,6 +286,12 @@ export class BillingComponent {
       this.isSavedValue = true;
     }
   }
+  onChangeCurrency(event: Event | null) {
+    if (event?.target) {
+      $(event.target).closest("tr").find("input").removeClass("changed-cell");
+      this.isSavedValue = true;
+    }
+  }
   onInputChange(event: Event) {
     (event.target as HTMLInputElement).classList.add("changed-cell");
   }
@@ -299,11 +308,11 @@ export class BillingComponent {
   onEditRecord() {
     this.isEdit = !this.isEdit;
     this.cdRef.detectChanges();
-    if(!this.isEdit){
+    if (!this.isEdit) {
       if (!this.isSavedValue) {
-          window.location.reload();
-      } 
-      this.isSavedValue = false;    
+        window.location.reload();
+      }
+      this.isSavedValue = false;
     }
   }
 
@@ -350,11 +359,11 @@ export class BillingComponent {
       case "USD":
         return 1;
       case "VND":
-        return 1 / 25;
+        return this.currency_VND_USD;
       case "EUR":
-        return 1.1;
+        return this.currency_EUR_USD;
       default:
-        return 0.0092;
+        return this.currency_JPY_USD;
     }
   }
 

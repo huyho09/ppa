@@ -10,21 +10,31 @@
         <div class="row">
           <!-- Column 1 -->
           <div class="col-12 col-md-6">
-            <table class="table  table-responsive table-bordered zoom-out-table">
-              <thead>
-                <tr>
-                  <th>EUR/USD</th>
-                  <th>1.1</th>
-                </tr>
-              </thead>
+            <table class="table table-bordered">
               <tbody>
                 <tr>
-                  <td>JPY/USD</td>
-                  <td>0.0092</td>
+                  <td><span *ngIf="!isEdit">EUR/USD</span><button *ngIf="isEdit" (click)="onChangeCurrency($event)"
+                      class="btn btn-outline-success">Save EUR/USD</button></td>
+                  <td><span *ngIf="!isEdit">{{currency_EUR_USD}}</span>
+                    <input *ngIf="isEdit" [(ngModel)]="currency_EUR_USD" class="form-control" type="number"
+                      (keyup)="onInputChange($event)" />
+                  </td>
                 </tr>
                 <tr>
-                  <td>VND/USD</td>
-                  <td>0.04</td>
+                  <td><span *ngIf="!isEdit">JPY/USD</span><button *ngIf="isEdit" (click)="onChangeCurrency($event)"
+                      class="btn btn-outline-success">Save JPY/USD</button></td>
+                  <td><span *ngIf="!isEdit">{{currency_JPY_USD}}</span>
+                    <input *ngIf="isEdit" [(ngModel)]="currency_JPY_USD" class="form-control" type="number"
+                      (keyup)="onInputChange($event)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td><span *ngIf="!isEdit">VND/USD</span><button *ngIf="isEdit" (click)="onChangeCurrency($event)"
+                      class="btn btn-outline-success">Save VND/USD</button></td>
+                  <td><span *ngIf="!isEdit">{{currency_VND_USD}}</span>
+                    <input *ngIf="isEdit" [(ngModel)]="currency_VND_USD" class="form-control" type="number"
+                      (keyup)="onInputChange($event)" />
+                  </td>
                 </tr>
               </tbody>
             </table>
