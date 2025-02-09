@@ -10,5 +10,5 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  // Your component logic here
+
 }

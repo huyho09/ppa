@@ -8,7 +8,6 @@
               <input
               id = "avatar"
               name = "avatar"
-              [(ngModel)] = "employee.avatar"
               (change)="onFileSelect($event)"
               type = "file"
               class = "form-control"
@@ -31,7 +30,7 @@
                     placeholder="First name"
                     type="text"
                     class="form-control"
-                    id="name"
+                    id="firstname"
                     [(ngModel)]="employee.firstname"
                     name="firstname"
                     required
@@ -44,7 +43,7 @@
                     placeholder="Last name"
                     type="text"
                     class="form-control"
-                    id="name"
+                    id="lastname"
                     [(ngModel)]="employee.lastname"
                     name="lastname"
                     required

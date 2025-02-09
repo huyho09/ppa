@@ -2,8 +2,8 @@
   <div>
     <a class="menu-header" (click)="toggleSubmenu('myProfile')"><img alt="avatar" id = "avatar" name = 'avatar' src="http://localhost:3000/upload-picture/{{user.sub.avatar}}" style="border-radius: 30%; width: 100px; height: 100px;"></a>
     <div class="submenu" [class.show]="activeMenu === 'myProfile'">
-      <a href="dashboard/employee/update/{{user.id}}"><i class="bi bi-people"></i> My Profile</a>
-      <a href="/login"><i class="bi bi-power"></i> Log Out</a>
+      <a href="dashboard/employee/update/{{user.sub.id}}"><i class="bi bi-people"></i> My Profile</a>
+      <a href="/login" (click)="logout($event)"><i class="bi bi-power"></i> Log Out</a>
     </div>
   </div>
   <br><br>

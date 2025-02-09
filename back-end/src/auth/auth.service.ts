@@ -1,29 +1,38 @@
 import { Injectable } from '@nestjs/common';
 import { EmployeesService } from 'src/employees/employees.service';
-
-import * as bcrypt from 'bcryptjs'
-import { access } from 'fs';
+import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
     constructor(
         private readonly employeeService: EmployeesService,
-        private readonly JwtService: JwtService
-    ){}
+        private readonly jwtService: JwtService
+    ) {}
 
-    async validate(email:string, password:string): Promise<any>
-    {
+    async validate(email: string, password: string): Promise<any | null> {
+        console.log('Validating email:', email);
         const employee = await this.employeeService.findOnebyEmail(email);
-        if (employee && await bcrypt.compare(password, (await employee).password))
-        {
-            const {password,...result} = employee
-            return result
+        console.log('Found employee:', employee);
+        
+        if (!employee) {
+            console.log('User not found');
+            return null;
         }
-        return null
+    
+        const isMatch = await bcrypt.compare(password, employee.password);
+        console.log('Password match:', isMatch);
+    
+        if (!isMatch) {
+            console.log('Invalid password');
+            return null;
+        }
+
+        const { password : _, ...result } = employee;
+        return result;
     }
-    async login(user: any)
-    {
+
+    async login(user: any) {
         const payload = {
             email: user.email,
             sub: {
@@ -35,9 +44,9 @@ export class AuthService {
                 role: user.role,
                 is_admin: user.is_admin
             }
-        }
+        };
         return {
-            access_token: this.JwtService.sign(payload)
-        }
+            access_token: this.jwtService.sign(payload)
+        };
     }
 }

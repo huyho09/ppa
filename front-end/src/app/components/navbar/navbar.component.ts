@@ -23,4 +23,9 @@ export class NavbarComponent implements OnInit{
   toggleSubmenu(menu: string): void {
     this.activeMenu = this.activeMenu === menu ? null : menu;
   }
+  logout(event: Event){
+    event.preventDefault()
+    sessionStorage.removeItem('JwtToken')
+    window.location.href = '/login'
+  }
 }

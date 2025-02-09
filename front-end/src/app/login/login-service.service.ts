@@ -20,7 +20,7 @@ export class LoginServiceService {
 
   saveSession(data:any)
   {
-    sessionStorage.setItem('JwtToken',JSON.stringify(data))
+    sessionStorage.setItem('JwtToken',JSON.stringify(data.access_token))
   }
 
   getSession(){
@@ -37,5 +37,8 @@ export class LoginServiceService {
     }
   }
 
+  logout(){ 
+    sessionStorage.removeItem('JwtToken')
+  }
 
 }

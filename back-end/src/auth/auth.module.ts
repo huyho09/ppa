@@ -6,14 +6,17 @@ import { EmployeesModule } from 'src/employees/employees.module';
 import { LocalStrategyService } from 'src/local-strategy/local-strategy.service';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from 'src/jwt-strategy/jwt-strategy.service';
-import { JwtAuthGuard } from './jwt-auth.guard'; // Import JwtAuthGuard
-import { ConfigModule, ConfigService } from '@nestjs/config'; // Import ConfigModule and ConfigService
+import { JwtAuthGuard } from './jwt-auth.guard'; 
+import { ConfigModule, ConfigService } from '@nestjs/config'; 
+import { APP_GUARD } from '@nestjs/core';
+
 
 @Module({
   imports: [
-    PassportModule.register({ session: true }),
+    ConfigModule.forRoot(),
+    PassportModule.register({defaultStrategy: 'jwt'}),
     EmployeesModule,
-    ConfigModule.forRoot(), 
+    ConfigModule, 
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -30,7 +33,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'; // Import ConfigMo
     LocalStrategyService,
     JwtStrategy, 
     {
-      provide: 'APP_GUARD',
+      provide: APP_GUARD,
       useClass: JwtAuthGuard, 
     },
   ],

@@ -2,6 +2,7 @@ import { Controller, Post, Get, Param, Res, UploadedFile, UseInterceptors, BadRe
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadPictureService } from './upload-picture.service';
 import { Response } from 'express';
+import { Public } from 'src/decorator/public.decorator';
 
 @Controller('upload-picture')
 export class UploadPictureController {
@@ -17,6 +18,7 @@ export class UploadPictureController {
   }
 
   @Get(':filename')
+  @Public()
   getPicture(@Param('filename') filename: string, @Res() res: Response) {
     return this.uploadPictureService.getPicture(filename, res);
   }

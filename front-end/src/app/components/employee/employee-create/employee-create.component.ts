@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EmployeeServiceService } from '../service/employee-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -54,6 +54,8 @@ export class EmployeeCreateComponent implements OnInit {
   };
   avatarFile: File | null = null;
   avatarPreview: string |null = null
+  
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private employeeService: EmployeeServiceService,
@@ -77,7 +79,7 @@ export class EmployeeCreateComponent implements OnInit {
         (response) => {
           console.log(response)
           this.newEmployee.avatar = response.filename
-          console.log(this.newEmployee.avatar)
+          console.log("Emp avatar: ",this.newEmployee.avatar)
           this.avatarPreview = `http://localhost:3000/upload-picture/${response.filename}`
         }
       )
