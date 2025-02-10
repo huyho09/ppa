@@ -12,7 +12,8 @@ interface Employee {
   gender: string
   skills: string[];
   role: string;
-  password: string
+  password: string;
+  aboutMe: string;
   is_admin: boolean;
   project: {id: string,name: string}|null;
   department: {id: string, name: string}|null

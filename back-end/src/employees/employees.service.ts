@@ -26,10 +26,10 @@ export class EmployeesService {
   }
 
   findAll() {
-    return this.employeeRepository.find({relations:['project']});
+    return this.employeeRepository.find({relations:['project','department']});
   }
   findOne(id: string) {
-    return this.employeeRepository.findOneOrFail({where : {id},relations:['project']});
+    return this.employeeRepository.findOneOrFail({where : {id},relations:['project','department']});
   }
   findOnebyEmail(email: string){
     return this.employeeRepository.findOne({where: {email}})
@@ -40,10 +40,14 @@ export class EmployeesService {
     {
       console.log("Can't find Employee")
     }
-    if(updateEmployeeDto.password)
+    if(updateEmployeeDto.password && updateEmployeeDto.password !== employee.password)
     {
       const salt = await bcrypt.genSalt(10)
       updateEmployeeDto.password = await bcrypt.hash(updateEmployeeDto.password, salt)
+    }
+    else
+    {
+      delete updateEmployeeDto.password
     }
     if (updateEmployeeDto.projectId && employee.project && updateEmployeeDto.projectId !== employee.project.id) 
       {

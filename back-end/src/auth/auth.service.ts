@@ -14,22 +14,23 @@ export class AuthService {
         console.log('Validating email:', email);
         const employee = await this.employeeService.findOnebyEmail(email);
         console.log('Found employee:', employee);
-        
+    
         if (!employee) {
             console.log('User not found');
             return null;
         }
-        const isMatch = await bcrypt.compare(password, employee.password);
+    
+        const isMatch = await bcrypt.compare(password.trim(), employee.password.trim());
         console.log('Password match:', isMatch);
     
         if (!isMatch) {
             console.log('Invalid password');
             return null;
         }
-
-        const { password : _, ...result } = employee;
+        const { password: _, ...result } = employee;
         return result;
     }
+    
 
     async login(user: any) {
         const payload = {

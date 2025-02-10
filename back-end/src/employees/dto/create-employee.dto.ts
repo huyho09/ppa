@@ -37,5 +37,8 @@ export class CreateEmployeeDto {
     @IsOptional()
     departmentId?: string;
     
+    @IsString()
+    @IsOptional()
+    aboutMe:string;
 
 }

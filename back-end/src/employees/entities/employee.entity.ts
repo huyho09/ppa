@@ -29,7 +29,7 @@ export class Employee {
     @Column('text')
     role: string;
 
-    @Column('text')
+    @Column('text',{nullable: true})
     aboutMe: string;
 
     @Column({ type: 'bit', default: false })

@@ -22,11 +22,11 @@ export class DepartmentsService {
   }
 
   findAll() {
-    return this.departmentRepository.find();
+    return this.departmentRepository.find({relations: ['employees']});
   }
 
   findOne(id: string) {
-    return this.departmentRepository.findOneOrFail({where : {id}});
+    return this.departmentRepository.findOneOrFail({where : {id},relations:['employees']});
   }
 
   async update(id: string, updateDepartmentDto: UpdateDepartmentDto) {

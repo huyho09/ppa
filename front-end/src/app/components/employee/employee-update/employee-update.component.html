@@ -1,12 +1,11 @@
 <div class="container-fluid" style="padding-left: 10px;">
   <form (ngSubmit)="updateEmployee()">
     <div class="row" style="height: 100vh;">
-      <div class="col-4 p-0" style="background-color: burlywood;">
-        <div class="avatar-container" style="justify-content: center; padding-top: 10px;">
-          <div style="text-align: center;">
+      <div class="col-4 p-0">
+        <div class="avatar-container" style="justify-content: center">
+          <div style="text-align: center; padding-top: 10%;">
             <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Avatar Preview" style="width: 350px; height: 350px; border-radius: 50%;" />
           </div>
-          <label for = "avatar">Choose new picture</label>
           <input
             id="avatar"
             name="avatar"
@@ -155,13 +154,11 @@
             </select>
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col">
             <div class = "mb-3">
               <label for="department" class="form-label">Team Assign</label>
             <p *ngIf="employee.department && employee.department.name">
-              <strong>Current Department:</strong> {{ employee.department.name }}
+              <strong>Current Team:</strong> {{ employee.department.name }}
             </p>
             <select id="department" name="department" class="form-control" [(ngModel)]="employee.department" required>
               <option [ngValue]="null">Not Assigned</option>
@@ -170,6 +167,7 @@
             </div>
           </div>
         </div>
+          
         <div class="row">
           <div class="col">
             <div class = "mb-3">
@@ -187,15 +185,26 @@
             </div>
           </div>
         </div>
-
         <div class="row">
           <div class="col">
-            <button type="submit" class="form-control btn btn-primary mt-3">Save</button>
-          </div>
-          <div class="col">
-            <button type="button" class="form-control btn btn-danger mt-3" [routerLink]="['/dashboard/employee/delete', employee.id]">Delete</button>
+            <div class="mb-3">
+              <label class="form-label">About Me</label>
+              <angular-editor [config]="editorConfig" [(ngModel)]="employee.aboutMe" name="aboutMe"></angular-editor>
+            </div>
           </div>
         </div>
+        
+        
+        <div class="row">
+          <div class="col-4 d-flex gap-4">
+            <button type="submit" class="btn btn-primary mt-3 flex-grow-1">Save</button>
+            <button type="button" class="btn btn-danger mt-3 flex-grow-1" 
+              [routerLink]="['/dashboard/employee/delete', employee.id]">
+              Delete
+            </button>
+          </div>
+        </div>
+        
       </div>
     </div>
   </form>

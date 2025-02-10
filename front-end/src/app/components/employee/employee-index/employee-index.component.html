@@ -34,11 +34,17 @@
                 <hr>
                 <p class="card-text"><strong>Role:</strong> {{ employee.role }}</p>
                 <p class="card-text"><strong>Admin:</strong> {{ employee.is_admin ? 'Yes' : 'No' }}</p>
+                <div *ngIf=" !employee.department?.id; else teamAssigned">
+                  <p class = "card-text"><strong>Team: </strong>Don't have Team</p>
+                </div>
+                <ng-template #teamAssigned>
+                  <p class = "card-text"><strong>Team:</strong><a [routerLink]="['/dashboard/department/update',employee.department?.id]"> {{ employee.department?.name }}</a></p>
+                </ng-template>
                 <div *ngIf=" !employee.project?.id; else projectAssigned">
                   <p class = "card-text"><strong>Project: </strong>Don't have project</p>
                 </div>
-
                 <ng-template #projectAssigned>
+
                   <p class = "card-text"><strong>Project:</strong><a [routerLink]="['/dashboard/project/update',employee.project?.id]"> {{ employee.project?.name }}</a></p>
                 </ng-template>
               </div>

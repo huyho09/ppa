@@ -16,6 +16,7 @@ interface Employee {
   avatar: string;
   firstname: string;
   lastname: string;
+  aboutMe:string;
   gender: string;
   email: string;
   password:string;
@@ -49,6 +50,7 @@ export class EmployeeCreateComponent implements OnInit {
     firstname: '',
     lastname: '',
     gender: '',
+    aboutMe: '',
     email: '',
     password: '',
     skills: [],

@@ -14,6 +14,7 @@ interface Employee {
   role: string;
   is_admin: boolean;
   project: {name: string,id:string} |null;
+  department: {name: string , id: string}|null;
 }
 
 @Component({
@@ -34,6 +35,7 @@ export class EmployeeIndexComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService.getEmployeesWithApiCall().subscribe((data : Employee[]) => {
       this.employees = data;
+      console.log("list of emps" ,this.employees)
     });
   }
 
