@@ -8,7 +8,7 @@ import { FormsModule, UntypedFormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 declare var $: any;
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { BillingInterface } from "../../dtos/billing-dto";
@@ -257,11 +257,13 @@ export class BillingComponent {
         "bDestroy": true
       });
     });
-
+    this.router.routeReuseStrategy.shouldReuseRoute = () => { return false; };
     console.log(this.billingComponentModel?.TableCalcBilling?.GroupColumns);
   }
 
-  constructor(private formBuilder: UntypedFormBuilder, private cdRef: ChangeDetectorRef, private router: Router) { }
+  constructor(private formBuilder: UntypedFormBuilder, private cdRef: ChangeDetectorRef, private router: Router,
+    private route: ActivatedRoute,
+  ) { }
 
   loadBillingsFromLocalStorage() {
     const storedBillings = localStorage.getItem('billings');
@@ -310,10 +312,16 @@ export class BillingComponent {
     this.cdRef.detectChanges();
     if (!this.isEdit) {
       if (!this.isSavedValue) {
-        window.location.reload();
+        this.reloadURL();
       }
       this.isSavedValue = false;
     }
+  }
+
+  reloadURL(): void {
+    this.router.navigate(['/billing'], {
+      relativeTo: this.route,
+    });
   }
 
   sumArrayNumber(arr: number[]): number {

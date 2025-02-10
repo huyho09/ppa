@@ -8,7 +8,10 @@ import { routes } from './app.routes';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, { useHash: false }), // Hash-based routing enabled
+    RouterModule.forRoot(routes, { useHash: false,
+      onSameUrlNavigation : "reload",
+      
+     }), // Hash-based routing enabled
   ],
   bootstrap: [AppComponent]
 })
