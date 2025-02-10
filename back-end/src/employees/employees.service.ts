@@ -6,6 +6,7 @@ import { Employee } from './entities/employee.entity';
 import { Repository } from 'typeorm';
 import { Project } from 'src/projects/entities/project.entity';
 import * as bcrypt from 'bcryptjs'
+import { Department } from 'src/departments/entities/department.entity';
 
 @Injectable()
 export class EmployeesService {
@@ -13,7 +14,9 @@ export class EmployeesService {
     @InjectRepository(Employee)
     private readonly employeeRepository: Repository<Employee>,
     @InjectRepository(Project)
-    private readonly projectRepository: Repository<Project>
+    private readonly projectRepository: Repository<Project>,
+    @InjectRepository(Department)
+    private readonly departmentRepository: Repository<Department>
   ){}
   async create(createEmployeeDto: CreateEmployeeDto) {
     const new_employee = this.employeeRepository.create(createEmployeeDto)
@@ -32,7 +35,7 @@ export class EmployeesService {
     return this.employeeRepository.findOne({where: {email}})
   }
   async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
-    const employee = await this.employeeRepository.findOneOrFail({where: {id},relations: ['project']})
+    const employee = await this.employeeRepository.findOneOrFail({where: {id},relations: ['project','department']})
     if (!employee)
     {
       console.log("Can't find Employee")
@@ -53,6 +56,7 @@ export class EmployeesService {
           await this.projectRepository.save(oldProject)
         }
       }
+      
       newProject.employees.push(employee)
       await this.projectRepository.save(newProject)
       employee.project = newProject;
@@ -69,7 +73,35 @@ export class EmployeesService {
         }
       }
       employee.project = null
+    }
+    if (updateEmployeeDto.departmentId && employee.department && updateEmployeeDto.departmentId !== employee.department.id) 
+      {
+      const newDepartment = await this.departmentRepository.findOne({where: {id: updateEmployeeDto.departmentId}})
+      if (employee.department.id)
+      {
+        const oldDepartment = await this.departmentRepository.findOne({where: {id: employee.department.id}})
+        if(oldDepartment){
+          oldDepartment.employees = await oldDepartment.employees.filter(emp => emp.id !== employee.id);
+          await this.departmentRepository.save(oldDepartment)
+        }
+      }
       
+      newDepartment.employees.push(employee)
+      await this.departmentRepository.save(newDepartment)
+      employee.department = newDepartment;
+
+    }
+    else if(!updateEmployeeDto.departmentId)
+    {
+      if(employee.department)
+      {
+        const oldDepartment = await this.departmentRepository.findOne({where: {id: employee.department.id},relations:['employees']})
+        if(oldDepartment){
+          oldDepartment.employees = oldDepartment.employees.filter(emp => emp.id !== employee.id)
+          await this.departmentRepository.save(oldDepartment)
+        }
+      }
+      employee.department = null
     }
     Object.assign(employee,updateEmployeeDto)
     return this.employeeRepository.save(employee)

@@ -131,16 +131,30 @@
             </div>
 
             <div class = "form-group mt-2" >
-            <label for="project">Project</label>
+              <label for="project">Project</label>
+                <select
+                id ="project"
+                name="project"
+                class = "form-control"
+                [(ngModel)] = "newEmployee.project"
+                >
+                <option value = '' disabled selected>Assign Project</option>
+                <option [ngValue]="null">Assign Later</option>
+                <option *ngFor="let project of projects" [value]="project.id">{{project.name}}</option>
+              </select>
+              </div>
+
+            <div class = "form-group mt-2" >
+            <label for="project">Team</label>
               <select
               id ="project"
               name="project"
               class = "form-control"
-              [(ngModel)] = "newEmployee.project"
+              [(ngModel)] = "newEmployee.department"
               >
-              <option value = '' disabled selected>Assign Project</option>
-              <option [ngValue]="null">Assign Later</option>
-              <option *ngFor="let project of projects" [value]="project.id">{{project.name}}</option>
+              <option value = '' disabled selected>My Team</option>
+              <option [ngValue]="null">Assign Team</option>
+              <option *ngFor="let department of departments" [value]="department.id">{{department.name}}</option>
             </select>
             </div>
 

@@ -15,6 +15,7 @@ interface Employee {
   password: string
   is_admin: boolean;
   project: {id: string,name: string}|null;
+  department: {id: string, name: string}|null
 }
 @Injectable({
   providedIn: 'root',

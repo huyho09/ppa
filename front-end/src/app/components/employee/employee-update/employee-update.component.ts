@@ -17,6 +17,7 @@ interface Employee {
   password: string;
   is_admin: boolean;
   project: {name: string, id:string} |null
+  department:{name:string, id:string} | null
 }
 interface UploadResponse {
   message: string;
@@ -31,6 +32,7 @@ interface UploadResponse {
 })
 export class EmployeeUpdateComponent implements OnInit {
   projects: { id: string; name: string }[] = [];
+  departments: {id: string; name: string}[] = []
   employee: Employee = {
     id: '',
     avatar: '',
@@ -43,6 +45,7 @@ export class EmployeeUpdateComponent implements OnInit {
     password: '',
     is_admin: false,
     project: {name: '', id: ''},
+    department: {name: '',id: ''}
   }
   id: string =''
   avatarFile: File | null = null
@@ -82,6 +85,7 @@ export class EmployeeUpdateComponent implements OnInit {
           if (!this.employee.project)
           {
             this.employee.project = {id: '', name: ''}
+            this.employee.department = {id: '',name: ''}
           }
           this.id = id
         }

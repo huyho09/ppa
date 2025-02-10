@@ -19,7 +19,6 @@ export class AuthService {
             console.log('User not found');
             return null;
         }
-    
         const isMatch = await bcrypt.compare(password, employee.password);
         console.log('Password match:', isMatch);
     

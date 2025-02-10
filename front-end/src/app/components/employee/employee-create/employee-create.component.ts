@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { ProjectServiceService } from '../../project/service/project-service.service';
 import { HttpClient } from '@angular/common/http';
+import { DepartmentServiceService } from '../../department/service/department-service.service';
 
 interface UploadResponse {
   message: string;
@@ -22,6 +23,8 @@ interface Employee {
   role: string;
   is_admin: boolean;
   project: Project;
+  department: {id: string, name: string}|null
+
 }
 
 interface Project {
@@ -39,6 +42,7 @@ interface Project {
 export class EmployeeCreateComponent implements OnInit {
   employees: Employee[] = [];
   projects: { id: string; name: string }[] = [];
+  departments: {id: string ; name: string}[] = [];
   newEmployee = {
     id: '',
     avatar: '',
@@ -51,16 +55,18 @@ export class EmployeeCreateComponent implements OnInit {
     role: '',
     is_admin: false,
     project: { id: '', name: '' },
+    department: {id: '',name: ''}
   };
   avatarFile: File | null = null;
   avatarPreview: string |null = null
-  
+
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private employeeService: EmployeeServiceService,
     private http: HttpClient,
     private projectService: ProjectServiceService,
+    private departmentService: DepartmentServiceService,
     private router: Router
   ) {}
 
@@ -68,6 +74,11 @@ export class EmployeeCreateComponent implements OnInit {
     this.projectService.getProjectsWithApiCall().subscribe((projectsData) => {
       this.projects = projectsData;
     });
+    this.departmentService.getDepartmentsWithApiCall().subscribe(
+      (departmentsData) => {
+        this.departments = departmentsData
+      }
+    )
   }
 
   onFileSelect(event: any): void {

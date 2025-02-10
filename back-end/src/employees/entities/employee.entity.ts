@@ -1,4 +1,5 @@
 import { CONFIGURABLE_MODULE_ID } from "@nestjs/common/module-utils/constants";
+import { Department } from "src/departments/entities/department.entity";
 import { Project } from "src/projects/entities/project.entity";
 import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -28,6 +29,9 @@ export class Employee {
     @Column('text')
     role: string;
 
+    @Column('text')
+    aboutMe: string;
+
     @Column({ type: 'bit', default: false })
     is_admin: boolean;    
 
@@ -37,6 +41,10 @@ export class Employee {
     @ManyToOne(() => Project,project=> project.employees, {nullable: true})
     @JoinColumn()
     project: Project;
+    
+    @ManyToOne(() => Department,department => department.employees, {nullable: true})
+    @JoinColumn()
+    department: Department;
     
 
 }

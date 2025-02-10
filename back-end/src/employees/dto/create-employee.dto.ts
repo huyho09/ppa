@@ -33,6 +33,9 @@ export class CreateEmployeeDto {
 
     @IsOptional()
     projectId?: string;
+
+    @IsOptional()
+    departmentId?: string;
     
 
 }

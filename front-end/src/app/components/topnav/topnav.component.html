@@ -1,0 +1,18 @@
+<div class="text-white card-header" style="background-color: #495057; display: block;">
+  <div class="row">
+    <div class="col-8" style="text-align: left; justify-content: center;">
+      <h4>Welcome to PPA</h4>
+    </div>
+    <div class="col-4" style="text-align: right;">
+      <div class="dropdown">
+        <img src="http://localhost:3000/upload-picture/{{user.sub.avatar}}" alt="avatar" name="avatar" id="avatar" style="height: 40px; width: 40px; border-radius: 50%;" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" [routerLink]="['/dashboard/employee/update', user.sub.id]">Profile</a></li>
+          <li><a class="dropdown-item">Settings</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" (click)="loggout($event)">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
