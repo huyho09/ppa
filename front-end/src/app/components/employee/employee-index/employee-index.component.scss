@@ -6,6 +6,20 @@
   overflow-x: auto;
   overflow-y: auto;
 }
-.project-skill{
+.container {
+  overflow-x: scroll;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
 
+.container::-webkit-scrollbar {
+  display: none; 
+}
+
+.about-me {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits text to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 100%; /* Ensures proper fitting */
 }

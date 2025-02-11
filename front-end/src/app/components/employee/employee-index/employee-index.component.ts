@@ -12,6 +12,7 @@ interface Employee {
   email: string;
   skills: string[];
   role: string;
+  aboutMe:string;
   is_admin: boolean;
   project: {name: string,id:string} |null;
   department: {name: string , id: string}|null;
