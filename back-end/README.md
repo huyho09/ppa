@@ -31,7 +31,19 @@
 ```bash
 $ npm install
 ```
+## ENV Creation 
+Go to [JWT_SECRET](https://jwtsecret.com/generate) to generate JWT_SECRET
 
+Create a ENV in back-end project root directory : 
+```bash
+JWT_SECRET = (yourEvnSecret)
+DB_HOST = (yourLocalHost)
+DB_PORT = (yourDbPort)
+DB_NAME = (yourDbName)
+DB_USER = (YourDbUser)
+DB_PASSWORD = (YourDbPass)
+DB_SYNC = (true or false)
+```
 ## Compile and run the project
 
 ```bash

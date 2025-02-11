@@ -7,6 +7,7 @@ import { ProjectServiceService } from '../../project/service/project-service.ser
 import { HttpClient } from '@angular/common/http';
 import { DepartmentServiceService } from '../../department/service/department-service.service';
 import { AngularEditorModule, AngularEditorConfig } from '@kolkov/angular-editor';
+import e from 'cors';
 
 interface Employee {
   id: string;
@@ -48,7 +49,7 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     width: 'auto',
     minWidth: '0',
     translate: 'yes',
-    enableToolbar: true,
+    enableToolbar: false,
     showToolbar: true,
     placeholder: 'Enter text here...',
     defaultParagraphSeparator: 'p',
@@ -73,6 +74,7 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
   id: string = '';
   avatarFile: File | null = null;
   avatarPreview: string | null = null;
+  passwordRepeat: string ='';
 
   constructor(
     private employeeService: EmployeeServiceService,
@@ -117,6 +119,11 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
 
   updateEmployee(): void {
+    if (this.employee.password && this.passwordRepeat !== this.employee.password)
+    {
+      alert("Password is not match " + this.employee.password + " and" + this.passwordRepeat )
+      return
+    }
     this.employeeService.updateEmployeeWithApiCall(this.id, this.employee).subscribe(
       () => {
         this.router.navigate(['/dashboard/employee']);
