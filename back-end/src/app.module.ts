@@ -25,7 +25,7 @@ import { Employee } from './employees/entities/employee.entity';
         port: Number(configService.get<number>('DB_PORT', 1433)),
         database: configService.get<string>('DB_NAME', 'webapplication'),
         username: configService.get<string>('DB_USER', 'sa'),
-        password: configService.get<string>('DB_PASSWORD', 'Aa123456@'),
+        password: configService.get<string>('DB_PASSWORD', 'Password@123'),
         synchronize: configService.get<string>('DB_SYNC') === 'true', // ✅ Fix parsing
         entities: [Employee],
         extra: {
