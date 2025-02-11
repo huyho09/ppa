@@ -36,13 +36,50 @@ Go to [JWT_SECRET](https://jwtsecret.com/generate) to generate JWT_SECRET
 
 Create a ENV in back-end project root directory : 
 ```bash
-JWT_SECRET = (yourEvnSecret)
+JWT_SECRET = (yourEvnSevcret)
 DB_HOST = (yourLocalHost)
 DB_PORT = (yourDbPort)
 DB_NAME = (yourDbName)
 DB_USER = (YourDbUser)
 DB_PASSWORD = (YourDbPass)
 DB_SYNC = (true or false)
+```
+## Insert your first Emp
+```bash
+USE [webapplication]
+GO
+
+INSERT INTO [dbo].[employee]
+           ([id]
+           ,[avatar]
+           ,[firstname]
+           ,[lastname]
+           ,[gender]
+           ,[email]
+           ,[skills]
+           ,[role]
+           ,[aboutMe]
+           ,[is_admin]
+           ,[password]
+           ,[projectId]
+           ,[departmentId])
+     VALUES
+           (<id, uniqueidentifier,>
+           ,<avatar, text,>
+           ,<firstname, varchar(255),>
+           ,<lastname, varchar(255),>
+           ,<gender, text,>
+           ,<email, varchar(255),>
+           ,<skills, ntext,>
+           ,<role, text,>
+           ,<aboutMe, text,>
+           ,<is_admin, bit,>
+           ,<password, text,>
+           ,<projectId, uniqueidentifier,>
+           ,<departmentId, uniqueidentifier,>)
+GO
+
+//Id,ProjectId,DepartmentId can be null, everthing else can be dummy data and update later
 ```
 ## Compile and run the project
 

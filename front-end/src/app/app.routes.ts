@@ -25,6 +25,7 @@ import { DepartmenIndexComponentComponent } from './components/department/depart
 import { DepartmentCreateComponentComponent } from './components/department/departmen-create/department-create-component/department-create-component.component';
 import { DepartmentUpdateComponentComponent } from './components/department/departmen-update/department-update-component/department-update-component.component';
 import { DepartmentDeleteComponentComponent } from './components/department/departmen-delete/department-delete-component/department-delete-component.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 export const routes: Routes = [
   // Login Route
@@ -33,6 +34,8 @@ export const routes: Routes = [
   // Dashboard Route with Child Routes
   {
     path: 'dashboard', component: DashboardComponent, children: [
+
+      {path:'navbar',component: NavbarComponent},
       // Employee Routes
       { path: 'employee', component: EmployeeIndexComponent },
       { path: 'employee/create', component: EmployeeCreateComponent },

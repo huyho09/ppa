@@ -21,6 +21,7 @@ export class LoginServiceService {
   saveSession(data:any)
   {
     sessionStorage.setItem('JwtToken',JSON.stringify(data.access_token))
+    return true
   }
 
   getSession(){
@@ -30,14 +31,15 @@ export class LoginServiceService {
       console.log("Data JWT is : ", data)
       const user_info = jwtDecode(data)
       console.log("Decoded Data Is : " ,user_info)
-      return user_info
+      sessionStorage.setItem('User',JSON.stringify(user_info))
+      return true
     }
     else{
-      return null
+      return false
     }
   }
 
-  logout(){ 
+  logout(){
     sessionStorage.removeItem('JwtToken')
   }
 

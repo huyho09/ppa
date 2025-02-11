@@ -1,6 +1,5 @@
 
       <div class="card-body">
-        <!-- Search Box -->
         <div class="mb-4">
           <input
             type="text"
@@ -9,30 +8,53 @@
             class="form-control"
           />
         </div>
-
-        <!-- Cards Display -->
         <div class="row">
-          <div class="col-md-6 mb-4" *ngFor="let employee of filterEmployee()">
-            <div class="card">
+          <div class="col-12 col-md-4" *ngFor="let employee of filterEmployee()">
+            <div class="card" style="background-color: #2D3142; color: white; font-weight: 20px; font-size: 15px;">
               <div class="card-body">
-                <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Employee Avatar" class = "avatar" id ="avatar" name = "avatar" style="border-radius: 50px; object-fit: cover; float: right; width: 150px; height: 150px;">
-                <!-- Employee Name -->
-                <h5 class="card-title">
+                <div class = "row">
+                  <div class = "col-12 col-md-4 project-skill" *ngFor="let skill of employee.skills">
+                    <div class = "mb-3">
+                      <div style="border-color: white; background-color: #2D3142; color: white; text-align: center; font-weight: 500px;" class ="form-control">#{{skill}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class = "col-12">
+                    <div class = "mb-3">
+                      <h3 >{{employee.firstname + " " + employee.lastname}}</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class = "col">
+                    <div class = "mb-3">
+                      <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Employee Avatar" class = "avatar" id ="avatar" name = "avatar" style="border-radius: 50px; object-fit: cover; width: 150px; height: 150px;">
+                    </div>
+                  </div>
+                  <div class = "col">
+                    <p class="card-text"><strong>Email:</strong> {{ employee.email }}</p>
+                  <p class="card-text"><strong>Gender:</strong> {{ employee.gender }}</p>
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class = "col-12">
+                    <div class = "mb-3">
+                      <button style="justify-content: center; padding: 10px 20px;" type="button" name="view" id="view" onclick="" class="form-control btn btn-danger">View More</button>                    </div>
+                  </div>
+                </div>
+                <!-- <h5 class="card-title">
                   <a [routerLink]="['/dashboard/employee/update', employee.id]">
                     {{ employee.firstname + ' ' + employee.lastname }}
                   </a>
-                </h5>
-                <p class="card-text"><strong>Email:</strong> {{ employee.email }}</p>
-                <p class="card-text"><strong>Gender:</strong> {{ employee.gender }}</p>
-                <p class="card-text"><strong>Skills:</strong></p>
-                <hr>
-                <div style="overflow: auto; display: block ; height: 30px;">
+                </h5> -->
+
+                <!-- <div style="overflow: auto; display: block ; height: 30px;">
                   <ul >
                     <li *ngFor="let skill of employee.skills">{{skill}}</li>
                   </ul>
-                </div>
-                <hr>
-                <p class="card-text"><strong>Role:</strong> {{ employee.role }}</p>
+                </div> -->
+                <!-- <p class="card-text"><strong>Role:</strong> {{ employee.role }}</p>
                 <p class="card-text"><strong>Admin:</strong> {{ employee.is_admin ? 'Yes' : 'No' }}</p>
                 <div *ngIf=" !employee.department?.id; else teamAssigned">
                   <p class = "card-text"><strong>Team: </strong>Don't have Team</p>
@@ -46,7 +68,7 @@
                 <ng-template #projectAssigned>
 
                   <p class = "card-text"><strong>Project:</strong><a [routerLink]="['/dashboard/project/update',employee.project?.id]"> {{ employee.project?.name }}</a></p>
-                </ng-template>
+                </ng-template> -->
               </div>
             </div>
           </div>

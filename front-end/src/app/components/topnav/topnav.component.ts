@@ -15,12 +15,17 @@ export class TopnavComponent implements OnInit{
   {}
   user : any = {}
   ngOnInit(): void {
-      this.user = this.loginService.getSession()
+    const userData = sessionStorage.getItem("User")
+    if (userData)
+    {
+      this.user = JSON.parse(userData)
+    }
   }
 
   loggout(event: Event){
     event.preventDefault()
     sessionStorage.removeItem('JwtToken')
+    sessionStorage.removeItem('User')
     window.location.href = '/login'
   }
 }

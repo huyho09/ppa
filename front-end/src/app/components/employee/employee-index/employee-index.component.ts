@@ -31,8 +31,8 @@ export class EmployeeIndexComponent implements OnInit {
 
   }
 
-
   ngOnInit(): void {
+    const loggedUser = sessionStorage.getItem('U')
     this.employeeService.getEmployeesWithApiCall().subscribe((data : Employee[]) => {
       this.employees = data;
       console.log("list of emps" ,this.employees)

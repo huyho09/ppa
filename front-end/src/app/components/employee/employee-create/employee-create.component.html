@@ -5,15 +5,19 @@
           <div class="avatar-container" style="justify-content: center; padding-top: 10px;">
             <div style="text-align: center;">
               <img src="http://localhost:3000/upload-picture/{{newEmployee.avatar}}" alt="Avatar Preview" style="width: 350px; height: 350px; border-radius: 50%;" />
+              <div class = "mb-3">
+                <label class = "form-label" for ="avatar"> Avatar</label>
+                <input
+                id="avatar"
+                name="avatar"
+                (change)="onFileSelect($event)"
+                type="file"
+                class="form-control"
+                required
+              >
+              </div>
             </div>
-            <input
-              id="avatar"
-              name="avatar"
-              (change)="onFileSelect($event)"
-              type="file"
-              class="form-control"
-              required
-            >
+
           </div>
         </div>
         <div class = "col-8">
@@ -35,7 +39,7 @@
             </div>
             <div class = "col">
               <div class = "mb-3">
-                <label class = "form-label" for = "firstname">Last name <span style="color: red;">(*)</span></label>
+                <label class = "form-label" for = "lastname">Last name <span style="color: red;">(*)</span></label>
                 <input
                     type="text"
                     class="form-control"
@@ -165,8 +169,8 @@
                 class="form-control"
                 required
               >
-                <option value="true">Yes, I am</option>
-                <option value="false">No, I am not</option>
+                <option [ngValue]="true">Yes, I am</option>
+                <option [ngValue]="false">No, I am not</option>
               </select>
               </div>
             </div>

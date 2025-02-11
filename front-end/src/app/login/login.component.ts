@@ -41,9 +41,10 @@ export class LoginComponent  {
     this.loginService.login(this.email,this.password).subscribe(
       (response) => {
         console.log("login successfull ", response)
-        this.loginService.saveSession(response)
-        this.loginService.getSession()
-        this.router.navigate(['/dashboard/overview'])
+        if(this.loginService.saveSession(response) && this.loginService.getSession())
+        {
+          window.location.href = '/dashboard/overview'
+        }
       },
       error => {
         this.showError = "Invalid login"
