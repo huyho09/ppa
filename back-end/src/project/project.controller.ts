@@ -8,7 +8,7 @@ import { CreateProjectDto } from './dto/create-project.dto';
 export class ProjectController {
     constructor(private readonly projectService: ProjectService) { }
 
-    @Post()
+    @Post('create')
     @ApiOperation({ summary: 'Create a new project' })
     async create(@Body() createProjectDto: CreateProjectDto) {
         return this.projectService.createProject(createProjectDto);

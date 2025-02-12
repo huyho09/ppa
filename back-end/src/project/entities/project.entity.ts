@@ -2,7 +2,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { SubProject } from '../../sub-project/entities/sub-project.entity';
 
-@Entity()
+@Entity({ name: 'project' })
 export class Project {
     @PrimaryGeneratedColumn('uuid')
     ProjectID: string;

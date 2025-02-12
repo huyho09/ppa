@@ -1,5 +1,7 @@
-// src/project/dto/create-project.dto.ts
-import { IsString, IsNotEmpty, IsNumber, IsOptional, IsDate, IsArray, ArrayNotEmpty, IsUUID } from 'class-validator';
+import {
+    IsString, IsNotEmpty, IsNumber, IsOptional,
+    IsDate, IsArray, ArrayNotEmpty, IsUUID, Matches
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateProjectDto {
@@ -13,11 +15,11 @@ export class CreateProjectDto {
     @IsString()
     ClientName: string;
 
-    @ApiProperty({ description: 'List of SubProject IDs', example: [1, 2, 3], required: false })
+    @ApiProperty({ description: 'List of SubProject IDs', example: [], required: false })
     @IsOptional()
     @IsArray()
     @IsUUID('4', { each: true })
-    SubProjectIds?: number[];
+    SubProjectIds?: string[];
 
     @ApiProperty({ description: 'The team assigned to the project', example: 'Team 1' })
     @IsNotEmpty()
@@ -42,17 +44,17 @@ export class CreateProjectDto {
     @ApiProperty({ description: 'PIF ID (if applicable)', required: false })
     @IsOptional()
     @IsString()
-    PIF_ID?: string;
+    PifId?: string;
 
     @ApiProperty({ description: 'MCR ID or BM Number', required: false })
     @IsOptional()
     @IsString()
-    MCR_ID_BM_Number?: string;
+    McrIdBmNumber?: string;
 
     @ApiProperty({ description: 'Resource group ID (if applicable)', required: false })
     @IsOptional()
     @IsString()
-    ResourceGroup_ID?: string;
+    ResourceGroupId?: string;
 
     @ApiProperty({ description: 'Revenue source (if applicable)', required: false })
     @IsOptional()
@@ -62,7 +64,7 @@ export class CreateProjectDto {
     @ApiProperty({ description: 'Direct or Indirect', required: false })
     @IsOptional()
     @IsString()
-    Direct_Indirect?: string;
+    DirectIndirect?: string;
 
     @ApiProperty({ description: 'The working model for the project', example: 'Onsite' })
     @IsNotEmpty()
@@ -81,7 +83,7 @@ export class CreateProjectDto {
 
     @ApiProperty({ description: 'The billing rate for the project', example: 100 })
     @IsNotEmpty()
-    @IsNumber()
+    @IsNumber({}, { message: 'Billing rate must be a number' })
     BillingRate: number;
 
     @ApiProperty({ description: 'The currency used in the contract', example: 'EUR' })
@@ -97,17 +99,19 @@ export class CreateProjectDto {
     @ApiProperty({ description: 'Contractual PMO in period', example: 0 })
     @IsNotEmpty()
     @IsNumber()
-    Contractual_PMO_In_Period: number;
+    ContractualPmoInPeriod: number;
 
     @ApiProperty({ description: 'Start period of the project', example: '2025-01-10', type: String })
     @IsNotEmpty()
-    @IsDate()
-    StartPeriod: Date;
+    @IsString()
+    @Matches(/^\d{4}-\d{2}-\d{2}$/, { message: 'StartPeriod must be in YYYY-MM-DD format' })
+    StartPeriod: string;
 
     @ApiProperty({ description: 'End period of the project', example: '2026-01-10', type: String })
     @IsNotEmpty()
-    @IsDate()
-    EndPeriod: Date;
+    @IsString()
+    @Matches(/^\d{4}-\d{2}-\d{2}$/, { message: 'EndPeriod must be in YYYY-MM-DD format' })
+    EndPeriod: string;
 
     @ApiProperty({ description: 'The frequency of billing', example: 'Monthly' })
     @IsNotEmpty()
@@ -117,7 +121,7 @@ export class CreateProjectDto {
     @ApiProperty({ description: 'PO number or SAP contract number', required: false })
     @IsOptional()
     @IsString()
-    PONumber_SAPContractNumber?: string;
+    PoNumberSapContractNumber?: string;
 
     @ApiProperty({ description: 'The contract number', required: false })
     @IsOptional()
@@ -126,8 +130,8 @@ export class CreateProjectDto {
 
     @ApiProperty({ description: 'PO amount for the project', example: 1000 })
     @IsNotEmpty()
-    @IsNumber()
-    PO_Amount: number;
+    @IsNumber({}, { message: 'PO Amount must be a number' })
+    PoAmount: number;
 
     @ApiProperty({ description: 'Additional remarks for the project', required: false })
     @IsOptional()

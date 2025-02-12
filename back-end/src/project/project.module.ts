@@ -8,7 +8,7 @@ import { ProjectController } from './project.controller';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Project, SubProject]),  // Register both entities
+    TypeOrmModule.forFeature([Project, SubProject]),
   ],
   providers: [ProjectService],
   controllers: [ProjectController],
