@@ -7,6 +7,7 @@ import { Repository } from 'typeorm';
 import { Project } from 'src/projects/entities/project.entity';
 import * as bcrypt from 'bcryptjs'
 import { Department } from 'src/departments/entities/department.entity';
+import { Role } from 'src/role/entities/role.entity';
 
 @Injectable()
 export class EmployeesService {
@@ -16,26 +17,30 @@ export class EmployeesService {
     @InjectRepository(Project)
     private readonly projectRepository: Repository<Project>,
     @InjectRepository(Department)
-    private readonly departmentRepository: Repository<Department>
+    private readonly departmentRepository: Repository<Department>,
+    @InjectRepository(Role)
+    private readonly roleRepository: Repository<Role>
   ){}
   async create(createEmployeeDto: CreateEmployeeDto) {
     const new_employee = this.employeeRepository.create(createEmployeeDto)
+    const role =  await this.roleRepository.findOne({where : {id : createEmployeeDto.roleId}})
     const salt = await bcrypt.genSalt(10)
+    new_employee.role = role
     new_employee.password = await bcrypt.hash(new_employee.password, salt)
     return this.employeeRepository.save(new_employee)
   }
 
   findAll() {
-    return this.employeeRepository.find({relations:['project','department']});
+    return this.employeeRepository.find({relations:['project','department','role']});
   }
   findOne(id: string) {
-    return this.employeeRepository.findOneOrFail({where : {id},relations:['project','department']});
+    return this.employeeRepository.findOneOrFail({where : {id},relations:['project','department','role']});
   }
   findOnebyEmail(email: string){
     return this.employeeRepository.findOne({where: {email}})
   }
   async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
-    const employee = await this.employeeRepository.findOneOrFail({where: {id},relations: ['project','department']})
+    const employee = await this.employeeRepository.findOneOrFail({where: {id},relations: ['project','department','role']})
     if (!employee)
     {
       console.log("Can't find Employee")
@@ -60,7 +65,11 @@ export class EmployeesService {
           await this.projectRepository.save(oldProject)
         }
       }
-      
+      if (updateEmployeeDto.roleId && updateEmployeeDto.roleId !== employee.role.id)
+      {
+        const newRole = await this.roleRepository.findOne({where : {id : updateEmployeeDto.roleId}})
+        employee.role = newRole
+      }
       newProject.employees.push(employee)
       await this.projectRepository.save(newProject)
       employee.project = newProject;

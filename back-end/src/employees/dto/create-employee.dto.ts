@@ -22,9 +22,6 @@ export class CreateEmployeeDto {
     @IsArray()
     skills: string[];
 
-    @IsString()
-    role: string;
-
     @IsBoolean()
     is_admin: boolean;
     
@@ -36,6 +33,9 @@ export class CreateEmployeeDto {
 
     @IsOptional()
     departmentId?: string;
+
+    @IsOptional()
+    roleId?: string;
     
     @IsString()
     @IsOptional()

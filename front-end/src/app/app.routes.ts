@@ -26,6 +26,7 @@ import { DepartmentCreateComponentComponent } from './components/department/depa
 import { DepartmentUpdateComponentComponent } from './components/department/departmen-update/department-update-component/department-update-component.component';
 import { DepartmentDeleteComponentComponent } from './components/department/departmen-delete/department-delete-component/department-delete-component.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ExpertProfileComponent } from './components/expert-profile/expert-profile.component';
 
 export const routes: Routes = [
   // Login Route
@@ -36,11 +37,14 @@ export const routes: Routes = [
     path: 'dashboard', component: DashboardComponent, children: [
 
       {path:'navbar',component: NavbarComponent},
+
       // Employee Routes
       { path: 'employee', component: EmployeeIndexComponent },
       { path: 'employee/create', component: EmployeeCreateComponent },
       { path: 'employee/update/:id', component: EmployeeUpdateComponent },
       { path: 'employee/delete/:id', component: EmployeeDeleteComponent },
+      { path: 'employee/expertProfile/:id', component: ExpertProfileComponent },
+
 
       // Project Routes
       { path: 'project', component: ProjectIndexComponent },

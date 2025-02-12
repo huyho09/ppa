@@ -19,6 +19,8 @@ import { Project } from './projects/entities/project.entity';
 import { Department } from './departments/entities/department.entity';
 import { Customer } from './customers/entities/customer.entity';
 import { Employee } from './employees/entities/employee.entity';
+import { RoleModule } from './role/role.module';
+import { Role } from './role/entities/role.entity';
 
 @Module({
   imports: [
@@ -33,7 +35,7 @@ import { Employee } from './employees/entities/employee.entity';
         database: configService.get<string>('DB_NAME'),
         username: configService.get<string>('DB_USER'),
         password: configService.get<string>('DB_PASSWORD'),
-        entities: [Project, Department, Customer, Employee],
+        entities: [Project, Department, Customer, Employee,Role],
         synchronize: configService.get<boolean>('DB_SYNC', true),
         options: {
           encrypt: false,
@@ -53,6 +55,7 @@ import { Employee } from './employees/entities/employee.entity';
     UploadPictureModule,
     AuthModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
+    RoleModule,
   ],
   controllers: [AppController],
   providers: [AppService],

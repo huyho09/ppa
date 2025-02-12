@@ -8,18 +8,19 @@
 }
 .container {
   overflow-x: scroll;
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .container::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 .about-me {
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limits text to 3 lines */
+  width: 200px;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  max-width: 100%; /* Ensures proper fitting */
+  text-overflow: ellipsis;
 }

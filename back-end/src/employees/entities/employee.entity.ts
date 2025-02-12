@@ -1,6 +1,7 @@
 import { CONFIGURABLE_MODULE_ID } from "@nestjs/common/module-utils/constants";
 import { Department } from "src/departments/entities/department.entity";
 import { Project } from "src/projects/entities/project.entity";
+import { Role } from "src/role/entities/role.entity";
 import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -26,9 +27,6 @@ export class Employee {
     @Column('simple-array')
     skills: string[]
 
-    @Column('text')
-    role: string;
-
     @Column('text',{nullable: true})
     aboutMe: string;
 
@@ -45,6 +43,10 @@ export class Employee {
     @ManyToOne(() => Department,department => department.employees, {nullable: true})
     @JoinColumn()
     department: Department;
+
+    @ManyToOne(() => Role, (role) => role.employees)
+    @JoinColumn()
+    role: Role
     
 
 }
