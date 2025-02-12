@@ -10,13 +10,10 @@ export class Employee {
     avatar: string;
 
     @Column('varchar', { length: 255 })
-    firstname: string
+    employeeName: string
 
-    @Column('varchar', { length: 255 })
-    lastname: string
-
-    @Column('text')
-    gender: string
+    @Column({ type: 'bit', default: false })
+    gender: boolean
 
     @Column('varchar', { length: 255, unique: true, nullable: false })
     email: string
@@ -26,9 +23,6 @@ export class Employee {
 
     @Column('text')
     role: string;
-
-    @Column('text', { nullable: true })
-    aboutMe: string;
 
     @Column({ type: 'bit', default: false })
     is_admin: boolean;
@@ -43,10 +37,10 @@ export class Employee {
     level: number;
 
     @Column('date')
-    so_join_date: string;
+    so_join_date: Date;
 
     @Column('date')
-    bosch_join_date: string;
+    bosch_join_date: Date;
 
     @Column('text')
     resource_type: string;
@@ -61,16 +55,16 @@ export class Employee {
     deactivation_reason: string;
 
     @Column('date')
-    last_work_date: string;
+    last_work_date: Date;
 
     @Column('date')
-    termination_date: string;
+    termination_date: Date;
 
     @Column('date')
-    maternity_start_date: string;
+    maternity_start_date: Date;
 
     @Column('date')
-    maternity_end_date: string;
+    maternity_end_date: Date;
 
     @Column('text')
     remarks: string;

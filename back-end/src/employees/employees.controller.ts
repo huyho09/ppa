@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile, Put } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
@@ -12,5 +12,26 @@ export class EmployeesController {
   create(@Body() createEmployeeDto: CreateEmployeeDto,) {
     
     return this.employeesService.create(createEmployeeDto);
+  }
+
+  @Get()
+  findAll() {
+    return this.employeesService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.employeesService.findOne(id);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.employeesService.remove(id);
+  }
+
+  @Put()
+  @UseInterceptors(FileInterceptor('avatar'))
+  update(@Body() updateEmployeeDto: UpdateEmployeeDto,) {
+    return this.employeesService.update(updateEmployeeDto);
   }
 }
