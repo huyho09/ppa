@@ -12,6 +12,10 @@ import { EmployeesModule } from './employees/employees.module';
 import { AuthModule } from './auth/auth.module';
 
 import { Employee } from './employees/entities/employee.entity';
+import { Project } from './project/entities/project.entity';
+import { SubProjectModule } from './sub-project/sub-project.module';
+import { ProjectModule } from './project/project.module';
+import { SubProject } from './sub-project/entities/sub-project.entity';
 
 @Module({
   imports: [
@@ -27,7 +31,7 @@ import { Employee } from './employees/entities/employee.entity';
         username: configService.get<string>('DB_USER', 'sa'),
         password: configService.get<string>('DB_PASSWORD', 'Password@123'),
         synchronize: configService.get<string>('DB_SYNC') === 'true', // ✅ Fix parsing
-        entities: [Employee],
+        entities: [Employee, Project, SubProject],
         extra: {
           encrypt: false, // Required for local MSSQL
           trustServerCertificate: true,
@@ -41,12 +45,14 @@ import { Employee } from './employees/entities/employee.entity';
       }),
     }),
     EmployeesModule,
+    ProjectModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'src', 'assets'),
       serveRoot: '/assets',
     }),
     AuthModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
+    SubProjectModule,
   ],
   controllers: [AppController],
   providers: [AppService],
