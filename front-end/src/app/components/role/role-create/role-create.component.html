@@ -1,1 +1,29 @@
-<p>role-create works!</p>
+<div class = "container-fluid" style="padding-left: 10px;">
+  <form (ngSubmit)="addRole()">
+    <div class = "row">
+      <div class = "col-12 col-md-6">
+        <div class = "mb-3">
+          <label class = "form-label" for="name">Name: <span style="color: red;">(*)</span></label>
+          <input
+          type="text"
+          id = "name"
+          name = "name"
+          [(ngModel)] = "newrole.name"
+          required
+          >
+        </div>
+      </div>
+      <div class = "col-12 col-md-6" >
+        <div class = "mb-3">
+          <label class = "form-label" for = "privilege">Select Privilege</label>
+          <select
+          id = "privilege"
+          name = "privilege"
+          [(ngModel)] = "newrole.privilege"
+          ></select>
+          <option *ngFor="let privilege of privileges" [value]="privilege">{{privilege}}</option>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

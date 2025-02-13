@@ -1,1 +1,25 @@
-<p>role-index works!</p>
+
+
+<table class="table  fixed-width-table">
+  <thead>
+    <tr>
+      <th style="width: 300px;">Name</th>
+      <th style="width: 300px;">Privilege</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let role of roles">
+      <td>
+        <a
+        [routerLink]="['/dashboard/role/update', role.id]">
+        {{ role.name }}
+      </a>
+      </td>
+      <td style="width: 300px;">{{role.privilege}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+

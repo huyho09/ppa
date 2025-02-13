@@ -36,7 +36,7 @@ interface Customer {
 interface ProjectEmployee {
   employeeId: string;
   role_in_project: string;
-  task: string; 
+  task: string;
   effort: number;
 }
 

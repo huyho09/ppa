@@ -37,4 +37,16 @@ export class RoleServiceService {
     newRole.id = uuidv4()
     return this.http.post<Role>(newRole,this.api_url)
   }
+
+  updateRoleWithApiCall(id: string, updateRole: any) : Observable<Role> {
+    const api_url = `http://localhost:300/role/${id}`
+    return this.http.patch<any>(api_url,updateRole)
+
+  }
+
+  deleteRoleWithApiCall(id: string) : Observable<Role>
+  {
+    const api_url = `http://localhost:300/role/${id}`
+    return this.http.delete<any>(api_url)
+  }
 }

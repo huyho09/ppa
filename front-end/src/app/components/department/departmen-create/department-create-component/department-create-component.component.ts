@@ -27,7 +27,6 @@ export class DepartmentCreateComponentComponent {
     createdDate: '',
 
   }
-  departments: Department[] = [];
 
   constructor(
     private departmentService: DepartmentServiceService,
