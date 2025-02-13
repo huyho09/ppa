@@ -27,6 +27,10 @@ import { DepartmentUpdateComponentComponent } from './components/department/depa
 import { DepartmentDeleteComponentComponent } from './components/department/departmen-delete/department-delete-component/department-delete-component.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ExpertProfileComponent } from './components/expert-profile/expert-profile.component';
+import { RoleIndexComponent } from './components/role/role-index/role-index.component';
+import { RoleCreateComponent } from './components/role/role-create/role-create.component';
+import { RoleUpdateComponent } from './components/role/role-update/role-update.component';
+import { RoleDeleteComponent } from './components/role/role-delete/role-delete.component';
 
 export const routes: Routes = [
   // Login Route
@@ -62,6 +66,11 @@ export const routes: Routes = [
       {path: 'department/create',component: DepartmentCreateComponentComponent},
       {path: 'department/update/:id', component: DepartmentUpdateComponentComponent},
       {path: 'department/delete/:id', component: DepartmentDeleteComponentComponent},
+
+      {path: 'role', component: RoleIndexComponent},
+      {path: 'role/create', component: RoleCreateComponent},
+      {path: 'role/update/:id', component: RoleUpdateComponent},
+      {path: 'role/delete/:id',component: RoleDeleteComponent},
 
       {path: 'overview', component: DepartmentDescribeComponent},
       {path: 'overview/orgchart', component: OrgChartComponent},

@@ -6,6 +6,7 @@ import { Router, RouterModule } from '@angular/router';
 import { ProjectServiceService } from '../../project/service/project-service.service';
 import { HttpClient } from '@angular/common/http';
 import { DepartmentServiceService } from '../../department/service/department-service.service';
+import { Privilege, RoleServiceService } from '../../role/service/role-service.service';
 
 interface UploadResponse {
   message: string;
@@ -21,7 +22,7 @@ interface Employee {
   email: string;
   password:string;
   skills: string[];
-  role: string;
+  role: {id: string, name: string, privilege: Privilege };
   is_admin: boolean;
   project: Project;
   department: {id: string, name: string}|null
@@ -44,6 +45,7 @@ export class EmployeeCreateComponent implements OnInit {
   employees: Employee[] = [];
   projects: { id: string; name: string }[] = [];
   departments: {id: string ; name: string}[] = [];
+  roles: {id: string; name:string ; privilege: Privilege}[] = []
   newEmployee = {
     id: '',
     avatar: '',
@@ -54,7 +56,7 @@ export class EmployeeCreateComponent implements OnInit {
     email: '',
     password: '',
     skills: [],
-    role: '',
+    role: {id: '', name: '', privilege: Privilege.User},
     is_admin: false,
     project: { id: '', name: '' },
     department: {id: '',name: ''}
@@ -69,6 +71,7 @@ export class EmployeeCreateComponent implements OnInit {
     private http: HttpClient,
     private projectService: ProjectServiceService,
     private departmentService: DepartmentServiceService,
+    private roleService : RoleServiceService,
     private router: Router
   ) {}
 
@@ -79,6 +82,11 @@ export class EmployeeCreateComponent implements OnInit {
     this.departmentService.getDepartmentsWithApiCall().subscribe(
       (departmentsData) => {
         this.departments = departmentsData
+      }
+    )
+    this.roleService.getRolesWithApiCall().subscribe(
+      (rolesData) => {
+        this.roles = rolesData
       }
     )
   }

@@ -8,6 +8,7 @@
           type="text"
           id = "name"
           name = "name"
+          class = "form-control"
           [(ngModel)] = "newrole.name"
           required
           >
@@ -19,9 +20,17 @@
           <select
           id = "privilege"
           name = "privilege"
+          class = "form-control"
           [(ngModel)] = "newrole.privilege"
-          ></select>
+          required
+          >
           <option *ngFor="let privilege of privileges" [value]="privilege">{{privilege}}</option>
+        </select>
+        </div>
+      </div>
+      <div class = "col-12">
+        <div class = "mb-3">
+          <button class = "btn btn-primary form-control" type="submit" id = "submit" name = "submit" >Save</button>
         </div>
       </div>
     </div>

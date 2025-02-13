@@ -2,21 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
+import { Privilege } from '../../role/service/role-service.service';
 
 interface Employee {
   id: string;
   avatar: string;
   firstname: string;
   lastname: string;
+  aboutMe:string;
+  gender: string;
   email: string;
-  gender: string
+  password:string;
   skills: string[];
-  role: string;
-  password: string;
-  aboutMe: string;
+  role: {id: string, name: string, privilege: Privilege };
   is_admin: boolean;
-  project: {id: string,name: string}|null;
+  project: Project;
   department: {id: string, name: string}|null
+
+}
+
+interface Project {
+  id: string;
+  name: string;
 }
 @Injectable({
   providedIn: 'root',

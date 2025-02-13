@@ -4,20 +4,28 @@ import { EmployeeServiceService } from '../employee/service/employee-service.ser
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Privilege } from '../role/service/role-service.service';
 
 interface Employee {
   id: string;
   avatar: string;
   firstname: string;
   lastname: string;
+  aboutMe:string;
   gender: string;
   email: string;
+  password:string;
   skills: string[];
-  role: string;
-  aboutMe:string;
+  role: {id: string, name: string, privilege: Privilege };
   is_admin: boolean;
-  project: {name: string,id:string} |null;
-  department: {name: string , id: string}|null;
+  project: Project;
+  department: {id: string, name: string}|null
+
+}
+
+interface Project {
+  id: string;
+  name: string;
 }
 
 @Component({
@@ -40,9 +48,10 @@ export class ExpertProfileComponent implements OnInit {
     lastname: '',
     gender: '',
     aboutMe: '',
+    password: '',
     email: '',
     skills: [],
-    role: '',
+    role: {id: '', name: '', privilege: Privilege.User},
     is_admin: false,
     project: {name: '', id: ''},
     department: {name: '', id: ''}

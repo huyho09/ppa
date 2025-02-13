@@ -3,21 +3,28 @@ import { EmployeeServiceService } from '../service/employee-service.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Privilege } from '../../role/service/role-service.service';
 interface Employee {
   id: string;
   avatar: string;
   firstname: string;
   lastname: string;
+  aboutMe:string;
   gender: string;
   email: string;
+  password:string;
   skills: string[];
-  role: string;
-  aboutMe:string;
+  role: {id: string, name: string, privilege: Privilege };
   is_admin: boolean;
-  project: {name: string,id:string} |null;
-  department: {name: string , id: string}|null;
+  project: Project;
+  department: {id: string, name: string}|null
+
 }
 
+interface Project {
+  id: string;
+  name: string;
+}
 @Component({
   selector: 'app-employee-index',
   standalone: true,

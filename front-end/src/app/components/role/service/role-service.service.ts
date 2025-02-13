@@ -7,7 +7,6 @@ export enum Privilege {
   User = 'user',
   Admin = 'admin',
   SuperAdmin = 'superAdmin'
-
 }
 
 interface Role {
@@ -15,38 +14,37 @@ interface Role {
   name: string;
   privilege: Privilege;
 }
+
 @Injectable({
   providedIn: 'root'
 })
 export class RoleServiceService {
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  private api_url = 'http://localhost:3000/role'
+  private api_url = 'http://localhost:3000/role';
 
-  getRolesWithApiCall(): Observable<Role[]>{
-    return this.http.get<Role[]>(this.api_url)
+  getRolesWithApiCall(): Observable<Role[]> {
+    return this.http.get<Role[]>(this.api_url);
   }
 
   getRoleWithApiCall(id: string): Observable<Role> {
-    const api_url = `http://localhost:300/role/${id}`
-    return this.http.get<Role>(api_url)
+    const api_url = `${this.api_url}/${id}`;
+    return this.http.get<Role>(api_url);
   }
 
-  createRoleWithApiCall(newRole: any): Observable<Role>{
-    newRole.id = uuidv4()
-    return this.http.post<Role>(newRole,this.api_url)
+  createRoleWithApiCall(newRole: Role): Observable<Role> {
+    newRole.id = uuidv4();
+    return this.http.post<Role>(this.api_url, newRole);
   }
 
-  updateRoleWithApiCall(id: string, updateRole: any) : Observable<Role> {
-    const api_url = `http://localhost:300/role/${id}`
-    return this.http.patch<any>(api_url,updateRole)
-
+  updateRoleWithApiCall(id: string, updateRole: Role): Observable<Role> {
+    const api_url = `${this.api_url}/${id}`;
+    return this.http.patch<Role>(api_url, updateRole);
   }
 
-  deleteRoleWithApiCall(id: string) : Observable<Role>
-  {
-    const api_url = `http://localhost:300/role/${id}`
-    return this.http.delete<any>(api_url)
+  deleteRoleWithApiCall(id: string): Observable<Role> {
+    const api_url = `${this.api_url}/${id}`;
+    return this.http.delete<Role>(api_url);
   }
 }

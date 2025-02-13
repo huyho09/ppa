@@ -113,19 +113,17 @@
               />
             </div>
           </div>
-          <div class="col">
+          <div class = "col">
             <div class = "mb-3">
-              <label for="role" class="form-label">Role</label>
-              <input
-              placeholder="Role"
-              type="text"
-              class="form-control"
-              id="role"
-              name="role"
-              [(ngModel)]="employee.role"
-              required
-            />
-            </div>
+              <label for="role" class="form-label">Role Assign</label>
+            <p *ngIf="employee.role && employee.role.name">
+              <strong>Current Project:</strong> {{ employee.role.name }}
+            </p>
+            <select id="role" name="role" class="form-control" [(ngModel)]="employee.role" required>
+              <option [ngValue]="null">Not Assigned</option>
+              <option *ngFor="let role of roles" [ngValue]="role">{{ role.name }}</option>
+            </select>
+          </div>
           </div>
         </div>
         <div class="row">

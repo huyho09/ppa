@@ -20,6 +20,9 @@
     <div class="submenu" [class.show]="activeMenu === 'employee'">
       <a [routerLink]="['/dashboard/employee']"><i class="bi bi-hash"></i> My Team Members</a>
       <a *ngIf="this.user.sub.is_admin"  [routerLink]="['/dashboard/employee/create']"><i class="bi bi-person-add"></i> Create Member</a>
+      <a *ngIf="this.user.sub.is_admin"  [routerLink]="['/dashboard/role']"><i class="bi bi-hash"></i> Manage Role</a>
+      <a *ngIf = "this.user.sub.is_admin" [routerLink]="['/dashboard/role/create']">Create Role</a>
+
     </div>
   </div>
   <br>

@@ -8,20 +8,34 @@
           type="text"
           id = "name"
           name = "name"
+          class = "form-control"
           [(ngModel)] = "role.name"
           required
           >
         </div>
       </div>
-      <div class = "col-12 col-md-6" >
+      <div class = "col-12 col-md-6">
         <div class = "mb-3">
-          <label class = "form-label" for = "privilege">Select Privilege</label>
-          <select
-          id = "privilege"
-          name = "privilege"
-          [(ngModel)] = "role.privilege"
-          ></select>
-          <option *ngFor="let privilege of privileges" [value]="privilege">{{privilege}}</option>
+          <label for="privilege" class="form-label">Role Assign</label>
+        <p *ngIf="role.privilege">
+          <strong>Current privilege:</strong> {{ role.privilege }}
+        </p>
+        <select id="privilege" name="privilege" class="form-control" [(ngModel)]="role.privilege" required>
+          <option [ngValue]="null">Not Assigned</option>
+          <option *ngFor="let privilege of privileges" [ngValue]="privilege">{{ privilege }}</option>
+        </select>
+      </div>
+      </div>
+      <div class ="row">
+        <div class = "col-12 col-md-6">
+          <div class = "mb-3">
+            <button class = "btn btn-primary form-control" type="submit" id = "submit" name = "submit" >Save</button>
+          </div>
+        </div>
+        <div class = "col-12 col-md-6">
+          <div class = "mb-3">
+            <button class = "btn btn-danger form-control" [routerLink]="['/dashboard/role/delete',role.id]" type="button" id = "delete" name = "delete" >Delete</button>
+          </div>
         </div>
       </div>
     </div>

@@ -8,21 +8,28 @@ import { HttpClient } from '@angular/common/http';
 import { DepartmentServiceService } from '../../department/service/department-service.service';
 import { AngularEditorModule, AngularEditorConfig } from '@kolkov/angular-editor';
 import e from 'cors';
+import { Privilege, RoleServiceService } from '../../role/service/role-service.service';
 
 interface Employee {
   id: string;
   avatar: string;
   firstname: string;
   lastname: string;
-  email: string;
-  aboutMe: string;
+  aboutMe:string;
   gender: string;
+  email: string;
+  password:string;
   skills: string[];
-  role: string;
-  password: string;
+  role: {id: string, name: string, privilege: Privilege };
   is_admin: boolean;
-  project: {name: string, id: string} | null;
-  department: {name: string, id: string} | null;
+  project: Project;
+  department: {id: string, name: string}|null
+
+}
+
+interface Project {
+  id: string;
+  name: string;
 }
 
 interface UploadResponse {
@@ -40,6 +47,7 @@ interface UploadResponse {
 export class EmployeeUpdateComponent implements OnInit, OnDestroy {
   projects: { id: string; name: string }[] = [];
   departments: {id: string; name: string}[] = [];
+  roles: {id: string; name:string ; privilege: Privilege}[] = []
   editorConfig: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -65,7 +73,7 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     aboutMe: '',
     email: '',
     skills: [],
-    role: '',
+    role: {id: '', name: '', privilege: Privilege.User},
     password: '',
     is_admin: false,
     project: {name: '', id: ''},
@@ -80,6 +88,7 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     private employeeService: EmployeeServiceService,
     private projectService: ProjectServiceService,
     private departmentService: DepartmentServiceService,
+    private roleSerivce: RoleServiceService,
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router
@@ -102,6 +111,7 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadProject();
     this.loadDepartment();
+    this.loadRole();
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.employeeService.getEmployeeWithApiCall(id).subscribe(
@@ -131,6 +141,13 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     );
   }
 
+  loadRole():void {
+    this.roleSerivce.getRolesWithApiCall().subscribe(
+      (rolesData) => {
+        this.roles = rolesData
+      }
+    )
+  }
   loadProject(): void {
     this.projectService.getProjectsWithApiCall().subscribe(
       (projectData) => {
