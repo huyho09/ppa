@@ -37,7 +37,7 @@ export class EmployeesService {
     return this.employeeRepository.findOneOrFail({where : {id},relations:['project','department','role']});
   }
   findOnebyEmail(email: string){
-    return this.employeeRepository.findOne({where: {email}})
+    return this.employeeRepository.findOne({where: {email},relations: ['project','department','role']})
   }
   async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
     const employee = await this.employeeRepository.findOneOrFail({where: {id},relations: ['project','department','role']})

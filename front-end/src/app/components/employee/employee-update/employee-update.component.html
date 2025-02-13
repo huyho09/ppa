@@ -117,7 +117,7 @@
             <div class = "mb-3">
               <label for="role" class="form-label">Role Assign</label>
             <p *ngIf="employee.role && employee.role.name">
-              <strong>Current Project:</strong> {{ employee.role.name }}
+              <strong>Current Role:</strong> {{ employee.role.name }}
             </p>
             <select id="role" name="role" class="form-control" [(ngModel)]="employee.role" required>
               <option [ngValue]="null">Not Assigned</option>
