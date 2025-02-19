@@ -16,11 +16,11 @@ export class DepartmentDescribeComponent {
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
-    if (file && file.type === 'application/pdf') {
+    if (file && file.type === 'application/pptx') {
       const url  = URL.createObjectURL(file);
       this.pdfSrc = this.sanitizer.bypassSecurityTrustResourceUrl(url)
     } else {
-      alert('Please select a PDF file.');
+      alert('Please select a pptx file.');
     }
   }
 }

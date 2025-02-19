@@ -16,23 +16,37 @@ export class DashboardComponent implements OnInit  {
   real_date: string = '';
   constructor(private router: Router){}
   ngOnInit(): void {
-      setInterval(() => {
-        this.validateUserExpire()
-      },6000)
+    setInterval(() => {
+      this.validateUserExpire();
+    }, 6000);
   }
-  validateUserExpire(){
-    const user = sessionStorage.getItem('User')
-    if (user)
-    {
-      this.user = JSON.parse(user)
-    }
-    this.exp_time = new Date(Number(this.user.exp *1000)).toString()
-    console.log(this.exp_time)
-    this.real_date = new Date().toString()
-    if (this.real_date > this.exp_time)
-    {
-      alert('Session have expire, please log out and log in again')
-      this.router.navigate(['/login'])
+  
+  validateUserExpire() {
+    const user = sessionStorage.getItem('User');
+  
+    if (user) {
+      this.user = JSON.parse(user);
+  
+      if (this.user.exp) {
+        const expDate = new Date(this.user.exp * 1000); // JWT exp is in seconds
+        const currentDate = new Date();
+  
+        this.exp_time = expDate.toString();
+        this.real_date = currentDate.toString();
+  
+        console.log(`Expiration Time: ${this.exp_time}`);
+        console.log(`Current Time: ${this.real_date}`);
+  
+        if (currentDate >= expDate) {
+          alert('Session has expired, please log out and log in again');
+          this.router.navigate(['/login']);
+        }
+      } else {
+        console.warn('No expiration time found in user object.');
+      }
+    } else {
+      console.warn('No user found in sessionStorage.');
     }
   }
+  
 }

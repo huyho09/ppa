@@ -25,37 +25,36 @@ import { Role } from './role/entities/role.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    // TypeOrmModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   inject: [ConfigService],
-    //   useFactory: async (configService: ConfigService) => ({
-    //     type: 'mssql',
-    //     host: configService.get<string>('DB_HOST'),
-    //     port: Number(configService.get<number>('DB_PORT')),
-    //     database: configService.get<string>('DB_NAME'),
-    //     username: configService.get<string>('DB_USER'),
-    //     password: configService.get<string>('DB_PASSWORD'),
-    //     entities: [Project, Department, Customer, Employee,Role],
-    //     synchronize: configService.get<boolean>('DB_SYNC', true),
-    //     options: {
-    //       encrypt: false,
-    //       trustServerCertificate: true,
-    //     },
-    //     logging: true,
-    //   }),
-    // }),
-
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        type: 'sqljs',
-        location: 'database.sqlite',
-        entities: [Project, Department, Customer, Employee, Role],
-        synchronize: configService.get<boolean>("DB_SYNC", true),
+        type: 'mariadb',
+        host: configService.get<string>('DB_HOST'),
+        port: Number(configService.get<number>('DB_PORT')),
+        database: configService.get<string>('DB_NAME'),
+        username: configService.get<string>('DB_USER'),
+        password: configService.get<string>('DB_PASSWORD'),
+        entities: [Project, Department, Customer, Employee,Role],
+        synchronize: configService.get<boolean>('DB_SYNC', true),
+        options: {
+          encrypt: false,
+          trustServerCertificate: true,
+        },
         logging: true,
-      })
+      }),
     }),
+    // TypeOrmModule.forRootAsync({
+    //   imports: [ConfigModule],
+    //   inject: [ConfigService],
+    //   useFactory: async (configService: ConfigService) => ({
+    //     type: 'sqljs',
+    //     location: 'database.sqlite',
+    //     entities: [Project, Department, Customer, Employee, Role],
+    //     synchronize: configService.get<boolean>("DB_SYNC", true),
+    //     logging: true,
+    //   })
+    // }),
     TypeOrmModule.forFeature([Employee,Role]),
     ProjectsModule,
     DepartmentsModule,
