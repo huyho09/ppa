@@ -62,7 +62,6 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     placeholder: 'Enter text here...',
     defaultParagraphSeparator: 'p',
     defaultFontName: 'Arial',
-    toolbarHiddenButtons: [['bold', 'italic'], ['fontSize']]
   };
   employee: Employee = {
     id: '',

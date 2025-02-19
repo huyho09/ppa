@@ -22,9 +22,6 @@ export class CreateEmployeeDto {
     @IsArray()
     skills: string[];
 
-    @IsBoolean()
-    is_admin: boolean;
-    
     @IsString()
     password: string;
 

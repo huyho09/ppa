@@ -36,16 +36,16 @@ export class Project {
     @Column({type: 'text', nullable: true})
     project_result_image: string;
 
-    @Column({ type: 'text', default: () => `CAST(DATEDIFF(SECOND, '1970-01-01', GETUTCDATE()) AS NVARCHAR)` })
+    @Column({ type: 'text',nullable: true })
     project_start_date: string;
     
     @Column({ type: 'text', nullable: true })
     project_end_date: string;
     
-    @Column({ type: 'text', default: () => `CAST(DATEDIFF(SECOND, '1970-01-01', GETUTCDATE()) AS NVARCHAR)` })
+    @Column({ type: 'text', nullable: true })
     createdAt: string;
     
-    @Column({ type: 'text', default: () => `CAST(DATEDIFF(SECOND, '1970-01-01', GETUTCDATE()) AS NVARCHAR)` })
+    @Column({ type: 'text', nullable: true })
     lastUpdatedAt: string;
     
 }

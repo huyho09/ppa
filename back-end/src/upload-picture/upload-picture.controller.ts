@@ -11,7 +11,6 @@ export class UploadPictureController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   async uploadPicture(@UploadedFile() file: Express.Multer.File) {
-    console.log('File: ' , file)
     if (!file)
     {throw new BadRequestException('file is required')}
     return this.uploadPictureService.handleFileUpload(file);

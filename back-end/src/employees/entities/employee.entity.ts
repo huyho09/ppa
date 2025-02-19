@@ -29,10 +29,7 @@ export class Employee {
 
     @Column('text',{nullable: true})
     aboutMe: string;
-
-    @Column({ type: 'bit', default: false })
-    is_admin: boolean;    
-
+   
     @Column('text')
     password: string;
 

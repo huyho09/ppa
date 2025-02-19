@@ -4,85 +4,137 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Privilege } from '../../role/service/role-service.service';
+
 interface Employee {
   id: string;
   avatar: string;
   firstname: string;
   lastname: string;
-  aboutMe:string;
   gender: string;
   email: string;
-  password:string;
   skills: string[];
-  role: {id: string, name: string, privilege: Privilege };
+  role: {name: string; id: string; privilege: Privilege};
   is_admin: boolean;
-  project: Project;
-  department: {id: string, name: string}|null
-
+  project: { name: string; id: string } | null;
+  department: { name: string; id: string } | null;
 }
 
-interface Project {
-  id: string;
-  name: string;
-}
 @Component({
   selector: 'app-employee-index',
   standalone: true,
-  imports: [CommonModule,RouterModule,FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './employee-index.component.html',
-  styleUrls: ['./employee-index.component.scss']
+  styleUrls: ['./employee-index.component.scss'],
 })
 export class EmployeeIndexComponent implements OnInit {
   employees: Employee[] = [];
+  user: any = {}
   searchText: string = '';
-  constructor(private employeeService: EmployeeServiceService) {
+  isFilterVisible: boolean = false;
+  activeDropdown: string | null = null;
 
-  }
+  selectedRole: string[] = [];
+  selectedProject: string[] = [];
+  selectedDepartment: string[] = [];
+
+  uniqueRoles: string[] = [];
+  uniqueProjects: string[] = [];
+  uniqueTeams: string[] = [];
+
+  constructor(private employeeService: EmployeeServiceService) {}
 
   ngOnInit(): void {
-    const loggedUser = sessionStorage.getItem('U')
-    this.employeeService.getEmployeesWithApiCall().subscribe((data : Employee[]) => {
+    const user_data = sessionStorage.getItem('User')
+    if (user_data)
+    {
+      this.user = JSON.parse(user_data)
+    }
+    this.employeeService.getEmployeesWithApiCall().subscribe((data: Employee[]) => {
       this.employees = data;
-      console.log("list of emps" ,this.employees)
+
+      // Extract unique roles, projects, and teams with proper type handling
+      this.uniqueRoles = [...new Set(this.employees.map(e => e.role.name))];
+
+      this.uniqueProjects = [
+        ...new Set(this.employees.map(e => e.project?.name).filter(Boolean) as string[]),
+      ];
+
+      this.uniqueTeams = [
+        ...new Set(this.employees.map(e => e.department?.name).filter(Boolean) as string[]),
+      ];
     });
   }
 
-  filterEmployee(): Employee[] {
-    if(!this.searchText)
-    {
-      return this.employees
-    }
-    const search = this.searchText.toLowerCase().trim();
-    return this.employees.filter(
-      emp => {
-        const projectNameMatches = emp.project && emp.project.name.toLowerCase().includes(search)
-        return this.isEmployeeMatch(emp,search) || projectNameMatches
-      }
-    )
-  }
-  isEmployeeMatch(employee:Employee,search: string): boolean {
-    for(let key in employee)
-    {
-      const value = employee[key as keyof Employee];
-      if(typeof(value)=== 'string')
-      {
-        if(value.toLowerCase().includes(search))
-        {
-          return true
-        }
-      }
-      else if ( Array.isArray(value))
-      {
-        for(let item of value)
-        {
-          if(item.toLowerCase().includes(search))
-          {
-            return true
-          }
-        }
-      }
-    }
-    return false
+  toggleFilterPanel(): void {
+    this.isFilterVisible = !this.isFilterVisible;
   }
 
+  toggleDropdown(dropdown: string): void {
+    this.activeDropdown = this.activeDropdown === dropdown ? null : dropdown;
+  }
+
+  // Update selected filters (multiple selection allowed for role, project, department)
+  updateFilter(type: string, value: string): void {
+    switch (type) {
+      case 'role':
+        const roleIndex = this.selectedRole.indexOf(value);
+        if (roleIndex === -1) {
+          this.selectedRole.push(value);
+        } else {
+          this.selectedRole.splice(roleIndex, 1);
+        }
+        break;
+      case 'project':
+        const projectIndex = this.selectedProject.indexOf(value);
+        if (projectIndex === -1) {
+          this.selectedProject.push(value);
+        } else {
+          this.selectedProject.splice(projectIndex, 1);
+        }
+        break;
+      case 'team':
+        const teamIndex = this.selectedDepartment.indexOf(value);
+        if (teamIndex === -1) {
+          this.selectedDepartment.push(value);
+        } else {
+          this.selectedDepartment.splice(teamIndex, 1);
+        }
+        break;
+    }
+  }
+
+  filterEmployee(): Employee[] {
+    return this.employees.filter(employee => {
+      const searchMatch = this.isEmployeeMatch(employee, this.searchText.toLowerCase().trim());
+      const roleMatch = this.selectedRole.length ? this.selectedRole.includes(employee.role.name) : true;
+      const projectMatch = this.selectedProject.length ? this.selectedProject.includes(employee.project?.name || '') : true;
+      const departmentMatch = this.selectedDepartment.length ? this.selectedDepartment.includes(employee.department?.name || '') : true;
+
+      return searchMatch && roleMatch && projectMatch && departmentMatch;
+    });
+  }
+
+  isEmployeeMatch(employee: Employee, search: string): boolean {
+    if (!search) return true;
+
+    for (let key in employee) {
+      const value = employee[key as keyof Employee];
+      if (typeof value === 'string' && value.toLowerCase().includes(search)) {
+        return true;
+      } else if (Array.isArray(value)) {
+        if (value.some(item => item.toLowerCase().includes(search))) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  validateUserPrivilege() {
+    if (this.user.sub.role.privilege === "user")
+    {
+      return false
+    }
+    return true
+  }
 }

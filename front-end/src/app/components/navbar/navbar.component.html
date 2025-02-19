@@ -1,61 +1,96 @@
-<div class="sidenav">
+<!-- <div class="sidenav"> -->
+  <!-- privilege:"admin" -->
+  <div class="sidenav" [class.collapsed]="isCollapsed">
+    <button class="toggle-btn" (click)="toggleSidebar()">
+      <i class="bi" [ngClass]="{'bi bi-chevron-double-left': !isCollapsed, 'bi bi-chevron-double-right': isCollapsed}"></i>
+    </button>
+    <div class="sidebar-logo" *ngIf="!isCollapsed">
+      <img src="http://localhost:3000/assets/Logo_PPA.png" alt="Logo" />
+    </div>
+    <div class="sidebar-logo" *ngIf="isCollapsed">
+      <img src="http://localhost:3000/assets/Logo_PPA_close.png" alt="Logo" />
+    </div>
   <div>
-    <a class="menu-header" (click)="toggleSubmenu('overview')"><i class="bi bi-trophy"></i> Overview</a>
-    <div class="submenu" [class.show]="activeMenu === 'overview'">
-      <a [routerLink]="['/dashboard/overview']"><i class="bi bi-hash"></i> About Us</a>
-      <a [routerLink]="['/dashboard/overview/orgchart']"><i class="bi bi-bar-chart-steps"></i> Org Chart</a>
+    <!-- <a class="menu-header" (click)="toggleSubmenu('overview')"><i class="bi bi-trophy"></i> Overview</a> -->
+    <a class="menu-header" (click)="toggleSubmenu('overview')"><i class="bi bi-trophy"></i>
+      <span *ngIf="!isCollapsed">Overview</span>
+    </a>
+    <div class="submenu" [class.show]="activeMenu === 'overview'" *ngIf="!isCollapsed">
+      <a [routerLink]="['/dashboard/overview']"><i class="bi bi-book-fill"></i> About Us</a>
+      <a [routerLink]="['/dashboard/overview/orgchart']"><i class="bi bi-diagram-2"></i> Org Chart</a>
     </div>
   </div>
   <br>
   <div>
-    <a class="menu-header" (click)="toggleSubmenu('department')"><i class="bi bi-house"></i> Teams</a>
-    <div class="submenu" [class.show]="activeMenu === 'department'">
-      <a [routerLink]="['/dashboard/department']"><i class="bi bi-hash"></i> Our Teams</a>
-      <a *ngIf="this.user.sub.is_admin"  [routerLink]="['/dashboard/department/create']"><i class="bi bi-bookmark-plus"></i> Create Team</a>
-    </div>
+    <a class="menu-header" (click)="toggleSubmenu('department')"><i class="bi bi-house"></i>
+      <span *ngIf="!isCollapsed">Teams</span>
+    </a>
+    <div class="submenu" [class.show]="activeMenu === 'department'" *ngIf="!isCollapsed">
+      <a [routerLink]="['/dashboard/department']"><i class="bi bi-microsoft-teams"></i> Our Teams</a>
+      <div *ngIf="validatePrivilege()">
+        <a *ngIf="this.user.sub.is_admin"  [routerLink]="['/dashboard/department/create']"><i class="bi bi-house-add-fill"></i> Create Team</a>
+      </div>
   </div>
   <br>
   <div >
-    <a class="menu-header" (click)="toggleSubmenu('employee')"><i class="bi bi-people"></i> Members</a>
-    <div class="submenu" [class.show]="activeMenu === 'employee'">
-      <a [routerLink]="['/dashboard/employee']"><i class="bi bi-hash"></i> My Team Members</a>
-      <a *ngIf="this.user.sub.is_admin"  [routerLink]="['/dashboard/employee/create']"><i class="bi bi-person-add"></i> Create Member</a>
-      <a *ngIf="this.user.sub.is_admin"  [routerLink]="['/dashboard/role']"><i class="bi bi-hash"></i> Manage Role</a>
-      <a *ngIf = "this.user.sub.is_admin" [routerLink]="['/dashboard/role/create']">Create Role</a>
+    <a class="menu-header" (click)="toggleSubmenu('employee')"><i class="bi bi-people"></i>
+      <span *ngIf="!isCollapsed">Members</span>
+    </a>
+    <div class="submenu" [class.show]="activeMenu === 'employee'" *ngIf="!isCollapsed">
+      <a [routerLink]="['/dashboard/employee']"><i class="bi bi-people-fill"></i>Team Members</a>
+      <div *ngIf = "validatePrivilege()">
+        <a [routerLink]="['/dashboard/employee/create']"><i class="bi bi-person-fill-add"></i> Create Member</a>
+        <a [routerLink]="['/dashboard/role']"><i class="bi bi-briefcase-fill"></i> Manage Role</a>
+        <a [routerLink]="['/dashboard/role/create']"><i class="bi bi-clipboard-plus-fill"></i>Create Role</a>
+      </div>
 
     </div>
   </div>
   <br>
   <div>
-    <a class="menu-header" (click)="toggleSubmenu('project')"><i class="bi bi-folder"></i> Projects</a>
-    <div class="submenu" [class.show]="activeMenu === 'project'">
-      <a [routerLink]="['/dashboard/project']"><i class="bi bi-hash"></i> Our Projects</a>
-      <a *ngIf="this.user.sub.is_admin"  [routerLink]="['/dashboard/project/create']"><i class="bi bi-folder-plus"></i> Create Project</a>
+    <a class="menu-header" (click)="toggleSubmenu('project')"><i class="bi bi-folder"></i>
+      <span *ngIf="!isCollapsed">Project</span>
+    </a>
+    <div class="submenu" [class.show]="activeMenu === 'project'" *ngIf="!isCollapsed">
+      <a [routerLink]="['/dashboard/project']"><i class="bi bi-folder-fill"></i> Our Projects</a>
+      <div *ngIf = "validatePrivilege()">
+        <a [routerLink]="['/dashboard/project/create']"><i class="bi bi-folder-plus"></i> Create Project</a>
+      </div>
     </div>
   </div>
   <br>
   <div>
-    <a class="menu-header" (click)="toggleSubmenu('customer')"><i class="bi bi-people-fill"></i> Customer</a>
-    <div class="submenu" [class.show]="activeMenu === 'customer'">
-      <a [routerLink]="['/dashboard/customer']"><i class="bi bi-hash"></i> Our Customer</a>
-      <a *ngIf="this.user.sub.is_admin"  [routerLink]="['/dashboard/customer/create']"><i class="bi bi-person-add"></i> Create Customer</a>
+    <a class="menu-header" (click)="toggleSubmenu('customer')"><i class="bi bi-people-fill"></i>
+      <span *ngIf="!isCollapsed">Customer</span>
+    </a>
+    <div class="submenu" [class.show]="activeMenu === 'customer'" *ngIf="!isCollapsed">
+      <a [routerLink]="['/dashboard/customer']"><i class="bi bi-person-circle"></i> Our Customer</a>
+      <div *ngIf="validatePrivilege()">
+        <a *ngIf="this.user.sub.is_admin"  [routerLink]="['/dashboard/customer/create']"><i class="bi bi-person-add"></i> Create Customer</a>
+      </div>
     </div>
   </div>
   <br>
   <div>
-    <a class="menu-header" (click)="toggleSubmenu('docs')"><i class="bi bi-file-text-fill"></i> My Docs</a>
-    <div class="submenu" [class.show]="activeMenu === 'docs'">
-      <a [routerLink]="['/dashboard/docs/sql']"><i class="bi bi-hash"></i> SQL Docs</a>
-      <a [routerLink]="['/dashboard/docs/node']"><i class="bi bi-hash"></i> Node Docs</a>
+    <a class="menu-header" (click)="toggleSubmenu('docs')"><i class="bi bi-file-text-fill"></i>
+      <span *ngIf="!isCollapsed">My Docs</span>
+    </a>
+    <div class="submenu" [class.show]="activeMenu === 'docs'" *ngIf="!isCollapsed">
+      <a [routerLink]="['/dashboard/docs/sql']"><i class="bi bi-file-earmark-word-fill"></i> SQL Docs</a>
+      <a [routerLink]="['/dashboard/docs/node']"><i class="bi bi-file-earmark-word-fill"></i> Node Docs</a>
     </div>
   </div>
   <br>
   <div>
-    <a class="menu-header"><i class="bi bi-patch-question-fill"></i> Help</a>
+    <a class="menu-header"><i class="bi bi-patch-question-fill"></i>
+      <span *ngIf="!isCollapsed">Help</span>
+    </a>
   </div>
   <br>
   <div>
-    <a class="menu-header"><i class="bi bi-bell-fill"></i> Release Note</a>
+    <a class="menu-header"><i class="bi bi-bell-fill"></i>
+      <span *ngIf="!isCollapsed">Release Note</span>
+    </a>
   </div>
   <br>
 </div>

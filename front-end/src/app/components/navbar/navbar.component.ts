@@ -11,6 +11,7 @@ import { Route, Router, RouterModule } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit{
+  isCollapsed: boolean = false;
 
   constructor(private route: Router){}
 
@@ -20,6 +21,9 @@ export class NavbarComponent implements OnInit{
     {
       this.route.navigate(['/dashboard/overview'])
     }
+  }
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
   }
   activeMenu: string | null = null;
   getUser(){
@@ -33,6 +37,13 @@ export class NavbarComponent implements OnInit{
   }
   toggleSubmenu(menu: string): void {
     this.activeMenu = this.activeMenu === menu ? null : menu;
+  }
+  validatePrivilege() {
+    if (this.user.sub.role.privilege === 'user')
+    {
+      return false
+    }
+    return true
   }
 
 }
