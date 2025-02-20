@@ -6,8 +6,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProjectServiceService } from '../../project/service/project-service.service';
 import { HttpClient } from '@angular/common/http';
 import { DepartmentServiceService } from '../../department/service/department-service.service';
-import { AngularEditorModule, AngularEditorConfig } from '@kolkov/angular-editor';
-import e from 'cors';
 import { Privilege, RoleServiceService } from '../../role/service/role-service.service';
 
 interface Employee {
@@ -40,7 +38,7 @@ interface UploadResponse {
 @Component({
   selector: 'app-employee-update',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, AngularEditorModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './employee-update.component.html',
   styleUrls: ['./employee-update.component.scss']
 })
@@ -48,21 +46,7 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
   projects: { id: string; name: string }[] = [];
   departments: {id: string; name: string}[] = [];
   roles: {id: string; name:string ; privilege: Privilege}[] = []
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '200px',
-    minHeight: '0',
-    maxHeight: 'auto',
-    width: 'auto',
-    minWidth: '0',
-    translate: 'yes',
-    enableToolbar: false,
-    showToolbar: true,
-    placeholder: 'Enter text here...',
-    defaultParagraphSeparator: 'p',
-    defaultFontName: 'Arial',
-  };
+
   employee: Employee = {
     id: '',
     avatar: '',
@@ -81,6 +65,8 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
   id: string = '';
   avatarFile: File | null = null;
   avatarPreview: string | null = null;
+  avatarPreviewEp: string | null = null;
+
   passwordRepeat: string ='';
 
   constructor(
@@ -102,6 +88,20 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
         (response) => {
           this.employee.avatar = response.filename;
           this.avatarPreview = `http://localhost:3000/upload-picture/${response.filename}`;
+        }
+      );
+    }
+  }
+
+  onFileSelectEP(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file, file.name);
+      this.http.post<UploadResponse>('http://localhost:3000/upload-picture/upload', formData).subscribe(
+        (response) => {
+          this.employee.aboutMe = response.filename;
+          this.avatarPreviewEp = `http://localhost:3000/upload-picture/${response.filename}`;
         }
       );
     }

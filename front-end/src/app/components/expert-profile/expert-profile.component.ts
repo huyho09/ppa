@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Privilege } from '../role/service/role-service.service';
+import { EmployeeIndexComponent } from "../employee/employee-index/employee-index.component";
 
 interface Employee {
   id: string;
@@ -31,7 +32,7 @@ interface Project {
 @Component({
   selector: 'app-expert-profile',
   standalone: true,
-  imports: [QuillModule,RouterModule,CommonModule,FormsModule],
+  imports: [QuillModule, RouterModule, CommonModule, FormsModule, EmployeeIndexComponent],
   templateUrl: './expert-profile.component.html',
   styleUrl: './expert-profile.component.scss'
 })

@@ -1,4 +1,32 @@
-<input type="file" (change)="onFileSelected($event)" />
-<div style="width: 100%; height: 1000px; text-align: center;">
-  <iframe *ngIf="pdfSrc" [src]="pdfSrc" style="width: 100%; height: 100vh;"></iframe>
+<div style=" height: 100vh;">
+  <input
+    id="avatar"
+    name="avatar"
+    (change)="onFileSelected($event)"
+    type="file"
+    class="file-input upload-btn position-absolute top-0 end-0 right-0 m-3"
+    style="width: 40%;"
+    required
+  >
+  <br>
+  <br>
+  <br>
+
+  <div style="overflow-x: auto; background-color: darkblue;" *ngIf="pictures.length > 0">
+    <div *ngFor="let picture of pictures">
+      <hr>
+      <img [src]="'http://localhost:3000/upload-picture/' + picture" name="slide" id="slide" alt="slide" style="width: 100%;">
+    </div>
+  </div>
+
+  <div style="background-color: wheat;">
+    <div style="text-align: center;">
+      <h1 style="margin-top: 20px; font-size: 3em; font-weight: 500; color: white; border-radius: 10%;">Our People</h1>
+
+    </div>
+    <app-employee-index></app-employee-index>
+  </div>
 </div>
+
+
+

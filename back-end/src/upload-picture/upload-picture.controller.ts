@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Param, Res, UploadedFile, UseInterceptors, BadRequestException } from '@nestjs/common';
+import { Controller, Post, Get, Param, Res, UploadedFile, UseInterceptors, BadRequestException, Delete } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadPictureService } from './upload-picture.service';
 import { Response } from 'express';
@@ -21,4 +21,10 @@ export class UploadPictureController {
   getPicture(@Param('filename') filename: string, @Res() res: Response) {
     return this.uploadPictureService.getPicture(filename, res);
   }
+
+  @Delete('clear-slide')
+  @Public()
+  clearSlides(@Res() res: Response) {
+    return this.uploadPictureService.clearSlides(res);
+  }  
 }
