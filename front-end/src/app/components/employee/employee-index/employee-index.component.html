@@ -1,11 +1,20 @@
-<div class="card-body">
-  <div class="search-filter-container">
-    <!-- Search Bar -->
-    <div class="search-bar">
-      <input type="text" [(ngModel)]="searchText" placeholder="Search..." />
-      <button class="search-icon">
-        <i class="fas fa-search"></i>
+<div class="card-body" style="background-color: whitesmoke">
+
+  <!-- Collapse Arrow Button -->
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <button class="collapse-arrow" (click)="toggleSearchBar()">
+        <i [ngClass]="isSearchCollapsed ? 'fas fa-chevron-down' : 'fas fa-chevron-up'"></i>
       </button>
+    </div>
+  </div>
+
+  <!-- Search and Filter Section -->
+  <div class="search-filter-container" [@slideInOut]="isSearchCollapsed ? 'collapsed' : 'expanded'">
+    <!-- Search Bar -->
+    <div class="search-bar" *ngIf="!isSearchCollapsed">
+      <input type="text" [(ngModel)]="searchText" placeholder="Search..." />
+      <button class="search-icon"><i class="fas fa-search"></i></button>
       <button class="filter-button" (click)="toggleFilterPanel()">
         <i class="bi bi-filter"></i> Filter
       </button>
@@ -14,6 +23,7 @@
     <!-- Filter Panel -->
     <div class="filter-panel" *ngIf="isFilterVisible">
       <div class="filter-section">
+
         <!-- Role Filter -->
         <div class="filter-group">
           <h4 (click)="toggleDropdown('role')">Role</h4>
@@ -43,47 +53,54 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  <!-- Cards Display -->
-  <div class="row" [ngClass]="{'filter-active': isFilterVisible}">
+  <!-- Title -->
+  <div style="text-align: center;">
+    <h1 style="color: black;">Our People</h1>
+  </div>
+
+  <!-- Employee Cards Display -->
+  <div class="row" [ngClass]="{'filter-active': isFilterVisible}" style="overflow-x: auto;">
     <div class="col-12 col-md-4 mb-4" *ngFor="let employee of filterEmployee()">
       <div class="card">
         <div class="card-body">
+
           <!-- Employee Skills -->
           <div class="div-em-skill">
             <ul>
-              <li *ngFor="let skill of employee.skills" class="skill-item">
-                {{ skill.trim() }}
-              </li>
+              <li *ngFor="let skill of employee.skills" class="skill-item">{{ skill.trim() }}</li>
             </ul>
           </div>
 
           <!-- Employee Name -->
-           <div *ngIf="validateUserPrivilege(); else cantclickName">
+          <div *ngIf="validateUserPrivilege(); else cantclickName">
             <h5 class="card-title">
               <a [routerLink]="['/dashboard/employee/update', employee.id]">
                 {{ employee.firstname + ' ' + employee.lastname }}
               </a>
             </h5>
-           </div>
-           <ng-template #cantclickName>
-            <h5 class = "card-title" >
-            {{employee.firstname + " " + employee.lastname}}
-            </h5>
-           </ng-template>
+          </div>
+          <ng-template #cantclickName>
+            <h5 class="card-title">{{ employee.firstname + " " + employee.lastname }}</h5>
+          </ng-template>
 
-
-          <!-- Employee Image and Details (grid layout) -->
+          <!-- Employee Info Section -->
           <div class="row employee-info">
-            <!-- Employee Image -->
+
+            <!-- Avatar -->
             <div class="col-12 col-md-4 employee-image">
-              <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Employee Avatar" class="avatar">
+              <img 
+                src="http://localhost:3000/upload-picture/{{employee.avatar}}" 
+                alt="Employee Avatar" 
+                class="avatar"
+              />
             </div>
 
-            <!-- Employee Details (email, team, project) -->
+            <!-- Details: Email, Team, Project -->
             <div class="col-12 col-md-8 employee-details">
               <p class="card-text"><strong>Email:</strong> {{ employee.email }}</p>
 
@@ -102,13 +119,10 @@
               <ng-template #userTeam>
                 <p class="card-text">
                   <strong>Team:</strong>
-                  <span *ngIf="employee.department?.id; else noTeam">
-                      {{ employee.department?.name }}
-                  </span>
+                  <span *ngIf="employee.department?.id; else noTeam">{{ employee.department?.name }}</span>
                   <ng-template #noTeam>Don't have Team</ng-template>
                 </p>
               </ng-template>
-
 
               <!-- Project -->
               <div *ngIf="validateUserPrivilege(); else userProject">
@@ -125,39 +139,42 @@
               <ng-template #userProject>
                 <p class="card-text">
                   <strong>Project:</strong>
-                  <span *ngIf="employee.project?.id; else noProject">
-                    {{employee.project?.name}}
-                  </span>
+                  <span *ngIf="employee.project?.id; else noProject">{{ employee.project?.name }}</span>
                   <ng-template #noProject>Don't have project</ng-template>
                 </p>
               </ng-template>
+
             </div>
           </div>
 
-          <!-- Button -->
-            <div class = "row" *ngIf="validateUserPrivilege(); else noPrivilege">
-              <div class = "col-6" >
-                  <button [routerLink]="['/dashboard/employee/update', employee.id]" class="view-profile-btn">
-                    View Details
-                  </button>
+          <!-- Action Buttons -->
+          <div *ngIf="validateUserPrivilege(); else noPrivilege">
+            <div class="row">
+              <div class="col-6">
+                <button [routerLink]="['/dashboard/employee/update', employee.id]" class="view-profile-btn">
+                  View Details
+                </button>
               </div>
-              <div class = "col-6">
-                  <button [routerLink]="['/dashboard/employee/expertProfile', employee.id]" class="view-profile-btn">
-                    View EP
-                  </button>
+              <div class="col-6">
+                <button [routerLink]="['/dashboard/employee/expertProfile', employee.id]" class="view-profile-btn">
+                  View EP
+                </button>
               </div>
+            </div>
           </div>
           <ng-template #noPrivilege>
-            <div class = "row">
-              <div class = "col">
+            <div class="row">
+              <div class="col">
                 <button [routerLink]="['/dashboard/employee/expertProfile', employee.id]" class="view-profile-btn">
                   View EP
                 </button>
               </div>
             </div>
           </ng-template>
+
         </div>
       </div>
     </div>
   </div>
+
 </div>

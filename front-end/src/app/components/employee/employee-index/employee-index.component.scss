@@ -25,7 +25,12 @@
   color: aliceblue;
   font-size: 30px;
 }
+.row {
+  display: flex;      
+  flex-wrap: nowrap;     
+  overflow-x: auto;      
 
+}
 .employee-info {
   display: flex;
   flex-wrap: wrap;
@@ -130,6 +135,23 @@
   align-items: center;
   justify-content: space-between;
 
+  .collapse-arrow {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      color: #e32445;
+    }
+  }
+
+  &.collapsed .collapse-arrow {
+    transform: rotate(180deg);
+  }
   .search-bar {
     display: flex;
     align-items: center;
@@ -183,7 +205,11 @@
       }
     }
   }
-
+  .card-container{
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
   .filter-panel {
     position: absolute;
     top: 30px;

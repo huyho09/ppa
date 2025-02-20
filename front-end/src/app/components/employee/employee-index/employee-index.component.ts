@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Privilege } from '../../role/service/role-service.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
+
 
 interface Employee {
   id: string;
@@ -25,6 +28,21 @@ interface Employee {
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './employee-index.component.html',
   styleUrls: ['./employee-index.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      state('expanded', style({
+        width: '*',
+        opacity: 1
+      })),
+      state('collapsed', style({
+        width: '0px',
+        opacity: 0
+      })),
+      transition('expanded <=> collapsed', [
+        animate('300ms ease-in-out')
+      ])
+    ])
+  ]
 })
 export class EmployeeIndexComponent implements OnInit {
   employees: Employee[] = [];
@@ -40,6 +58,9 @@ export class EmployeeIndexComponent implements OnInit {
   uniqueRoles: string[] = [];
   uniqueProjects: string[] = [];
   uniqueTeams: string[] = [];
+
+  isSearchCollapsed: boolean = false;
+
 
   constructor(private employeeService: EmployeeServiceService) {}
 
@@ -67,6 +88,10 @@ export class EmployeeIndexComponent implements OnInit {
 
   toggleFilterPanel(): void {
     this.isFilterVisible = !this.isFilterVisible;
+  }
+
+  toggleSearchBar() {
+    this.isSearchCollapsed = !this.isSearchCollapsed;
   }
 
   toggleDropdown(dropdown: string): void {

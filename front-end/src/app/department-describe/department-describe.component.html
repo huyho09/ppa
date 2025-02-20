@@ -1,32 +1,51 @@
-<div style=" height: 100vh;">
+<div style="height: 100vh; position: relative; padding: 10px;">
+
   <input
     id="avatar"
     name="avatar"
     (change)="onFileSelected($event)"
     type="file"
-    class="file-input upload-btn position-absolute top-0 end-0 right-0 m-3"
-    style="width: 40%;"
+    class="file-input upload-btn position-absolute"
+    style="
+      width: 120px;
+      top: 10px;
+      right: 10px;
+      padding: 6px 10px;
+      font-size: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+    "
     required
   >
   <br>
   <br>
-  <br>
 
-  <div style="overflow-x: auto; background-color: darkblue;" *ngIf="pictures.length > 0">
-    <div *ngFor="let picture of pictures">
-      <hr>
-      <img [src]="'http://localhost:3000/upload-picture/' + picture" name="slide" id="slide" alt="slide" style="width: 100%;">
+  <!-- Picture Carousel -->
+  <div *ngIf="pictures.length > 0" style="overflow-x: auto; background-color: whitesmoke; padding: 10px; border-radius: 8px; margin-top: 20px;">
+    <div
+      style="
+        display: flex;
+        gap: 16px;
+        transition: transform 0.5s ease;
+        scroll-behavior: smooth;
+      "
+    >
+      <div *ngFor="let picture of pictures" style="min-width: 250px; flex-shrink: 0; border-radius: 10px; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 8px;">
+        <img
+          [src]="'http://localhost:3000/upload-picture/' + picture"
+          alt="Uploaded Slide"
+          style="width: 100%; border-radius: 6px; object-fit: cover;"
+        >
+      </div>
     </div>
   </div>
 
-  <div style="background-color: wheat;">
-    <div style="text-align: center;">
-      <h1 style="margin-top: 20px; font-size: 3em; font-weight: 500; color: white; border-radius: 10%;">Our People</h1>
-
-    </div>
+  <!-- Employee Index Component -->
+  <div style="margin-top: 30px;">
     <app-employee-index></app-employee-index>
   </div>
 </div>
-
-
-
