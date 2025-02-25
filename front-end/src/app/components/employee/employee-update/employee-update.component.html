@@ -236,151 +236,162 @@
     </div>
   </form>
 </div> -->
-
-<div class = "container-fluid">
-  <form (ngSubmit)="updateEmployee()">
-    <div class = "profile-section">
-      <div class = "main-container">
-        <div class = "content-container-main">
-          <div class = "content-container-profile">
-            <div class = "profile-section">
-              <div class="section-header">
-                <h2>Profile Picture</h2>
-              </div>
-              <div class="avatar-container">
-                <div class="avatar-wrapper">
-                  <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Avatar Preview" style="width: 100px; height: 100px; border-radius: 50%;" />
-                  <p class="file-hint">JPG or PNG no larger than 5MB</p>
-                  <input
-                  id="avatar"
-                  name="avatar"
-                  (change)="onFileSelect($event)"
-                  type="file"
-                  class="file-input"
-                  required
-                >
+<div *ngIf="isUserAuthorize">
+  <div class = "container-fluid">
+    <form (ngSubmit)="updateEmployee()">
+      <div class = "profile-section">
+        <div class = "main-container">
+          <div class = "content-container-main">
+            <div class = "content-container-profile">
+              <div class = "profile-section">
+                <div class="section-header">
+                  <h2>Profile Picture</h2>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="content-container-form">
-            <h2>Account Details</h2>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="firstname">First Name</label>
-                <input type="text" id="firstname" name = "firstname" [(ngModel)]="employee.firstname" placeholder="Enter your first name" >
-              </div>
-
-              <div class="form-group">
-                <label for="lastname">Last Name</label>
-                <input type="text" id="lastname" name = "lastname" [(ngModel)]="employee.lastname" placeholder="Enter your last name">
-              </div>
-
-                <div class="form-group">
-                  <label for="gender" class="form-label">Gender</label>
-                  <div class="gender-options">
-                    <div class="form-check">
-                      <input type="radio" id="male" name="gender" value="male" [(ngModel)]="employee.gender"
-                        class="form-check-input" />
-                      <label for="male" class="form-check-label">Male</label>
-                    </div>
-                    <div class="form-check">
-                      <input type="radio" id="female" name="gender" value="female" [(ngModel)]="employee.gender"
-                        class="form-check-input" />
-                      <label for="female" class="form-check-label">Female</label>
-                    </div>
+                <div class="avatar-container">
+                  <div class="avatar-wrapper">
+                    <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Avatar Preview" style="width: 100px; height: 100px; border-radius: 50%;" />
+                    <p class="file-hint">JPG or PNG no larger than 5MB</p>
+                    <input
+                    id="avatar"
+                    name="avatar"
+                    (change)="onFileSelect($event)"
+                    type="file"
+                    class="file-input"
+                    required
+                  >
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="content-container-form">
+              <h2>Account Details</h2>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="firstname">First Name</label>
+                  <input type="text" id="firstname" name = "firstname" [(ngModel)]="employee.firstname" placeholder="Enter your first name" >
+                </div>
+
+                <div class="form-group">
+                  <label for="lastname">Last Name</label>
+                  <input type="text" id="lastname" name = "lastname" [(ngModel)]="employee.lastname" placeholder="Enter your last name">
+                </div>
+
+                  <div class="form-group">
+                    <label for="gender" class="form-label">Gender</label>
+                    <div class="gender-options">
+                      <div class="form-check">
+                        <input type="radio" id="male" name="gender" value="male" [(ngModel)]="employee.gender"
+                          class="form-check-input" />
+                        <label for="male" class="form-check-label">Male</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="radio" id="female" name="gender" value="female" [(ngModel)]="employee.gender"
+                          class="form-check-input" />
+                        <label for="female" class="form-check-label">Female</label>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name = "email" placeholder="Enter your email address" [(ngModel)] = "employee.email">
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="skills">Skills</label>
+                  <input type="text" id="skills" name = "skills" placeholder="Enter emp skills" [(ngModel)] = "employee.skills">
+                </div>
+
+                <div class = "form-group">
+                  <label for="department" class="form-label">Team Assign</label>
+                  <p *ngIf="employee.department && employee.department.name">
+                    <strong>Current Team:</strong> {{ employee.department.name }}
+                  </p>
+                  <select id="department" name="department" class="form-control" [(ngModel)]="employee.department" required>
+                    <option [ngValue]="null">Not Assigned</option>
+                    <option *ngFor="let department of departments" [ngValue]="department">{{ department.name }}</option>
+                  </select>
+                </div>
+
+                <div class = "form-group">
+                  <label for="project" class="form-label">Projects Assign</label>
+                  <p *ngIf="employee.project && employee.project.name">
+                    <strong>Current Project:</strong> {{ employee.project.name }}
+                  </p>
+                  <select id="project" name="project" class="form-control" [(ngModel)]="employee.project" required>
+                    <option [ngValue]="null">Not Assigned</option>
+                    <option *ngFor="let project of projects" [ngValue]="project">{{ project.name }}</option>
+                  </select>
+                </div>
+
+                <div class = "form-group full-width">
+                  <label for="role" class="form-label">Role Assign</label>
+                  <p *ngIf="employee.role && employee.role.name">
+                    <strong>Current Role:</strong> {{ employee.role.name }}
+                  </p>
+                  <select id="role" name="role" class="form-control" [(ngModel)]="employee.role" required>
+                    <option [ngValue]="null">Not Assigned</option>
+                    <option *ngFor="let role of roles" [ngValue]="role">{{ role.name }}</option>
+                  </select>
+                </div>
+              </div>
 
               <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name = "email" placeholder="Enter your email address" [(ngModel)] = "employee.email">
-              </div>
+                <label for="aboutMe">Expert Profile</label>
+                <input
+                id="aboutMe"
+                name="aboutMe"
+                (change)="onFileSelectEP($event)"
+                type="file"
+                class="file-input"
+                required
+                >
+                <img src="http://localhost:3000/upload-picture/{{employee.aboutMe}}" alt="aboutMe Preview" />
 
-              <div class="form-group full-width">
-                <label for="skills">Skills</label>
-                <input type="text" id="skills" name = "skills" placeholder="Enter emp skills" [(ngModel)] = "employee.skills">
-              </div>
-
-              <div class = "form-group">
-                <label for="department" class="form-label">Team Assign</label>
-                <p *ngIf="employee.department && employee.department.name">
-                  <strong>Current Team:</strong> {{ employee.department.name }}
-                </p>
-                <select id="department" name="department" class="form-control" [(ngModel)]="employee.department" required>
-                  <option [ngValue]="null">Not Assigned</option>
-                  <option *ngFor="let department of departments" [ngValue]="department">{{ department.name }}</option>
-                </select>
               </div>
 
               <div class = "form-group">
-                <label for="project" class="form-label">Projects Assign</label>
-                <p *ngIf="employee.project && employee.project.name">
-                  <strong>Current Project:</strong> {{ employee.project.name }}
-                </p>
-                <select id="project" name="project" class="form-control" [(ngModel)]="employee.project" required>
-                  <option [ngValue]="null">Not Assigned</option>
-                  <option *ngFor="let project of projects" [ngValue]="project">{{ project.name }}</option>
-                </select>
+                <label class = "form-label" for = "password">New Password (skip if don't change)</label>
+                <input
+                type = "password"
+                id = "password"
+                class = "form-control"
+                name = "password"
+                [(ngModel)] = "employee.password"
+                >
               </div>
 
-              <div class = "form-group full-width">
-                <label for="role" class="form-label">Role Assign</label>
-                <p *ngIf="employee.role && employee.role.name">
-                  <strong>Current Role:</strong> {{ employee.role.name }}
-                </p>
-                <select id="role" name="role" class="form-control" [(ngModel)]="employee.role" required>
-                  <option [ngValue]="null">Not Assigned</option>
-                  <option *ngFor="let role of roles" [ngValue]="role">{{ role.name }}</option>
-                </select>
+              <div class = "form-group">
+                <label class = "form-label" for = "passwordReqpeat">Repeat New Password (skip if don't change)</label>
+                <input
+                type = "password"
+                id = "passwordReqpeat"
+                class = "form-control"
+                name = "passwordReqpeat"
+                [(ngModel)] = "passwordRepeat"
+                >
               </div>
-            </div>
-
-            <div class="form-group">
-              <label for="aboutMe">Expert Profile</label>
-              <input
-              id="aboutMe"
-              name="aboutMe"
-              (change)="onFileSelectEP($event)"
-              type="file"
-              class="file-input"
-              required
-              >
-              <img src="http://localhost:3000/upload-picture/{{employee.aboutMe}}" alt="aboutMe Preview" />
-
-            </div>
-
-            <div class = "form-group">
-              <label class = "form-label" for = "password">New Password (skip if don't change)</label>
-              <input
-              type = "password"
-              id = "password"
-              class = "form-control"
-              name = "password"
-              [(ngModel)] = "employee.password"
-              >
-            </div>
-
-            <div class = "form-group">
-              <label class = "form-label" for = "passwordReqpeat">Repeat New Password (skip if don't change)</label>
-              <input
-              type = "password"
-              id = "passwordReqpeat"
-              class = "form-control"
-              name = "passwordReqpeat"
-              [(ngModel)] = "passwordRepeat"
-              >
-            </div>
-            <div class="button-group">
-              <button class="create-btn"  type="submit" id="submit" name = "submit">Create</button>
-              <button class="cancel-btn" [routerLink]="['/dashboard/employee']">Cancel</button>
+              <div class="button-group">
+                <button class="create-btn"  type="submit" id="submit" name = "submit">Update</button>
+                <button class="cancel-btn" [routerLink]="['/dashboard/employee']">Cancel</button>
+                <div *ngIf="this.user.sub.role.privilege !== 'user'">
+                  <button class="cancel-btn" [routerLink]="['/dashboard/employee/delete',employee.id]">Delete</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
+
+<div class *ngIf="!isUserAuthorize">
+  <div class = "container-fluid">
+    <h1>YOU ARE NOT AUTHORIZED TO THIS PAGE</h1>
+  </div>
+</div>
+
 <!--
 <div class="container-fluid">
   <form (ngSubmit)="addEmployee()">

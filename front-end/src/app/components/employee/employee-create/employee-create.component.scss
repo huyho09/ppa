@@ -240,7 +240,52 @@
   max-width: 1100px;
   width: 100%;
 }
+.inputElement{
+/* Frame 64 */
 
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px 2px 10px 10px;
+gap: 10px;
+
+background: #FFFAF6;
+border: 2px solid #000000;
+border-radius: 7px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Enter your first name */
+
+width: 147px;
+height: 19px;
+
+font-family: 'Inria Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+display: flex;
+align-items: center;
+
+color: #A6A6A6;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+}
 // Left Column
 .content-container-profile {
   background-color: white;

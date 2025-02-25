@@ -23,29 +23,46 @@
   >
   <br>
   <br>
+<div *ngIf="pictures.length >0">
+  <div class = "row">
+    <div class = "col-sm-2">
+      <button (click)="toggleVericalSlide()" style="font-size: 12px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        Toggle View
+      </button>
+    </div>
+    <div class = "col-sm-2">
+      <button (click)="deleteSlide()" style="font-size: 12px; background-color: red; color: white; border: none; border-radius: 8px; cursor: pointer; ">
+        Delete Slide
+      </button>
+    </div>
+  </div>
+</div>
 
-  <!-- Picture Carousel -->
-  <div *ngIf="pictures.length > 0" style="overflow-x: auto; background-color: whitesmoke; padding: 10px; border-radius: 8px; margin-top: 20px;">
-    <div
-      style="
-        display: flex;
-        gap: 16px;
-        transition: transform 0.5s ease;
-        scroll-behavior: smooth;
-      "
-    >
-      <div *ngFor="let picture of pictures" style="min-width: 250px; flex-shrink: 0; border-radius: 10px; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 8px;">
-        <img
-          [src]="'http://localhost:3000/upload-picture/' + picture"
-          alt="Uploaded Slide"
-          style="width: 100%; border-radius: 6px; object-fit: cover;"
-        >
-      </div>
+
+<!-- Picture Carousel -->
+<div *ngIf="pictures.length > 0" [ngClass]="{'horizontal-view': !isVertical, 'vertical-view': isVertical}" style="background-color: whitesmoke; padding: 10px; border-radius: 8px; margin-top: 20px;">
+  <div
+    style="
+      display: flex;
+      gap: 16px;
+      transition: transform 0.5s ease;
+      scroll-behavior: smooth;
+    "
+  >
+    <div *ngFor="let picture of pictures" style="min-width: 250px; flex-shrink: 0; border-radius: 10px; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 8px;">
+      <img
+        [src]="'http://localhost:3000/upload-picture/' + picture"
+        alt="Uploaded Slide"
+        style="width: 100%; border-radius: 6px; object-fit: cover;"
+      >
     </div>
   </div>
 
-  <!-- Employee Index Component -->
+  <!-- Employee Index Component
   <div style="margin-top: 30px;">
     <app-employee-index></app-employee-index>
   </div>
+  <div style="margin-top: 30px;">
+    <app-project-index></app-project-index>
+  </div> -->
 </div>

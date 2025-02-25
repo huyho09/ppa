@@ -1,138 +1,152 @@
-<div class="container-fluid">
-  <form (ngSubmit)="addEmployee()">
-    <div class="profile-section">
+<div *ngIf="this.user.sub.role.privilege === 'user'; else Authorized">
+  <div class = "container-fluid">
+    <h1>You are not Authorized</h1>
+  </div>
+</div>
 
-      <div class="main-container">
+<ng-template #Authorized>
+  <div class="container-fluid">
+    <form (ngSubmit)="addEmployee()">
+      <div class="profile-section">
 
-        <div class="content-container-main">
-          <!-- Left Column -->
-          <div class="content-container-profile">
-            <div class="profile-section">
-              <div class="section-header">
-                <h2>Profile Picture</h2>
-              </div>
-              <div class="avatar-container">
-                <div class="avatar-wrapper">
-                  <img src="http://localhost:3000/upload-picture/{{newEmployee.avatar}}" alt="Avatar Preview" style="width: 100px; height: 100px; border-radius: 50%;" />
-                  <p class="file-hint">JPG or PNG no larger than 5MB</p>
-                  <input
-                  id="avatar"
-                  name="avatar"
-                  (change)="onFileSelect($event)"
-                  type="file"
-                  class="file-input"
-                  required
-                >
+        <div class="main-container">
+
+          <div class="content-container-main">
+            <!-- Left Column -->
+            <div class="content-container-profile">
+              <div class="profile-section">
+                <div class="section-header">
+                  <h2>Profile Picture</h2>
+                </div>
+                <div class="avatar-container">
+                  <div class="avatar-wrapper">
+                    <img src="http://localhost:3000/upload-picture/{{newEmployee.avatar}}" alt="Avatar Preview" style="width: 100px; height: 100px; border-radius: 50%;" />
+                    <p class="file-hint">JPG or PNG no larger than 5MB</p>
+                    <input
+                    id="avatar"
+                    name="avatar"
+                    (change)="onFileSelect($event)"
+                    type="file"
+                    class="file-input"
+                    required
+                  >
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Right Column -->
-          <div class="content-container-form">
-            <h2>Account Details</h2>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="firstname">First Name</label>
-                <input type="text" id="firstname" name = "firstname" class = "inputElement" [(ngModel)]="newEmployee.firstname" placeholder="Enter your first name" >
-              </div>
-
-              <div class="form-group">
-                <label for="lastname">Last Name</label>
-                <input type="text" id="lastname" name = "lastname" [(ngModel)]="newEmployee.lastname" placeholder="Enter your last name">
-              </div>
-
+            <!-- Right Column -->
+            <div class="content-container-form">
+              <h2>Account Details</h2>
+              <div class="form-grid">
                 <div class="form-group">
-                  <label for="gender" class="form-label">Gender</label>
-                  <div class="gender-options">
-                    <div class="form-check">
-                      <input type="radio" id="male" name="gender" value="male" [(ngModel)]="newEmployee.gender"
-                        class="form-check-input" />
-                      <label for="male" class="form-check-label">Male</label>
-                    </div>
-                    <div class="form-check">
-                      <input type="radio" id="female" name="gender" value="female" [(ngModel)]="newEmployee.gender"
-                        class="form-check-input" />
-                      <label for="female" class="form-check-label">Female</label>
-                    </div>
-                  </div>
+                  <label for="firstname">First Name</label>
+                  <input type="text" id="firstname" name = "firstname"  [(ngModel)]="newEmployee.firstname" placeholder="Enter your first name" >
                 </div>
 
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name = "email" placeholder="Enter your email address" [(ngModel)] = "newEmployee.email">
-              </div>
+                <div class="form-group">
+                  <label for="lastname">Last Name</label>
+                  <input type="text" id="lastname" name = "lastname" [(ngModel)]="newEmployee.lastname" placeholder="Enter your last name">
+                </div>
 
-              <div class="form-group full-width">
-                <label for="skills">Skills</label>
-                <input type="text" id="skills" name = "skills" placeholder="Enter emp skills" [(ngModel)] = "newEmployee.skills">
-              </div>
+                  <div class="form-group">
+                    <label for="gender" class="form-label">Gender</label>
+                    <div class="gender-options">
+                      <div class="form-check">
+                        <input type="radio" id="male" name="gender" value="male" [(ngModel)]="newEmployee.gender"
+                          class="form-check-input" />
+                        <label for="male" class="form-check-label">Male</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="radio" id="female" name="gender" value="female" [(ngModel)]="newEmployee.gender"
+                          class="form-check-input" />
+                        <label for="female" class="form-check-label">Female</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="radio" id="other" name="gender" value="other" [(ngModel)]="newEmployee.gender"
+                          class="form-check-input" />
+                        <label for="other" class="form-check-label">Other</label>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name = "email" placeholder="Enter your email address" [(ngModel)] = "newEmployee.email">
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="skills">Skills</label>
+                  <input type="text" id="skills" name = "skills" placeholder="Enter emp skills" [(ngModel)] = "newEmployee.skills">
+                </div>
 
 
-              <div class="form-group">
-                  <label class="form-label" for="role">Assign Role <span style="color: red;">(*)</span></label>
-                  <select class="form-control" id="role" name="role" [(ngModel)]="newEmployee.role.id" required>
-                    <option *ngFor="let role of roles" [value]="role.id">
-                      {{ role.name }}
+                <div class="form-group">
+                    <label class="form-label" for="role">Assign Role <span style="color: red;">(*)</span></label>
+                    <select class="form-control" id="role" name="role" [(ngModel)]="newEmployee.role.id" required>
+                      <option *ngFor="let role of roles" [value]="role.id">
+                        {{ role.name }}
+                      </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="project">Assign Project <span style="color: red;">(*)</span></label>
+                  <select class="form-control" id="project" name="project" [(ngModel)]="newEmployee.project.id" required>
+                    <option *ngFor="let project of projects" [value]="project.id">
+                      {{ project.name }}
                     </option>
                   </select>
-              </div>
+                </div>
 
-              <div class="form-group">
-                <label class="form-label" for="project">Assign Project <span style="color: red;">(*)</span></label>
-                <select class="form-control" id="project" name="project" [(ngModel)]="newEmployee.project.id" required>
-                  <option *ngFor="let project of projects" [value]="project.id">
-                    {{ project.name }}
-                  </option>
-                </select>
-              </div>
+                <div classs = "form-group">
+                  <label for = "department" class = "form-label">Assign Team</label>
+                  <select class = "form-control" id = "department" name = "department" [(ngModel)] = "newEmployee.department.id" required>
+                    <option *ngFor="let department of departments" [value] = "department.id">
+                      {{department.name}}
+                    </option>
+                  </select>
+                </div>
 
-              <div classs = "form-group">
-                <label for = "department" class = "form-label">Assign Team</label>
-                <select class = "form-control" id = "department" name = "department" [(ngModel)] = "newEmployee.department.id" required>
-                  <option *ngFor="let department of departments" [value] = "department.id">
-                    {{department.name}}
-                  </option>
-                </select>
-              </div>
-
-              <div class = "form-group">
-                <label for = "password">Password</label>
-                <input type="password" id = "password" name = "password" [(ngModel)] = "newEmployee.password" required>
-              </div>
+                <div class = "form-group">
+                  <label for = "password">Password</label>
+                  <input type="password" id = "password" name = "password" [(ngModel)] = "newEmployee.password" required>
+                </div>
 
 
 
-              <!-- <div class="form-group full-width">
-                <label for="skills">Skills</label>
-                <input type="text" id="skills" placeholder="Enter acquired skills">
-              </div>
-              <div class="section">
-                <h3>Service Experience</h3>
-                <button class="bold-btn">Bold</button>
-                <textarea class="text-area"></textarea>
-              </div>
+                <!-- <div class="form-group full-width">
+                  <label for="skills">Skills</label>
+                  <input type="text" id="skills" placeholder="Enter acquired skills">
+                </div>
+                <div class="section">
+                  <h3>Service Experience</h3>
+                  <button class="bold-btn">Bold</button>
+                  <textarea class="text-area"></textarea>
+                </div>
 
-              <div class="section">
-                <h3>Education & Qualification</h3>
-                <button class="bold-btn">Bold</button>
-                <textarea class="text-area"></textarea>
-              </div>
+                <div class="section">
+                  <h3>Education & Qualification</h3>
+                  <button class="bold-btn">Bold</button>
+                  <textarea class="text-area"></textarea>
+                </div>
 
-              <div class="section">
-                <h3>Selected Industries/Domains</h3>
-                <button class="bold-btn">Bold</button>
-                <textarea class="text-area"></textarea>
-              </div> -->
+                <div class="section">
+                  <h3>Selected Industries/Domains</h3>
+                  <button class="bold-btn">Bold</button>
+                  <textarea class="text-area"></textarea>
+                </div> -->
 
-              <div class="button-group">
-                <button class="create-btn"  type="submit" id="submit" name = "submit">Create</button>
-                <button class="cancel-btn" [routerLink]="['/dashboard/employee']">Cancel</button>
+                <div class="button-group">
+                  <button class="create-btn"  type="submit" id="submit" name = "submit">Create</button>
+                  <button class="cancel-btn" [routerLink]="['/dashboard/employee']">Cancel</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+
+</ng-template>

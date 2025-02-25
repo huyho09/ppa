@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EmployeeIndexComponent } from "../components/employee/employee-index/employee-index.component";
+import { ProjectIndexComponent } from "../components/project/project-index/project-index.component";
 
 interface UploadResponse {
   message: string;
@@ -12,7 +13,7 @@ interface UploadResponse {
 @Component({
   selector: 'app-department-describe',
   standalone: true,
-  imports: [FormsModule, CommonModule, EmployeeIndexComponent],
+  imports: [FormsModule, CommonModule, EmployeeIndexComponent, ProjectIndexComponent],
   templateUrl: './department-describe.component.html',
   styleUrl: './department-describe.component.scss'
 })
@@ -20,6 +21,7 @@ interface UploadResponse {
 export class DepartmentDescribeComponent implements OnInit{
 
   pictures: string[] = []
+  isVertical: boolean = false;
 
   constructor(private http : HttpClient){}
 
@@ -39,8 +41,10 @@ export class DepartmentDescribeComponent implements OnInit{
     }
   }
 
+  toggleVericalSlide() {
+    this.isVertical = ! this.isVertical;
+  }
   ngOnInit(): void {
-      this.deleteSlide()
   }
 
   deleteSlide(){

@@ -45,7 +45,7 @@ interface Customer {
 interface ProjectEmployee {
   employeeId: string;
   role_in_project: string;
-  task: string; 
+  task: string;
   effort: number;
 }
 
@@ -86,7 +86,7 @@ export class ProjectServiceService {
       const endDate = new Date(project.project_end_date)
       project.project_end_date = endDate.getTime().toString()
     }
-  
+
     return this.http.post<Project>(this.apiUrl, project)
   }
 
@@ -105,10 +105,11 @@ export class ProjectServiceService {
     return this.http.patch(api_url,updatedProject)
 
   }
-  
-  deleteProjectWithApiCall(id : string)
+
+  deleteProjectWithApiCall(id: string): Observable<any>
   {
-    return this.http.delete(`${this.apiUrl}/${id}`)
+   const api_url = this.apiUrl + '/' +id
+   return this.http.delete(api_url)
   }
 
   //With Local Storage

@@ -1,13 +1,11 @@
 <div class="card-body" style="background-color: whitesmoke">
 
   <!-- Collapse Arrow Button -->
-  <div class="row">
     <div class="col-12 col-md-4">
       <button class="collapse-arrow" (click)="toggleSearchBar()">
         <i [ngClass]="isSearchCollapsed ? 'fas fa-chevron-down' : 'fas fa-chevron-up'"></i>
       </button>
     </div>
-  </div>
 
   <!-- Search and Filter Section -->
   <div class="search-filter-container" [@slideInOut]="isSearchCollapsed ? 'collapsed' : 'expanded'">
@@ -64,7 +62,7 @@
   </div>
 
   <!-- Employee Cards Display -->
-  <div class="row" [ngClass]="{'filter-active': isFilterVisible}" style="overflow-x: auto;">
+  <div  class = "row" [ngClass]="{'filter-active': isFilterVisible}">
     <div class="col-12 col-md-4 mb-4" *ngFor="let employee of filterEmployee()">
       <div class="card">
         <div class="card-body">
@@ -93,9 +91,9 @@
 
             <!-- Avatar -->
             <div class="col-12 col-md-4 employee-image">
-              <img 
-                src="http://localhost:3000/upload-picture/{{employee.avatar}}" 
-                alt="Employee Avatar" 
+              <img
+                src="http://localhost:3000/upload-picture/{{employee.avatar}}"
+                alt="Employee Avatar"
                 class="avatar"
               />
             </div>

@@ -11,11 +11,6 @@
   text-overflow: ellipsis;
   width: 200px;
 }
-
-.fixed-width-table th, .fixed-width-table td {
-  width: 300px;
-  overflow: hidden; /* Ensures text does not overflow */
-}
 .form-popup {
   display: none;
   position: fixed;
@@ -42,18 +37,3 @@
   display: block;
 }
 
-.picture-container {
-  background-color: #F2D2BD;
-  height: 350px;
-  margin-left: 220px;
-  padding-top: 50px;
-}
-
-.chart-container {
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  display: block;
-  padding-bottom: 30px;
-  padding-left: 10px;
-}

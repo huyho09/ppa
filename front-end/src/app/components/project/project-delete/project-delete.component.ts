@@ -71,16 +71,12 @@ export class ProjectDeleteComponent implements OnInit
       const id = this.route.snapshot.paramMap.get('id')
       if (id)
       {
-        const deleteProject = this.projectService.getProjectById(id)
-        if (deleteProject)
-        {
-          this.project = deleteProject
-          this.projectService.deleteProject(deleteProject.id).subscribe(
-            () => {
-              this.router.navigate(['/dashboard/project'])
-            }
-          )
-        }
+        this.projectService.deleteProjectWithApiCall(id).subscribe(
+         ()=> {
+          this.router.navigate(['/dashboard/project'])
+         }
+        )
+
       }
   }
 

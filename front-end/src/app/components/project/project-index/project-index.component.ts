@@ -51,6 +51,7 @@ interface Customer {
 @Component({
   selector: 'app-project-index',
   imports: [FormsModule,CommonModule,RouterModule],
+  standalone: true,
   templateUrl: './project-index.component.html',
   styleUrl: './project-index.component.scss'
 })
@@ -66,6 +67,7 @@ export class ProjectIndexComponent implements OnInit {
   departments : Department[] = [];
   customerProject: string = '';
   departmentProject: string = '';
+  searchText: string = '';
 
   constructor(
     private projectService: ProjectServiceService,
@@ -79,10 +81,10 @@ export class ProjectIndexComponent implements OnInit {
             ...project,
             createdAt: new Date(Number(project.project_start_date)).toLocaleDateString(),
             endAt: new Date(Number(project.project_end_date)).toLocaleDateString()
-            
+
           }))
         }
-        
+
       )
       this.customerService.getCustomersWithApiCall().subscribe(
         (customersData) => {
@@ -94,6 +96,26 @@ export class ProjectIndexComponent implements OnInit {
           this.departments = departmentsData
         }
       )
+  }
+  filterProject(): Project[] {
+    return this.projects.filter(project => {
+      const searchMatch = this.isProjectMatch(project, this.searchText.toLowerCase().trim());
+      return searchMatch
+    });
+  }
+  isProjectMatch(project: Project, search: string): boolean {
+    if (!search) return true;
+    for (let key in project) {
+      const value =  project [key as keyof Project];
+      if (typeof value === 'string' && value.toLowerCase().includes(search)) {
+        return true;
+      } else if (Array.isArray(value)) {
+        if (value.some(item => typeof(item) === 'string' && item.toLowerCase().includes(search))) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
 showForm(requirements: string) : void{

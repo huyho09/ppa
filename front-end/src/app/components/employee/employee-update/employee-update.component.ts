@@ -66,6 +66,8 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
   avatarFile: File | null = null;
   avatarPreview: string | null = null;
   avatarPreviewEp: string | null = null;
+  user: any = {}
+  isUserAuthorize: boolean = false;
 
   passwordRepeat: string ='';
 
@@ -93,6 +95,16 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     }
   }
 
+  validateUser(){
+    const userData = sessionStorage.getItem('User');
+    if(userData)
+    {
+      this.user = JSON.parse(userData)
+      return true
+    }
+    return false
+  }
+
   onFileSelectEP(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
@@ -111,17 +123,25 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     this.loadProject();
     this.loadDepartment();
     this.loadRole();
+    this.validateUser();
+    console.log(this.user);
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.employeeService.getEmployeeWithApiCall(id).subscribe(
-        (data) => {
-          this.employee = data;
-          if (!this.employee.project) {
-            this.employee.project = {id: '', name: ''};
+    if (id){
+      if (this.user.sub.role.privilege === 'user' && this.user.sub.id !== id){
+        this.handleUnauthorizedAccess()
+      }
+      else{
+        this.isUserAuthorize = true;
+        this.employeeService.getEmployeeWithApiCall(id).subscribe(
+          (data) => {
+            this.employee = data;
+            if (!this.employee.project){
+              this.employee.project = {id: '',name: ''};
+            }
+            this.id = id
           }
-          this.id = id;
-        }
-      );
+        )
+      }
     }
   }
 
@@ -161,5 +181,10 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
         this.departments = departmentData;
       }
     );
+  }
+
+  handleUnauthorizedAccess():void {
+    console.log("Unauthorized-401");
+    this.router.navigate([])
   }
 }

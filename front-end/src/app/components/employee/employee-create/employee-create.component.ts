@@ -1,7 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { asNativeElements, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EmployeeServiceService } from '../service/employee-service.service';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { APP_BASE_HREF, CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { ProjectServiceService } from '../../project/service/project-service.service';
 import { HttpClient } from '@angular/common/http';
@@ -63,6 +63,7 @@ export class EmployeeCreateComponent implements OnInit {
   };
   avatarFile: File | null = null;
   avatarPreview: string |null = null
+  user:any = {};
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
@@ -76,6 +77,11 @@ export class EmployeeCreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    const userData = sessionStorage.getItem('User')
+    if(userData){
+      this.user = JSON.parse(userData)
+    }
     this.projectService.getProjectsWithApiCall().subscribe((projectsData) => {
       this.projects = projectsData;
     });

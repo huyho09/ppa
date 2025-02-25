@@ -30,22 +30,31 @@ export class EmployeeDeleteComponent {
     role: '',
     is_admin: false,
   }
+  user: any = {};
   constructor(
     private employeeService: EmployeeServiceService,
     private route: ActivatedRoute,
     private router: Router,
   ){}
   ngOnInit(): void {
+    const userData = sessionStorage.getItem('User');
+    if (userData){
+      this.user = JSON.parse(userData)
+    }
     const id = this.route.snapshot.paramMap.get('id');
-    if(id)
+    if(id && this.user.sub.role.privilege === 'SuperAdmin')
     {
       this.employeeService.deleteEmployeeWithApiCall(id).subscribe(
         () => {
           this.router.navigate(['/dashboard/employee'])
         }
       )
+    }
+    else {
+      alert("You Don't Have Permission")
+      return;
+    }
+    }
 
-    }
-    }
 
 }
