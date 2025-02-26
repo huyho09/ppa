@@ -31,6 +31,9 @@ export class CreateEmployeeDto {
     @IsOptional()
     departmentId?: string;
 
+    @IsString()
+    joinDate: string;
+
     @IsOptional()
     roleId?: string;
     

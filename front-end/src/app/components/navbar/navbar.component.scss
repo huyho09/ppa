@@ -4,12 +4,13 @@
   color: #f08e8e;
   padding: 15px;
   font-family: Arial, sans-serif;
-  width: 200px;
   transition: width 0.3s ease;
   overflow: hidden;
   position: fixed;
   left: 0;
   top: 0;
+  font-size: 20px;
+  font-weight: 200;
 
   &.collapsed {
     width: 60px;
@@ -114,7 +115,7 @@
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     opacity: 0;
     padding-left: 10px;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: bolder;
 
     &.show {

@@ -8,6 +8,7 @@ interface Employee {
   lastname: string;
   email: string;
   birthday: string;
+  joinDate:string;
   skills: string;
   role: string;
   is_admin: boolean;
@@ -26,6 +27,7 @@ export class EmployeeDeleteComponent {
     lastname: '',
     email: '',
     birthday: '',
+    joinDate: '',
     skills: '',
     role: '',
     is_admin: false,

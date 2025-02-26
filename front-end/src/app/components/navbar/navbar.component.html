@@ -59,38 +59,14 @@
     </div>
   </div>
   <br>
-  <div>
+  <div *ngIf="validatePrivilege()">
     <a class="menu-header" (click)="toggleSubmenu('customer')"><i class="bi bi-people-fill"></i>
       <span *ngIf="!isCollapsed">Customer</span>
     </a>
     <div class="submenu" [class.show]="activeMenu === 'customer'" *ngIf="!isCollapsed">
       <a [routerLink]="['/dashboard/customer']"><i class="bi bi-person-circle"></i> Our Customer</a>
-      <div *ngIf="validatePrivilege()">
         <a  [routerLink]="['/dashboard/customer/create']"><i class="bi bi-person-add"></i> Create Customer</a>
-      </div>
     </div>
-  </div>
-  <br>
-  <div>
-    <a class="menu-header" (click)="toggleSubmenu('docs')"><i class="bi bi-file-text-fill"></i>
-      <span *ngIf="!isCollapsed">My Docs</span>
-    </a>
-    <div class="submenu" [class.show]="activeMenu === 'docs'" *ngIf="!isCollapsed">
-      <a [routerLink]="['/dashboard/docs/sql']"><i class="bi bi-file-earmark-word-fill"></i> SQL Docs</a>
-      <a [routerLink]="['/dashboard/docs/node']"><i class="bi bi-file-earmark-word-fill"></i> Node Docs</a>
-    </div>
-  </div>
-  <br>
-  <div>
-    <a class="menu-header"><i class="bi bi-patch-question-fill"></i>
-      <span *ngIf="!isCollapsed">Help</span>
-    </a>
-  </div>
-  <br>
-  <div>
-    <a class="menu-header"><i class="bi bi-bell-fill"></i>
-      <span *ngIf="!isCollapsed">Release Note</span>
-    </a>
   </div>
   <br>
 </div>

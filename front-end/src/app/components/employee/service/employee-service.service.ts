@@ -12,6 +12,7 @@ interface Employee {
   aboutMe:string;
   gender: string;
   email: string;
+  joinDate:string;
   password:string;
   skills: string[];
   role: {id: string, name: string, privilege: Privilege };
@@ -47,12 +48,27 @@ export class EmployeeServiceService {
 
  createEmployeeWithApiCall(employee: Employee): Observable<any>{
   employee.id = uuidv4()
-  console.log(employee.avatar)
+  if (employee.joinDate)
+  {
+    const joinDate = new Date(employee.joinDate)
+    employee.joinDate = joinDate.getTime().toString()
+  }
   return this.http.post(this.apiUrl,employee)
  }
 
  updateEmployeeWithApiCall(id:string, updatedEmployee: Employee): Observable<any>{
-  const api_url = this.apiUrl + '/' +id
+  const api_url = `${this.apiUrl}/${id}`;
+  console.log ("URL is ",api_url)
+  if (updatedEmployee.joinDate)
+  {
+    const joinDate = new Date (updatedEmployee.joinDate)
+    if (!isNaN(joinDate.getTime())) {
+      updatedEmployee.joinDate = joinDate.getTime().toString()
+    }
+    else {
+      console.log('Invalid Join Date: ',updatedEmployee.joinDate)
+    }
+  }
   return this.http.patch(api_url,updatedEmployee)
  }
 

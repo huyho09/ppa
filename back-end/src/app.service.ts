@@ -23,13 +23,14 @@ export class AppService implements OnModuleInit {
       const roleId = uuidv4();
       const employeeId = uuidv4();
       const hashedPassword = '$2b$10$AtwWZHVE6Pw3c/j4RD1CKec2LPYk1hAyNNLsdAEFWFRFOU9.PtdlS'; // Pre-hashed password
+      const joinDate = '1644019200000'
 
       await this.roleRepository.query(
         `INSERT INTO role (id, name, privilege) VALUES ('${roleId}', 'DH', 'SuperAdmin')`
       );
 
       await this.employeeRepository.query(
-        `INSERT INTO employee (id, firstname, lastname, gender, avatar, email, skills, password, roleId) VALUES ('${employeeId}', 'John', 'Cena', 'Male', '0c6950a918ee71fd3ad2a2ed45dbf3cc', 'admin@example.com','Angular,Html,CSS','${hashedPassword}', '${roleId}')`
+        `INSERT INTO employee (id, firstname, lastname, gender, avatar, email, skills, password, roleId, joinDate) VALUES ('${employeeId}', 'John', 'Cena', 'Male', '0c6950a918ee71fd3ad2a2ed45dbf3cc', 'admin@example.com','Angular,Html,CSS','${hashedPassword}', '${roleId}', '${joinDate}')`
       );
     }
   }

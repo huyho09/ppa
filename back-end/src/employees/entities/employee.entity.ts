@@ -24,6 +24,9 @@ export class Employee {
     @Column('varchar',{length: 255, unique: true, nullable: false })
     email: string
 
+    @Column({ type: 'text',nullable: true })
+    joinDate: string;
+    
     @Column('simple-array')
     skills: string[]
 

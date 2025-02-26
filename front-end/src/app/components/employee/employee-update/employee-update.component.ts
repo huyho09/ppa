@@ -14,6 +14,7 @@ interface Employee {
   firstname: string;
   lastname: string;
   aboutMe:string;
+  joinDate:string;
   gender: string;
   email: string;
   password:string;
@@ -53,6 +54,7 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     firstname: '',
     lastname: '',
     gender: '',
+    joinDate: '',
     aboutMe: '',
     email: '',
     skills: [],
@@ -135,6 +137,13 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
         this.employeeService.getEmployeeWithApiCall(id).subscribe(
           (data) => {
             this.employee = data;
+            console.log("Employee Join Date is : ",this.employee.joinDate)
+            if (this.employee.joinDate)
+            {
+              this.employee.joinDate = new Date(Number(this.employee.joinDate)).toISOString().split('T')[0];
+
+            }
+            console.log("Employee join Date after convert to string is : ",this.employee.joinDate)
             if (!this.employee.project){
               this.employee.project = {id: '',name: ''};
             }
@@ -154,7 +163,8 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     //   return
     // }
     this.employeeService.updateEmployeeWithApiCall(this.id, this.employee).subscribe(
-      (data) => {
+      (data : Employee) => {
+        console.log("join Date is : ",data.joinDate)
         this.router.navigate(['/dashboard/employee']);
       }
     );

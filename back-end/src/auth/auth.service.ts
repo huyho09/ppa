@@ -42,7 +42,6 @@ export class AuthService {
                 lastname: user.lastname,
                 skills: user.skills,
                 role: user.role,
-                is_admin: user.is_admin
             }
         };
         return {

@@ -36,6 +36,7 @@ export class UploadPictureService {
       };
     }
 
+
     fs.readFileSync(filePath);
     return {
       message: 'File uploaded successfully',

@@ -15,6 +15,7 @@ interface Employee {
   lastname: string;
   gender: string;
   email: string;
+  joinDate:string;
   skills: string[];
   role: {name: string; id: string; privilege: Privilege};
   is_admin: boolean;
@@ -61,6 +62,9 @@ export class EmployeeIndexComponent implements OnInit {
 
   isSearchCollapsed: boolean = false;
 
+  isTableView: boolean = false;
+
+
 
   constructor(private employeeService: EmployeeServiceService) {}
 
@@ -72,6 +76,7 @@ export class EmployeeIndexComponent implements OnInit {
     }
     this.employeeService.getEmployeesWithApiCall().subscribe((data: Employee[]) => {
       this.employees = data;
+      console.log("User Info: ",this.employees)
 
       // Extract unique roles, projects, and teams with proper type handling
       this.uniqueRoles = [...new Set(this.employees.map(e => e.role.name))];
@@ -90,6 +95,9 @@ export class EmployeeIndexComponent implements OnInit {
     this.isFilterVisible = !this.isFilterVisible;
   }
 
+  toggleTableView():void {
+    this.isTableView = !this.isTableView;
+  }
   toggleSearchBar() {
     this.isSearchCollapsed = !this.isSearchCollapsed;
   }

@@ -63,7 +63,7 @@ import { Role } from './role/entities/role.entity';
         database: 'database.sqlite',
         entities: [Project, Department, Customer, Employee, Role],
         synchronize: configService.get<boolean>('DB_SYNC', true),
-        logging: true,
+        logging: false,
       }),
     }),
     TypeOrmModule.forFeature([Employee,Role]),
