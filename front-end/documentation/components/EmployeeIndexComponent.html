@@ -1,0 +1,2070 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ppwa-frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ppwa-frontend documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EmployeeIndexComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/employee/employee-index/employee-index.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-employee-index</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>RouterModule</code>
+                            <code>FormsModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./employee-index.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./employee-index.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeDropdown" >activeDropdown</a>
+                            </li>
+                            <li>
+                                <a href="#employees" >employees</a>
+                            </li>
+                            <li>
+                                <a href="#isFilterVisible" >isFilterVisible</a>
+                            </li>
+                            <li>
+                                <a href="#isSearchCollapsed" >isSearchCollapsed</a>
+                            </li>
+                            <li>
+                                <a href="#isTableView" >isTableView</a>
+                            </li>
+                            <li>
+                                <a href="#searchText" >searchText</a>
+                            </li>
+                            <li>
+                                <a href="#selectedDepartment" >selectedDepartment</a>
+                            </li>
+                            <li>
+                                <a href="#selectedProject" >selectedProject</a>
+                            </li>
+                            <li>
+                                <a href="#selectedRole" >selectedRole</a>
+                            </li>
+                            <li>
+                                <a href="#uniqueProjects" >uniqueProjects</a>
+                            </li>
+                            <li>
+                                <a href="#uniqueRoles" >uniqueRoles</a>
+                            </li>
+                            <li>
+                                <a href="#uniqueTeams" >uniqueTeams</a>
+                            </li>
+                            <li>
+                                <a href="#user" >user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filterEmployee" >filterEmployee</a>
+                            </li>
+                            <li>
+                                <a href="#isEmployeeMatch" >isEmployeeMatch</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#toggleDropdown" >toggleDropdown</a>
+                            </li>
+                            <li>
+                                <a href="#toggleFilterPanel" >toggleFilterPanel</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSearchBar" >toggleSearchBar</a>
+                            </li>
+                            <li>
+                                <a href="#toggleTableView" >toggleTableView</a>
+                            </li>
+                            <li>
+                                <a href="#updateFilter" >updateFilter</a>
+                            </li>
+                            <li>
+                                <a href="#validateUserPrivilege" >validateUserPrivilege</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(employeeService: <a href="../injectables/EmployeeServiceService.html" target="_self">EmployeeServiceService</a>, roleService: <a href="../injectables/RoleServiceService.html" target="_self">RoleServiceService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:65</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>employeeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/EmployeeServiceService.html" target="_self" >EmployeeServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>roleService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RoleServiceService.html" target="_self" >RoleServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterEmployee"></a>
+                    <span class="name">
+                        <span ><b>filterEmployee</b></span>
+                        <a href="#filterEmployee"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterEmployee()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:142</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Employee[]</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isEmployeeMatch"></a>
+                    <span class="name">
+                        <span ><b>isEmployeeMatch</b></span>
+                        <a href="#isEmployeeMatch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isEmployeeMatch(employee: <a href="../interfaces/Employee.html" target="_self">Employee</a>, search: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>employee</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Employee.html" target="_self" >Employee</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>search</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleDropdown"></a>
+                    <span class="name">
+                        <span ><b>toggleDropdown</b></span>
+                        <a href="#toggleDropdown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleDropdown(dropdown: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>dropdown</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleFilterPanel"></a>
+                    <span class="name">
+                        <span ><b>toggleFilterPanel</b></span>
+                        <a href="#toggleFilterPanel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleFilterPanel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSearchBar"></a>
+                    <span class="name">
+                        <span ><b>toggleSearchBar</b></span>
+                        <a href="#toggleSearchBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSearchBar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleTableView"></a>
+                    <span class="name">
+                        <span ><b>toggleTableView</b></span>
+                        <a href="#toggleTableView"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleTableView()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateFilter"></a>
+                    <span class="name">
+                        <span ><b>updateFilter</b></span>
+                        <a href="#updateFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateFilter(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateUserPrivilege"></a>
+                    <span class="name">
+                        <span ><b>validateUserPrivilege</b></span>
+                        <a href="#validateUserPrivilege"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateUserPrivilege()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:169</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeDropdown"></a>
+                    <span class="name">
+                        <span ><b>activeDropdown</b></span>
+                        <a href="#activeDropdown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="employees"></a>
+                    <span class="name">
+                        <span ><b>employees</b></span>
+                        <a href="#employees"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Employee[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isFilterVisible"></a>
+                    <span class="name">
+                        <span ><b>isFilterVisible</b></span>
+                        <a href="#isFilterVisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSearchCollapsed"></a>
+                    <span class="name">
+                        <span ><b>isSearchCollapsed</b></span>
+                        <a href="#isSearchCollapsed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isTableView"></a>
+                    <span class="name">
+                        <span ><b>isTableView</b></span>
+                        <a href="#isTableView"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchText"></a>
+                    <span class="name">
+                        <span ><b>searchText</b></span>
+                        <a href="#searchText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedDepartment"></a>
+                    <span class="name">
+                        <span ><b>selectedDepartment</b></span>
+                        <a href="#selectedDepartment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedProject"></a>
+                    <span class="name">
+                        <span ><b>selectedProject</b></span>
+                        <a href="#selectedProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedRole"></a>
+                    <span class="name">
+                        <span ><b>selectedRole</b></span>
+                        <a href="#selectedRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uniqueProjects"></a>
+                    <span class="name">
+                        <span ><b>uniqueProjects</b></span>
+                        <a href="#uniqueProjects"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uniqueRoles"></a>
+                    <span class="name">
+                        <span ><b>uniqueRoles</b></span>
+                        <a href="#uniqueRoles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uniqueTeams"></a>
+                    <span class="name">
+                        <span ><b>uniqueTeams</b></span>
+                        <a href="#uniqueTeams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/employee/employee-index/employee-index.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { EmployeeServiceService } from &#x27;../service/employee-service.service&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { RouterModule } from &#x27;@angular/router&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Privilege, RoleServiceService } from &#x27;../../role/service/role-service.service&#x27;;
+import { trigger, state, style, transition, animate } from &#x27;@angular/animations&#x27;;
+
+
+
+interface Employee {
+  id: string;
+  avatar: string;
+  firstname: string;
+  lastname: string;
+  gender: string;
+  email: string;
+  joinDate:string;
+  skills: string[];
+  role: {name: string; id: string; privilege: Privilege};
+  is_admin: boolean;
+  project: { name: string; id: string } | null;
+  department: { name: string; id: string } | null;
+}
+
+@Component({
+  selector: &#x27;app-employee-index&#x27;,
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule],
+  templateUrl: &#x27;./employee-index.component.html&#x27;,
+  styleUrls: [&#x27;./employee-index.component.scss&#x27;],
+  animations: [
+    trigger(&#x27;slideInOut&#x27;, [
+      state(&#x27;expanded&#x27;, style({
+        width: &#x27;*&#x27;,
+        opacity: 1
+      })),
+      state(&#x27;collapsed&#x27;, style({
+        width: &#x27;0px&#x27;,
+        opacity: 0
+      })),
+      transition(&#x27;expanded &lt;&#x3D;&gt; collapsed&#x27;, [
+        animate(&#x27;300ms ease-in-out&#x27;)
+      ])
+    ])
+  ]
+})
+export class EmployeeIndexComponent implements OnInit {
+  employees: Employee[] &#x3D; [];
+  user: any &#x3D; {}
+  searchText: string &#x3D; &#x27;&#x27;;
+  isFilterVisible: boolean &#x3D; false;
+  activeDropdown: string | null &#x3D; null;
+
+  selectedRole: string[] &#x3D; [];
+  selectedProject: string[] &#x3D; [];
+  selectedDepartment: string[] &#x3D; [];
+
+  uniqueRoles: string[] &#x3D; [];
+  uniqueProjects: string[] &#x3D; [];
+  uniqueTeams: string[] &#x3D; [];
+
+  isSearchCollapsed: boolean &#x3D; false;
+
+  isTableView: boolean &#x3D; false;
+
+
+
+  constructor(
+    private employeeService: EmployeeServiceService,
+    private roleService: RoleServiceService,
+  ) {}
+
+  ngOnInit(): void {
+    const user_data &#x3D; sessionStorage.getItem(&#x27;User&#x27;)
+    if (user_data)
+    {
+      this.user &#x3D; JSON.parse(user_data)
+    }
+    this.employeeService.getEmployeesWithApiCall().subscribe((data: Employee[]) &#x3D;&gt; {
+      this.employees &#x3D; data;
+      console.log(&quot;User Info: &quot;,this.employees)
+
+      // Extract unique roles, projects, and teams with proper type handling
+      this.uniqueRoles &#x3D; [...new Set(this.employees.map(e &#x3D;&gt; e.role.name))];
+
+      this.uniqueProjects &#x3D; [
+        ...new Set(this.employees.map(e &#x3D;&gt; e.project?.name).filter(Boolean) as string[]),
+      ];
+
+      this.uniqueTeams &#x3D; [
+        ...new Set(this.employees.map(e &#x3D;&gt; e.department?.name).filter(Boolean) as string[]),
+      ];
+    });
+  }
+
+  toggleFilterPanel(): void {
+    this.isFilterVisible &#x3D; !this.isFilterVisible;
+  }
+
+  toggleTableView():void {
+    this.isTableView &#x3D; !this.isTableView;
+  }
+  toggleSearchBar() {
+    this.isSearchCollapsed &#x3D; !this.isSearchCollapsed;
+  }
+
+  toggleDropdown(dropdown: string): void {
+    this.activeDropdown &#x3D; this.activeDropdown &#x3D;&#x3D;&#x3D; dropdown ? null : dropdown;
+  }
+
+  // Update selected filters (multiple selection allowed for role, project, department)
+  updateFilter(type: string, value: string): void {
+    switch (type) {
+      case &#x27;role&#x27;:
+        const roleIndex &#x3D; this.selectedRole.indexOf(value);
+        if (roleIndex &#x3D;&#x3D;&#x3D; -1) {
+          this.selectedRole.push(value);
+        } else {
+          this.selectedRole.splice(roleIndex, 1);
+        }
+        break;
+      case &#x27;project&#x27;:
+        const projectIndex &#x3D; this.selectedProject.indexOf(value);
+        if (projectIndex &#x3D;&#x3D;&#x3D; -1) {
+          this.selectedProject.push(value);
+        } else {
+          this.selectedProject.splice(projectIndex, 1);
+        }
+        break;
+      case &#x27;team&#x27;:
+        const teamIndex &#x3D; this.selectedDepartment.indexOf(value);
+        if (teamIndex &#x3D;&#x3D;&#x3D; -1) {
+          this.selectedDepartment.push(value);
+        } else {
+          this.selectedDepartment.splice(teamIndex, 1);
+        }
+        break;
+    }
+  }
+
+  filterEmployee(): Employee[] {
+    return this.employees.filter(employee &#x3D;&gt; {
+      const searchMatch &#x3D; this.isEmployeeMatch(employee, this.searchText.toLowerCase().trim());
+      const roleMatch &#x3D; this.selectedRole.length ? this.selectedRole.includes(employee.role.name) : true;
+      const projectMatch &#x3D; this.selectedProject.length ? this.selectedProject.includes(employee.project?.name || &#x27;&#x27;) : true;
+      const departmentMatch &#x3D; this.selectedDepartment.length ? this.selectedDepartment.includes(employee.department?.name || &#x27;&#x27;) : true;
+
+      return searchMatch &amp;&amp; roleMatch &amp;&amp; projectMatch &amp;&amp; departmentMatch;
+    });
+  }
+
+  isEmployeeMatch(employee: Employee, search: string): boolean {
+    if (!search) return true;
+
+    for (let key in employee) {
+      const value &#x3D; employee[key as keyof Employee];
+      if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; value.toLowerCase().includes(search)) {
+        return true;
+      } else if (Array.isArray(value)) {
+        if (value.some(item &#x3D;&gt; item.toLowerCase().includes(search))) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  validateUserPrivilege() {
+    if (this.user.sub.role.privilege &#x3D;&#x3D;&#x3D; &quot;user&quot;)
+    {
+      return false
+    }
+    return true
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">
+&lt;div class&#x3D;&quot;card-body&quot; style&#x3D;&quot;background-color: whitesmoke&quot;&gt;
+
+  &lt;div class&#x3D;&quot;d-flex flex-row&quot;&gt;
+    &lt;div class&#x3D;&quot;p-2&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;p-2&quot;&gt;
+      &lt;button class&#x3D;&quot;collapse-arrow&quot; (click)&#x3D;&quot;toggleSearchBar()&quot;&gt;
+        &lt;i [ngClass]&#x3D;&quot;isSearchCollapsed ? &#x27;fas fa-chevron-down&#x27; : &#x27;fas fa-chevron-up&#x27;&quot;&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;br&gt;&lt;br&gt;
+  &lt;!-- Search and Filter Section --&gt;
+  &lt;div class&#x3D;&quot;search-filter-container&quot; [@slideInOut]&#x3D;&quot;isSearchCollapsed ? &#x27;collapsed&#x27; : &#x27;expanded&#x27;&quot;&gt;
+    &lt;!-- Search Bar --&gt;
+    &lt;div class&#x3D;&quot;search-bar&quot; *ngIf&#x3D;&quot;!isSearchCollapsed&quot;&gt;
+      &lt;input type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;searchText&quot; placeholder&#x3D;&quot;Search...&quot; /&gt;
+      &lt;button class&#x3D;&quot;search-icon&quot;&gt;&lt;i class&#x3D;&quot;fas fa-search&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;button class&#x3D;&quot;filter-button&quot; (click)&#x3D;&quot;toggleFilterPanel()&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-filter&quot;&gt;&lt;/i&gt; Filter
+      &lt;/button&gt;
+      &lt;div *ngIf&#x3D;&quot;isTableView else cardViewIcon&quot;&gt;
+        &lt;button class&#x3D;&quot;filter-button&quot; (click)&#x3D;&quot;toggleTableView()&quot;&gt;&lt;i class&#x3D;&quot;bi bi-table&quot;&gt;&lt;/i&gt; Table&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;ng-template #cardViewIcon&gt;
+        &lt;button class&#x3D;&quot;filter-button&quot; (click)&#x3D;&quot;toggleTableView()&quot;&gt;&lt;i class&#x3D;&quot;bi bi-card-heading&quot;&gt;&lt;/i&gt; Card&lt;/button&gt;
+      &lt;/ng-template&gt;
+
+
+    &lt;/div&gt;
+
+    &lt;!-- Filter Panel --&gt;
+    &lt;div class&#x3D;&quot;filter-panel&quot; *ngIf&#x3D;&quot;isFilterVisible&quot;&gt;
+      &lt;div class&#x3D;&quot;filter-section&quot;&gt;
+
+          &lt;div class&#x3D;&quot;filter-group&quot;&gt;
+              &lt;h4&gt;Role&lt;/h4&gt;
+              &lt;div class&#x3D;&quot;dropdown-content scrollable&quot;&gt;
+                  &lt;div *ngFor&#x3D;&quot;let role of uniqueRoles&quot; (click)&#x3D;&quot;updateFilter(&#x27;role&#x27;, role)&quot;&gt;
+                      &lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;selectedRole.includes(role)&quot; /&gt; {{ role }}
+                  &lt;/div&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;filter-group&quot;&gt;
+              &lt;h4&gt;Projects&lt;/h4&gt;
+              &lt;div class&#x3D;&quot;dropdown-content scrollable&quot;&gt;
+                  &lt;div *ngFor&#x3D;&quot;let project of uniqueProjects&quot; (click)&#x3D;&quot;updateFilter(&#x27;project&#x27;, project)&quot;&gt;
+                      &lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;selectedProject.includes(project)&quot; /&gt; {{ project }}
+                  &lt;/div&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;filter-group&quot;&gt;
+              &lt;h4&gt;Teams&lt;/h4&gt;
+              &lt;div class&#x3D;&quot;dropdown-content scrollable&quot;&gt;
+                  &lt;div *ngFor&#x3D;&quot;let team of uniqueTeams&quot; (click)&#x3D;&quot;updateFilter(&#x27;team&#x27;, team)&quot;&gt;
+                      &lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;selectedDepartment.includes(team)&quot; /&gt; {{ team }}
+                  &lt;/div&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Title --&gt;
+  &lt;div style&#x3D;&quot;text-align: center;&quot;&gt;
+    &lt;h1 style&#x3D;&quot;color: black;&quot;&gt;Our People&lt;/h1&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Employee Cards Display --&gt;
+  &lt;div class&#x3D;&quot;row&quot; [ngClass]&#x3D;&quot;{&#x27;filter-active&#x27;: isFilterVisible}&quot; *ngIf&#x3D;&quot;this.isTableView else cardView&quot;&gt;
+    &lt;div class&#x3D;&quot;col-12 col-md-4 mb-4&quot; *ngFor&#x3D;&quot;let employee of filterEmployee()&quot;&gt;
+      &lt;div class&#x3D;&quot;card&quot;&gt;
+        &lt;div class&#x3D;&quot;card-body&quot;&gt;
+
+          &lt;!-- Employee Skills --&gt;
+          &lt;div class&#x3D;&quot;div-em-skill&quot;&gt;
+            &lt;ul&gt;
+              &lt;li *ngFor&#x3D;&quot;let skill of employee.skills&quot; class&#x3D;&quot;skill-item&quot;&gt;{{ skill.trim() }}&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Employee Name --&gt;
+          &lt;div *ngIf&#x3D;&quot;validateUserPrivilege(); else cantclickName&quot;&gt;
+            &lt;h5 class&#x3D;&quot;card-title&quot;&gt;
+              &lt;a [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee/update&#x27;, employee.id]&quot;&gt;
+                {{ employee.firstname + &#x27; &#x27; + employee.lastname }}
+              &lt;/a&gt;
+            &lt;/h5&gt;
+          &lt;/div&gt;
+          &lt;ng-template #cantclickName&gt;
+            &lt;h5 class&#x3D;&quot;card-title&quot;&gt;{{ employee.firstname + &quot; &quot; + employee.lastname }}&lt;/h5&gt;
+          &lt;/ng-template&gt;
+
+          &lt;!-- Employee Info Section --&gt;
+          &lt;div class&#x3D;&quot;row employee-info&quot;&gt;
+
+            &lt;!-- Avatar --&gt;
+            &lt;div class&#x3D;&quot;col-12 col-md-4 employee-image&quot;&gt;
+              &lt;img src&#x3D;&quot;http://localhost:3000/upload-picture/{{employee.avatar}}&quot; alt&#x3D;&quot;Employee Avatar&quot;
+                class&#x3D;&quot;avatar&quot; /&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Details: Email, Team, Project --&gt;
+            &lt;div class&#x3D;&quot;col-12 col-md-8 employee-details&quot;&gt;
+              &lt;p class&#x3D;&quot;card-text&quot;&gt;&lt;strong&gt;Email:&lt;/strong&gt; {{ employee.email }}&lt;/p&gt;
+
+              &lt;!-- Team --&gt;
+              &lt;div *ngIf&#x3D;&quot;validateUserPrivilege(); else userTeam&quot;&gt;
+                &lt;p class&#x3D;&quot;card-text&quot;&gt;
+                  &lt;strong&gt;Team:&lt;/strong&gt;
+                  &lt;span *ngIf&#x3D;&quot;employee.department?.id; else noTeam&quot;&gt;
+                    &lt;a [routerLink]&#x3D;&quot;[&#x27;/dashboard/department/update&#x27;, employee.department?.id]&quot;&gt;
+                      {{ employee.department?.name }}
+                    &lt;/a&gt;
+                  &lt;/span&gt;
+                  &lt;ng-template #noTeam&gt;Don&#x27;t have Team&lt;/ng-template&gt;
+                &lt;/p&gt;
+              &lt;/div&gt;
+              &lt;ng-template #userTeam&gt;
+                &lt;p class&#x3D;&quot;card-text&quot;&gt;
+                  &lt;strong&gt;Team:&lt;/strong&gt;
+                  &lt;span *ngIf&#x3D;&quot;employee.department?.id; else noTeam&quot;&gt;{{ employee.department?.name }}&lt;/span&gt;
+                  &lt;ng-template #noTeam&gt;Don&#x27;t have Team&lt;/ng-template&gt;
+                &lt;/p&gt;
+              &lt;/ng-template&gt;
+
+              &lt;!-- Project --&gt;
+              &lt;div *ngIf&#x3D;&quot;validateUserPrivilege(); else userProject&quot;&gt;
+                &lt;p class&#x3D;&quot;card-text&quot;&gt;
+                  &lt;strong&gt;Project:&lt;/strong&gt;
+                  &lt;span *ngIf&#x3D;&quot;employee.project?.id; else noProject&quot;&gt;
+                    &lt;a [routerLink]&#x3D;&quot;[&#x27;/dashboard/project/update&#x27;, employee.project?.id]&quot;&gt;
+                      {{ employee.project?.name }}
+                    &lt;/a&gt;
+                  &lt;/span&gt;
+                  &lt;ng-template #noProject&gt;Don&#x27;t have project&lt;/ng-template&gt;
+                &lt;/p&gt;
+              &lt;/div&gt;
+              &lt;ng-template #userProject&gt;
+                &lt;p class&#x3D;&quot;card-text&quot;&gt;
+                  &lt;strong&gt;Project:&lt;/strong&gt;
+                  &lt;span *ngIf&#x3D;&quot;employee.project?.id; else noProject&quot;&gt;{{ employee.project?.name }}&lt;/span&gt;
+                  &lt;ng-template #noProject&gt;Don&#x27;t have project&lt;/ng-template&gt;
+                &lt;/p&gt;
+              &lt;/ng-template&gt;
+
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Action Buttons --&gt;
+          &lt;div *ngIf&#x3D;&quot;validateUserPrivilege(); else noPrivilege&quot;&gt;
+            &lt;div class&#x3D;&quot;row&quot;&gt;
+              &lt;div class&#x3D;&quot;col-6&quot;&gt;
+                &lt;button [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee/update&#x27;, employee.id]&quot; class&#x3D;&quot;view-profile-btn&quot;&gt;
+                  View Details
+                &lt;/button&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-6&quot;&gt;
+                &lt;button [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee/expertProfile&#x27;, employee.id]&quot; class&#x3D;&quot;view-profile-btn&quot;&gt;
+                  View EP
+                &lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;ng-template #noPrivilege&gt;
+            &lt;div class&#x3D;&quot;row&quot;&gt;
+              &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;button [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee/expertProfile&#x27;, employee.id]&quot; class&#x3D;&quot;view-profile-btn&quot;&gt;
+                  View EP
+                &lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ng-template&gt;
+
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;ng-template #cardView&gt;
+    &lt;div
+    class&#x3D;&quot;row&quot;
+    [ngClass]&#x3D;&quot;{&#x27;filter-active&#x27;: isFilterVisible}&quot;
+    style&#x3D;&quot;background-color: #050A1F; height: 60px; align-content: center; border-top-left-radius: 10px; border-top-right-radius: 10px;&quot;&gt;
+    &lt;/div&gt;
+    &lt;div style&#x3D;&quot;overflow-x: auto;&quot;&gt;
+      &lt;table id&#x3D;&quot;projectDataTable&quot; class&#x3D;&quot;table table-striped table-bordered&quot;&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Gender&lt;/th&gt;
+            &lt;th&gt;Join Date&lt;/th&gt;
+            &lt;th&gt;Email&lt;/th&gt;
+            &lt;th&gt;Role&lt;/th&gt;
+            &lt;th&gt;Skills&lt;/th&gt;
+            &lt;th&gt;Team&lt;/th&gt;
+            &lt;th&gt;Projects&lt;/th&gt;
+            &lt;th&gt;Actions&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr *ngFor&#x3D;&quot;let employee of filterEmployee()&quot;&gt;
+            &lt;td&gt;
+              &lt;a [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee/update&#x27;, employee.id]&quot;&gt;
+                {{ employee.firstname + &#x27; &#x27; + employee.lastname }}
+              &lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;{{ employee.gender }}&lt;/td&gt;
+            &lt;td&gt;{{ employee.joinDate }}&lt;/td&gt;
+            &lt;td&gt;{{employee.email}}&lt;/td&gt;
+            &lt;td&gt;{{employee.role.name}}&lt;/td&gt;
+            &lt;td&gt;
+              &lt;ul&gt;
+                &lt;li *ngFor&#x3D;&quot;let skill of employee.skills&quot;&gt;
+                  {{ skill }}
+                &lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td&gt;{{employee.department?.name}}&lt;/td&gt;
+            &lt;td&gt;{{employee.project?.name}}&lt;/td&gt;
+            &lt;!-- &lt;td&gt;
+              &lt;ul&gt;
+                &lt;li *ngFor&#x3D;&quot;let departmentName of employee.department?.name&quot;&gt;
+                  {{ departmentName }}
+                &lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+              &lt;ul&gt;
+                &lt;li *ngFor&#x3D;&quot;let projectName of employee.project?.name&quot;&gt;
+                  {{ projectName }}
+                &lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td&gt; --&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;div class&#x3D;&quot;col-sm-6&quot;&gt;
+                  &lt;a [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee/delete&#x27;, employee.id]&quot;&gt;&lt;i class&#x3D;&quot;bi bi-trash-fill&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-sm-6&quot;&gt;
+                  &lt;a [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee/update&#x27;, employee.id]&quot;&gt;&lt;i class&#x3D;&quot;bi bi-tools&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./employee-index.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.container {
+  display: flex;
+  width: 100%;
+  padding-top: 30px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.card{
+  margin-top: 30px;
+  border-radius: 17.36px;
+  background-color:  #2d3142;
+}
+
+.form-control{//search
+  border-radius: 88px;
+  background-color: #2d3142;
+}
+
+.card-body{
+  color: #f6f6f6;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.card-title{
+  color: aliceblue;
+  font-size: 30px;
+}
+
+.employee-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.employee-image {
+  flex: 0 0 33.33%;
+  padding-right: 15px;
+}
+
+.employee-details {
+  flex: 0 0 66.66%;
+  padding-left:17px;
+}
+
+//button display
+.view-profile-btn {
+  background-color: #e32445;
+  color: white;
+  font-size: 15px;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 43.4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+}
+
+.view-profile-btn:hover {
+  background-color: darkred;
+}
+
+.col-6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//
+.ul {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+}
+
+.avatar{
+  border-radius: 10px;
+  object-fit: cover;
+  width: 90px;
+  height: 90px;
+}
+
+.card-text{
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.div-em-skill{
+  overflow-x: auto;
+  white-space: nowrap;
+
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.div-em-skill ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-item {
+  margin-right: 15px;
+  padding: 5px 10px;
+  border-radius: 45px;
+  border: 1px solid #ccc;
+}
+
+//scrollbar
+.div-em-skill::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+
+.div-em-skill::-webkit-scrollbar-thumb {
+  background: #7b8b99;
+  border-radius: 7px;
+}
+
+.row.filter-active {
+  margin-top: 200px;
+}
+
+.search-filter-container {
+  position: relative;
+  padding: 10px;
+  background-color: #2c2f3f;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .collapse-arrow {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+
+    &amp;:hover {
+      color: #e32445;
+    }
+  }
+
+  &amp;.collapsed .collapse-arrow {
+    transform: rotate(180deg);
+  }
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    flex: 1;
+
+    input {
+      flex-grow: 1;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 15px;
+      outline: none;
+      font-size: 16px;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.2);
+
+      &amp;::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    .search-icon {
+      background: none;
+      border: none;
+      color: white;
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .filter-button {
+      background-color: #2D3142;
+      color: white;
+      border-radius: 15px;
+      padding: 8px 12px;
+      margin-left: 10px;
+      border: none;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      cursor: pointer;
+
+      &amp;:hover {
+        background-color: #FFFAF6;
+        color: #000000;
+        border-radius: 15px;
+      }
+
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+  .card-container{
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+  .filter-panel {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .filter-section {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding-top: 20px;
+
+      .filter-group {
+        flex: 1;
+        text-align: center;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 5px;
+        min-width: 200px;
+
+        h4 {
+          background-color: #050A1F;
+          color: #ffffff;
+          padding: 5px;
+          border-radius: 5px;
+          font-size: 18px;
+          cursor: pointer;
+        }
+
+        .dropdown-content {
+          background-color: #f8f8f8;
+          color: #000000;
+          border-radius: 5px;
+          padding: 5px;
+          margin-top: 5px;
+          text-align: left;
+
+          &amp;.scrollable {
+            max-height: 120px;
+            overflow-y: auto;
+          }
+
+          div {
+            cursor: pointer;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            &amp;:hover {
+              background-color: #d6d6d6;
+              border-radius: 10px;
+              transform: translateY(-5px);
+              box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+              font-weight: bolder;
+            }
+
+            input {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="card-body" style="background-color: whitesmoke">  <div class="d-flex flex-row">    <div class="p-2">    </div>    <div class="p-2">      <button class="collapse-arrow" (click)="toggleSearchBar()">        <i [ngClass]="isSearchCollapsed ? \'fas fa-chevron-down\' : \'fas fa-chevron-up\'"></i>      </button>    </div>  </div>  <br><br>  <!-- Search and Filter Section -->  <div class="search-filter-container" [@slideInOut]="isSearchCollapsed ? \'collapsed\' : \'expanded\'">    <!-- Search Bar -->    <div class="search-bar" *ngIf="!isSearchCollapsed">      <input type="text" [(ngModel)]="searchText" placeholder="Search..." />      <button class="search-icon"><i class="fas fa-search"></i></button>      <button class="filter-button" (click)="toggleFilterPanel()">        <i class="bi bi-filter"></i> Filter      </button>      <div *ngIf="isTableView else cardViewIcon">        <button class="filter-button" (click)="toggleTableView()"><i class="bi bi-table"></i> Table</button>      </div>      <ng-template #cardViewIcon>        <button class="filter-button" (click)="toggleTableView()"><i class="bi bi-card-heading"></i> Card</button>      </ng-template>    </div>    <!-- Filter Panel -->    <div class="filter-panel" *ngIf="isFilterVisible">      <div class="filter-section">          <div class="filter-group">              <h4>Role</h4>              <div class="dropdown-content scrollable">                  <div *ngFor="let role of uniqueRoles" (click)="updateFilter(\'role\', role)">                      <input type="checkbox" [checked]="selectedRole.includes(role)" /> {{ role }}                  </div>              </div>          </div>          <div class="filter-group">              <h4>Projects</h4>              <div class="dropdown-content scrollable">                  <div *ngFor="let project of uniqueProjects" (click)="updateFilter(\'project\', project)">                      <input type="checkbox" [checked]="selectedProject.includes(project)" /> {{ project }}                  </div>              </div>          </div>          <div class="filter-group">              <h4>Teams</h4>              <div class="dropdown-content scrollable">                  <div *ngFor="let team of uniqueTeams" (click)="updateFilter(\'team\', team)">                      <input type="checkbox" [checked]="selectedDepartment.includes(team)" /> {{ team }}                  </div>              </div>          </div>      </div>  </div>  </div>  <!-- Title -->  <div style="text-align: center;">    <h1 style="color: black;">Our People</h1>  </div>  <!-- Employee Cards Display -->  <div class="row" [ngClass]="{\'filter-active\': isFilterVisible}" *ngIf="this.isTableView else cardView">    <div class="col-12 col-md-4 mb-4" *ngFor="let employee of filterEmployee()">      <div class="card">        <div class="card-body">          <!-- Employee Skills -->          <div class="div-em-skill">            <ul>              <li *ngFor="let skill of employee.skills" class="skill-item">{{ skill.trim() }}</li>            </ul>          </div>          <!-- Employee Name -->          <div *ngIf="validateUserPrivilege(); else cantclickName">            <h5 class="card-title">              <a [routerLink]="[\'/dashboard/employee/update\', employee.id]">                {{ employee.firstname + \' \' + employee.lastname }}              </a>            </h5>          </div>          <ng-template #cantclickName>            <h5 class="card-title">{{ employee.firstname + " " + employee.lastname }}</h5>          </ng-template>          <!-- Employee Info Section -->          <div class="row employee-info">            <!-- Avatar -->            <div class="col-12 col-md-4 employee-image">              <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Employee Avatar"                class="avatar" />            </div>            <!-- Details: Email, Team, Project -->            <div class="col-12 col-md-8 employee-details">              <p class="card-text"><strong>Email:</strong> {{ employee.email }}</p>              <!-- Team -->              <div *ngIf="validateUserPrivilege(); else userTeam">                <p class="card-text">                  <strong>Team:</strong>                  <span *ngIf="employee.department?.id; else noTeam">                    <a [routerLink]="[\'/dashboard/department/update\', employee.department?.id]">                      {{ employee.department?.name }}                    </a>                  </span>                  <ng-template #noTeam>Don\'t have Team</ng-template>                </p>              </div>              <ng-template #userTeam>                <p class="card-text">                  <strong>Team:</strong>                  <span *ngIf="employee.department?.id; else noTeam">{{ employee.department?.name }}</span>                  <ng-template #noTeam>Don\'t have Team</ng-template>                </p>              </ng-template>              <!-- Project -->              <div *ngIf="validateUserPrivilege(); else userProject">                <p class="card-text">                  <strong>Project:</strong>                  <span *ngIf="employee.project?.id; else noProject">                    <a [routerLink]="[\'/dashboard/project/update\', employee.project?.id]">                      {{ employee.project?.name }}                    </a>                  </span>                  <ng-template #noProject>Don\'t have project</ng-template>                </p>              </div>              <ng-template #userProject>                <p class="card-text">                  <strong>Project:</strong>                  <span *ngIf="employee.project?.id; else noProject">{{ employee.project?.name }}</span>                  <ng-template #noProject>Don\'t have project</ng-template>                </p>              </ng-template>            </div>          </div>          <!-- Action Buttons -->          <div *ngIf="validateUserPrivilege(); else noPrivilege">            <div class="row">              <div class="col-6">                <button [routerLink]="[\'/dashboard/employee/update\', employee.id]" class="view-profile-btn">                  View Details                </button>              </div>              <div class="col-6">                <button [routerLink]="[\'/dashboard/employee/expertProfile\', employee.id]" class="view-profile-btn">                  View EP                </button>              </div>            </div>          </div>          <ng-template #noPrivilege>            <div class="row">              <div class="col">                <button [routerLink]="[\'/dashboard/employee/expertProfile\', employee.id]" class="view-profile-btn">                  View EP                </button>              </div>            </div>          </ng-template>        </div>      </div>    </div>  </div>  <ng-template #cardView>    <div    class="row"    [ngClass]="{\'filter-active\': isFilterVisible}"    style="background-color: #050A1F; height: 60px; align-content: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">    </div>    <div style="overflow-x: auto;">      <table id="projectDataTable" class="table table-striped table-bordered">        <thead>          <tr>            <th>Name</th>            <th>Gender</th>            <th>Join Date</th>            <th>Email</th>            <th>Role</th>            <th>Skills</th>            <th>Team</th>            <th>Projects</th>            <th>Actions</th>          </tr>        </thead>        <tbody>          <tr *ngFor="let employee of filterEmployee()">            <td>              <a [routerLink]="[\'/dashboard/employee/update\', employee.id]">                {{ employee.firstname + \' \' + employee.lastname }}              </a>            </td>            <td>{{ employee.gender }}</td>            <td>{{ employee.joinDate }}</td>            <td>{{employee.email}}</td>            <td>{{employee.role.name}}</td>            <td>              <ul>                <li *ngFor="let skill of employee.skills">                  {{ skill }}                </li>              </ul>            </td>            <td>{{employee.department?.name}}</td>            <td>{{employee.project?.name}}</td>            <!-- <td>              <ul>                <li *ngFor="let departmentName of employee.department?.name">                  {{ departmentName }}                </li>              </ul>            </td>            <td>              <ul>                <li *ngFor="let projectName of employee.project?.name">                  {{ projectName }}                </li>              </ul>            </td>            <td> -->              <div class="row">                <div class="col-sm-6">                  <a [routerLink]="[\'/dashboard/employee/delete\', employee.id]"><i class="bi bi-trash-fill"></i></a>                </div>                <div class="col-sm-6">                  <a [routerLink]="[\'/dashboard/employee/update\', employee.id]"><i class="bi bi-tools"></i></a>                </div>              </div>          </tr>        </tbody>      </table>    </div></ng-template></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CustomerCreateComponent', 'selector': 'app-customer-create'},{'name': 'CustomerDeleteComponent', 'selector': 'app-customer-delete'},{'name': 'CustomerIndexComponent', 'selector': 'app-customer-index'},{'name': 'CustomerUpdateComponent', 'selector': 'app-customer-update'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DepartmenIndexComponentComponent', 'selector': 'app-departmen-index-component'},{'name': 'DepartmentCreateComponentComponent', 'selector': 'app-department-create-component'},{'name': 'DepartmentDeleteComponentComponent', 'selector': 'app-department-delete-component'},{'name': 'DepartmentDescribeComponent', 'selector': 'app-department-describe'},{'name': 'DepartmentUpdateComponentComponent', 'selector': 'app-department-update-component'},{'name': 'EmployeeCreateComponent', 'selector': 'app-create-employee'},{'name': 'EmployeeDeleteComponent', 'selector': 'app-employee-delete'},{'name': 'EmployeeIndexComponent', 'selector': 'app-employee-index'},{'name': 'EmployeeUpdateComponent', 'selector': 'app-employee-update'},{'name': 'ExpertProfileComponent', 'selector': 'app-expert-profile'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NodeComponentComponent', 'selector': 'app-node-component'},{'name': 'OrgChartComponent', 'selector': 'app-org-chart'},{'name': 'ProjectCreateComponent', 'selector': 'app-project-create'},{'name': 'ProjectDeleteComponent', 'selector': 'app-project-delete'},{'name': 'ProjectIndexComponent', 'selector': 'app-project-index'},{'name': 'ProjectUpdateComponent', 'selector': 'app-project-update'},{'name': 'RoleCreateComponent', 'selector': 'app-role-create'},{'name': 'RoleDeleteComponent', 'selector': 'app-role-delete'},{'name': 'RoleIndexComponent', 'selector': 'app-role-index'},{'name': 'RoleUpdateComponent', 'selector': 'app-role-update'},{'name': 'SqlDocsComponent', 'selector': 'app-sql-docs'},{'name': 'TopnavComponent', 'selector': 'app-topnav'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EmployeeIndexComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EmployeeIndexComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
