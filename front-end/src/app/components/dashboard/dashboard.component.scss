@@ -4,3 +4,10 @@
     padding-left: 0;
     padding-right: 0;
 }
+.content-container {
+  transition: width 0.3s;
+}
+
+.content-container.expanded {
+  width: 100%;
+}
