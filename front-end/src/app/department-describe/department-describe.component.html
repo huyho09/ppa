@@ -1,5 +1,6 @@
 <div class="text-white card-header" style="background-color: #050A1F; display: block;">
   <div class="row">
+<<<<<<< HEAD
     <div class = "col-4">
       <h4>Please Upload your picture</h4>
     </div>
@@ -50,6 +51,27 @@
     </button>
   </div>
   <div class = "col-2">
+=======
+    <div class = "col-6">
+      <h4>Please Upload your picture</h4>
+    </div>
+    <div class="col-2">
+      <input
+      id="avatar"
+      name="avatar"
+      (change)="onFileSelected($event)"
+      type="file"
+      class="btn btn-primary"
+      required
+    >
+  </div>
+  <div class = "col-sm-2">
+    <button (click)="toggleVericalSlide()" >
+      Toggle View
+    </button>
+  </div>
+  <div class = "col-sm-2">
+>>>>>>> 9429a69ca29efdda92588ad82c315220cc72cc14
     <button (click)="deleteSlide()" >
       Delete Slide
     </button>
