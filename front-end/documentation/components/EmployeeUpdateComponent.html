@@ -1,0 +1,2498 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ppwa-frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ppwa-frontend documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EmployeeUpdateComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/employee/employee-update/employee-update.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-employee-update</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>FormsModule</code>
+                            <code>CommonModule</code>
+                            <code>RouterModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./employee-update.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./employee-update.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#avatarFile" >avatarFile</a>
+                            </li>
+                            <li>
+                                <a href="#avatarPreview" >avatarPreview</a>
+                            </li>
+                            <li>
+                                <a href="#avatarPreviewEp" >avatarPreviewEp</a>
+                            </li>
+                            <li>
+                                <a href="#departments" >departments</a>
+                            </li>
+                            <li>
+                                <a href="#employee" >employee</a>
+                            </li>
+                            <li>
+                                <a href="#id" >id</a>
+                            </li>
+                            <li>
+                                <a href="#isUserAuthorize" >isUserAuthorize</a>
+                            </li>
+                            <li>
+                                <a href="#passwordRepeat" >passwordRepeat</a>
+                            </li>
+                            <li>
+                                <a href="#projects" >projects</a>
+                            </li>
+                            <li>
+                                <a href="#roles" >roles</a>
+                            </li>
+                            <li>
+                                <a href="#user" >user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#handleUnauthorizedAccess" >handleUnauthorizedAccess</a>
+                            </li>
+                            <li>
+                                <a href="#loadDepartment" >loadDepartment</a>
+                            </li>
+                            <li>
+                                <a href="#loadProject" >loadProject</a>
+                            </li>
+                            <li>
+                                <a href="#loadRole" >loadRole</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onFileSelect" >onFileSelect</a>
+                            </li>
+                            <li>
+                                <a href="#onFileSelectEP" >onFileSelectEP</a>
+                            </li>
+                            <li>
+                                <a href="#updateEmployee" >updateEmployee</a>
+                            </li>
+                            <li>
+                                <a href="#validateUser" >validateUser</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(employeeService: <a href="../injectables/EmployeeServiceService.html" target="_self">EmployeeServiceService</a>, projectService: <a href="../injectables/ProjectServiceService.html" target="_self">ProjectServiceService</a>, departmentService: <a href="../injectables/DepartmentServiceService.html" target="_self">DepartmentServiceService</a>, roleSerivce: <a href="../injectables/RoleServiceService.html" target="_self">RoleServiceService</a>, route: ActivatedRoute, http: HttpClient, router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:74</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>employeeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/EmployeeServiceService.html" target="_self" >EmployeeServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>projectService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProjectServiceService.html" target="_self" >ProjectServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>departmentService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DepartmentServiceService.html" target="_self" >DepartmentServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>roleSerivce</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RoleServiceService.html" target="_self" >RoleServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleUnauthorizedAccess"></a>
+                    <span class="name">
+                        <span ><b>handleUnauthorizedAccess</b></span>
+                        <a href="#handleUnauthorizedAccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleUnauthorizedAccess()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="196"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:196</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadDepartment"></a>
+                    <span class="name">
+                        <span ><b>loadDepartment</b></span>
+                        <a href="#loadDepartment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadDepartment()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:188</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadProject"></a>
+                    <span class="name">
+                        <span ><b>loadProject</b></span>
+                        <a href="#loadProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadProject()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="180"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:180</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadRole"></a>
+                    <span class="name">
+                        <span ><b>loadRole</b></span>
+                        <a href="#loadRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadRole()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="173"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:173</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFileSelect"></a>
+                    <span class="name">
+                        <span ><b>onFileSelect</b></span>
+                        <a href="#onFileSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFileSelect(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFileSelectEP"></a>
+                    <span class="name">
+                        <span ><b>onFileSelectEP</b></span>
+                        <a href="#onFileSelectEP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFileSelectEP(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateEmployee"></a>
+                    <span class="name">
+                        <span ><b>updateEmployee</b></span>
+                        <a href="#updateEmployee"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateEmployee()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="159"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:159</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateUser"></a>
+                    <span class="name">
+                        <span ><b>validateUser</b></span>
+                        <a href="#validateUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateUser()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avatarFile"></a>
+                    <span class="name">
+                        <span ><b>avatarFile</b></span>
+                        <a href="#avatarFile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>File | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avatarPreview"></a>
+                    <span class="name">
+                        <span ><b>avatarPreview</b></span>
+                        <a href="#avatarPreview"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avatarPreviewEp"></a>
+                    <span class="name">
+                        <span ><b>avatarPreviewEp</b></span>
+                        <a href="#avatarPreviewEp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="departments"></a>
+                    <span class="name">
+                        <span ><b>departments</b></span>
+                        <a href="#departments"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="employee"></a>
+                    <span class="name">
+                        <span ><b>employee</b></span>
+                        <a href="#employee"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Employee.html" target="_self" >Employee</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;&#x27;,
+    avatar: &#x27;&#x27;,
+    firstname: &#x27;&#x27;,
+    lastname: &#x27;&#x27;,
+    gender: &#x27;&#x27;,
+    joinDate: &#x27;&#x27;,
+    aboutMe: &#x27;&#x27;,
+    email: &#x27;&#x27;,
+    skills: [],
+    role: {id: &#x27;&#x27;, name: &#x27;&#x27;, privilege: Privilege.User},
+    password: &#x27;&#x27;,
+    is_admin: false,
+    project: {name: &#x27;&#x27;, id: &#x27;&#x27;},
+    department: {name: &#x27;&#x27;, id: &#x27;&#x27;}
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="id"></a>
+                    <span class="name">
+                        <span ><b>id</b></span>
+                        <a href="#id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isUserAuthorize"></a>
+                    <span class="name">
+                        <span ><b>isUserAuthorize</b></span>
+                        <a href="#isUserAuthorize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordRepeat"></a>
+                    <span class="name">
+                        <span ><b>passwordRepeat</b></span>
+                        <a href="#passwordRepeat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="projects"></a>
+                    <span class="name">
+                        <span ><b>projects</b></span>
+                        <a href="#projects"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="roles"></a>
+                    <span class="name">
+                        <span ><b>roles</b></span>
+                        <a href="#roles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/employee/employee-update/employee-update.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { EmployeeServiceService } from &#x27;../service/employee-service.service&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { ActivatedRoute, Router, RouterModule } from &#x27;@angular/router&#x27;;
+import { ProjectServiceService } from &#x27;../../project/service/project-service.service&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { DepartmentServiceService } from &#x27;../../department/service/department-service.service&#x27;;
+import { Privilege, RoleServiceService } from &#x27;../../role/service/role-service.service&#x27;;
+
+interface Employee {
+  id: string;
+  avatar: string;
+  firstname: string;
+  lastname: string;
+  aboutMe:string;
+  joinDate:string;
+  gender: string;
+  email: string;
+  password:string;
+  skills: string[];
+  role: {id: string, name: string, privilege: Privilege };
+  is_admin: boolean;
+  project: Project;
+  department: {id: string, name: string}|null
+
+}
+
+interface Project {
+  id: string;
+  name: string;
+}
+
+interface UploadResponse {
+  message: string;
+  filename: string;
+}
+
+@Component({
+  selector: &#x27;app-employee-update&#x27;,
+  standalone: true,
+  imports: [FormsModule, CommonModule, RouterModule],
+  templateUrl: &#x27;./employee-update.component.html&#x27;,
+  styleUrls: [&#x27;./employee-update.component.scss&#x27;]
+})
+export class EmployeeUpdateComponent implements OnInit, OnDestroy {
+  projects: { id: string; name: string }[] &#x3D; [];
+  departments: {id: string; name: string}[] &#x3D; [];
+  roles: {id: string; name:string ; privilege: Privilege}[] &#x3D; []
+
+  employee: Employee &#x3D; {
+    id: &#x27;&#x27;,
+    avatar: &#x27;&#x27;,
+    firstname: &#x27;&#x27;,
+    lastname: &#x27;&#x27;,
+    gender: &#x27;&#x27;,
+    joinDate: &#x27;&#x27;,
+    aboutMe: &#x27;&#x27;,
+    email: &#x27;&#x27;,
+    skills: [],
+    role: {id: &#x27;&#x27;, name: &#x27;&#x27;, privilege: Privilege.User},
+    password: &#x27;&#x27;,
+    is_admin: false,
+    project: {name: &#x27;&#x27;, id: &#x27;&#x27;},
+    department: {name: &#x27;&#x27;, id: &#x27;&#x27;}
+  };
+  id: string &#x3D; &#x27;&#x27;;
+  avatarFile: File | null &#x3D; null;
+  avatarPreview: string | null &#x3D; null;
+  avatarPreviewEp: string | null &#x3D; null;
+  user: any &#x3D; {}
+  isUserAuthorize: boolean &#x3D; false;
+
+  passwordRepeat: string &#x3D;&#x27;&#x27;;
+
+  constructor(
+    private employeeService: EmployeeServiceService,
+    private projectService: ProjectServiceService,
+    private departmentService: DepartmentServiceService,
+    private roleSerivce: RoleServiceService,
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private router: Router
+  ) {}
+
+  onFileSelect(event: any): void {
+    const file: File &#x3D; event.target.files[0];
+    if (file) {
+      const formData &#x3D; new FormData();
+      formData.append(&#x27;file&#x27;, file, file.name);
+      this.http.post&lt;UploadResponse&gt;(&#x27;http://localhost:3000/upload-picture/upload&#x27;, formData).subscribe(
+        (response) &#x3D;&gt; {
+          this.employee.avatar &#x3D; response.filename;
+          this.avatarPreview &#x3D; &#x60;http://localhost:3000/upload-picture/${response.filename}&#x60;;
+        }
+      );
+    }
+  }
+
+  validateUser(){
+    const userData &#x3D; sessionStorage.getItem(&#x27;User&#x27;);
+    if(userData)
+    {
+      this.user &#x3D; JSON.parse(userData)
+      return true
+    }
+    return false
+  }
+
+  onFileSelectEP(event: any): void {
+    const file: File &#x3D; event.target.files[0];
+    if (file) {
+      const formData &#x3D; new FormData();
+      formData.append(&#x27;file&#x27;, file, file.name);
+      this.http.post&lt;UploadResponse&gt;(&#x27;http://localhost:3000/upload-picture/upload&#x27;, formData).subscribe(
+        (response) &#x3D;&gt; {
+          this.employee.aboutMe &#x3D; response.filename;
+          this.avatarPreviewEp &#x3D; &#x60;http://localhost:3000/upload-picture/${response.filename}&#x60;;
+        }
+      );
+    }
+  }
+
+  ngOnInit(): void {
+    this.loadProject();
+    this.loadDepartment();
+    this.loadRole();
+    this.validateUser();
+    console.log(this.user);
+    const id &#x3D; this.route.snapshot.paramMap.get(&#x27;id&#x27;);
+    if (id){
+      if (this.user.sub.role.privilege &#x3D;&#x3D;&#x3D; &#x27;user&#x27; &amp;&amp; this.user.sub.id !&#x3D;&#x3D; id){
+        this.handleUnauthorizedAccess()
+      }
+      else{
+        this.isUserAuthorize &#x3D; true;
+        this.employeeService.getEmployeeWithApiCall(id).subscribe(
+          (data) &#x3D;&gt; {
+            this.employee &#x3D; data;
+            console.log(&quot;Employee Join Date is : &quot;,this.employee.joinDate)
+            if (this.employee.joinDate)
+            {
+              this.employee.joinDate &#x3D; new Date(Number(this.employee.joinDate)).toISOString().split(&#x27;T&#x27;)[0];
+
+            }
+            console.log(&quot;Employee join Date after convert to string is : &quot;,this.employee.joinDate)
+            if (!this.employee.project){
+              this.employee.project &#x3D; {id: &#x27;&#x27;,name: &#x27;&#x27;};
+            }
+            this.id &#x3D; id
+          }
+        )
+      }
+    }
+  }
+
+  ngOnDestroy(): void {}
+
+  updateEmployee(): void {
+    // if (this.employee.password &amp;&amp; this.passwordRepeat !&#x3D;&#x3D; this.employee.password)
+    // {
+    //   alert(&quot;Password is not match &quot; + this.employee.password + &quot; and&quot; + this.passwordRepeat )
+    //   return
+    // }
+    this.employeeService.updateEmployeeWithApiCall(this.id, this.employee).subscribe(
+      (data : Employee) &#x3D;&gt; {
+        console.log(&quot;join Date is : &quot;,data.joinDate)
+        this.router.navigate([&#x27;/dashboard/employee&#x27;]);
+      }
+    );
+  }
+
+  loadRole():void {
+    this.roleSerivce.getRolesWithApiCall().subscribe(
+      (rolesData) &#x3D;&gt; {
+        this.roles &#x3D; rolesData
+      }
+    )
+  }
+  loadProject(): void {
+    this.projectService.getProjectsWithApiCall().subscribe(
+      (projectData) &#x3D;&gt; {
+        this.projects &#x3D; projectData;
+      }
+    );
+  }
+
+  loadDepartment(): void {
+    this.departmentService.getDepartmentsWithApiCall().subscribe(
+      (departmentData) &#x3D;&gt; {
+        this.departments &#x3D; departmentData;
+      }
+    );
+  }
+
+  handleUnauthorizedAccess():void {
+    console.log(&quot;Unauthorized-401&quot;);
+    this.router.navigate([])
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- &lt;div class&#x3D;&quot;container-fluid&quot; style&#x3D;&quot;padding-left: 10px;&quot;&gt;
+  &lt;form (ngSubmit)&#x3D;&quot;updateEmployee()&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot; style&#x3D;&quot;height: 100vh;&quot;&gt;
+      &lt;div class&#x3D;&quot;col-4 p-0&quot;&gt;
+        &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+          &lt;div class&#x3D;&quot;avatar-container&quot; style&#x3D;&quot;justify-content: center&quot;&gt;
+            &lt;div style&#x3D;&quot;text-align: center; padding-top: 10%;&quot;&gt;
+              &lt;img src&#x3D;&quot;http://localhost:3000/upload-picture/{{employee.avatar}}&quot; alt&#x3D;&quot;Avatar Preview&quot; style&#x3D;&quot;width: 350px; height: 350px; border-radius: 50%;&quot; /&gt;
+              &lt;label for &#x3D; &quot;avatar&quot; class &#x3D; &quot;form-control&quot;&gt;Avatar&lt;/label&gt;
+              &lt;input
+                id&#x3D;&quot;avatar&quot;
+                name&#x3D;&quot;avatar&quot;
+                (change)&#x3D;&quot;onFileSelect($event)&quot;
+                type&#x3D;&quot;file&quot;
+                class&#x3D;&quot;form-control&quot;
+                required
+              &gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-8&quot;&gt;
+        &lt;h3&gt;Employee Information&lt;/h3&gt;
+        &lt;hr&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label for&#x3D;&quot;firstname&quot; class&#x3D;&quot;form-label&quot;&gt;First name&lt;/label&gt;
+              &lt;input
+                placeholder&#x3D;&quot;First name&quot;
+                type&#x3D;&quot;text&quot;
+                class&#x3D;&quot;form-control&quot;
+                id&#x3D;&quot;firstname&quot;
+                [(ngModel)]&#x3D;&quot;employee.firstname&quot;
+                name&#x3D;&quot;firstname&quot;
+                required
+              /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label for&#x3D;&quot;lastname&quot; class&#x3D;&quot;form-label&quot;&gt;Last name&lt;/label&gt;
+              &lt;input
+                placeholder&#x3D;&quot;Last name&quot;
+                type&#x3D;&quot;text&quot;
+                class&#x3D;&quot;form-control&quot;
+                id&#x3D;&quot;lastname&quot;
+                [(ngModel)]&#x3D;&quot;employee.lastname&quot;
+                name&#x3D;&quot;lastname&quot;
+                required
+              /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+              &lt;label for&#x3D;&quot;gender&quot; class&#x3D;&quot;form-label&quot;&gt;Gender&lt;/label&gt;
+              &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                &lt;input
+                  type&#x3D;&quot;radio&quot;
+                  id&#x3D;&quot;male&quot;
+                  name&#x3D;&quot;gender&quot;
+                  value&#x3D;&quot;male&quot;
+                  [(ngModel)]&#x3D;&quot;employee.gender&quot;
+                  class&#x3D;&quot;form-check-input&quot;
+                /&gt;
+                &lt;label for&#x3D;&quot;male&quot; class&#x3D;&quot;form-check-label&quot;&gt;Male&lt;/label&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                &lt;input
+                  type&#x3D;&quot;radio&quot;
+                  id&#x3D;&quot;female&quot;
+                  name&#x3D;&quot;gender&quot;
+                  value&#x3D;&quot;female&quot;
+                  [(ngModel)]&#x3D;&quot;employee.gender&quot;
+                  class&#x3D;&quot;form-check-input&quot;
+                /&gt;
+                &lt;label for&#x3D;&quot;female&quot; class&#x3D;&quot;form-check-label&quot;&gt;Female&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt; --&gt;
+        &lt;!-- &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-8&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label for&#x3D;&quot;password&quot; class&#x3D;&quot;form-label&quot;&gt;Password&lt;/label&gt;
+              &lt;input
+                placeholder&#x3D;&quot;Password&quot;
+                id&#x3D;&quot;password&quot;
+                name&#x3D;&quot;password&quot;
+                [(ngModel)]&#x3D;&quot;employee.password&quot;
+                class&#x3D;&quot;form-control&quot;
+                required
+                type&#x3D;&quot;password&quot;
+                disabled
+              /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt; --&gt;
+        &lt;!-- &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label for&#x3D;&quot;email&quot; class&#x3D;&quot;form-label&quot;&gt;Email&lt;/label&gt;
+              &lt;input
+                placeholder&#x3D;&quot;Email&quot;
+                type&#x3D;&quot;email&quot;
+                class&#x3D;&quot;form-control&quot;
+                id&#x3D;&quot;email&quot;
+                name&#x3D;&quot;email&quot;
+                [(ngModel)]&#x3D;&quot;employee.email&quot;
+                required
+              /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class &#x3D; &quot;col&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label for&#x3D;&quot;role&quot; class&#x3D;&quot;form-label&quot;&gt;Role Assign&lt;/label&gt;
+            &lt;p *ngIf&#x3D;&quot;employee.role &amp;&amp; employee.role.name&quot;&gt;
+              &lt;strong&gt;Current Role:&lt;/strong&gt; {{ employee.role.name }}
+            &lt;/p&gt;
+            &lt;select id&#x3D;&quot;role&quot; name&#x3D;&quot;role&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;employee.role&quot; required&gt;
+              &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Not Assigned&lt;/option&gt;
+              &lt;option *ngFor&#x3D;&quot;let role of roles&quot; [ngValue]&#x3D;&quot;role&quot;&gt;{{ role.name }}&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label for&#x3D;&quot;skills&quot; class&#x3D;&quot;form-label&quot;&gt;Skills (Comma Separated)&lt;/label&gt;
+              &lt;textarea
+                placeholder&#x3D;&quot;Skills (Comma Separated)&quot;
+                type&#x3D;&quot;text&quot;
+                class&#x3D;&quot;form-control&quot;
+                id&#x3D;&quot;skills&quot;
+                name&#x3D;&quot;skills&quot;
+                [(ngModel)]&#x3D;&quot;employee.skills&quot;
+                required
+              &gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label for&#x3D;&quot;project&quot; class&#x3D;&quot;form-label&quot;&gt;Projects Assign&lt;/label&gt;
+            &lt;p *ngIf&#x3D;&quot;employee.project &amp;&amp; employee.project.name&quot;&gt;
+              &lt;strong&gt;Current Project:&lt;/strong&gt; {{ employee.project.name }}
+            &lt;/p&gt;
+            &lt;select id&#x3D;&quot;project&quot; name&#x3D;&quot;project&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;employee.project&quot; required&gt;
+              &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Not Assigned&lt;/option&gt;
+              &lt;option *ngFor&#x3D;&quot;let project of projects&quot; [ngValue]&#x3D;&quot;project&quot;&gt;{{ project.name }}&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label for&#x3D;&quot;department&quot; class&#x3D;&quot;form-label&quot;&gt;Team Assign&lt;/label&gt;
+            &lt;p *ngIf&#x3D;&quot;employee.department &amp;&amp; employee.department.name&quot;&gt;
+              &lt;strong&gt;Current Team:&lt;/strong&gt; {{ employee.department.name }}
+            &lt;/p&gt;
+            &lt;select id&#x3D;&quot;department&quot; name&#x3D;&quot;department&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;employee.department&quot; required&gt;
+              &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Not Assigned&lt;/option&gt;
+              &lt;option *ngFor&#x3D;&quot;let department of departments&quot; [ngValue]&#x3D;&quot;department&quot;&gt;{{ department.name }}&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;
+              &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+                &lt;label for&#x3D;&quot;is_admin&quot; class&#x3D;&quot;form-label&quot;&gt;Are you admin?&lt;/label&gt;
+              &lt;select
+                name&#x3D;&quot;is_admin&quot;
+                id&#x3D;&quot;is_admin&quot;
+                [(ngModel)]&#x3D;&quot;employee.is_admin&quot;
+                class&#x3D;&quot;form-control&quot;
+                required
+              &gt;
+                &lt;option [ngValue]&#x3D;&quot;true&quot;&gt;Yes, I am&lt;/option&gt;
+                &lt;option [ngValue]&#x3D;&quot;false&quot;&gt;No, I am not&lt;/option&gt;
+              &lt;/select&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+              &lt;label class&#x3D;&quot;form-label&quot;&gt;About Me&lt;/label&gt;
+              &lt;angular-editor [config]&#x3D;&quot;editorConfig&quot; [(ngModel)]&#x3D;&quot;employee.aboutMe&quot; name&#x3D;&quot;aboutMe&quot;&gt;&lt;/angular-editor&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class &#x3D; &quot;row&quot;&gt;
+          &lt;div class &#x3D;&quot;col&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label class &#x3D; &quot;form-label&quot; for &#x3D; &quot;password&quot;&gt;New Password&lt;/label&gt;
+              &lt;input
+              type &#x3D; &quot;password&quot;
+              id &#x3D; &quot;password&quot;
+              class &#x3D; &quot;form-control&quot;
+              name &#x3D; &quot;password&quot;
+              [(ngModel)] &#x3D; &quot;employee.password&quot;
+              &gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class &#x3D;&quot;col&quot;&gt;
+            &lt;div class &#x3D; &quot;mb-3&quot;&gt;
+              &lt;label class &#x3D; &quot;form-label&quot; for &#x3D; &quot;passwordReqpeat&quot;&gt;Repeat New Password&lt;/label&gt;
+              &lt;input
+              type &#x3D; &quot;password&quot;
+              id &#x3D; &quot;passwordReqpeat&quot;
+              class &#x3D; &quot;form-control&quot;
+              name &#x3D; &quot;passwordReqpeat&quot;
+              [(ngModel)] &#x3D; &quot;passwordRepeat&quot;
+              &gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-4 d-flex gap-4&quot;&gt;
+            &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary mt-3 flex-grow-1&quot;&gt;Save&lt;/button&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-danger mt-3 flex-grow-1&quot;
+              [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee/delete&#x27;, employee.id]&quot;&gt;
+              Delete
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt; --&gt;
+&lt;div *ngIf&#x3D;&quot;isUserAuthorize&quot;&gt;
+  &lt;div class &#x3D; &quot;container-fluid&quot;&gt;
+    &lt;form (ngSubmit)&#x3D;&quot;updateEmployee()&quot;&gt;
+      &lt;div class &#x3D; &quot;profile-section&quot;&gt;
+        &lt;div class &#x3D; &quot;main-container&quot;&gt;
+          &lt;div class &#x3D; &quot;content-container-main&quot;&gt;
+            &lt;div class &#x3D; &quot;content-container-profile&quot;&gt;
+              &lt;div class &#x3D; &quot;profile-section&quot;&gt;
+                &lt;div class&#x3D;&quot;section-header&quot;&gt;
+                  &lt;h2&gt;Profile Picture&lt;/h2&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;avatar-container&quot;&gt;
+                  &lt;div class&#x3D;&quot;avatar-wrapper&quot;&gt;
+                    &lt;img src&#x3D;&quot;http://localhost:3000/upload-picture/{{employee.avatar}}&quot; alt&#x3D;&quot;Avatar Preview&quot; style&#x3D;&quot;width: 100px; height: 100px; border-radius: 50%;&quot; /&gt;
+                    &lt;p class&#x3D;&quot;file-hint&quot;&gt;JPG or PNG no larger than 5MB&lt;/p&gt;
+                    &lt;input
+                    id&#x3D;&quot;avatar&quot;
+                    name&#x3D;&quot;avatar&quot;
+                    (change)&#x3D;&quot;onFileSelect($event)&quot;
+                    type&#x3D;&quot;file&quot;
+                    class&#x3D;&quot;file-input&quot;
+                    required
+                  &gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;content-container-form&quot;&gt;
+              &lt;h2&gt;Account Details&lt;/h2&gt;
+              &lt;div class&#x3D;&quot;form-grid&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;firstname&quot;&gt;First Name&lt;/label&gt;
+                  &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;firstname&quot; name &#x3D; &quot;firstname&quot; [(ngModel)]&#x3D;&quot;employee.firstname&quot; placeholder&#x3D;&quot;Enter your first name&quot; &gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;lastname&quot;&gt;Last Name&lt;/label&gt;
+                  &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;lastname&quot; name &#x3D; &quot;lastname&quot; [(ngModel)]&#x3D;&quot;employee.lastname&quot; placeholder&#x3D;&quot;Enter your last name&quot;&gt;
+                &lt;/div&gt;
+
+                  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                    &lt;label for&#x3D;&quot;gender&quot; class&#x3D;&quot;form-label&quot;&gt;Gender&lt;/label&gt;
+                    &lt;div class&#x3D;&quot;gender-options&quot;&gt;
+                      &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                        &lt;input type&#x3D;&quot;radio&quot; id&#x3D;&quot;male&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;male&quot; [(ngModel)]&#x3D;&quot;employee.gender&quot;
+                          class&#x3D;&quot;form-check-input&quot; /&gt;
+                        &lt;label for&#x3D;&quot;male&quot; class&#x3D;&quot;form-check-label&quot;&gt;Male&lt;/label&gt;
+                      &lt;/div&gt;
+                      &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                        &lt;input type&#x3D;&quot;radio&quot; id&#x3D;&quot;female&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;female&quot; [(ngModel)]&#x3D;&quot;employee.gender&quot;
+                          class&#x3D;&quot;form-check-input&quot; /&gt;
+                        &lt;label for&#x3D;&quot;female&quot; class&#x3D;&quot;form-check-label&quot;&gt;Female&lt;/label&gt;
+                      &lt;/div&gt;
+                      &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                        &lt;input type&#x3D;&quot;radio&quot; id&#x3D;&quot;other&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;other&quot; [(ngModel)]&#x3D;&quot;employee.gender&quot;
+                          class&#x3D;&quot;form-check-input&quot; /&gt;
+                        &lt;label for&#x3D;&quot;other&quot; class&#x3D;&quot;form-check-label&quot;&gt;Other&lt;/label&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class&#x3D;&quot;form-group full-width&quot;&gt;
+                    &lt;label for&#x3D;&quot;joinDate&quot;&gt;Join Date&lt;/label&gt;
+                    &lt;input type&#x3D;&quot;date&quot; id&#x3D;&quot;joinDate&quot; name &#x3D; &quot;joinDate&quot; placeholder&#x3D;&quot;Enter join Date&quot; [(ngModel)] &#x3D; &quot;employee.joinDate&quot;&gt;
+                  &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;email&quot;&gt;Email Address&lt;/label&gt;
+                  &lt;input type&#x3D;&quot;email&quot; id&#x3D;&quot;email&quot; name &#x3D; &quot;email&quot; placeholder&#x3D;&quot;Enter your email address&quot; [(ngModel)] &#x3D; &quot;employee.email&quot;&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;form-group full-width&quot;&gt;
+                  &lt;label for&#x3D;&quot;skills&quot;&gt;Skills&lt;/label&gt;
+                  &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;skills&quot; name &#x3D; &quot;skills&quot; placeholder&#x3D;&quot;Enter emp skills&quot; [(ngModel)] &#x3D; &quot;employee.skills&quot;&gt;
+                &lt;/div&gt;
+
+
+
+
+
+
+              &lt;div  *ngIf&#x3D;&quot;employee.role.privilege !&#x3D;&#x3D; &#x27;user&#x27; else userEdit&quot;&gt;
+                &lt;div class &#x3D; &quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;department&quot; class&#x3D;&quot;form-label&quot;&gt;Team Assign&lt;/label&gt;
+                  &lt;p *ngIf&#x3D;&quot;employee.department &amp;&amp; employee.department.name&quot;&gt;
+                    &lt;strong&gt;Current Team:&lt;/strong&gt; {{ employee.department.name }}
+                  &lt;/p&gt;
+                  &lt;select id&#x3D;&quot;department&quot; name&#x3D;&quot;department&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;employee.department&quot; required&gt;
+                    &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Not Assigned&lt;/option&gt;
+                    &lt;option *ngFor&#x3D;&quot;let department of departments&quot; [ngValue]&#x3D;&quot;department&quot;&gt;{{ department.name }}&lt;/option&gt;
+                  &lt;/select&gt;
+                &lt;/div&gt;
+
+                &lt;div class &#x3D; &quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;project&quot; class&#x3D;&quot;form-label&quot;&gt;Projects Assign&lt;/label&gt;
+                  &lt;p *ngIf&#x3D;&quot;employee.project &amp;&amp; employee.project.name&quot;&gt;
+                    &lt;strong&gt;Current Project:&lt;/strong&gt; {{ employee.project.name }}
+                  &lt;/p&gt;
+                  &lt;select id&#x3D;&quot;project&quot; name&#x3D;&quot;project&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;employee.project&quot; required&gt;
+                    &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Not Assigned&lt;/option&gt;
+                    &lt;option *ngFor&#x3D;&quot;let project of projects&quot; [ngValue]&#x3D;&quot;project&quot;&gt;{{ project.name }}&lt;/option&gt;
+                  &lt;/select&gt;
+                &lt;/div&gt;
+
+                &lt;div class &#x3D; &quot;form-group full-width&quot;&gt;
+                  &lt;label for&#x3D;&quot;role&quot; class&#x3D;&quot;form-label&quot;&gt;Role Assign&lt;/label&gt;
+                  &lt;p *ngIf&#x3D;&quot;employee.role &amp;&amp; employee.role.name&quot;&gt;
+                    &lt;strong&gt;Current Role:&lt;/strong&gt; {{ employee.role.name }}
+                  &lt;/p&gt;
+                  &lt;select id&#x3D;&quot;role&quot; name&#x3D;&quot;role&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;employee.role&quot; required&gt;
+                    &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Not Assigned&lt;/option&gt;
+                    &lt;option *ngFor&#x3D;&quot;let role of roles&quot; [ngValue]&#x3D;&quot;role&quot;&gt;{{ role.name }}&lt;/option&gt;
+                  &lt;/select&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+                &lt;ng-template #userEdit&gt;
+                  &lt;p *ngIf&#x3D;&quot;employee.role &amp;&amp; employee.role.name&quot;&gt;
+                    &lt;strong&gt;Current Role:&lt;/strong&gt; {{ employee.role.name }}
+                  &lt;/p&gt;
+                  &lt;p *ngIf&#x3D;&quot;employee.department &amp;&amp; employee.department.name&quot;&gt;
+                    &lt;strong&gt;Current Team:&lt;/strong&gt; {{ employee.department.name }}
+                  &lt;/p&gt;
+                  &lt;p *ngIf&#x3D;&quot;employee.project &amp;&amp; employee.project.name&quot;&gt;
+                    &lt;strong&gt;Current Project:&lt;/strong&gt; {{ employee.project.name }}
+                  &lt;/p&gt;
+                &lt;/ng-template&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                &lt;label for&#x3D;&quot;aboutMe&quot;&gt;Expert Profile&lt;/label&gt;
+                &lt;input
+                id&#x3D;&quot;aboutMe&quot;
+                name&#x3D;&quot;aboutMe&quot;
+                (change)&#x3D;&quot;onFileSelectEP($event)&quot;
+                type&#x3D;&quot;file&quot;
+                class&#x3D;&quot;file-input&quot;
+                required
+                &gt;
+                &lt;img src&#x3D;&quot;http://localhost:3000/upload-picture/{{employee.aboutMe}}&quot; alt&#x3D;&quot;aboutMe Preview&quot; /&gt;
+
+              &lt;/div&gt;
+
+              &lt;div class &#x3D; &quot;form-group&quot;&gt;
+                &lt;label class &#x3D; &quot;form-label&quot; for &#x3D; &quot;password&quot;&gt;New Password (skip if don&#x27;t change)&lt;/label&gt;
+                &lt;input
+                type &#x3D; &quot;password&quot;
+                id &#x3D; &quot;password&quot;
+                class &#x3D; &quot;form-control&quot;
+                name &#x3D; &quot;password&quot;
+                [(ngModel)] &#x3D; &quot;employee.password&quot;
+                &gt;
+              &lt;/div&gt;
+
+              &lt;div class &#x3D; &quot;form-group&quot;&gt;
+                &lt;label class &#x3D; &quot;form-label&quot; for &#x3D; &quot;passwordReqpeat&quot;&gt;Repeat New Password (skip if don&#x27;t change)&lt;/label&gt;
+                &lt;input
+                type &#x3D; &quot;password&quot;
+                id &#x3D; &quot;passwordReqpeat&quot;
+                class &#x3D; &quot;form-control&quot;
+                name &#x3D; &quot;passwordReqpeat&quot;
+                [(ngModel)] &#x3D; &quot;passwordRepeat&quot;
+                &gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;button-group&quot;&gt;
+                &lt;button class&#x3D;&quot;create-btn&quot;  type&#x3D;&quot;submit&quot; id&#x3D;&quot;submit&quot; name &#x3D; &quot;submit&quot;&gt;Update&lt;/button&gt;
+                &lt;button class&#x3D;&quot;cancel-btn&quot; [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee&#x27;]&quot;&gt;Cancel&lt;/button&gt;
+                &lt;div *ngIf&#x3D;&quot;this.user.sub.role.privilege !&#x3D;&#x3D; &#x27;user&#x27;&quot;&gt;
+                  &lt;button class&#x3D;&quot;cancel-btn&quot; [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee/delete&#x27;,employee.id]&quot;&gt;Delete&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class *ngIf&#x3D;&quot;!isUserAuthorize&quot;&gt;
+  &lt;div class &#x3D; &quot;container-fluid&quot;&gt;
+    &lt;h1&gt;YOU ARE NOT AUTHORIZED TO THIS PAGE&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!--
+&lt;div class&#x3D;&quot;container-fluid&quot;&gt;
+  &lt;form (ngSubmit)&#x3D;&quot;addEmployee()&quot;&gt;
+    &lt;div class&#x3D;&quot;profile-section&quot;&gt;
+
+      &lt;div class&#x3D;&quot;main-container&quot;&gt;
+        &lt;div class&#x3D;&quot;header&quot;&gt;
+          &lt;h1&gt;Create New Profile&lt;/h1&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;content-container-main&quot;&gt;
+          &lt;div class&#x3D;&quot;content-container-profile&quot;&gt;
+            &lt;div class&#x3D;&quot;profile-section&quot;&gt;
+              &lt;div class&#x3D;&quot;section-header&quot;&gt;
+                &lt;h2&gt;Profile Picture&lt;/h2&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;avatar-container&quot;&gt;
+                &lt;div class&#x3D;&quot;avatar-wrapper&quot;&gt;
+                  &lt;img src&#x3D;&quot;http://localhost:3000/upload-picture/{{newEmployee.avatar}}&quot; alt&#x3D;&quot;Avatar Preview&quot; style&#x3D;&quot;width: 100px; height: 100px; border-radius: 50%;&quot; /&gt;
+                  &lt;p class&#x3D;&quot;file-hint&quot;&gt;JPG or PNG no larger than 5MB&lt;/p&gt;
+                  &lt;input
+                  id&#x3D;&quot;avatar&quot;
+                  name&#x3D;&quot;avatar&quot;
+                  (change)&#x3D;&quot;onFileSelect($event)&quot;
+                  type&#x3D;&quot;file&quot;
+                  class&#x3D;&quot;file-input&quot;
+                  required
+                &gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;content-container-form&quot;&gt;
+            &lt;h2&gt;Account Details&lt;/h2&gt;
+            &lt;div class&#x3D;&quot;form-grid&quot;&gt;
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                &lt;label for&#x3D;&quot;firstname&quot;&gt;First Name&lt;/label&gt;
+                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;firstname&quot; name &#x3D; &quot;firstname&quot; [(ngModel)]&#x3D;&quot;newEmployee.firstname&quot; placeholder&#x3D;&quot;Enter your first name&quot; &gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                &lt;label for&#x3D;&quot;lastname&quot;&gt;Last Name&lt;/label&gt;
+                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;lastname&quot; name &#x3D; &quot;lastname&quot; [(ngModel)]&#x3D;&quot;newEmployee.lastname&quot; placeholder&#x3D;&quot;Enter your last name&quot;&gt;
+              &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;gender&quot; class&#x3D;&quot;form-label&quot;&gt;Gender&lt;/label&gt;
+                  &lt;div class&#x3D;&quot;gender-options&quot;&gt;
+                    &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                      &lt;input type&#x3D;&quot;radio&quot; id&#x3D;&quot;male&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;male&quot; [(ngModel)]&#x3D;&quot;newEmployee.gender&quot;
+                        class&#x3D;&quot;form-check-input&quot; /&gt;
+                      &lt;label for&#x3D;&quot;male&quot; class&#x3D;&quot;form-check-label&quot;&gt;Male&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                      &lt;input type&#x3D;&quot;radio&quot; id&#x3D;&quot;female&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;female&quot; [(ngModel)]&#x3D;&quot;newEmployee.gender&quot;
+                        class&#x3D;&quot;form-check-input&quot; /&gt;
+                      &lt;label for&#x3D;&quot;female&quot; class&#x3D;&quot;form-check-label&quot;&gt;Female&lt;/label&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                &lt;label for&#x3D;&quot;email&quot;&gt;Email Address&lt;/label&gt;
+                &lt;input type&#x3D;&quot;email&quot; id&#x3D;&quot;email&quot; name &#x3D; &quot;email&quot; placeholder&#x3D;&quot;Enter your email address&quot; [(ngModel)] &#x3D; &quot;newEmployee.email&quot;&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;form-group full-width&quot;&gt;
+                &lt;label for&#x3D;&quot;skills&quot;&gt;Skills&lt;/label&gt;
+                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;skills&quot; name &#x3D; &quot;skills&quot; placeholder&#x3D;&quot;Enter emp skills&quot; [(ngModel)] &#x3D; &quot;newEmployee.skills&quot;&gt;
+              &lt;/div&gt;
+
+
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label class&#x3D;&quot;form-label&quot; for&#x3D;&quot;role&quot;&gt;Assign Role &lt;span style&#x3D;&quot;color: red;&quot;&gt;(*)&lt;/span&gt;&lt;/label&gt;
+                  &lt;select class&#x3D;&quot;form-control&quot; id&#x3D;&quot;role&quot; name&#x3D;&quot;role&quot; [(ngModel)]&#x3D;&quot;newEmployee.role.id&quot; required&gt;
+                    &lt;option *ngFor&#x3D;&quot;let role of roles&quot; [value]&#x3D;&quot;role.id&quot;&gt;
+                      {{ role.name }}
+                    &lt;/option&gt;
+                  &lt;/select&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label&quot; for&#x3D;&quot;project&quot;&gt;Assign Project &lt;span style&#x3D;&quot;color: red;&quot;&gt;(*)&lt;/span&gt;&lt;/label&gt;
+                &lt;select class&#x3D;&quot;form-control&quot; id&#x3D;&quot;project&quot; name&#x3D;&quot;project&quot; [(ngModel)]&#x3D;&quot;newEmployee.project.id&quot; required&gt;
+                  &lt;option *ngFor&#x3D;&quot;let project of projects&quot; [value]&#x3D;&quot;project.id&quot;&gt;
+                    {{ project.name }}
+                  &lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/div&gt;
+
+              &lt;div classs &#x3D; &quot;form-group&quot;&gt;
+                &lt;label for &#x3D; &quot;department&quot; class &#x3D; &quot;form-label&quot;&gt;Assign Team&lt;/label&gt;
+                &lt;select class &#x3D; &quot;form-control&quot; id &#x3D; &quot;department&quot; name &#x3D; &quot;department&quot; [(ngModel)] &#x3D; &quot;newEmployee.department.id&quot; required&gt;
+                  &lt;option *ngFor&#x3D;&quot;let department of departments&quot; [value] &#x3D; &quot;department.id&quot;&gt;
+                    {{department.name}}
+                  &lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/div&gt;
+
+              &lt;div class &#x3D; &quot;form-group&quot;&gt;
+                &lt;label for &#x3D; &quot;password&quot;&gt;Password&lt;/label&gt;
+                &lt;input type&#x3D;&quot;password&quot; id &#x3D; &quot;password&quot; name &#x3D; &quot;password&quot; [(ngModel)] &#x3D; &quot;newEmployee.password&quot; required&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;button-group&quot;&gt;
+                &lt;button class&#x3D;&quot;create-btn&quot;  type&#x3D;&quot;submit&quot; id&#x3D;&quot;submit&quot; name &#x3D; &quot;submit&quot;&gt;Create&lt;/button&gt;
+                &lt;button class&#x3D;&quot;cancel-btn&quot; [routerLink]&#x3D;&quot;[&#x27;/dashboard/employee&#x27;]&quot;&gt;Cancel&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+
+
+ --&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./employee-update.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">// .main-container {
+//   width: 100%;
+//   min-height: 100vh;
+//   background-color: #ffffff;
+// }
+
+// .header {
+//   background-color: #2b2d42;
+//   color: white;
+//   padding: 1rem 2rem;
+//   margin-bottom: 2rem;
+//   border-radius: 22px;
+
+//   h1 {
+//     margin: 0;
+//     font-size: 1.5rem;
+//     font-weight: 500;
+//   }
+// }
+
+// .content-container-main {
+//   display: grid;
+//   grid-template-columns: 1fr 2fr;
+//   gap: 2rem;
+//   padding: 0 2rem;
+//   max-width: 1200px;
+//   margin: 0 auto;
+// }
+
+// // Left Column
+// .content-container-profile {
+//   background-color: white;
+//   border: 1px solid black;
+//   border-radius: 10px;
+//   width: 400px;
+//   height: 350px;
+// }
+
+// .profile-section,
+// .account-section {
+//   background-color: white;
+//   border-radius: 8px;
+//   overflow: hidden;
+// }
+
+// .section-header {
+//   background-color: #2b2d42;
+//   color: white;
+//   padding: 0.75rem 1.5rem;
+//   text-align: center;
+
+//   h2 {
+//     margin: 0;
+//     font-size: 1.2rem;
+//     font-weight: normal;
+//   }
+// }
+
+// .avatar-container {
+//   padding: 2rem;
+// }
+
+// .avatar-wrapper {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   text-align: center;
+//   position: relative;
+// }
+
+// .avatar-image {
+//   width: 180px;
+//   height: 180px;
+//   border-radius: 50%;
+//   object-fit: cover;
+//   border: 2px solid #000000;
+//   margin-bottom: 1rem;
+// }
+
+// .upload-btn {
+//   background-color: #e63946;
+//   color: white;
+//   border: none;
+//   padding: 0.75rem 1.5rem;
+//   border-radius: 50px;
+//   cursor: pointer;
+//   font-size: 1rem;
+//   transition: background-color 0.3s ease;
+
+//   &amp;:hover {
+//     background-color: darken(#e63946, 10%);
+//   }
+// }
+
+// .file-hint {
+//   color: #777;
+//   font-size: 0.875rem;
+//   margin-top: 1rem;
+//   margin-bottom: 1.5rem;
+// }
+
+// .file-input {
+//   display: none;
+// }
+
+// // Right column
+// .content-container-form {
+//   width: 950px;
+//   height: 1439px;
+//   margin: auto;
+//   padding: 20px;
+//   border: 1px solid black;
+//   border-radius: 8px;
+//   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+// }
+
+// h2 {
+//   text-align: center;
+//   background: #2c2f3f;
+//   color: white;
+//   padding: 10px;
+//   border-radius: 5px;
+// }
+
+// .form-grid {
+//   display: grid;
+//   grid-template-columns: repeat(2, 1fr);
+//   gap: 15px;
+//   padding: 20px;
+// }
+
+// .form-group {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .full-width {
+//   grid-column: span 2;
+// }
+
+// label {
+//   font-weight: bold;
+//   margin-bottom: 5px;
+// }
+
+// input {
+//   padding: 8px;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+// }
+
+// .section {
+//   margin-top: 20px;
+//   padding: 10px;
+//   border: 1px solid #ddd;
+//   border-radius: 5px;
+// }
+
+// h3 {
+//   text-align: center;
+//   font-size: 18px;
+//   margin-bottom: 10px;
+// }
+
+// .bold-btn {
+//   display: block;
+//   margin: 10px auto;
+//   padding: 5px 15px;
+//   background-color: #d9534f;
+//   color: white;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+// }
+
+// .text-area {
+//   width: 100%;
+//   height: 174px;
+//   resize: none;
+//   overflow-y: auto;
+// }
+
+// /* Button Group */
+// .button-group {
+//   display: flex;
+//   justify-content: center;
+//   gap: 20px;
+//   margin-top: 20px;
+// }
+
+// .create-btn, .cancel-btn {
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   font-size: 16px;
+// }
+
+// .create-btn {
+//   background-color: #d9534f;
+//   color: white;
+// }
+
+// .cancel-btn {
+//   background-color: #ccc;
+// }
+
+// Test 2
+.main-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  background-color: #2b2d42;
+  color: white;
+  padding: 1rem 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 22px;
+  width: 1405px;
+  height: 58px;
+  text-align: left;
+
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+
+.content-container-main {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1.5rem;
+  padding: 0 1.5rem;
+  max-width: 1100px;
+  width: 100%;
+}
+
+// Left Column
+.content-container-profile {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  height: 350px;
+  padding: 1rem;
+}
+
+.section-header {
+  background-color: #2b2d42;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+}
+
+.avatar-container {
+  padding: 2rem;
+}
+
+.avatar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.avatar-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  object-fit: cover;
+  border: 1px solid #000000;
+  margin-bottom: 1rem;
+  margin-top: -25px;
+}
+
+.upload-btn {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+  &amp;:hover {
+    background-color: darken(#e63946, 10%);
+  }
+}
+
+// Right Column
+.content-container-form {
+  width: 100%;
+  max-width: 700px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  background: #2c2f3f;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.section {
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
+}
+
+h3 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.bold-btn {
+  display: block;
+  margin: 10px auto;
+  padding: 5px 15px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.text-area {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.create-btn, .cancel-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.create-btn {
+  background-color: #d9534f;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #ccc;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- <div class="container-fluid" style="padding-left: 10px;">  <form (ngSubmit)="updateEmployee()">    <div class="row" style="height: 100vh;">      <div class="col-4 p-0">        <div class = "mb-3">          <div class="avatar-container" style="justify-content: center">            <div style="text-align: center; padding-top: 10%;">              <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Avatar Preview" style="width: 350px; height: 350px; border-radius: 50%;" />              <label for = "avatar" class = "form-control">Avatar</label>              <input                id="avatar"                name="avatar"                (change)="onFileSelect($event)"                type="file"                class="form-control"                required              >            </div>          </div>        </div>      </div>      <div class="col-8">        <h3>Employee Information</h3>        <hr>        <div class="row">          <div class="col">            <div class = "mb-3">              <label for="firstname" class="form-label">First name</label>              <input                placeholder="First name"                type="text"                class="form-control"                id="firstname"                [(ngModel)]="employee.firstname"                name="firstname"                required              />            </div>          </div>          <div class="col">            <div class = "mb-3">              <label for="lastname" class="form-label">Last name</label>              <input                placeholder="Last name"                type="text"                class="form-control"                id="lastname"                [(ngModel)]="employee.lastname"                name="lastname"                required              />            </div>          </div>        </div>        <div class="row">          <div class="col">            <div class="mb-3">              <label for="gender" class="form-label">Gender</label>              <div class="form-check">                <input                  type="radio"                  id="male"                  name="gender"                  value="male"                  [(ngModel)]="employee.gender"                  class="form-check-input"                />                <label for="male" class="form-check-label">Male</label>              </div>              <div class="form-check">                <input                  type="radio"                  id="female"                  name="gender"                  value="female"                  [(ngModel)]="employee.gender"                  class="form-check-input"                />                <label for="female" class="form-check-label">Female</label>              </div>            </div>          </div>        </div> -->        <!-- <div class="row">          <div class="col-8">            <div class = "mb-3">              <label for="password" class="form-label">Password</label>              <input                placeholder="Password"                id="password"                name="password"                [(ngModel)]="employee.password"                class="form-control"                required                type="password"                disabled              />            </div>          </div>        </div> -->        <!-- <div class="row">          <div class="col">            <div class = "mb-3">              <label for="email" class="form-label">Email</label>              <input                placeholder="Email"                type="email"                class="form-control"                id="email"                name="email"                [(ngModel)]="employee.email"                required              />            </div>          </div>          <div class = "col">            <div class = "mb-3">              <label for="role" class="form-label">Role Assign</label>            <p *ngIf="employee.role && employee.role.name">              <strong>Current Role:</strong> {{ employee.role.name }}            </p>            <select id="role" name="role" class="form-control" [(ngModel)]="employee.role" required>              <option [ngValue]="null">Not Assigned</option>              <option *ngFor="let role of roles" [ngValue]="role">{{ role.name }}</option>            </select>          </div>          </div>        </div>        <div class="row">          <div class="col">            <div class = "mb-3">              <label for="skills" class="form-label">Skills (Comma Separated)</label>              <textarea                placeholder="Skills (Comma Separated)"                type="text"                class="form-control"                id="skills"                name="skills"                [(ngModel)]="employee.skills"                required              ></textarea>            </div>          </div>        </div>        <div class="row">          <div class="col">            <div class = "mb-3">              <label for="project" class="form-label">Projects Assign</label>            <p *ngIf="employee.project && employee.project.name">              <strong>Current Project:</strong> {{ employee.project.name }}            </p>            <select id="project" name="project" class="form-control" [(ngModel)]="employee.project" required>              <option [ngValue]="null">Not Assigned</option>              <option *ngFor="let project of projects" [ngValue]="project">{{ project.name }}</option>            </select>            </div>          </div>          <div class="col">            <div class = "mb-3">              <label for="department" class="form-label">Team Assign</label>            <p *ngIf="employee.department && employee.department.name">              <strong>Current Team:</strong> {{ employee.department.name }}            </p>            <select id="department" name="department" class="form-control" [(ngModel)]="employee.department" required>              <option [ngValue]="null">Not Assigned</option>              <option *ngFor="let department of departments" [ngValue]="department">{{ department.name }}</option>            </select>            </div>          </div>        </div>          <div class="row">            <div class="col">              <div class = "mb-3">                <label for="is_admin" class="form-label">Are you admin?</label>              <select                name="is_admin"                id="is_admin"                [(ngModel)]="employee.is_admin"                class="form-control"                required              >                <option [ngValue]="true">Yes, I am</option>                <option [ngValue]="false">No, I am not</option>              </select>              </div>            </div>          </div>        <div class="row">          <div class="col">            <div class="mb-3">              <label class="form-label">About Me</label>              <angular-editor [config]="editorConfig" [(ngModel)]="employee.aboutMe" name="aboutMe"></angular-editor>            </div>          </div>        </div>        <div class = "row">          <div class ="col">            <div class = "mb-3">              <label class = "form-label" for = "password">New Password</label>              <input              type = "password"              id = "password"              class = "form-control"              name = "password"              [(ngModel)] = "employee.password"              >            </div>          </div>          <div class ="col">            <div class = "mb-3">              <label class = "form-label" for = "passwordReqpeat">Repeat New Password</label>              <input              type = "password"              id = "passwordReqpeat"              class = "form-control"              name = "passwordReqpeat"              [(ngModel)] = "passwordRepeat"              >            </div>          </div>        </div>        <div class="row">          <div class="col-4 d-flex gap-4">            <button type="submit" class="btn btn-primary mt-3 flex-grow-1">Save</button>            <button type="button" class="btn btn-danger mt-3 flex-grow-1"              [routerLink]="[\'/dashboard/employee/delete\', employee.id]">              Delete            </button>          </div>        </div>      </div>    </div>  </form></div> --><div *ngIf="isUserAuthorize">  <div class = "container-fluid">    <form (ngSubmit)="updateEmployee()">      <div class = "profile-section">        <div class = "main-container">          <div class = "content-container-main">            <div class = "content-container-profile">              <div class = "profile-section">                <div class="section-header">                  <h2>Profile Picture</h2>                </div>                <div class="avatar-container">                  <div class="avatar-wrapper">                    <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Avatar Preview" style="width: 100px; height: 100px; border-radius: 50%;" />                    <p class="file-hint">JPG or PNG no larger than 5MB</p>                    <input                    id="avatar"                    name="avatar"                    (change)="onFileSelect($event)"                    type="file"                    class="file-input"                    required                  >                  </div>                </div>              </div>            </div>            <div class="content-container-form">              <h2>Account Details</h2>              <div class="form-grid">                <div class="form-group">                  <label for="firstname">First Name</label>                  <input type="text" id="firstname" name = "firstname" [(ngModel)]="employee.firstname" placeholder="Enter your first name" >                </div>                <div class="form-group">                  <label for="lastname">Last Name</label>                  <input type="text" id="lastname" name = "lastname" [(ngModel)]="employee.lastname" placeholder="Enter your last name">                </div>                  <div class="form-group">                    <label for="gender" class="form-label">Gender</label>                    <div class="gender-options">                      <div class="form-check">                        <input type="radio" id="male" name="gender" value="male" [(ngModel)]="employee.gender"                          class="form-check-input" />                        <label for="male" class="form-check-label">Male</label>                      </div>                      <div class="form-check">                        <input type="radio" id="female" name="gender" value="female" [(ngModel)]="employee.gender"                          class="form-check-input" />                        <label for="female" class="form-check-label">Female</label>                      </div>                      <div class="form-check">                        <input type="radio" id="other" name="gender" value="other" [(ngModel)]="employee.gender"                          class="form-check-input" />                        <label for="other" class="form-check-label">Other</label>                      </div>                    </div>                  </div>                  <div class="form-group full-width">                    <label for="joinDate">Join Date</label>                    <input type="date" id="joinDate" name = "joinDate" placeholder="Enter join Date" [(ngModel)] = "employee.joinDate">                  </div>                <div class="form-group">                  <label for="email">Email Address</label>                  <input type="email" id="email" name = "email" placeholder="Enter your email address" [(ngModel)] = "employee.email">                </div>                <div class="form-group full-width">                  <label for="skills">Skills</label>                  <input type="text" id="skills" name = "skills" placeholder="Enter emp skills" [(ngModel)] = "employee.skills">                </div>              <div  *ngIf="employee.role.privilege !== \'user\' else userEdit">                <div class = "form-group">                  <label for="department" class="form-label">Team Assign</label>                  <p *ngIf="employee.department && employee.department.name">                    <strong>Current Team:</strong> {{ employee.department.name }}                  </p>                  <select id="department" name="department" class="form-control" [(ngModel)]="employee.department" required>                    <option [ngValue]="null">Not Assigned</option>                    <option *ngFor="let department of departments" [ngValue]="department">{{ department.name }}</option>                  </select>                </div>                <div class = "form-group">                  <label for="project" class="form-label">Projects Assign</label>                  <p *ngIf="employee.project && employee.project.name">                    <strong>Current Project:</strong> {{ employee.project.name }}                  </p>                  <select id="project" name="project" class="form-control" [(ngModel)]="employee.project" required>                    <option [ngValue]="null">Not Assigned</option>                    <option *ngFor="let project of projects" [ngValue]="project">{{ project.name }}</option>                  </select>                </div>                <div class = "form-group full-width">                  <label for="role" class="form-label">Role Assign</label>                  <p *ngIf="employee.role && employee.role.name">                    <strong>Current Role:</strong> {{ employee.role.name }}                  </p>                  <select id="role" name="role" class="form-control" [(ngModel)]="employee.role" required>                    <option [ngValue]="null">Not Assigned</option>                    <option *ngFor="let role of roles" [ngValue]="role">{{ role.name }}</option>                  </select>                </div>              </div>                <ng-template #userEdit>                  <p *ngIf="employee.role && employee.role.name">                    <strong>Current Role:</strong> {{ employee.role.name }}                  </p>                  <p *ngIf="employee.department && employee.department.name">                    <strong>Current Team:</strong> {{ employee.department.name }}                  </p>                  <p *ngIf="employee.project && employee.project.name">                    <strong>Current Project:</strong> {{ employee.project.name }}                  </p>                </ng-template>              </div>              <div class="form-group">                <label for="aboutMe">Expert Profile</label>                <input                id="aboutMe"                name="aboutMe"                (change)="onFileSelectEP($event)"                type="file"                class="file-input"                required                >                <img src="http://localhost:3000/upload-picture/{{employee.aboutMe}}" alt="aboutMe Preview" />              </div>              <div class = "form-group">                <label class = "form-label" for = "password">New Password (skip if don\'t change)</label>                <input                type = "password"                id = "password"                class = "form-control"                name = "password"                [(ngModel)] = "employee.password"                >              </div>              <div class = "form-group">                <label class = "form-label" for = "passwordReqpeat">Repeat New Password (skip if don\'t change)</label>                <input                type = "password"                id = "passwordReqpeat"                class = "form-control"                name = "passwordReqpeat"                [(ngModel)] = "passwordRepeat"                >              </div>              <div class="button-group">                <button class="create-btn"  type="submit" id="submit" name = "submit">Update</button>                <button class="cancel-btn" [routerLink]="[\'/dashboard/employee\']">Cancel</button>                <div *ngIf="this.user.sub.role.privilege !== \'user\'">                  <button class="cancel-btn" [routerLink]="[\'/dashboard/employee/delete\',employee.id]">Delete</button>                </div>              </div>            </div>          </div>        </div>      </div>    </form>  </div></div><div class *ngIf="!isUserAuthorize">  <div class = "container-fluid">    <h1>YOU ARE NOT AUTHORIZED TO THIS PAGE</h1>  </div></div><!--<div class="container-fluid">  <form (ngSubmit)="addEmployee()">    <div class="profile-section">      <div class="main-container">        <div class="header">          <h1>Create New Profile</h1>        </div>        <div class="content-container-main">          <div class="content-container-profile">            <div class="profile-section">              <div class="section-header">                <h2>Profile Picture</h2>              </div>              <div class="avatar-container">                <div class="avatar-wrapper">                  <img src="http://localhost:3000/upload-picture/{{newEmployee.avatar}}" alt="Avatar Preview" style="width: 100px; height: 100px; border-radius: 50%;" />                  <p class="file-hint">JPG or PNG no larger than 5MB</p>                  <input                  id="avatar"                  name="avatar"                  (change)="onFileSelect($event)"                  type="file"                  class="file-input"                  required                >                </div>              </div>            </div>          </div>          <div class="content-container-form">            <h2>Account Details</h2>            <div class="form-grid">              <div class="form-group">                <label for="firstname">First Name</label>                <input type="text" id="firstname" name = "firstname" [(ngModel)]="newEmployee.firstname" placeholder="Enter your first name" >              </div>              <div class="form-group">                <label for="lastname">Last Name</label>                <input type="text" id="lastname" name = "lastname" [(ngModel)]="newEmployee.lastname" placeholder="Enter your last name">              </div>                <div class="form-group">                  <label for="gender" class="form-label">Gender</label>                  <div class="gender-options">                    <div class="form-check">                      <input type="radio" id="male" name="gender" value="male" [(ngModel)]="newEmployee.gender"                        class="form-check-input" />                      <label for="male" class="form-check-label">Male</label>                    </div>                    <div class="form-check">                      <input type="radio" id="female" name="gender" value="female" [(ngModel)]="newEmployee.gender"                        class="form-check-input" />                      <label for="female" class="form-check-label">Female</label>                    </div>                  </div>                </div>              <div class="form-group">                <label for="email">Email Address</label>                <input type="email" id="email" name = "email" placeholder="Enter your email address" [(ngModel)] = "newEmployee.email">              </div>              <div class="form-group full-width">                <label for="skills">Skills</label>                <input type="text" id="skills" name = "skills" placeholder="Enter emp skills" [(ngModel)] = "newEmployee.skills">              </div>              <div class="form-group">                  <label class="form-label" for="role">Assign Role <span style="color: red;">(*)</span></label>                  <select class="form-control" id="role" name="role" [(ngModel)]="newEmployee.role.id" required>                    <option *ngFor="let role of roles" [value]="role.id">                      {{ role.name }}                    </option>                  </select>              </div>              <div class="form-group">                <label class="form-label" for="project">Assign Project <span style="color: red;">(*)</span></label>                <select class="form-control" id="project" name="project" [(ngModel)]="newEmployee.project.id" required>                  <option *ngFor="let project of projects" [value]="project.id">                    {{ project.name }}                  </option>                </select>              </div>              <div classs = "form-group">                <label for = "department" class = "form-label">Assign Team</label>                <select class = "form-control" id = "department" name = "department" [(ngModel)] = "newEmployee.department.id" required>                  <option *ngFor="let department of departments" [value] = "department.id">                    {{department.name}}                  </option>                </select>              </div>              <div class = "form-group">                <label for = "password">Password</label>                <input type="password" id = "password" name = "password" [(ngModel)] = "newEmployee.password" required>              </div>              <div class="button-group">                <button class="create-btn"  type="submit" id="submit" name = "submit">Create</button>                <button class="cancel-btn" [routerLink]="[\'/dashboard/employee\']">Cancel</button>              </div>            </div>          </div>        </div>      </div>    </div>  </form></div> --></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CustomerCreateComponent', 'selector': 'app-customer-create'},{'name': 'CustomerDeleteComponent', 'selector': 'app-customer-delete'},{'name': 'CustomerIndexComponent', 'selector': 'app-customer-index'},{'name': 'CustomerUpdateComponent', 'selector': 'app-customer-update'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DepartmenIndexComponentComponent', 'selector': 'app-departmen-index-component'},{'name': 'DepartmentCreateComponentComponent', 'selector': 'app-department-create-component'},{'name': 'DepartmentDeleteComponentComponent', 'selector': 'app-department-delete-component'},{'name': 'DepartmentDescribeComponent', 'selector': 'app-department-describe'},{'name': 'DepartmentUpdateComponentComponent', 'selector': 'app-department-update-component'},{'name': 'EmployeeCreateComponent', 'selector': 'app-create-employee'},{'name': 'EmployeeDeleteComponent', 'selector': 'app-employee-delete'},{'name': 'EmployeeIndexComponent', 'selector': 'app-employee-index'},{'name': 'EmployeeUpdateComponent', 'selector': 'app-employee-update'},{'name': 'ExpertProfileComponent', 'selector': 'app-expert-profile'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NodeComponentComponent', 'selector': 'app-node-component'},{'name': 'OrgChartComponent', 'selector': 'app-org-chart'},{'name': 'ProjectCreateComponent', 'selector': 'app-project-create'},{'name': 'ProjectDeleteComponent', 'selector': 'app-project-delete'},{'name': 'ProjectIndexComponent', 'selector': 'app-project-index'},{'name': 'ProjectUpdateComponent', 'selector': 'app-project-update'},{'name': 'RoleCreateComponent', 'selector': 'app-role-create'},{'name': 'RoleDeleteComponent', 'selector': 'app-role-delete'},{'name': 'RoleIndexComponent', 'selector': 'app-role-index'},{'name': 'RoleUpdateComponent', 'selector': 'app-role-update'},{'name': 'SqlDocsComponent', 'selector': 'app-sql-docs'},{'name': 'TopnavComponent', 'selector': 'app-topnav'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EmployeeUpdateComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EmployeeUpdateComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

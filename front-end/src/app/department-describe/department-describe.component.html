@@ -1,43 +1,32 @@
-<div style="height: 100vh; position: relative; padding: 10px;">
-
-  <input
-    id="avatar"
-    name="avatar"
-    (change)="onFileSelected($event)"
-    type="file"
-    class="file-input upload-btn position-absolute"
-    style="
-      width: 120px;
-      top: 10px;
-      right: 10px;
-      padding: 6px 10px;
-      font-size: 12px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: center;
-    "
-    required
-  >
-  <br>
-  <br>
-<div *ngIf="pictures.length >0">
-  <div class = "row">
-    <div class = "col-sm-2">
-      <button (click)="toggleVericalSlide()" style="font-size: 12px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">
-        Toggle View
-      </button>
+<div class="text-white card-header" style="background-color: #050A1F; display: block;">
+  <div class="row">
+    <div class = "col-6">
+      <h4>Please Upload your picture</h4>
     </div>
-    <div class = "col-sm-2">
-      <button (click)="deleteSlide()" style="font-size: 12px; background-color: red; color: white; border: none; border-radius: 8px; cursor: pointer; ">
-        Delete Slide
-      </button>
-    </div>
+    <div class="col-2">
+      <input
+      id="avatar"
+      name="avatar"
+      (change)="onFileSelected($event)"
+      type="file"
+      class="btn btn-primary"
+      required
+    >
   </div>
+  <div class = "col-sm-2">
+    <button (click)="toggleVericalSlide()" >
+      Toggle View
+    </button>
+  </div>
+  <div class = "col-sm-2">
+    <button (click)="deleteSlide()" >
+      Delete Slide
+    </button>
+  </div>
+   </div>
 </div>
 
+<div style="height: 100vh; position: relative; padding: 10px;">
 
 <!-- Picture Carousel -->
 <div *ngIf="pictures.length > 0" [ngClass]="{'horizontal-view': !isVertical, 'vertical-view': isVertical}" style="background-color: whitesmoke; padding: 10px; border-radius: 8px; margin-top: 20px;">

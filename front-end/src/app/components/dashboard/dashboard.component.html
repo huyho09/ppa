@@ -1,11 +1,14 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-2 p-0">
+    <div [ngClass]="{'col-2 col-md-2 p-0': !isCollapsed, 'col-1 col-md-1 p-0': isCollapsed}" class="sidenav-container">
       <app-navbar class="sidenav"></app-navbar>
     </div>
-    <div class="col-sm-10 content-container">
+    <div [ngClass]="{'col-10 col-md-10': !isCollapsed, 'col-11 col-md-11': isCollapsed}" class="content-container" [class.expanded]="isCollapsed">
       <div>
         <app-topnav></app-topnav>
+        <div style="text-align: center; padding: 10px;">
+          <img src="https://t4.ftcdn.net/jpg/03/55/72/85/360_F_355728511_794UEreGncrwEyWmi1uop6dlbLdkRpOP.jpg" name = "bg-picture" alt="bg-picture" style="width: 100%; border-radius: 10%;">
+        </div>
       </div>
       <div style="overflow: auto;">
         <router-outlet></router-outlet>
