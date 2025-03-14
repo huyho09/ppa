@@ -43,7 +43,7 @@ export class LoginComponent  {
         console.log("login successfull ", response)
         if(this.loginService.saveSession(response) && this.loginService.getSession())
         {
-          window.location.href = '/dashboard/overview'
+          // window.location.href = '/dashboard/overview'
         }
       },
       error => {

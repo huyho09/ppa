@@ -29,6 +29,8 @@ $env:Path = "$env:Path;$env:USERPROFILE\node"
 ```
 cd ppwa-frontend/
 npm install
+or 
+npm install --legacy-peer-deps
 //After installation complete, run: 
 ng version
 //If not found, run: 
@@ -79,7 +81,9 @@ NOTE: Raw file sizes do not reflect development server per-request transformatio
 ## 2. Installation
 ```
 cd ppwa-backend/
-npm install
+npm install 
+or 
+npm install --legacy-peer-deps
 //Verify if nest is install by execute the below command: 
 nest --version
 ```
@@ -110,6 +114,6 @@ npm run start:dev
 [Nest] 30544  - 01/13/2025, 3:28:36 PM     LOG [NestApplication] Nest application successfully started +1ms
 
 ```
-> Visit your localhost:3000 or use Postman to test the Route 
-- Example, send a GET request to localhost:3000/ will response a 200 status OK with the body "Hello World" 
+> Username : admin@example.com  
+> Password : Password@123
 

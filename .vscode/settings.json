@@ -1,4 +1,11 @@
 {
-    "sqltools.connections": [],
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "aaaaaa",
+            "database": "\"C:\\Users\\AYG5HC\\Documents\\Project\\OPM-31\\MyProject\\opm31-ppwa\\back-end\\database.sqlite\""
+        }
+    ],
     "sqltools.useNodeRuntime": true
 }

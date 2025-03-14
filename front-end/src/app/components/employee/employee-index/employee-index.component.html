@@ -1,17 +1,22 @@
-<div class="card-body" style="background-color: whitesmoke">
-
+<div class="card-body" style="background-color: whitesmoke; overflow: auto; width: 100%">
   <div class="d-flex flex-row">
-    <div class="p-2">
-    </div>
+    <div class="p-2"></div>
     <div class="p-2">
       <button class="collapse-arrow" (click)="toggleSearchBar()">
-        <i [ngClass]="isSearchCollapsed ? 'fas fa-chevron-down' : 'fas fa-chevron-up'"></i>
+        <i
+          [ngClass]="
+            isSearchCollapsed ? 'fas fa-chevron-down' : 'fas fa-chevron-up'
+          "
+        ></i>
       </button>
     </div>
   </div>
-  <br><br>
+  <br /><br />
   <!-- Search and Filter Section -->
-  <div class="search-filter-container" [@slideInOut]="isSearchCollapsed ? 'collapsed' : 'expanded'">
+  <div
+    class="search-filter-container"
+    [@slideInOut]="isSearchCollapsed ? 'collapsed' : 'expanded'"
+  >
     <!-- Search Bar -->
     <div class="search-bar" *ngIf="!isSearchCollapsed">
       <input type="text" [(ngModel)]="searchText" placeholder="Search..." />
@@ -19,70 +24,88 @@
       <button class="filter-button" (click)="toggleFilterPanel()">
         <i class="bi bi-filter"></i> Filter
       </button>
-      <div *ngIf="isTableView else cardViewIcon">
-        <button class="filter-button" (click)="toggleTableView()"><i class="bi bi-table"></i> Table</button>
+      <div *ngIf="isTableView; else cardViewIcon">
+        <button class="filter-button" (click)="toggleTableView()">
+          <i class="bi bi-table"></i> Table
+        </button>
       </div>
       <ng-template #cardViewIcon>
-        <button class="filter-button" (click)="toggleTableView()"><i class="bi bi-card-heading"></i> Card</button>
+        <button class="filter-button" (click)="toggleTableView()">
+          <i class="bi bi-card-heading"></i> Card
+        </button>
       </ng-template>
-
-
     </div>
 
     <!-- Filter Panel -->
     <div class="filter-panel" *ngIf="isFilterVisible">
       <div class="filter-section">
-
-        <!-- Role Filter -->
         <div class="filter-group">
-          <h4 (click)="toggleDropdown('role')">Role</h4>
-          <div class="dropdown-content scrollable" *ngIf="activeDropdown === 'role'">
-            <div *ngFor="let role of uniqueRoles" (click)="updateFilter('role', role)">
-              <input type="checkbox" [checked]="selectedRole.includes(role)" /> {{ role }}
+          <h4>Role</h4>
+          <div class="dropdown-content scrollable">
+            <div
+              *ngFor="let role of uniqueRoles"
+              (click)="updateFilter('role', role)"
+            >
+              <input type="checkbox" [checked]="selectedRole.includes(role)" />
+              {{ role }}
             </div>
           </div>
         </div>
 
-        <!-- Project Filter -->
         <div class="filter-group">
-          <h4 (click)="toggleDropdown('project')">Projects</h4>
-          <div class="dropdown-content scrollable" *ngIf="activeDropdown === 'project'">
-            <div *ngFor="let project of uniqueProjects" (click)="updateFilter('project', project)">
-              <input type="checkbox" [checked]="selectedProject.includes(project)" /> {{ project }}
+          <h4>Projects</h4>
+          <div class="dropdown-content scrollable">
+            <div
+              *ngFor="let project of uniqueProjects"
+              (click)="updateFilter('project', project)"
+            >
+              <input
+                type="checkbox"
+                [checked]="selectedProject.includes(project)"
+              />
+              {{ project }}
             </div>
           </div>
         </div>
 
-        <!-- Team Filter -->
         <div class="filter-group">
-          <h4 (click)="toggleDropdown('team')">Teams</h4>
-          <div class="dropdown-content scrollable" *ngIf="activeDropdown === 'team'">
-            <div *ngFor="let team of uniqueTeams" (click)="updateFilter('team', team)">
-              <input type="checkbox" [checked]="selectedDepartment.includes(team)" /> {{ team }}
+          <h4>Teams</h4>
+          <div class="dropdown-content scrollable">
+            <div
+              *ngFor="let team of uniqueTeams"
+              (click)="updateFilter('team', team)"
+            >
+              <input
+                type="checkbox"
+                [checked]="selectedDepartment.includes(team)"
+              />
+              {{ team }}
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-  <br>
-  <br>
   <!-- Title -->
-  <div style="text-align: center;">
-    <h1 style="color: black;">Our People</h1>
+  <div style="text-align: center">
+    <h1 style="color: black">Our People</h1>
   </div>
 
   <!-- Employee Cards Display -->
-  <div class="row" [ngClass]="{'filter-active': isFilterVisible}" *ngIf="this.isTableView else cardView">
-    <div class="col-12 col-md-4 mb-4" *ngFor="let employee of filterEmployee()">
+  <div
+    class="row"
+    [ngClass]="{ 'filter-active': isFilterVisible }"
+    *ngIf="this.isTableView; else cardView"
+  >
+    <div class="col-12 col-md-4 mb-4" *ngFor="let employee of filterEmployee()" style="padding-left: -10px">
       <div class="card">
         <div class="card-body">
-
           <!-- Employee Skills -->
           <div class="div-em-skill">
             <ul>
-              <li *ngFor="let skill of employee.skills" class="skill-item">{{ skill.trim() }}</li>
+              <li *ngFor="let skill of employee.skills" class="skill-item">
+                {{ skill.trim() }}
+              </li>
             </ul>
           </div>
 
@@ -90,33 +113,44 @@
           <div *ngIf="validateUserPrivilege(); else cantclickName">
             <h5 class="card-title">
               <a [routerLink]="['/dashboard/employee/update', employee.id]">
-                {{ employee.firstname + ' ' + employee.lastname }}
+                {{ employee.firstname + " " + employee.lastname }}
               </a>
             </h5>
           </div>
           <ng-template #cantclickName>
-            <h5 class="card-title">{{ employee.firstname + " " + employee.lastname }}</h5>
+            <h5 class="card-title">
+              {{ employee.firstname + " " + employee.lastname }}
+            </h5>
           </ng-template>
 
           <!-- Employee Info Section -->
           <div class="row employee-info">
-
             <!-- Avatar -->
             <div class="col-12 col-md-4 employee-image">
-              <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Employee Avatar"
-                class="avatar" />
+              <img
+                src="http://localhost:3000/upload-picture/{{ employee.avatar }}"
+                alt="Employee Avatar"
+                class="avatar"
+              />
             </div>
 
             <!-- Details: Email, Team, Project -->
             <div class="col-12 col-md-8 employee-details">
-              <p class="card-text"><strong>Email:</strong> {{ employee.email }}</p>
+              <p class="card-text">
+                <strong>Email:</strong> {{ employee.email }}
+              </p>
 
               <!-- Team -->
               <div *ngIf="validateUserPrivilege(); else userTeam">
                 <p class="card-text">
                   <strong>Team:</strong>
                   <span *ngIf="employee.department?.id; else noTeam">
-                    <a [routerLink]="['/dashboard/department/update', employee.department?.id]">
+                    <a
+                      [routerLink]="[
+                        '/dashboard/department/update',
+                        employee.department?.id
+                      ]"
+                    >
                       {{ employee.department?.name }}
                     </a>
                   </span>
@@ -126,7 +160,9 @@
               <ng-template #userTeam>
                 <p class="card-text">
                   <strong>Team:</strong>
-                  <span *ngIf="employee.department?.id; else noTeam">{{ employee.department?.name }}</span>
+                  <span *ngIf="employee.department?.id; else noTeam">{{
+                    employee.department?.name
+                  }}</span>
                   <ng-template #noTeam>Don't have Team</ng-template>
                 </p>
               </ng-template>
@@ -136,7 +172,12 @@
                 <p class="card-text">
                   <strong>Project:</strong>
                   <span *ngIf="employee.project?.id; else noProject">
-                    <a [routerLink]="['/dashboard/project/update', employee.project?.id]">
+                    <a
+                      [routerLink]="[
+                        '/dashboard/project/update',
+                        employee.project?.id
+                      ]"
+                    >
                       {{ employee.project?.name }}
                     </a>
                   </span>
@@ -146,11 +187,12 @@
               <ng-template #userProject>
                 <p class="card-text">
                   <strong>Project:</strong>
-                  <span *ngIf="employee.project?.id; else noProject">{{ employee.project?.name }}</span>
+                  <span *ngIf="employee.project?.id; else noProject">{{
+                    employee.project?.name
+                  }}</span>
                   <ng-template #noProject>Don't have project</ng-template>
                 </p>
               </ng-template>
-
             </div>
           </div>
 
@@ -158,12 +200,21 @@
           <div *ngIf="validateUserPrivilege(); else noPrivilege">
             <div class="row">
               <div class="col-6">
-                <button [routerLink]="['/dashboard/employee/update', employee.id]" class="view-profile-btn">
+                <button
+                  [routerLink]="['/dashboard/employee/update', employee.id]"
+                  class="view-profile-btn"
+                >
                   View Details
                 </button>
               </div>
               <div class="col-6">
-                <button [routerLink]="['/dashboard/employee/expertProfile', employee.id]" class="view-profile-btn">
+                <button
+                  [routerLink]="[
+                    '/dashboard/employee/expertProfile',
+                    employee.id
+                  ]"
+                  class="view-profile-btn"
+                >
                   View EP
                 </button>
               </div>
@@ -172,13 +223,18 @@
           <ng-template #noPrivilege>
             <div class="row">
               <div class="col">
-                <button [routerLink]="['/dashboard/employee/expertProfile', employee.id]" class="view-profile-btn">
+                <button
+                  [routerLink]="[
+                    '/dashboard/employee/expertProfile',
+                    employee.id
+                  ]"
+                  class="view-profile-btn"
+                >
                   View EP
                 </button>
               </div>
             </div>
           </ng-template>
-
         </div>
       </div>
     </div>
@@ -186,9 +242,17 @@
 
   <ng-template #cardView>
     <div
-      style="background-color: #050A1F; height: 60px; align-content: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-    </div>
-    <div style="overflow-x: auto;">
+      class="row"
+      [ngClass]="{ 'filter-active': isFilterVisible }"
+      
+    ></div>
+    <div style="padding-left: -10px;
+    background-color: #050a1f;
+    height: 50px;
+    align-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;"></div>
+    <div style="overflow-x: auto">
       <table id="projectDataTable" class="table table-striped table-bordered">
         <thead>
           <tr>
@@ -207,13 +271,13 @@
           <tr *ngFor="let employee of filterEmployee()">
             <td>
               <a [routerLink]="['/dashboard/employee/update', employee.id]">
-                {{ employee.firstname + ' ' + employee.lastname }}
+                {{ employee.firstname + " " + employee.lastname }}
               </a>
             </td>
             <td>{{ employee.gender }}</td>
             <td>{{ employee.joinDate }}</td>
-            <td>{{employee.email}}</td>
-            <td>{{employee.role.name}}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.role.name }}</td>
             <td>
               <ul>
                 <li *ngFor="let skill of employee.skills">
@@ -221,8 +285,8 @@
                 </li>
               </ul>
             </td>
-            <td>{{employee.department?.name}}</td>
-            <td>{{employee.project?.name}}</td>
+            <td>{{ employee.department?.name }}</td>
+            <td>{{ employee.project?.name }}</td>
             <!-- <td>
               <ul>
                 <li *ngFor="let departmentName of employee.department?.name">
@@ -238,17 +302,21 @@
               </ul>
             </td>
             <td> -->
-              <div class="row">
-                <div class="col-sm-6">
-                  <a [routerLink]="['/dashboard/employee/delete', employee.id]"><i class="bi bi-trash-fill"></i></a>
-                </div>
-                <div class="col-sm-6">
-                  <a [routerLink]="['/dashboard/employee/update', employee.id]"><i class="bi bi-tools"></i></a>
-                </div>
+            <div class="action-buttons">
+              <div class="col-sm-6">
+                <a [routerLink]="['/dashboard/employee/update', employee.id]"
+                  ><i class="bi bi-pencil-square" ></i
+                ></a>
               </div>
+              <div class="col-sm-6">
+                <a [routerLink]="['/dashboard/employee/delete', employee.id]"
+                  ><i class="bi bi-trash3"></i
+                ></a>
+              </div>
+            </div>
           </tr>
         </tbody>
       </table>
     </div>
-</ng-template>
+  </ng-template>
 </div>

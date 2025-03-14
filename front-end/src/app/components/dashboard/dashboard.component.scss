@@ -1,6 +1,33 @@
 .content-container{
     height: 100vh;
     overflow: auto;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 16px;
+    transition: width 0.3s;
+    width: 100%;
+    max-width: 100%;
+    // min-width: min-content;
+ 
+
 }
+
+.row{
+  display: row;
+  flex-wrap: wrap;
+}
+
+.content-container.expanded {
+  width: 100%;
+}
+
+
+.hero-image-full {
+  width: 100%;
+}
+
+.hero-image-shrink{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: top;
+}
+

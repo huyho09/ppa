@@ -31,7 +31,6 @@ interface Project {
 })
 export class EmployeeServiceService {
   private localStorageKey = 'employees';
-  employees: Employee[] = [];
   constructor(private http: HttpClient) {}
 
   private apiUrl = 'http://127.0.0.1:3000/employees';

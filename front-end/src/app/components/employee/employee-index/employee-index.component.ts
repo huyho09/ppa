@@ -3,7 +3,7 @@ import { EmployeeServiceService } from '../service/employee-service.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Privilege } from '../../role/service/role-service.service';
+import { Privilege, RoleServiceService } from '../../role/service/role-service.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
@@ -66,7 +66,10 @@ export class EmployeeIndexComponent implements OnInit {
 
 
 
-  constructor(private employeeService: EmployeeServiceService) {}
+  constructor(
+    private employeeService: EmployeeServiceService,
+    private roleService: RoleServiceService,
+  ) {}
 
   ngOnInit(): void {
     const user_data = sessionStorage.getItem('User')

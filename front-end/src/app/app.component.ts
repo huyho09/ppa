@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 @Component({
@@ -10,5 +10,5 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  
 }

@@ -1,11 +1,19 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-2 p-0">
+    <div [ngClass]="{'col-3 col-md-3 p-0': !isCollapsed, 'col-1 col-md-1 p-0': isCollapsed}" class="sidenav-container">
       <app-navbar class="sidenav"></app-navbar>
     </div>
-    <div class="col-sm-10 content-container">
+    <div [ngClass]="{'col-9 col-md-9': !isCollapsed, 'col-11 col-md-11': isCollapsed}" class="content-container" [class.expanded]="isCollapsed">
       <div>
         <app-topnav></app-topnav>
+        <div style="text-align: center; padding: 10px 0px;">
+          <img 
+            src="http://localhost:3000/upload-picture/hero-image.png" 
+            name="bg-picture" 
+            alt="bg-picture"
+            [ngClass]="isDashboardPage ? 'hero-image-full': 'hero-image-shrink'" 
+            style="border-radius: 0;">
+        </div>
       </div>
       <div style="overflow: auto;">
         <router-outlet></router-outlet>

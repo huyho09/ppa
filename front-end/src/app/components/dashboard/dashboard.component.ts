@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';  // Import RouterModule
+import { NavigationEnd, Router, RouterModule } from '@angular/router';  // Import RouterModule
 import { NavbarComponent } from '../navbar/navbar.component';
 import { TopnavComponent } from "../topnav/topnav.component";
 import { DepartmentDescribeComponent } from "../../department-describe/department-describe.component";
 import { EmployeeDeleteComponent } from "../employee/employee-delete/employee-delete.component";
 import { EmployeeIndexComponent } from "../employee/employee-index/employee-index.component";
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NavbarServiceService } from '../navbar/service/navbar-service.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterModule, NavbarComponent, TopnavComponent],  // Include RouterModule here
+  imports: [RouterModule, NavbarComponent, TopnavComponent,FormsModule,CommonModule],  // Include RouterModule here
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
@@ -17,8 +20,25 @@ export class DashboardComponent implements OnInit  {
   user: any = {}
   exp_time: string =''
   real_date: string = '';
-  constructor(private router: Router){}
+  isCollapsed: boolean = false
+  isDashboardPage: boolean = false
+  constructor(
+    private router: Router,
+    private sidenavService: NavbarServiceService
+
+  ){
+    this.router.events.subscribe((event) => {
+      if(event instanceof NavigationEnd) {
+        this.isDashboardPage = event.urlAfterRedirects ==='/dashboard/overview'
+      }
+    })
+  }
   ngOnInit(): void {
+    this.sidenavService.sidenavCollapsed$.subscribe(
+      collapsed => {
+        this.isCollapsed = collapsed
+      }
+    )
     setInterval(() => {
       this.validateUserExpire();
     }, 6000);

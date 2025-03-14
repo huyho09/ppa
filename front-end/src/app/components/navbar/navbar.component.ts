@@ -3,6 +3,7 @@ import { LoginServiceService } from '../../login/login-service.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Route, Router, RouterModule } from '@angular/router';
+import { NavbarServiceService } from './service/navbar-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +14,20 @@ import { Route, Router, RouterModule } from '@angular/router';
 export class NavbarComponent implements OnInit{
   isCollapsed: boolean = false;
 
-  constructor(private route: Router){}
+  constructor(
+    private route: Router,
+    private sidenavService: NavbarServiceService
+  ){
+    this.sidenavService.sidenavCollapsed$.subscribe(
+      collapsed => this.isCollapsed = collapsed
+    )
+  }
 
   user: any = {}
+  toggleSidenav(){
+    this.sidenavService.toggleSidenav()
+    console.log("success")
+  }
   ngOnInit(): void {
     if(this.getUser())
     {

@@ -9,7 +9,9 @@ interface UploadResponse {
   message: string;
   files: string[];
 }
-
+interface UploadPptResponse{
+  images: string[];
+}
 @Component({
   selector: 'app-department-describe',
   standalone: true,
@@ -22,6 +24,7 @@ export class DepartmentDescribeComponent implements OnInit{
 
   pictures: string[] = []
   isVertical: boolean = false;
+  isZipFile: boolean = false;
 
   constructor(private http : HttpClient){}
 
@@ -41,9 +44,27 @@ export class DepartmentDescribeComponent implements OnInit{
     }
   }
 
+  onFilePPTSelected(event: any): void {
+    const file:File = event.target.files[0];
+    if(file){
+      const formData = new FormData();
+      formData.append('file',file,file.name)
+      this.http.post<UploadPptResponse>('http://localhost:5000/convert/', formData).subscribe(
+        (response) => {
+          console.log(response)
+          this.pictures = response.images
+        }
+      )
+    }
+  }
   toggleVericalSlide() {
     this.isVertical = ! this.isVertical;
+    console.log("Toggle View")
   }
+  changeUploadMethod(){
+    this.isZipFile = !this.isZipFile
+  }
+
   ngOnInit(): void {
   }
 
