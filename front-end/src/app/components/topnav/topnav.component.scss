@@ -28,3 +28,24 @@
   opacity: 1;
   transform: translateY(0);
 }
+/* Add smooth transition for the avatar image */
+#avatar {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#avatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Add smooth transition for the dropdown menu */
+.dropdown-menu {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+}

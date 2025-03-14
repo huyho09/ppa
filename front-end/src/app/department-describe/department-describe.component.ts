@@ -15,7 +15,7 @@ interface UploadPptResponse{
 @Component({
   selector: 'app-department-describe',
   standalone: true,
-  imports: [FormsModule, CommonModule, EmployeeIndexComponent, ProjectIndexComponent],
+  imports: [FormsModule, CommonModule,],
   templateUrl: './department-describe.component.html',
   styleUrl: './department-describe.component.scss'
 })
@@ -64,7 +64,6 @@ export class DepartmentDescribeComponent implements OnInit{
   changeUploadMethod(){
     this.isZipFile = !this.isZipFile
   }
-
   ngOnInit(): void {
   }
 
