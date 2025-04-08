@@ -16,7 +16,7 @@ export class Department {
     @Column('text')
     createdAt: string;
 
-    @OneToMany(() => Employee,employees => employees.department)
+    @OneToMany(() => Employee,employees => employees.department, {nullable: true, lazy: false , eager: false})
     employees: Employee[]
 
 }

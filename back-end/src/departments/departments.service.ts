@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Department } from './entities/department.entity';
 import { Repository } from 'typeorm';
 import { Project } from 'src/projects/entities/project.entity';
+import { Employee } from 'src/employees/entities/employee.entity';
 
 @Injectable()
 export class DepartmentsService {
@@ -13,6 +14,8 @@ export class DepartmentsService {
     private readonly departmentRepository : Repository<Department>,
     @InjectRepository(Project)
     private readonly projectRepository: Repository<Project>,
+    @InjectRepository(Employee)
+    private readonly employeeRepository: Repository<Employee>,
   ){}
   create(createDepartmentDto: CreateDepartmentDto) {
     const new_department = this.departmentRepository.create(createDepartmentDto)
@@ -31,7 +34,7 @@ export class DepartmentsService {
 
   async update(id: string, updateDepartmentDto: UpdateDepartmentDto) {
     await this.departmentRepository.update(id,updateDepartmentDto)
-    return this.departmentRepository.findOneOrFail({where : {id}});
+    return this.departmentRepository.findOneOrFail({where : {id},relations:[]});
   }
 
   async remove(id: string) {
@@ -40,6 +43,11 @@ export class DepartmentsService {
     {
       project.department = null;
       await this.projectRepository.save(project)
+    }
+    const employees = await this. employeeRepository.find({where: {department:{id}}})
+    for(const emp of employees){
+      emp.department = null
+      await this.employeeRepository.save(emp)
     }
     return this.departmentRepository.delete(id)
   }

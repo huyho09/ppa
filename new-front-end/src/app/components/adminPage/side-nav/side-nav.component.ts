@@ -13,6 +13,11 @@ export class SideNavComponent implements OnInit  {
 
   user: any = {}
 
+  async logOut(): Promise<void>{
+    await sessionStorage.clear()
+    this.route.navigate(['/login'])
+  }
+
   ngOnInit(): void {
       const userData = sessionStorage.getItem('User')
       if (userData) {

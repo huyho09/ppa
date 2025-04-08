@@ -1,40 +1,90 @@
-<div class="container mt-5 p-4 rounded shadow-lg bg-white">
-  <form>
-    <div class="row">
-      <div class="col-2">
-        <p>Avatar</p>
-      </div>
-      <div class="col-10">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="firstname" class="form-label">
-                <strong>First name</strong><span class="text-danger"> (*)</span>
-              </label>
-              <input type="text" class="form-control" id="firstname" name="firstname"
-                placeholder="Enter your first name" required>
+<div *ngIf="this.user.sub.role.privilege === 'user'; else Authorized">
+  <div class="container">
+    <h1 class="text-danger">You are not Authorized</h1>
+  </div>
+</div>
+
+<ng-template #Authorized>
+  <div class="container">
+    <form (ngSubmit)="addEmployee()">
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6">
+          <h2>Profile Picture</h2>
+          <div class="text-center">
+            <img src="http://localhost:3000/upload-picture/{{newEmployee.avatar}}" alt="Avatar Preview" class="img-thumbnail" />
+            <p class="text-muted">JPG or PNG no larger than 5MB</p>
+            <input id="avatar" name="avatar" (change)="onFileSelect($event)" type="file" class="form-control" required>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+          <h2>Account Details</h2>
+
+          <div class="mb-3">
+            <label for="firstname" class="form-label">First Name</label>
+            <input type="text" id="firstname" name="firstname" [(ngModel)]="newEmployee.firstname" class="form-control" placeholder="Enter your first name">
+          </div>
+
+          <div class="mb-3">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input type="text" id="lastname" name="lastname" [(ngModel)]="newEmployee.lastname" class="form-control" placeholder="Enter your last name">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <div class="form-check">
+              <input type="radio" id="male" name="gender" value="male" [(ngModel)]="newEmployee.gender" class="form-check-input">
+              <label for="male" class="form-check-label">Male</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" id="female" name="gender" value="female" [(ngModel)]="newEmployee.gender" class="form-check-input">
+              <label for="female" class="form-check-label">Female</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" id="other" name="gender" value="other" [(ngModel)]="newEmployee.gender" class="form-check-input">
+              <label for="other" class="form-check-label">Other</label>
             </div>
           </div>
 
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="lastname" class="form-label">
-                <strong>Last name</strong><span class="text-danger"> (*)</span>
-              </label>
-              <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter your last name"
-                required>
-            </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" name="email" [(ngModel)]="newEmployee.email" class="form-control" placeholder="Enter your email">
           </div>
-        </div>
-        <div class = "row g-3">
-          <div class = "col">
-            <div class = "form-group">
-              <label for = "email"><strong>Email</strong><span class="text-danger"> (*)</span></label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
-                required>
-            </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" [(ngModel)]="newEmployee.password" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="role">Assign Role <span class="text-danger">*</span></label>
+            <select class="form-select" id="role" name="role" [(ngModel)]="newEmployee.role.id" required>
+              <option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="project">Assign Project <span class="text-danger">*</span></label>
+            <select class="form-select" id="project" name="project" [(ngModel)]="newEmployee.project.id" required>
+              <option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="department" class="form-label">Assign Team</label>
+            <select class="form-select" id="department" name="department" [(ngModel)]="newEmployee.department.id" required>
+              <option *ngFor="let department of departments" [value]="department.id">{{ department.name }}</option>
+            </select>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" id="submit" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-secondary" [routerLink]="['/dashboard/employee']">Cancel</button>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,34 @@
+<div class = "row" style="padding-bottom: 10px; padding-top: 10px;">
+  <div class = "col-12 col-md-4">
+    <button class = "btn btn-primary"  [routerLink]="['/admin/department/create']"><i class="fa-solid fa-square-plus"></i> Create Department</button>
+  </div>
+</div>
+<table class = "table table-striped">
+  <thead class = "thead-dark">
+    <tr>
+      <th><strong style="font-size: 23px;" >Team name</strong></th>
+      <th><strong style="font-size: 23px;" >Created At</strong></th>
+      <th><strong style="font-size: 23px;" >Action</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let department of departments">
+      <td>{{department.name}}</td>
+      <td>{{department.createdAt}}</td>
+      <td>
+        <div class="d-flex gap-2">
+          <!-- Delete Button -->
+          <button class="btn btn-danger btn-sm d-flex align-items-center gap-1" [routerLink]="['./delete/',department.id]">
+            <i class="fa-solid fa-trash"></i> Delete
+          </button>
+
+          <!-- Edit Button -->
+          <button class="btn btn-primary btn-sm d-flex align-items-center gap-1" [routerLink]="['./update/',department.id]">
+            <i class="fa-solid fa-pen-to-square"></i> Edit
+          </button>
+        </div>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

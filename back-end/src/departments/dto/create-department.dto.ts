@@ -3,6 +3,7 @@ export class CreateDepartmentDto {
     
     @IsString()
     id : string;
+    
     @IsString()
     name: string;
 
