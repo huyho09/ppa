@@ -20,6 +20,13 @@ interface Employee {
   department: {id: string, name: string}|null
 
 }
+
+interface EmailSender{
+  send_to: string;
+  content: string;
+}
+
+
 export enum Privilege {
   User = 'user',
   Admin = 'admin',
@@ -48,7 +55,7 @@ export class ServiceService {
 
   getEmployee(id : string) {
     const url = `${this.url}/${id}`
-    return this.http.get<Employee>(this.url)
+    return this.http.get<Employee>(url)
   }
 
   createEmployee(newEmp : Employee): Observable<any>{
@@ -79,5 +86,10 @@ export class ServiceService {
    {
     const api_url = this.url + '/' +id
     return this.http.delete(api_url)
+   }
+
+   sendEmail(request: EmailSender): Observable<any>{
+    const url = "http://127.0.0.1:8000/create_msg/"
+    return this.http.post(url,request)
    }
 }

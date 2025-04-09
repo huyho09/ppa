@@ -1,1 +1,140 @@
-<p>update works!</p>
+<div *ngIf="this.user.sub.role.privilege === 'user'; else Authorized">
+  <div class="container">
+    <h1 class="text-danger">You are not Authorized</h1>
+  </div>
+</div>
+
+<ng-template #Authorized>
+  <div class="container mt-4">
+    <!-- Tab Navigation -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#profile">Account Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#expertProfile">Expert Profile</a>
+      </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content mt-3">
+      <!-- Profile Details Tab -->
+      <div class="tab-pane fade show active" id="profile">
+        <form (ngSubmit)="updateEmployee()">
+          <div class="row">
+            <div class="col-md-6">
+              <h2>Profile Picture</h2>
+              <div class="text-center">
+                <img src="http://localhost:3000/upload-picture/{{employee.avatar}}" alt="Avatar Preview" class="img-thumbnail" />
+                <p class="text-muted">JPG or PNG no larger than 5MB</p>
+                <input id="avatar" name="avatar" (change)="onFileSelect($event)" type="file" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="firstname" class="form-label">First Name</label>
+                <input type="text" id="firstname" name="firstname" [(ngModel)]="employee.firstname" class="form-control" placeholder="Enter your first name">
+              </div>
+
+              <div class="mb-3">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input type="text" id="lastname" name="lastname" [(ngModel)]="employee.lastname" class="form-control" placeholder="Enter your last name">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <div class="form-check">
+                  <input type="radio" id="male" name="gender" value="male" [(ngModel)]="employee.gender" class="form-check-input">
+                  <label for="male" class="form-check-label">Male</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" id="female" name="gender" value="female" [(ngModel)]="employee.gender" class="form-check-input">
+                  <label for="female" class="form-check-label">Female</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" id="other" name="gender" value="other" [(ngModel)]="employee.gender" class="form-check-input">
+                  <label for="other" class="form-check-label">Other</label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" [(ngModel)]="employee.email" class="form-control" placeholder="Enter your email">
+              </div>
+              <div class = "mb-3">
+                <label for = "joinDate" class = "form-label">Join Date</label>
+                <input type="date" id = "joinDate" name = "joinDate" [(ngModel)] = "employee.joinDate" class = "form-control">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" [(ngModel)]="employee.password" class="form-control" required>
+              </div>
+
+              <div  *ngIf="employee.role.privilege !== 'user' else userEdit">
+                <div class = "form-group">
+                  <label for="department" class="form-label">Team Assign</label>
+                  <p *ngIf="employee.department && employee.department.name">
+                    <strong>Current Team:</strong> {{ employee.department.name }}
+                  </p>
+                  <select id="department" name="department" class="form-control" [(ngModel)]="employee.department" required>
+                    <option [ngValue]="null">Not Assigned</option>
+                    <option *ngFor="let department of departments" [ngValue]="department">{{ department.name }}</option>
+                  </select>
+                </div>
+
+                <div class = "form-group">
+                  <label for="project" class="form-label">Projects Assign</label>
+                  <p *ngIf="employee.project && employee.project.name">
+                    <strong>Current Project:</strong> {{ employee.project.name }}
+                  </p>
+                  <select id="project" name="project" class="form-control" [(ngModel)]="employee.project" required>
+                    <option [ngValue]="null">Not Assigned</option>
+                    <option *ngFor="let project of projects" [ngValue]="project">{{ project.name }}</option>
+                  </select>
+                </div>
+
+                <div class = "form-group full-width">
+                  <label for="role" class="form-label">Role Assign</label>
+                  <p *ngIf="employee.role && employee.role.name">
+                    <strong>Current Role:</strong> {{ employee.role.name }}
+                  </p>
+                  <select id="role" name="role" class="form-control" [(ngModel)]="employee.role" required>
+                    <option [ngValue]="null">Not Assigned</option>
+                    <option *ngFor="let role of roles" [ngValue]="role">{{ role.name }}</option>
+                  </select>
+                </div>
+              </div>
+
+                <ng-template #userEdit>
+                  <p *ngIf="employee.role && employee.role.name">
+                    <strong>Current Role:</strong> {{ employee.role.name }}
+                  </p>
+                  <p *ngIf="employee.department && employee.department.name">
+                    <strong>Current Team:</strong> {{ employee.department.name }}
+                  </p>
+                  <p *ngIf="employee.project && employee.project.name">
+                    <strong>Current Project:</strong> {{ employee.project.name }}
+                  </p>
+                </ng-template>
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" id="submit" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-secondary" [routerLink]="['/admin/employee']">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Expert Profile Upload Tab -->
+      <div class="tab-pane fade" id="expertProfile">
+        <h2>Upload Expert Profile Picture</h2>
+        <div class="text-center">
+          <img src="http://localhost:3000/upload-picture/{{employee.aboutMe}}" alt="Expert Profile Preview" class="img-thumbnail" />
+          <p class="text-muted">JPG or PNG no larger than 5MB</p>
+          <input id="expertProfile" name="expertProfile" (change)="onFileSelectEP($event)" type="file" class="form-control" required>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

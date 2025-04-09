@@ -1,65 +1,53 @@
-import smtplib
-from fastapi import FastAPI
-from email.message import EmailMessage
-import os
-from dotenv import load_dotenv
-from fastapi.responses import JSONResponse
+from datetime import datetime
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import socks
-import socket
+import os
+import uvicorn
+import win32com.client
+import pythoncom 
+from fastapi.middleware.cors import CORSMiddleware
 
-
-socks.set_default_proxy(socks.PROXY_TYPE_HTTP, "127.0.0.1", 3128)
-socket.socket = socks.socksocket
-
-# Load environment variables
-load_dotenv()
+class RequestBody(BaseModel): 
+    send_to: str
+    content: str
 
 app = FastAPI()
 
-SMTP_SERVER = os.getenv('SMTP_SERVER') 
-SMTP_PORT = int(os.getenv('SMTP_PORT', 587))
-EMAIL_SENDER = os.getenv("EMAIL_SENDER")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ['*'],
+    allow_methods = ['*'],
+    allow_headers = ['*']
+)
 
-print(f"SMTP Server: {SMTP_SERVER}")
-print(f"SMTP Port: {SMTP_PORT} - {type(SMTP_PORT)}")
-print(f"Sender Email: {EMAIL_SENDER}")
-print(f"Email Password: {EMAIL_PASSWORD}")
+save_dir = os.path.join(os.path.expanduser("~"), "Downloads")
 
-class EmailRequest(BaseModel): 
-    destination_mail: str
-    content: str
-
-def send_email(destination_mail: str, content: str): 
-    msg = EmailMessage()
-    msg.set_content(content)
-    msg["Subject"] = "Email from Admin"
-    msg["From"] = EMAIL_SENDER
-    msg["To"] = destination_mail
-    print(f"msg: {msg}")
+@app.post("/create_msg/")
+def create_msg(request: RequestBody): 
     try: 
-        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server: 
-            print("starting ttls")
-            server.starttls()
-            print("Start TTLS success")
-            server.login(EMAIL_SENDER, EMAIL_PASSWORD)
-            print("Login success")
-            server.send_message(msg)
-            print("send done")
-        return JSONResponse(content={
-            "status": "Email sent successfully",
-            "destination_email": destination_mail,
-            "content": content
-        }, status_code=200)
-    
-    except Exception as e:
-        print("HELLO WORLD") 
-        return JSONResponse(content={
-            "status": "Failed to send email",
-            "error": str(e)
-        }, status_code=500)
+        # Initialize COM (Fix for CoInitialize error)
+        pythoncom.CoInitialize()
 
-@app.post("/send_email/")
-def send_email_api(request: EmailRequest): 
-    return send_email(request.destination_mail, request.content)
+        outlook = win32com.client.Dispatch("Outlook.Application")
+        mail = outlook.CreateItem(0)
+        print(mail)
+        mail.Subject = f"Message to {request.send_to}"
+        mail.Body = request.content
+        mail.To = request.send_to
+
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        filename = f"{request.send_to}_{timestamp}.msg"
+        filepath = os.path.join(save_dir, filename)
+
+        mail.SaveAs(filepath, 3)
+
+        # Uninitialize COM (Cleanup)
+        pythoncom.CoUninitialize()
+
+        return {"message": "Email saved successfully!", "filename": filename, "filepath": filepath}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

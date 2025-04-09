@@ -1,33 +1,13 @@
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+import requests
 
-# Outlook SMTP settings
-SMTP_SERVER = "smtp.office365.com"
-SMTP_PORT = 587
-EMAIL_ADDRESS = "nguyenhoangtuananh2002@gmail.com"
-EMAIL_PASSWORD = "Tuananh@2002"
 
-def send_email(to_email, subject, message):
-    try:
-        # Create the email message
-        msg = MIMEMultipart()
-        msg["From"] = EMAIL_ADDRESS
-        msg["To"] = to_email
-        msg["Subject"] = subject
-        msg.attach(MIMEText(message, "plain"))
+url = 'http://127.0.0.1:8000/create_msg/'
 
-        # Connect to the Outlook SMTP server
-        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-        server.starttls()  # Upgrade the connection to secure
-        server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-        server.send_message(msg)
-        server.quit()
+body = {
+    "send_to" : "20200129@student.hcmus.edu.vn",
+    "content" : "Hello, this is a test message"
+}
 
-        print("Email sent successfully!")
-
-    except Exception as e:
-        print(f"Error: {e}")
-
-# Usage example
-send_email("nguyenhoangtuananh2002@gmail.com", "Test Subject", "Hello, this is a test email from Python!")
+response = requests.post(url=url,json=body,timeout=100)
+print(response.status_code)
+print(response.content)
