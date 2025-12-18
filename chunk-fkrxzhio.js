@@ -1,0 +1,1 @@
+import{Sb as s,Tb as o,mc as c,qb as n}from"./chunk-D5ADUCRO.js";import"./chunk-7CGTOI24.js";var a=(()=>{class e{static{this.\u0275fac=function(t){return new(t||e)}}static{this.\u0275cmp=n({type:e,selectors:[["app-user-access"]],decls:2,vars:0,template:function(t,r){t&1&&(s(0,"p"),c(1,"user-access works!"),o())},encapsulation:2})}}return e})();export{a as UserAccessComponent};
