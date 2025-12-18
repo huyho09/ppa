@@ -1,0 +1,654 @@
+{
+  "TableCalcPMO": {
+    "GroupColumns": [
+      {
+        "Rowspan": 2
+      },
+      {
+        "Rowspan": 2
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 1"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 2"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 3"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 4"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 5"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 6"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 7"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 8"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 9"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 10"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 11"
+      },
+      {
+        "Colspan": 5,
+        "Label": "Group Plan 12"
+      },
+      {
+        "Colspan": 13,
+        "Label": "Group Plan 13"
+      }
+    ],
+    "ColumnHeadings": [
+      {
+        "Label": "Plan (1)"
+      },
+      {
+        "Label": "Billed (1)"
+      },
+      {
+        "Label": "Unbilled SAP (1)"
+      },
+      {
+        "Label": "Unbilled no PO (1)"
+      },
+      {
+        "Label": "Other Rev. (1)"
+      },
+      {
+        "Label": "Plan (2)"
+      },
+      {
+        "Label": "Billed (2)"
+      },
+      {
+        "Label": "Unbilled SAP (2)"
+      },
+      {
+        "Label": "Unbilled no PO (2)"
+      },
+      {
+        "Label": "Other Rev. (2)"
+      },
+      {
+        "Label": "Plan (3)"
+      },
+      {
+        "Label": "Billed (3)"
+      },
+      {
+        "Label": "Unbilled SAP (3)"
+      },
+      {
+        "Label": "Unbilled no PO (3)"
+      },
+      {
+        "Label": "Other Rev. (3)"
+      },
+      {
+        "Label": "Plan (4)"
+      },
+      {
+        "Label": "Billed (4)"
+      },
+      {
+        "Label": "Unbilled SAP (4)"
+      },
+      {
+        "Label": "Unbilled no PO (4)"
+      },
+      {
+        "Label": "Other Rev. (4)"
+      },
+      {
+        "Label": "Plan (5)"
+      },
+      {
+        "Label": "Billed (5)"
+      },
+      {
+        "Label": "Unbilled SAP (5)"
+      },
+      {
+        "Label": "Unbilled no PO (5)"
+      },
+      {
+        "Label": "Other Rev. (5)"
+      },
+      {
+        "Label": "Plan (6)"
+      },
+      {
+        "Label": "Billed (6)"
+      },
+      {
+        "Label": "Unbilled SAP (6)"
+      },
+      {
+        "Label": "Unbilled no PO (6)"
+      },
+      {
+        "Label": "Other Rev. (6)"
+      },
+      {
+        "Label": "Plan (7)"
+      },
+      {
+        "Label": "Billed (7)"
+      },
+      {
+        "Label": "Unbilled SAP (7)"
+      },
+      {
+        "Label": "Unbilled no PO (7)"
+      },
+      {
+        "Label": "Other Rev. (7)"
+      },
+      {
+        "Label": "Plan (8)"
+      },
+      {
+        "Label": "Billed (8)"
+      },
+      {
+        "Label": "Unbilled SAP (8)"
+      },
+      {
+        "Label": "Unbilled no PO (8)"
+      },
+      {
+        "Label": "Other Rev. (8)"
+      },
+      {
+        "Label": "Plan (9)"
+      },
+      {
+        "Label": "Billed (9)"
+      },
+      {
+        "Label": "Unbilled SAP (9)"
+      },
+      {
+        "Label": "Unbilled no PO (9)"
+      },
+      {
+        "Label": "Other Rev. (9)"
+      },
+      {
+        "Label": "Plan (10)"
+      },
+      {
+        "Label": "Billed (10)"
+      },
+      {
+        "Label": "Unbilled SAP (10)"
+      },
+      {
+        "Label": "Unbilled no PO (10)"
+      },
+      {
+        "Label": "Other Rev. (10)"
+      },
+      {
+        "Label": "Plan (11)"
+      },
+      {
+        "Label": "Billed (11)"
+      },
+      {
+        "Label": "Unbilled SAP (11)"
+      },
+      {
+        "Label": "Unbilled no PO (11)"
+      },
+      {
+        "Label": "Other Rev. (11)"
+      },
+      {
+        "Label": "Plan (12)"
+      },
+      {
+        "Label": "Billed (12)"
+      },
+      {
+        "Label": "Unbilled SAP (12)"
+      },
+      {
+        "Label": "Unbilled no PO (12)"
+      },
+      {
+        "Label": "Other Rev. (12)"
+      },
+      {},
+      {
+        "Label": "Plan (1)"
+      },
+      {
+        "Label": "Plan (2)"
+      },
+      {
+        "Label": "Plan (3)"
+      },
+      {
+        "Label": "Plan (4)"
+      },
+      {
+        "Label": "Plan (5)"
+      },
+      {
+        "Label": "Plan (6)"
+      },
+      {
+        "Label": "Plan (7)"
+      },
+      {
+        "Label": "Plan (8)"
+      },
+      {
+        "Label": "Plan (9)"
+      },
+      {
+        "Label": "Plan (10)"
+      },
+      {
+        "Label": "Plan (11)"
+      },
+      {
+        "Label": "Plan (12)"
+      }
+    ]
+  },
+  "TableCalcBilling": {
+    "GroupColumns": [
+      {
+        "Colspan": 5,
+        "Label": "Project and Team Information",
+        "ChildrenIndexs": [2, 3, 4, 5]
+      },
+      {
+        "Colspan": 17,
+        "Label": "Employee and Revenue Information",
+        "ChildrenIndexs": [
+          7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22
+        ]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (1) Information",
+        "ChildrenIndexs": [24, 25, 26, 27]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (2) Information",
+        "ChildrenIndexs": [29, 30, 31, 32]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (3) Information",
+        "ChildrenIndexs": [34, 35, 36, 37]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (4) Information",
+        "ChildrenIndexs": [39, 40, 41, 42]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (5) Information",
+        "ChildrenIndexs": [44, 45, 46, 47]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (6) Information",
+        "ChildrenIndexs": [49, 50, 51, 52]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (7) Information",
+        "ChildrenIndexs": [54, 55, 56, 57]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (8) Information",
+        "ChildrenIndexs": [59, 60, 61, 62]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (9) Information",
+        "ChildrenIndexs": [64, 65, 66, 67]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (10) Information",
+        "ChildrenIndexs": [69, 70, 71, 72]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (11) Information",
+        "ChildrenIndexs": [74, 75, 76, 77]
+      },
+      {
+        "Colspan": 5,
+        "Label": "Plan (12) Information",
+        "ChildrenIndexs": [79, 80, 81, 82]
+      },
+      {
+        "Colspan": 13,
+        "Label": "Monthly Revenue Information",
+        "ChildrenIndexs": [84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95]
+      }
+    ],
+    "ColumnHeadings": [
+      {
+        "Label": "Action"
+      },
+      {
+        "Label": "Team"
+      },
+      {
+        "Label": "Team(CF)"
+      },
+      {
+        "Label": "Sub Team"
+      },
+      {
+        "Label": "Sub Team (CF)"
+      },
+      {
+        "Label": "Sub Project"
+      },
+      {
+        "Label": "Emp ID"
+      },
+      {
+        "Label": "Employee Name"
+      },
+      {
+        "Label": "PIF ID"
+      },
+      {
+        "Label": "Rev. Source"
+      },
+      {
+        "Label": "Cus. Div."
+      },
+      {
+        "Label": "Cus. Div(CF)"
+      },
+      {
+        "Label": "D/I"
+      },
+      {
+        "Label": "MCR"
+      },
+      {
+        "Label": "Onsite/ Nearshore/ Offshore"
+      },
+      {
+        "Label": "Cus. Country"
+      },
+      {
+        "Label": "Cus. Country (CF)"
+      },
+      {
+        "Label": "Contract type"
+      },
+      {
+        "Label": "Rate in Billing"
+      },
+      {
+        "Label": "CONV"
+      },
+      {
+        "Label": "CUR"
+      },
+      {
+        "Label": "Rate in USD"
+      },
+      {
+        "Label": "Total PMO"
+      },
+      {
+        "Label": "Plan (1)"
+      },
+      {
+        "Label": "Billed (1)"
+      },
+      {
+        "Label": "Unbilled SAP (1)"
+      },
+      {
+        "Label": "Unbilled no PO (1)"
+      },
+      {
+        "Label": "Other Rev. (1)"
+      },
+      {
+        "Label": "Plan (2)"
+      },
+      {
+        "Label": "Billed (2)"
+      },
+      {
+        "Label": "Unbilled SAP (2)"
+      },
+      {
+        "Label": "Unbilled no PO (2)"
+      },
+      {
+        "Label": "Other Rev. (2)"
+      },
+      {
+        "Label": "Plan (3)"
+      },
+      {
+        "Label": "Billed (3)"
+      },
+      {
+        "Label": "Unbilled SAP (3)"
+      },
+      {
+        "Label": "Unbilled no PO (3)"
+      },
+      {
+        "Label": "Other Rev. (3)"
+      },
+      {
+        "Label": "Plan (4)"
+      },
+      {
+        "Label": "Billed (4)"
+      },
+      {
+        "Label": "Unbilled SAP (4)"
+      },
+      {
+        "Label": "Unbilled no PO (4)"
+      },
+      {
+        "Label": "Other Rev. (4)"
+      },
+      {
+        "Label": "Plan (5)"
+      },
+      {
+        "Label": "Billed (5)"
+      },
+      {
+        "Label": "Unbilled SAP (5)"
+      },
+      {
+        "Label": "Unbilled no PO (5)"
+      },
+      {
+        "Label": "Other Rev. (5)"
+      },
+      {
+        "Label": "Plan (6)"
+      },
+      {
+        "Label": "Billed (6)"
+      },
+      {
+        "Label": "Unbilled SAP (6)"
+      },
+      {
+        "Label": "Unbilled no PO (6)"
+      },
+      {
+        "Label": "Other Rev. (6)"
+      },
+      {
+        "Label": "Plan (7)"
+      },
+      {
+        "Label": "Billed (7)"
+      },
+      {
+        "Label": "Unbilled SAP (7)"
+      },
+      {
+        "Label": "Unbilled no PO (7)"
+      },
+      {
+        "Label": "Other Rev. (7)"
+      },
+      {
+        "Label": "Plan (8)"
+      },
+      {
+        "Label": "Billed (8)"
+      },
+      {
+        "Label": "Unbilled SAP (8)"
+      },
+      {
+        "Label": "Unbilled no PO (8)"
+      },
+      {
+        "Label": "Other Rev. (8)"
+      },
+      {
+        "Label": "Plan (9)"
+      },
+      {
+        "Label": "Billed (9)"
+      },
+      {
+        "Label": "Unbilled SAP (9)"
+      },
+      {
+        "Label": "Unbilled no PO (9)"
+      },
+      {
+        "Label": "Other Rev. (9)"
+      },
+      {
+        "Label": "Plan (10)"
+      },
+      {
+        "Label": "Billed (10)"
+      },
+      {
+        "Label": "Unbilled SAP (10)"
+      },
+      {
+        "Label": "Unbilled no PO (10)"
+      },
+      {
+        "Label": "Other Rev. (10)"
+      },
+      {
+        "Label": "Plan (11)"
+      },
+      {
+        "Label": "Billed (11)"
+      },
+      {
+        "Label": "Unbilled SAP (11)"
+      },
+      {
+        "Label": "Unbilled no PO (11)"
+      },
+      {
+        "Label": "Other Rev. (11)"
+      },
+      {
+        "Label": "Plan (12)"
+      },
+      {
+        "Label": "Billed (12)"
+      },
+      {
+        "Label": "Unbilled SAP (12)"
+      },
+      {
+        "Label": "Unbilled no PO (12)"
+      },
+      {
+        "Label": "Other Rev. (12)"
+      },
+      {
+        "Label": "Total Revenue"
+      },
+      {
+        "Label": "Jan_Rev"
+      },
+      {
+        "Label": "Feb_Rev"
+      },
+      {
+        "Label": "Mar_Rev"
+      },
+      {
+        "Label": "Apr_Rev"
+      },
+      {
+        "Label": "May_Rev"
+      },
+      {
+        "Label": "Jun_Rev"
+      },
+      {
+        "Label": "Jul_Rev"
+      },
+      {
+        "Label": "Aug_Rev"
+      },
+      {
+        "Label": "Sep_Rev"
+      },
+      {
+        "Label": "Oct_Rev"
+      },
+      {
+        "Label": "Nov_Rev"
+      },
+      {
+        "Label": "Dec_Rev"
+      }
+    ]
+  }
+}
